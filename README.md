@@ -1,6 +1,6 @@
 Mobile POS
 ===
-Developers
+DEVELOPERS<br>
 Natchanon Hongladaromp<br>
 Sarun Wongtanakarn<br>
 Thunyathon Jaruchotrattanasakul<br>
