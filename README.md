@@ -11,6 +11,6 @@ Veerapat Threeravipark<br>
 
 Attention!<br>
 -------------
-/src              Source code<br>
-/docs             documents, including project docs and user docs<br>
+/src &nbsp;&nbsp;&nbsp;&nbsp; Source code<br>
+/docs &nbsp;&nbsp;&nbsp;            documents, including project docs and user docs<br>
 ...
