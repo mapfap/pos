@@ -14,10 +14,13 @@ public class ItemFactory {
 		return instance;
 	}
 	
+	public Item createItem(int id, String name, String barcode, double price) {
+		Item item = new Item(id, name, barcode, price);
+		return item;
+	}
+	
 	public Item createItem(String name, String barcode, double price) {
-		//  lastID = "SELECT id FROM inventory ORDER BY id DESC LIMIT 1"
-		int lastID = 0;
-		Item item = new Item(++lastID, name, barcode, price);
+		Item item = new Item(name, barcode, price);
 		return item;
 	}
 }

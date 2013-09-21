@@ -15,6 +15,7 @@ public class POSDatabase extends SQLiteOpenHelper {
 	private static final int DATABASE_VERSION = 1;
 	private static final String DATABASE_NAME = "POSDatabase";
 	private static final String TABLE_INVENTORY = "inventory";
+	private static ItemFactory itemFactory = ItemFactory.getInstance();
 
 	public POSDatabase(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -23,7 +24,9 @@ public class POSDatabase extends SQLiteOpenHelper {
 	@Override
 	public void onCreate(SQLiteDatabase database) {
 		database.execSQL("CREATE TABLE " + TABLE_INVENTORY
-				+ "(itemID INTEGER PRIMARY KEY," + " Name TEXT(100),"
+				+ "(id INTEGER PRIMARY KEY,"
+				+ "name TEXT(100),"
+				+ "barcode TEXT(100),"
 				+ " price REAL);");
 
 		Log.d("CREATE TABLE", "Create " + TABLE_INVENTORY + " Successfully.");
@@ -38,7 +41,7 @@ public class POSDatabase extends SQLiteOpenHelper {
 		try {
 			SQLiteDatabase database = this.getWritableDatabase();
 			ContentValues content = new ContentValues();
-			content.put("id", item.id);
+//			content.put("id", item.id);
 			content.put("name", item.name);
 			content.put("barcode", item.barcode);
 			content.put("price", item.price);
@@ -51,6 +54,30 @@ public class POSDatabase extends SQLiteOpenHelper {
 			return -1;
 		}
 	}
+	
+	public int nextID() {
+		int id = 0;
+		try {
+			SQLiteDatabase database = this.getWritableDatabase();
+			String sql = "SELECT id FROM " + TABLE_INVENTORY + "ORDER BY id DESC LIMIT 1";
+			Cursor cursor = database.rawQuery(sql, null);
+			if (cursor != null) {
+				if (cursor.moveToFirst()) {
+					do {
+						id = cursor.getInt(cursor.getColumnIndex("id"));
+					} while (cursor.moveToNext());
+				}
+			}
+			cursor.close();
+			database.close();
+			return id;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			return 0;
+		}
+		
+	}
 
 	public List<Item> SelectAllData() {
 		try {
@@ -62,7 +89,7 @@ public class POSDatabase extends SQLiteOpenHelper {
 			if (cursor != null) {
 				if (cursor.moveToFirst()) {
 					do {
-						Item item = new Item(
+						Item item = itemFactory.createItem(
 							cursor.getInt(cursor.getColumnIndex("id")),
 							cursor.getString(cursor.getColumnIndex("name")),
 							cursor.getString(cursor.getColumnIndex("barcode")),

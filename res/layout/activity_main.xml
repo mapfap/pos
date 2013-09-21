@@ -9,33 +9,48 @@
     tools:context=".MainActivity" >
 
     <Button
-        android:id="@+id/insertButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Insert" />
-
-    <Button
         android:id="@+id/selectButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/insertButton"
+        android:layout_below="@+id/insertButton"
         android:text="Select" />
+
+    <Button
+        android:id="@+id/insertButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="14dp"
+        android:layout_marginTop="14dp"
+        android:text="Insert" />
 
     <Button
         android:id="@+id/selectAllButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/selectButton"
+        android:layout_below="@+id/selectButton"
+        android:layout_marginTop="24dp"
         android:text="Select All Data" />
 
     <Button
         android:id="@+id/updateButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/selectAllButton"
+        android:layout_below="@+id/selectAllButton"
+        android:layout_marginTop="29dp"
         android:text="Update" />
 
     <Button
         android:id="@+id/deleteButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/updateButton"
+        android:layout_below="@+id/updateButton"
+        android:layout_marginTop="20dp"
         android:text="Delete" />
 
 </RelativeLayout>

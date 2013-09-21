@@ -29,6 +29,7 @@ public class MainActivity extends Activity {
         final Button insertButton = (Button) findViewById(R.id.insertButton);
         insertButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+//            	Item item = itemFactory.createItem(database.nextID(),"Apple", "885100422323222", 10.50);
             	Item item = itemFactory.createItem("Apple", "885100422323222", 10.50);
             	long flg1 = database.addItem(item);
             	
@@ -52,7 +53,7 @@ public class MainActivity extends Activity {
                	}
                	else {
                		for (Item item : itemList) {
-                    	 Toast.makeText(MainActivity.this,"id : " + item.name + ","  + item.price + ","  + item.barcode, Toast.LENGTH_LONG).show(); 
+                    	 Toast.makeText(MainActivity.this,"id : " + item.name + " - "  + item.price + "$, "  + item.barcode, Toast.LENGTH_LONG).show(); 
                		}
                	}
                
