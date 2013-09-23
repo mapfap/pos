@@ -16,12 +16,12 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity {
 	
-	private POSDatabase database;
 	private ItemFactory itemFactory;
 	private TextView formatTxt;
 	private TextView contentTxt;
 	private Activity activity;
 
+	private Inventory inventory;
 	
 	public void onActivityResult(int requestCode, int resultCode, Intent intent) {
 		IntentResult scanningResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
@@ -41,6 +41,11 @@ public class MainActivity extends Activity {
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		
+		Database database = new POSSQLiteDatabase(this);
+		inventory = new Inventory(database);
+		
+		
 		activity = this;
 		formatTxt = (TextView)findViewById(R.id.scanFormat);
 		contentTxt = (TextView)findViewById(R.id.scanContent);
@@ -50,21 +55,18 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-		database = new POSDatabase(this);
-		database.getWritableDatabase();
 		
 		
         final Button insertButton = (Button) findViewById(R.id.insertButton);
         insertButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-	//          Item item = itemFactory.createItem(database.nextID(),"Apple", "885100422323222", 10.50);
-	            	Item item = itemFactory.createItem("Apple", "885100422323222", 10.50);
-	            	long flg1 = database.addItem(item);
+	          	Item item = itemFactory.createItem("Apple", "885100422323222", 10.50);
+	            	boolean success = inventory.addNewItem(item);
 	            	
-	            	if(flg1 > 0) {
-	            	 Toast.makeText(MainActivity.this,"Insert data successfully", Toast.LENGTH_LONG).show(); 
+	            	if(success) {
+	            	 Toast.makeText(MainActivity.this,"Insert data successfully", Toast.LENGTH_SHORT).show(); 
 	            	} else {
-	               	 Toast.makeText(MainActivity.this,"Failed to insert data", Toast.LENGTH_LONG).show(); 
+	               	 Toast.makeText(MainActivity.this,"Failed to insert data", Toast.LENGTH_SHORT).show(); 
 	            	}
 	          
             }
@@ -75,14 +77,16 @@ public class MainActivity extends Activity {
        selectAllButton.setOnClickListener(new View.OnClickListener() {
            public void onClick(View v) {
            	
-           	List<Item> itemList = database.SelectAllData();   
+           	List<Item> itemList = inventory.getAllItem();   
            	if(itemList == null) {
-           		Toast.makeText(MainActivity.this,"Not found Data!", Toast.LENGTH_LONG).show(); 
+           		Toast.makeText(MainActivity.this,"Not found Data!", Toast.LENGTH_SHORT).show(); 
            	}
            	else {
+           		String all= "";
            		for (Item item : itemList) {
-                	 Toast.makeText(MainActivity.this,"id : " + item.name + " - "  + item.price + "$, "  + item.barcode, Toast.LENGTH_LONG).show(); 
+                	 all+="id : " + item.name + " || "  + item.price + "$, "  + item.barcode + "\n";
            		}
+           		Toast.makeText(MainActivity.this, all, Toast.LENGTH_SHORT).show(); 
            	}
            
            }
