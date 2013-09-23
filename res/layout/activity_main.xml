@@ -53,4 +53,30 @@
         android:layout_marginTop="20dp"
         android:text="Delete" />
 
+	<TextView
+	    android:id="@+id/scanContent"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignBottom="@+id/insertButton"
+	    android:layout_alignParentRight="true"
+	    android:text="Scan Content"
+	    android:textIsSelectable="true" />
+
+	<TextView
+	    android:id="@+id/scanFormat"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignLeft="@+id/scan_content"
+	    android:layout_alignTop="@+id/insertButton"
+	    android:text="Scan Format"
+	    android:textIsSelectable="true" />
+
+	<Button
+	    android:id="@+id/scanButton"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_above="@+id/selectAllButton"
+	    android:layout_toRightOf="@+id/selectAllButton"
+	    android:text="SCAN" />
+
 </RelativeLayout>

@@ -24,9 +24,13 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int action_settings=0x7f080005;
+        public static final int action_settings=0x7f080009;
         public static final int deleteButton=0x7f080004;
         public static final int insertButton=0x7f080001;
+        public static final int scanButton=0x7f080008;
+        public static final int scanContent=0x7f080005;
+        public static final int scanFormat=0x7f080006;
+        public static final int scan_content=0x7f080007;
         public static final int selectAllButton=0x7f080002;
         public static final int selectButton=0x7f080000;
         public static final int updateButton=0x7f080003;
