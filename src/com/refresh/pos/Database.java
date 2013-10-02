@@ -7,4 +7,5 @@ public interface Database {
 	public long insert(String tableName, Object content);
 	public boolean update();
 	public boolean delete();
+	public long getSize();
 }

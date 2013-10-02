@@ -16,4 +16,7 @@ public class InventoryController {
     	boolean success = inventory.addNewItem(item);
     	return success;
 	}
+	public long getSize(){
+		return inventory.getSize();
+	}
 }

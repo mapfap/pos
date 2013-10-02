@@ -2,8 +2,10 @@ package com.refresh.pos;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,6 +16,7 @@ public class MainActivity extends Activity {
 	private TextView contentTxt;
 	private Activity activity;
 	private InventoryController inventoryController;
+	private ConsoleTest test;
 	
 //	public void onActivityResult(int requestCode, int resultCode, Intent intent) {
 //		IntentResult scanningResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
@@ -36,7 +39,7 @@ public class MainActivity extends Activity {
 		Database database = new POSSQLiteDatabase(this);
 		inventoryController = new InventoryController(database);
 		//inventory = new Inventory(database);
-		
+		test = new ConsoleTest();
 		activity = this;
 		formatTxt = (TextView)findViewById(R.id.scanFormat);
 		contentTxt = (TextView)findViewById(R.id.scanContent);
@@ -46,9 +49,21 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
+		final Button updateButton = (Button) findViewById(R.id.updateButton);
+		final TextView dbSizeText = (TextView) findViewById(R.id.dbSize);
+		updateButton.setOnClickListener(new OnClickListener(){
 		
+			@Override
+			public void onClick(View v) {
+				long size = inventoryController.getSize();
+				dbSizeText.setText(size+" ");
+				
+			}
+		
+		});
 		
         final Button insertButton = (Button) findViewById(R.id.insertButton);
+        
         insertButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	
@@ -56,13 +71,13 @@ public class MainActivity extends Activity {
 	          //	boolean success = inventory.addNewItem(item);
             	
             		boolean success = inventoryController.add();
-	            	
 	            	if(success) {
-	            	 Toast.makeText(MainActivity.this,"Insert data successfully", Toast.LENGTH_SHORT).show(); 
+	       
+	            	 Toast.makeText(MainActivity.this,"Insert data successfullyl", Toast.LENGTH_SHORT).show(); 
 	            	} else {
 	               	 Toast.makeText(MainActivity.this,"Failed to insert data", Toast.LENGTH_SHORT).show(); 
 	            	}
-	          
+	            	
             }
         });
         

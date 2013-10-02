@@ -62,15 +62,6 @@
 	    android:text="Scan Content"
 	    android:textIsSelectable="true" />
 
-	<TextView
-	    android:id="@+id/scanFormat"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:layout_alignLeft="@+id/scan_content"
-	    android:layout_alignTop="@+id/insertButton"
-	    android:text="Scan Format"
-	    android:textIsSelectable="true" />
-
 	<Button
 	    android:id="@+id/scanButton"
 	    android:layout_width="wrap_content"
@@ -78,5 +69,22 @@
 	    android:layout_above="@+id/selectAllButton"
 	    android:layout_toRightOf="@+id/selectAllButton"
 	    android:text="SCAN" />
+
+	<TextView
+	    android:id="@+id/scanFormat"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignRight="@+id/insertButton"
+	    android:layout_alignTop="@+id/insertButton"
+	    android:text="Scan Format"
+	    android:textIsSelectable="true" />
+
+	<TextView
+	    android:id="@+id/dbSize"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignBottom="@+id/deleteButton"
+	    android:layout_alignRight="@+id/scanButton"
+	    android:text="0" />
 
 </RelativeLayout>

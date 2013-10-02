@@ -17,6 +17,7 @@ public class Inventory {
 	private static ItemFactory itemFactory = ItemFactory.getInstance();
 
 	public boolean addNewItem(Item item) {
+		System.out.println("test");
 		ContentValues content = new ContentValues();
 		content.put("name", item.name);
 		content.put("barcode", item.barcode);
@@ -26,7 +27,6 @@ public class Inventory {
 	}
 
 	public boolean updateItem() {
-
 		return false;
 	}
 
@@ -43,5 +43,8 @@ public class Inventory {
 			);
 		}
 		return itemList;
+	}
+	public long getSize(){
+		return database.getSize();
 	}
 }

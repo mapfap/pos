@@ -8,6 +8,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.database.sqlite.SQLiteStatement;
 import android.util.Log;
 
 public class POSSQLiteDatabase extends SQLiteOpenHelper implements Database {
@@ -89,6 +90,12 @@ public class POSSQLiteDatabase extends SQLiteOpenHelper implements Database {
 	public boolean delete() {
 		// TODO Auto-generated method stub
 		return false;
+	}
+	public long getSize(){
+		SQLiteDatabase database = this.getWritableDatabase();
+		SQLiteStatement byteStatement = database.compileStatement("SELECT SUM(LENGTH(id)) FROM inventory");
+		long bytes = byteStatement.simpleQueryForLong();
+		return bytes;
 	}
 
 
