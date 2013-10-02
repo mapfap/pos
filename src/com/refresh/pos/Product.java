@@ -1,7 +1,7 @@
 package com.refresh.pos;
 
 
-public class Item {
+public class Product {
 
 	public int id;
 	public final String name;
@@ -10,14 +10,14 @@ public class Item {
 	
 	public static final int UNDEFINED = -1;
 	
-	public Item(int id, String name, String barcode, double price) {
+	public Product(int id, String name, String barcode, double price) {
 		this.id = id;
 		this.name = name;
 		this.barcode = barcode;
 		this.price = price;
 	}
 	
-	public Item(String name, String barcode, double price) {
+	public Product(String name, String barcode, double price) {
 		this.id = UNDEFINED;
 		this.name = name;
 		this.barcode = barcode;

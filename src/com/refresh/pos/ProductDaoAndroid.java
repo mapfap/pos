@@ -11,13 +11,13 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteStatement;
 import android.util.Log;
 
-public class POSSQLiteDatabase extends SQLiteOpenHelper implements Database {
+public class ProductDaoAndroid extends SQLiteOpenHelper implements ProductDao {
 
 	private static final int DATABASE_VERSION = 1;
 	private static final String DATABASE_NAME = "POSDatabase";
 	
 
-	public POSSQLiteDatabase(Context context) {
+	public ProductDaoAndroid(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
 	}
 
@@ -70,7 +70,8 @@ public class POSSQLiteDatabase extends SQLiteOpenHelper implements Database {
 	public long insert(String tableName, Object content) {
 		try {
 			SQLiteDatabase database = this.getWritableDatabase();
-			long rows = database.insert(tableName, null, (ContentValues)content);
+			long rows = database.insert(tableName, null,
+					(ContentValues) content);
 			database.close();
 			return rows;
 		} catch (Exception e) {

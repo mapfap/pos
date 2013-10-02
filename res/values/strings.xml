@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">pos</string>
+    <string name="app_name">Mobile POS</string>
     <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="select">Select</string>
+    <string name="delete">Delete</string>
+    <string name="update">Update</string>
+    <string name="scan">Scan</string>
+    <string name="insert">Insert</string>
+    <string name="selectAll">Select All</string>
+    <string name="scanContent">Scan Content</string>
+    <string name="scanFormat">Scan Format</string>
+    <string name="zero">0</string>
 
 </resources>
