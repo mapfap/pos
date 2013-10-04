@@ -9,6 +9,7 @@
         android:targetSdkVersion="18" />
 
     <application
+        android:debuggable="true"
         android:allowBackup="true"
         android:theme="@style/AppTheme" >
         <activity

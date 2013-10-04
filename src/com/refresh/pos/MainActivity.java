@@ -16,30 +16,29 @@ import com.google.zxing.integration.android.IntentResult;
 
 public class MainActivity extends Activity {
 
-	private TextView formatTxt;
-	private TextView contentTxt;
 	private Activity activity;
 	private ProductCatalogController productCatalogController;
 
 	public void onActivityResult(int requestCode, int resultCode, Intent intent) {
-		Log.d("BARCODE", "BARCODE 'onActivityResult' Successfully.");
-		Toast.makeText(MainActivity.this,
-				"Scanninggggg?????", Toast.LENGTH_SHORT)
-				.show();
-//		IntentResult scanningResult = IntentIntegrator.parseActivityResult(
-//				requestCode, resultCode, intent);
+//		Log.d("BARCODE", "BARCODE 'onActivityResult' Successfully.");
+		
+		IntentResult scanningResult = IntentIntegrator.parseActivityResult(
+				requestCode, resultCode, intent);
 //
-//		if (scanningResult != null) {
-//			String scanContent = scanningResult.getContents();
-//			String scanFormat = scanningResult.getFormatName();
+		if (scanningResult != null) {
+			String scanContent = scanningResult.getContents();
+			String scanFormat = scanningResult.getFormatName();
+			Toast.makeText(MainActivity.this,
+					"อิอิ >> " + scanContent , Toast.LENGTH_SHORT)
+					.show();
 //			formatTxt.setText("FORMAT: " + scanFormat);
 //			contentTxt.setText("CONTENT: " + scanContent);
 //
-//		} else {
-//			Toast toast = Toast.makeText(getApplicationContext(),
-//					"No scan data received!", Toast.LENGTH_SHORT);
-//			toast.show();
-//		}
+		} else {
+			Toast.makeText(MainActivity.this,
+					"no data" + resultCode, Toast.LENGTH_SHORT)
+					.show();
+		}
 	}
 
 	@Override
@@ -48,8 +47,6 @@ public class MainActivity extends Activity {
 		productCatalogController = new ProductCatalogController(productDao);
 		activity = this;
 
-		formatTxt = (TextView) findViewById(R.id.scanFormat);
-		contentTxt = (TextView) findViewById(R.id.scanContent);
 
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
