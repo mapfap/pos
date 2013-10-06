@@ -30,6 +30,15 @@ public class AddActivity extends Activity {
 		final EditText itemAmount = (EditText) findViewById(R.id.amountTxt);
 		final EditText itemDetail = (EditText) findViewById(R.id.detailTxt);
 		
+		final Button scanButton = (Button) findViewById(R.id.scanButton);
+		scanButton.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 		
 		final Button addButton = (Button) findViewById(R.id.addButton);
 		addButton.setOnClickListener(new View.OnClickListener() {
