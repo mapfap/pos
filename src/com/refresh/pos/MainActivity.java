@@ -68,18 +68,19 @@ public class MainActivity extends Activity {
 
 		insertButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-
-				boolean success = productCatalogController.add();
-				if (success) {
-					Toast.makeText(MainActivity.this,
-							"Insert data successfullyl", Toast.LENGTH_SHORT)
-							.show();
-				} else {
-					Toast.makeText(MainActivity.this, "Failed to insert data",
-							Toast.LENGTH_SHORT).show();
+				Intent newActivity = new Intent(MainActivity.this,AddActivity.class);
+				startActivity(newActivity);
+				
+//				boolean success = productCatalogController.add();
+//				if (success) {
+//					Toast.makeText(MainActivity.this,
+//							"Insert data successfullyl", Toast.LENGTH_SHORT)
+//							.show();
+//				} else {
+//					Toast.makeText(MainActivity.this, "Failed to insert data",
+//							Toast.LENGTH_SHORT).show();
 				}
 
-			}
 		});
 
 		// final Button selectAllButton = (Button)
