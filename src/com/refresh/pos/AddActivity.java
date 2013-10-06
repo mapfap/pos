@@ -9,14 +9,20 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class AddActivity extends Activity {
-
+	private ProductCatalogController productCatalogController;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_add);
 		super.onCreate(savedInstanceState);
+		
+		ProductDao productDao = new ProductDaoAndroid(this);
+		productCatalogController = new ProductCatalogController(productDao);
+		
 		final EditText itemName = (EditText) findViewById(R.id.nameTxt);
 		final EditText itemBarcode = (EditText) findViewById(R.id.barcodeTxt);
 		final EditText itemCost = (EditText) findViewById(R.id.costTxt);
@@ -24,15 +30,20 @@ public class AddActivity extends Activity {
 		final EditText itemAmount = (EditText) findViewById(R.id.amountTxt);
 		final EditText itemDetail = (EditText) findViewById(R.id.detailTxt);
 		
+		
 		final Button addButton = (Button) findViewById(R.id.addButton);
 		addButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-			Log.v(">>>",itemName.getText().toString());
-			Log.v(">>>",itemCost.getText().toString());	
-			Log.v(">>>",itemPrice.getText().toString());	
-			Log.v(">>>",itemAmount.getText().toString());	
-			Log.v(">>>",itemDetail.getText().toString());	
-
+				boolean success = productCatalogController.add(itemName.getText().toString(),itemBarcode.getText().toString(),Double.parseDouble(itemPrice.getText().toString()));
+				if(success){
+					Toast.makeText(AddActivity.this,
+							"Insert data successfullyl", Toast.LENGTH_SHORT)
+							.show();
+				}
+				else{
+					Toast.makeText(AddActivity.this, "Failed to insert data",
+							Toast.LENGTH_SHORT).show();
+				}
 			}
 		});
 		final Button clearButton = (Button) findViewById(R.id.clearButton);
