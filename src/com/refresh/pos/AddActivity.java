@@ -1,8 +1,10 @@
 package com.refresh.pos;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
@@ -12,6 +14,7 @@ import android.widget.Toast;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
+@SuppressLint("NewApi")
 public class AddActivity extends Activity {
 	
 	private EditText itemBarcode;
@@ -60,21 +63,29 @@ public class AddActivity extends Activity {
 				IntentIntegrator scanIntegrator = new IntentIntegrator(AddActivity.this);
 				scanIntegrator.initiateScan();
 				
+				
 			}
 		});
 		
 		final Button addButton = (Button) findViewById(R.id.addButton);
 		addButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				boolean success = productCatalogController.add(itemName.getText().toString(),itemBarcode.getText().toString(),Double.parseDouble(itemPrice.getText().toString()));
-				if(success){
-					Toast.makeText(AddActivity.this,
-							"Insert data successfully", Toast.LENGTH_SHORT)
-							.show();
+				boolean chitemName =itemName.getText().toString().isEmpty(); 
+				if(chitemName||itemBarcode.getText().toString().isEmpty()||itemPrice.getText().toString().isEmpty()){
+					Toast.makeText(AddActivity.this, "It's still have some blank",
+							Toast.LENGTH_SHORT).show();
 				}
 				else{
-					Toast.makeText(AddActivity.this, "Failed to insert data",
-							Toast.LENGTH_SHORT).show();
+					boolean success = productCatalogController.add(itemName.getText().toString(),itemBarcode.getText().toString(),Double.parseDouble(itemPrice.getText().toString()));
+					if(success){
+						Toast.makeText(AddActivity.this,
+								"Successfully Add : "+itemName.getText().toString(), Toast.LENGTH_SHORT)
+								.show();
+					}
+					else{
+						Toast.makeText(AddActivity.this, "Failed to insert data",
+								Toast.LENGTH_SHORT).show();
+					}
 				}
 			}
 		});
