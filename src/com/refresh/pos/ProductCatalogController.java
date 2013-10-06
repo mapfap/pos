@@ -9,9 +9,9 @@ public class ProductCatalogController {
 		productFactory = ProductFactory.getInstance();
 	}
 
-	public boolean add() {
-		Product product = productFactory.createProduct("Apple",
-				"885100422323222", 10.50);
+	public boolean add(Product product) {
+//		Product product = productFactory.createProduct("Apple",
+//				"885100422323222", 10.50);
 		boolean success = productCatalog.addNewProduct(product);
 		return success;
 	}

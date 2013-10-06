@@ -18,6 +18,7 @@ public class AddActivity extends Activity {
 		setContentView(R.layout.activity_add);
 		super.onCreate(savedInstanceState);
 		final EditText itemName = (EditText) findViewById(R.id.nameTxt);
+		final EditText itemBarcode = (EditText) findViewById(R.id.barcodeTxt);
 		final EditText itemCost = (EditText) findViewById(R.id.costTxt);
 		final EditText itemPrice = (EditText) findViewById(R.id.priceTxt);
 		final EditText itemAmount = (EditText) findViewById(R.id.amountTxt);
@@ -40,6 +41,7 @@ public class AddActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				itemName.setText("");
+				itemBarcode.setText("");
 				itemCost.setText("");
 				itemPrice.setText("");
 				itemAmount.setText("");

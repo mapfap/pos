@@ -20,6 +20,32 @@
     </EditText>
 
     <TextView
+        android:id="@+id/barcode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BarCode" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <EditText
+            android:id="@+id/barcodeTxt"
+            android:layout_width="126dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.03"
+            android:ems="20"
+            android:inputType="number" />
+
+        <Button
+            android:id="@+id/scanButton"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Scan" />
+    </LinearLayout>
+
+    <TextView
         android:id="@+id/cost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
