@@ -3,17 +3,39 @@ package com.refresh.pos;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
+
 public class AddActivity extends Activity {
+	
+	private EditText itemBarcode;
 	private ProductCatalogController productCatalogController;
 	
+	public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+//		Log.d("BARCODE", "BARCODE 'onActivityResult' Successfully.");
+		
+		IntentResult scanningResult = IntentIntegrator.parseActivityResult(
+				requestCode, resultCode, intent);
+//
+		if (scanningResult != null) {
+			String scanContent = scanningResult.getContents();
+			String scanFormat = scanningResult.getFormatName();
+//			Toast.makeText(AddActivity.this,"got >> " + scanContent , Toast.LENGTH_SHORT).show();
+			itemBarcode.setText(scanContent);
+//
+		} else {
+			Toast.makeText(AddActivity.this,
+					"Failed to retrieve barcode." + resultCode, Toast.LENGTH_SHORT)
+					.show();
+		}
+	}
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -24,7 +46,7 @@ public class AddActivity extends Activity {
 		productCatalogController = new ProductCatalogController(productDao);
 		
 		final EditText itemName = (EditText) findViewById(R.id.nameTxt);
-		final EditText itemBarcode = (EditText) findViewById(R.id.barcodeTxt);
+		itemBarcode = (EditText) findViewById(R.id.barcodeTxt);
 		final EditText itemCost = (EditText) findViewById(R.id.costTxt);
 		final EditText itemPrice = (EditText) findViewById(R.id.priceTxt);
 		final EditText itemAmount = (EditText) findViewById(R.id.amountTxt);
@@ -35,7 +57,8 @@ public class AddActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
+				IntentIntegrator scanIntegrator = new IntentIntegrator(AddActivity.this);
+				scanIntegrator.initiateScan();
 				
 			}
 		});
@@ -46,7 +69,7 @@ public class AddActivity extends Activity {
 				boolean success = productCatalogController.add(itemName.getText().toString(),itemBarcode.getText().toString(),Double.parseDouble(itemPrice.getText().toString()));
 				if(success){
 					Toast.makeText(AddActivity.this,
-							"Insert data successfullyl", Toast.LENGTH_SHORT)
+							"Insert data successfully", Toast.LENGTH_SHORT)
 							.show();
 				}
 				else{

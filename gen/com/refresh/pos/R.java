@@ -24,7 +24,7 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int action_settings=0x7f080017;
+        public static final int action_settings=0x7f080015;
         public static final int addButton=0x7f08000d;
         public static final int amount=0x7f080009;
         public static final int amountTxt=0x7f08000a;
@@ -33,21 +33,19 @@ public final class R {
         public static final int clearButton=0x7f08000e;
         public static final int cost=0x7f080005;
         public static final int costTxt=0x7f080006;
-        public static final int dbSize=0x7f080016;
+        public static final int dbSize=0x7f080012;
         public static final int deleteButton=0x7f080013;
         public static final int detail=0x7f08000b;
         public static final int detailTxt=0x7f08000c;
-        public static final int insertButton=0x7f080010;
+        public static final int insertButton=0x7f08000f;
         public static final int nameTxt=0x7f080001;
         public static final int price=0x7f080007;
         public static final int priceTxt=0x7f080008;
         public static final int productName=0x7f080000;
         public static final int scanButton=0x7f080004;
-        public static final int scanContent=0x7f080014;
-        public static final int scanFormat=0x7f080015;
-        public static final int selectAllButton=0x7f080011;
-        public static final int selectButton=0x7f08000f;
-        public static final int updateButton=0x7f080012;
+        public static final int selectAllButton=0x7f080010;
+        public static final int selectButton=0x7f080011;
+        public static final int updateButton=0x7f080014;
     }
     public static final class layout {
         public static final int activity_add=0x7f030000;
@@ -58,16 +56,15 @@ public final class R {
     }
     public static final class string {
         public static final int action_settings=0x7f050001;
+        public static final int addProduct=0x7f050009;
         public static final int app_name=0x7f050000;
         public static final int delete=0x7f050003;
         public static final int insert=0x7f050006;
         public static final int scan=0x7f050005;
-        public static final int scanContent=0x7f050008;
-        public static final int scanFormat=0x7f050009;
         public static final int select=0x7f050002;
         public static final int selectAll=0x7f050007;
         public static final int update=0x7f050004;
-        public static final int zero=0x7f05000a;
+        public static final int zero=0x7f050008;
     }
     public static final class style {
         /** 

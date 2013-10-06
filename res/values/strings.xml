@@ -9,8 +9,7 @@
     <string name="scan">Scan</string>
     <string name="insert">Insert</string>
     <string name="selectAll">Select All</string>
-    <string name="scanContent">Scan Content</string>
-    <string name="scanFormat">Scan Format</string>
     <string name="zero">0</string>
+    <string name="addProduct">Add Product</string>
 
 </resources>

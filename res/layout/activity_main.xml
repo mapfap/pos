@@ -9,14 +9,6 @@
     tools:context=".MainActivity" >
 
     <Button
-        android:id="@+id/selectButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/insertButton"
-        android:layout_below="@+id/insertButton"
-        android:text="@string/select" />
-
-    <Button
         android:id="@+id/insertButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -24,7 +16,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="14dp"
         android:layout_marginTop="14dp"
-        android:text="@string/insert" />
+        android:text="@string/addProduct" />
 
     <Button
         android:id="@+id/selectAllButton"
@@ -35,56 +27,37 @@
         android:layout_marginTop="24dp"
         android:text="@string/selectAll" />
 
-    <Button
-        android:id="@+id/updateButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/selectAllButton"
-        android:layout_below="@+id/selectAllButton"
-        android:layout_marginTop="29dp"
-        android:text="@string/update" />
-
-    <Button
-        android:id="@+id/deleteButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/updateButton"
-        android:layout_below="@+id/updateButton"
-        android:layout_marginTop="20dp"
-        android:text="@string/delete" />
-
-	<TextView
-	    android:id="@+id/scanContent"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:layout_alignBottom="@+id/insertButton"
-	    android:layout_alignParentRight="true"
-	    android:text="@string/scanContent"
-	    android:textIsSelectable="true" />
-
-	<Button
-	    android:id="@+id/scanButton"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:layout_above="@+id/selectAllButton"
-	    android:layout_toRightOf="@+id/selectAllButton"
-	    android:text="@string/scan" />
-
-	<TextView
-	    android:id="@+id/scanFormat"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:layout_alignRight="@+id/insertButton"
-	    android:layout_alignTop="@+id/insertButton"
-	    android:text="@string/scanFormat"
-	    android:textIsSelectable="true" />
-
 	<TextView
 	    android:id="@+id/dbSize"
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
 	    android:layout_alignBottom="@+id/deleteButton"
-	    android:layout_alignRight="@+id/scanButton"
+	    android:layout_alignParentLeft="true"
 	    android:text="@string/zero" />
+
+	<Button
+	    android:id="@+id/deleteButton"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_below="@+id/updateButton"
+	    android:layout_toRightOf="@+id/selectAllButton"
+	    android:text="@string/delete" />
+
+	<Button
+	    android:id="@+id/selectButton"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignLeft="@+id/insertButton"
+	    android:layout_below="@+id/insertButton"
+	    android:layout_marginTop="16dp"
+	    android:text="@string/select" />
+
+	<Button
+	    android:id="@+id/updateButton"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignLeft="@+id/selectAllButton"
+	    android:layout_below="@+id/selectAllButton"
+	    android:text="@string/update" />
 
 </RelativeLayout>

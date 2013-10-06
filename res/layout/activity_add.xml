@@ -42,7 +42,7 @@
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Scan" />
+            android:text="@string/scan" />
     </LinearLayout>
 
     <TextView
