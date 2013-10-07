@@ -28,8 +28,8 @@ public class ProductCatalog {
 		return false;
 	}
 	
-	public Product getProductByBarcode(String barcode) {
-		String queryString = "SELECT * FROM " + TABLE_NAME + "WHERE barcode = " + barcode;
+	private List<Product> getProductBy(String reference, String value) {
+		String queryString = "SELECT * FROM " + TABLE_NAME + "WHERE " + reference + " = " + value;
 		@SuppressWarnings("unchecked")
 		List<ContentValues> contents = (List) productDao.select(queryString);
 		List<Product> productList = new ArrayList<Product>();
@@ -40,7 +40,19 @@ public class ProductCatalog {
 						 )
 			);
 		}
-		return productList.get(0);
+		return productList;
+	}
+	
+	public Product getProductByBarcode(String barcode) {
+		return getProductBy("barcode", barcode).get(0);
+	}
+	
+	public Product getProductById(String id) {
+		return getProductBy("id", id).get(0);
+	}
+	
+	public List<Product> getProductByName(String name) {
+		return getProductBy("name", name);
 	}
 
 	public List<Product> getAllProduct() {
