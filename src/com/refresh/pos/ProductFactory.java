@@ -19,8 +19,8 @@ public class ProductFactory {
 		return item;
 	}
 	
-	public Product createProduct(String name, String barcode, double price) {
-		Product item = new Product(name, barcode, price);
+	public Product createProduct(String name, String barcode) {
+		Product item = new Product(name, barcode);
 		return item;
 	}
 }

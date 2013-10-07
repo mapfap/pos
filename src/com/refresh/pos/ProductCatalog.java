@@ -20,7 +20,7 @@ public class ProductCatalog {
 		ContentValues content = new ContentValues();
 		content.put("name", product.name);
 		content.put("barcode", product.barcode);
-		content.put("price", product.price);
+//		content.put("price", product.price);
 		long respond = productDao.insert(TABLE_NAME, content);
 		return respond != -1;
 	}

@@ -26,8 +26,7 @@ public class ProductDaoAndroid extends SQLiteOpenHelper implements ProductDao {
 		database.execSQL("CREATE TABLE inventory" 
 				+ "(id INTEGER PRIMARY KEY,"
 				+ "name TEXT(100),"
-				+ "barcode TEXT(100),"
-				+ " price REAL);");
+				+ "barcode TEXT(100);");
 
 		Log.d("CREATE TABLE", "Create Database Successfully.");
 	}
@@ -51,7 +50,7 @@ public class ProductDaoAndroid extends SQLiteOpenHelper implements ProductDao {
 						content.put("id", cursor.getInt(cursor.getColumnIndex("id")));
 						content.put("name", cursor.getString(cursor.getColumnIndex("name")));
 						content.put("barcode", cursor.getString(cursor.getColumnIndex("barcode")));
-						content.put("price", cursor.getDouble(cursor.getColumnIndex("price")));
+//						content.put("price", cursor.getDouble(cursor.getColumnIndex("price")));
 						list.add(content);
 					} while (cursor.moveToNext());
 				}

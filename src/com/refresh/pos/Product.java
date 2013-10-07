@@ -6,9 +6,14 @@ public class Product {
 	public int id;
 	public final String name;
 	public final String barcode;
-	public final double price;
+	public double price;
 	
 	public static final int UNDEFINED = -1;
+	
+	public Product(String name,String barcode){
+		this.name = name;
+		this.barcode = barcode;
+	}
 	
 	public Product(int id, String name, String barcode, double price) {
 		this.id = id;

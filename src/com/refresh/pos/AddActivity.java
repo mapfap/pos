@@ -50,10 +50,6 @@ public class AddActivity extends Activity {
 		
 		final EditText itemName = (EditText) findViewById(R.id.nameTxt);
 		itemBarcode = (EditText) findViewById(R.id.barcodeTxt);
-		final EditText itemCost = (EditText) findViewById(R.id.costTxt);
-		final EditText itemPrice = (EditText) findViewById(R.id.priceTxt);
-		final EditText itemAmount = (EditText) findViewById(R.id.amountTxt);
-		final EditText itemDetail = (EditText) findViewById(R.id.detailTxt);
 		
 		final Button scanButton = (Button) findViewById(R.id.scanButton);
 		scanButton.setOnClickListener(new View.OnClickListener() {
@@ -70,13 +66,12 @@ public class AddActivity extends Activity {
 		final Button addButton = (Button) findViewById(R.id.addButton);
 		addButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				boolean chitemName =itemName.getText().toString().isEmpty(); 
-				if(chitemName||itemBarcode.getText().toString().isEmpty()||itemPrice.getText().toString().isEmpty()){
+				if(itemName.getText().toString().isEmpty()||itemBarcode.getText().toString().isEmpty()){
 					Toast.makeText(AddActivity.this, "It's still have some blank",
 							Toast.LENGTH_SHORT).show();
 				}
 				else{
-					boolean success = productCatalogController.add(itemName.getText().toString(),itemBarcode.getText().toString(),Double.parseDouble(itemPrice.getText().toString()));
+					boolean success = productCatalogController.add(itemName.getText().toString(),itemBarcode.getText().toString());
 					if(success){
 						Toast.makeText(AddActivity.this,
 								"Successfully Add : "+itemName.getText().toString(), Toast.LENGTH_SHORT)
@@ -96,10 +91,6 @@ public class AddActivity extends Activity {
 			public void onClick(View v) {
 				itemName.setText("");
 				itemBarcode.setText("");
-				itemCost.setText("");
-				itemPrice.setText("");
-				itemAmount.setText("");
-				itemDetail.setText("");
 				
 			}
 		});

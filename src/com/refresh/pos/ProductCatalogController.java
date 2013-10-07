@@ -9,9 +9,9 @@ public class ProductCatalogController {
 		productFactory = ProductFactory.getInstance();
 	}
 
-	public boolean add(String name,String barcode,double price) {
+	public boolean add(String name,String barcode) {
 		Product product = productFactory.createProduct(name,
-				barcode, price);
+				barcode);
 		boolean success = productCatalog.addNewProduct(product);
 		return success;
 	}
