@@ -10,6 +10,6 @@
     <string name="insert">Insert</string>
     <string name="selectAll">Select All</string>
     <string name="zero">0</string>
-    <string name="addProduct">Add Product</string>
+    <string name="addProduct">New Product</string>
 
 </resources>
