@@ -14,7 +14,7 @@ import android.util.Log;
 public class ProductDaoAndroid extends SQLiteOpenHelper implements ProductDao {
 
 	private static final int DATABASE_VERSION = 1;
-	private static final String DATABASE_NAME = "POSDatabase";
+	private static final String DATABASE_NAME = "pos_database";
 	
 
 	public ProductDaoAndroid(Context context) {
@@ -23,17 +23,30 @@ public class ProductDaoAndroid extends SQLiteOpenHelper implements ProductDao {
 
 	@Override
 	public void onCreate(SQLiteDatabase database) {
-		database.execSQL("CREATE TABLE inventory" 
-				+ "(id INTEGER PRIMARY KEY,"
+		
+		database.execSQL("CREATE TABLE product_catalog" 
+				+ "(_id INTEGER PRIMARY KEY,"
 				+ "name TEXT(100),"
-				+ "barcode TEXT(100);");
-
-		Log.d("CREATE TABLE", "Create Database Successfully.");
+				+ "barcode TEXT(100));");
+		
+		database.execSQL("CREATE TABLE stock" 
+				+ "(_id INTEGER PRIMARY KEY,"
+				+ "product_id INTEGER,"
+				+ "amount INTEGER,"
+				+ "cost FLOAT,"
+				+ "date_added DATETIME);");
+		
+		database.execSQL("CREATE TABLE sale_price" 
+				+ "(_id INTEGER PRIMARY KEY,"
+				+ "product_id INTEGER,"
+				+ "price FLOAT);");
+		
+		Log.d("CREATE DATABASE", "Create Database Successfully.");
 	}
 
 	@Override
 	public void onUpgrade(SQLiteDatabase arg0, int arg1, int arg2) {
-
+		
 	}
 	
 	@Override
@@ -50,7 +63,6 @@ public class ProductDaoAndroid extends SQLiteOpenHelper implements ProductDao {
 						content.put("id", cursor.getInt(cursor.getColumnIndex("id")));
 						content.put("name", cursor.getString(cursor.getColumnIndex("name")));
 						content.put("barcode", cursor.getString(cursor.getColumnIndex("barcode")));
-//						content.put("price", cursor.getDouble(cursor.getColumnIndex("price")));
 						list.add(content);
 					} while (cursor.moveToNext());
 				}
@@ -97,6 +109,8 @@ public class ProductDaoAndroid extends SQLiteOpenHelper implements ProductDao {
 		long bytes = byteStatement.simpleQueryForLong();
 		return bytes;
 	}
+	
+
 
 
 

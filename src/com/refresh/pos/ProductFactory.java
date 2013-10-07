@@ -14,13 +14,13 @@ public class ProductFactory {
 		return instance;
 	}
 	
-	public Product createProduct(int id, String name, String barcode, double price) {
-		Product item = new Product(id, name, barcode, price);
-		return item;
+	public Product createProduct(int id, String name, String barcode) {
+		Product product = new Product(id, name, barcode);
+		return product;
 	}
 	
 	public Product createProduct(String name, String barcode) {
-		Product item = new Product(name, barcode);
-		return item;
+		Product product = new Product(name, barcode);
+		return product;
 	}
 }
