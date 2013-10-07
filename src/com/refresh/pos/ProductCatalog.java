@@ -8,7 +8,7 @@ import android.content.ContentValues;
 public class ProductCatalog {
 
 	private ProductDao productDao;
-	private static final String TABLE_NAME = "inventory";
+	private static final String TABLE_NAME = "product_catalog";
 
 	public ProductCatalog(ProductDao productDao) {
 		this.productDao = productDao;
@@ -20,7 +20,6 @@ public class ProductCatalog {
 		ContentValues content = new ContentValues();
 		content.put("name", product.name);
 		content.put("barcode", product.barcode);
-//		content.put("price", product.price);
 		long respond = productDao.insert(TABLE_NAME, content);
 		return respond != -1;
 	}
@@ -28,20 +27,35 @@ public class ProductCatalog {
 	public boolean updateItem() {
 		return false;
 	}
+	
+	public Product getProductByBarcode(String barcode) {
+		String queryString = "SELECT * FROM " + TABLE_NAME + "WHERE barcode = " + barcode;
+		@SuppressWarnings("unchecked")
+		List<ContentValues> contents = (List) productDao.select(queryString);
+		List<Product> productList = new ArrayList<Product>();
+		for (ContentValues content: contents) {
+			productList.add(
+				productFactory.createProduct( content.getAsInteger("id"),
+						content.getAsString("name"), content.getAsString("barcode")
+						 )
+			);
+		}
+		return productList.get(0);
+	}
 
-	public List<Product> getProduct() {
+	public List<Product> getAllProduct() {
 		String queryString = "SELECT * FROM " + TABLE_NAME;
 		@SuppressWarnings("unchecked")
 		List<ContentValues> contents = (List) productDao.select(queryString);
-		List<Product> itemList = new ArrayList<Product>();
+		List<Product> productList = new ArrayList<Product>();
 		for (ContentValues content: contents) {
-			itemList.add(
+			productList.add(
 				productFactory.createProduct( content.getAsInteger("id"),
-						content.getAsString("name"), content.getAsString("barcode"),
-						content.getAsDouble("price") )
+						content.getAsString("name"), content.getAsString("barcode")
+						 )
 			);
 		}
-		return itemList;
+		return productList;
 	}
 	public long getSize(){
 		return productDao.getSize();
