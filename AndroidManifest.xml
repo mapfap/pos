@@ -29,7 +29,9 @@
             android:theme="@style/AppTheme" />
         <activity
             android:name="com.refresh.pos.ShowlistActivity"
-            android:label="@string/title_activity_showlist" >
+            android:label="Product Catalog" 
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" >
         </activity>
     </application>
 
