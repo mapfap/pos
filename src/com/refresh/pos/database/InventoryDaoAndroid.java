@@ -14,7 +14,7 @@ import android.util.Log;
 public class InventoryDaoAndroid extends SQLiteOpenHelper implements Dao {
 
 	private static final int DATABASE_VERSION = 1;
-	private static final String DATABASE_NAME = "pos_database";
+	private static final String DATABASE_NAME = "pos_database2";
 
 	public InventoryDaoAndroid(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -26,10 +26,10 @@ public class InventoryDaoAndroid extends SQLiteOpenHelper implements Dao {
 		database.execSQL("CREATE TABLE product_catalog"
 				+ "(_id INTEGER PRIMARY KEY," + "name TEXT(100),"
 				+ "barcode TEXT(100)," +
-				" sale_price FLOAT );");
+				" sale_price DOUBLE );");
 
 		database.execSQL("CREATE TABLE stock" + "(_id INTEGER PRIMARY KEY,"
-				+ "product_id INTEGER," + "amount INTEGER," + "cost FLOAT,"
+				+ "product_id INTEGER," + "amount INTEGER," + "cost DOUBLE,"
 				+ "date_added DATETIME);");
 
 
@@ -52,13 +52,13 @@ public class InventoryDaoAndroid extends SQLiteOpenHelper implements Dao {
 				if (cursor.moveToFirst()) {
 					do {
 						ContentValues content = new ContentValues();
-						content.put("id",
+						content.put("_id",
 								cursor.getInt(cursor.getColumnIndex("_id")));
 						content.put("name",
 								cursor.getString(cursor.getColumnIndex("name")));
 						content.put("barcode", cursor.getString(cursor
 								.getColumnIndex("barcode")));
-						content.put("sale_price", cursor.getString(cursor
+						content.put("sale_price", cursor.getDouble(cursor
 								.getColumnIndex("sale_price")));
 						list.add(content);
 					} while (cursor.moveToNext());

@@ -22,6 +22,8 @@ public class ProductCatalog {
 		ContentValues content = new ContentValues();
 		content.put("name", product.getName());
 		content.put("barcode", product.getBarcode());
+		content.put("sale_price", product.getSalePrice());
+		
 		long respond = dao.insert(TABLE_NAME, content);
 		return respond != -1;
 	}
@@ -37,8 +39,8 @@ public class ProductCatalog {
 		List<Product> productList = new ArrayList<Product>();
 		for (ContentValues content: contents) {
 			productList.add(
-				productFactory.createProduct( content.getAsInteger("id"),
-						content.getAsString("name"), content.getAsString("barcode"),content.getAsDouble("salePrice")
+				productFactory.createProduct( content.getAsInteger("_id"),
+						content.getAsString("name"), content.getAsString("barcode"),content.getAsDouble("sale_price")
 						 )
 			);
 		}
@@ -63,10 +65,10 @@ public class ProductCatalog {
 		List<ContentValues> contents = (List) dao.select(queryString);
 		List<Product> productList = new ArrayList<Product>();
 		for (ContentValues content: contents) {
-			productList.add(
-				productFactory.createProduct( content.getAsInteger("id"),
+			productList.add( 
+				productFactory.createProduct( content.getAsInteger("_id"),
 						content.getAsString("name"), content.getAsString("barcode")
-						,content.getAsDouble("salePrice"))
+						,content.getAsDouble("sale_price"))
 			);
 		}
 		return productList;

@@ -61,7 +61,7 @@ public class StockAddActivity extends Activity{
 			public void onClick(View v) {
 //				IntentIntegrator scanIntegrator = new IntentIntegrator(StockAddActivity.this);
 //				scanIntegrator.initiateScan();
-				itemName.setText(inventory.getProductbyBarcode("8851959139707").getName());
+				itemName.setText(inventory.getProductCatalog().getProductByBarcode("8851959139707").getName());
 				
 				}
 			}
