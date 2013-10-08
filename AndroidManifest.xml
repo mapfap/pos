@@ -28,6 +28,11 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
+            android:name="com.refresh.pos.ui.StockAddActivity"
+            android:label="NewItem"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity
             android:name="com.refresh.pos.ui.ShowListActivity"
             android:label="Product Catalog" 
             android:screenOrientation="portrait"

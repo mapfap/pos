@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class MainActivity extends Activity {
@@ -39,6 +40,15 @@ public class MainActivity extends Activity {
 		productCatalogButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				Intent newActivity = new Intent(MainActivity.this,ShowListActivity.class);
+				startActivity(newActivity);
+			}
+		});
+		final ImageButton testButton = (ImageButton) findViewById(R.id.imageButton1);
+		testButton.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent newActivity = new Intent(MainActivity.this,StockAddActivity.class);
 				startActivity(newActivity);
 			}
 		});
