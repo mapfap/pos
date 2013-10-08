@@ -1,7 +1,9 @@
-package com.refresh.pos;
+package com.refresh.pos.core;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import com.refresh.pos.database.ProductDao;
 
 public class ProductCatalogController {
 	private ProductFactory productFactory;

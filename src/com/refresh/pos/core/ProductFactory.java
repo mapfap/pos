@@ -1,4 +1,5 @@
-package com.refresh.pos;
+package com.refresh.pos.core;
+
 
 public class ProductFactory {
 	

@@ -14,7 +14,7 @@
         android:icon="@drawable/ic_launcher"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.refresh.pos.MainActivity"
+            android:name="com.refresh.pos.ui.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,12 +23,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.refresh.pos.AddActivity"
+            android:name="com.refresh.pos.ui.AddActivity"
             android:label="NewItem"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
-            android:name="com.refresh.pos.ShowlistActivity"
+            android:name="com.refresh.pos.ui.ShowListActivity"
             android:label="Product Catalog" 
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" >

@@ -27,25 +27,21 @@ public final class R {
         public static final int ColBarcode=0x7f08000a;
         public static final int ColName=0x7f080009;
         public static final int ColProductID=0x7f080008;
-        public static final int action_settings=0x7f080015;
+        public static final int action_settings=0x7f080011;
         public static final int addButton=0x7f080005;
         public static final int barcode=0x7f080002;
         public static final int barcodeTxt=0x7f080003;
         public static final int clearButton=0x7f080006;
-        public static final int dbSize=0x7f08000e;
-        public static final int deleteButton=0x7f08000f;
-        public static final int insertButton=0x7f08000b;
+        public static final int imageButton1=0x7f08000c;
         public static final int linearLayout1=0x7f080007;
-        public static final int listView1=0x7f080014;
+        public static final int listView1=0x7f080010;
         public static final int nameTxt=0x7f080001;
+        public static final int productCatalog=0x7f08000b;
         public static final int productName=0x7f080000;
         public static final int scanButton=0x7f080004;
-        public static final int selectAllButton=0x7f08000c;
-        public static final int selectButton=0x7f08000d;
-        public static final int tableLayout1=0x7f080011;
-        public static final int tableRow1=0x7f080012;
-        public static final int textView1=0x7f080013;
-        public static final int updateButton=0x7f080010;
+        public static final int tableLayout1=0x7f08000d;
+        public static final int tableRow1=0x7f08000e;
+        public static final int textView1=0x7f08000f;
     }
     public static final class layout {
         public static final int activity_add=0x7f030000;
@@ -64,6 +60,7 @@ public final class R {
         public static final int delete=0x7f050003;
         public static final int hello_world=0x7f05000b;
         public static final int insert=0x7f050006;
+        public static final int productCatalog=0x7f05000c;
         public static final int scan=0x7f050005;
         public static final int select=0x7f050002;
         public static final int selectAll=0x7f050007;

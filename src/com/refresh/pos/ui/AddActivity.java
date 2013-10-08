@@ -1,4 +1,4 @@
-package com.refresh.pos;
+package com.refresh.pos.ui;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -13,6 +13,13 @@ import android.widget.Toast;
 
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
+import com.refresh.pos.R;
+import com.refresh.pos.R.id;
+import com.refresh.pos.R.layout;
+import com.refresh.pos.R.menu;
+import com.refresh.pos.core.ProductCatalogController;
+import com.refresh.pos.database.ProductDao;
+import com.refresh.pos.database.ProductDaoAndroid;
 
 @SuppressLint("NewApi")
 public class AddActivity extends Activity {

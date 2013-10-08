@@ -13,5 +13,6 @@
     <string name="addProduct">New Product</string>
     <string name="title_activity_showlist">MainActivity</string>
     <string name="hello_world">Hello world!</string>
+    <string name="productCatalog">Product Catalog</string>
 
 </resources>

@@ -1,8 +1,10 @@
-package com.refresh.pos;
+package com.refresh.pos.core;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import com.refresh.pos.database.ProductDao;
 
 import android.content.ContentValues;
 
