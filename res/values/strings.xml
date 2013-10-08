@@ -14,5 +14,6 @@
     <string name="title_activity_showlist">MainActivity</string>
     <string name="hello_world">Hello world!</string>
     <string name="productCatalog">Product Catalog</string>
+    <string name="addNewProduct">Add New Product</string>
 
 </resources>

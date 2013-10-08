@@ -47,14 +47,14 @@ public class ShowListActivity extends Activity {
 						R.id.ColName, R.id.ColBarcode });
 		lisView1.setAdapter(sAdap);
 
-//		final Button addProductButton = (Button) findViewById(R.id.addNewProduct);
-//
-//		addProductButton.setOnClickListener(new View.OnClickListener() {
-//			public void onClick(View v) {
-//				Intent newActivity = new Intent(ShowListActivity.this,AddActivity.class);
-//				startActivity(newActivity);
-//			}
-//		});
+		final Button addProductButton = (Button) findViewById(R.id.addNewProduct);
+
+		addProductButton.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				Intent newActivity = new Intent(ShowListActivity.this,AddActivity.class);
+				startActivity(newActivity);
+			}
+		});
 
 	}
 

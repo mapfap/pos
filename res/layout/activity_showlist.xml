@@ -42,18 +42,19 @@
 		android:layout_height="1dip"
 		android:background="#CCCCCC" />
    		  
-   <!-- 	<LinearLayout
+   	<LinearLayout
       android:id="@+id/LinearLayout1"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:padding="5dip" >
-   		<TextView
-   		    android:id="@+id/addNewProduct"
-   		    android:layout_width="wrap_content"
-   		    android:layout_height="wrap_content"
-   		    android:text="By.. Refresh Team" />
+   	<Button
+        android:id="@+id/addNewProduct"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/addNewProduct" />
 	</LinearLayout>
- -->
+ 
    		  
 
 	

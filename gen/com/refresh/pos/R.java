@@ -27,8 +27,10 @@ public final class R {
         public static final int ColBarcode=0x7f08000a;
         public static final int ColName=0x7f080009;
         public static final int ColProductID=0x7f080008;
-        public static final int action_settings=0x7f080011;
+        public static final int LinearLayout1=0x7f080011;
+        public static final int action_settings=0x7f080013;
         public static final int addButton=0x7f080005;
+        public static final int addNewProduct=0x7f080012;
         public static final int barcode=0x7f080002;
         public static final int barcodeTxt=0x7f080003;
         public static final int clearButton=0x7f080006;
@@ -55,6 +57,7 @@ public final class R {
     }
     public static final class string {
         public static final int action_settings=0x7f050001;
+        public static final int addNewProduct=0x7f05000d;
         public static final int addProduct=0x7f050009;
         public static final int app_name=0x7f050000;
         public static final int delete=0x7f050003;
