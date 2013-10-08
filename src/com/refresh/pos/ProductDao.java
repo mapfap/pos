@@ -1,5 +1,7 @@
 package com.refresh.pos;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public interface ProductDao {
@@ -8,4 +10,5 @@ public interface ProductDao {
 	public boolean update();
 	public boolean delete();
 	public long getSize();
+	public ArrayList<HashMap<String, String>> selectAllData();
 }

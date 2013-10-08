@@ -1,5 +1,8 @@
 package com.refresh.pos;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class ProductCatalogController {
 	private ProductFactory productFactory;
 	private ProductCatalog productCatalog;
@@ -19,4 +22,10 @@ public class ProductCatalogController {
 	public long getSize() {
 		return productCatalog.getSize();
 	}
+	
+	public ArrayList<HashMap<String, String>> selectAllData() {
+		return productCatalog.selectAllData();
+	}
+
+	
 }

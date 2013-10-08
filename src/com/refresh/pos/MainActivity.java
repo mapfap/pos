@@ -42,6 +42,15 @@ public class MainActivity extends Activity {
 				startActivity(newActivity);
 			}
 		});
+		
+		final Button selectAllButton = (Button) findViewById(R.id.selectAllButton);
+
+		selectAllButton.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				Intent newActivity = new Intent(MainActivity.this,ShowlistActivity.class);
+				startActivity(newActivity);
+			}
+		});
 
 		// final Button selectAllButton = (Button)
 		// findViewById(R.id.selectAllButton);

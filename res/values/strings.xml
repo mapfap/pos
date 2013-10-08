@@ -11,5 +11,7 @@
     <string name="selectAll">Select All</string>
     <string name="zero">0</string>
     <string name="addProduct">New Product</string>
+    <string name="title_activity_showlist">MainActivity</string>
+    <string name="hello_world">Hello world!</string>
 
 </resources>

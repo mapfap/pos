@@ -1,6 +1,7 @@
 package com.refresh.pos;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import android.content.ContentValues;
@@ -48,7 +49,7 @@ public class ProductCatalog {
 	}
 	
 	public Product getProductById(String id) {
-		return getProductBy("id", id).get(0);
+		return getProductBy("_id", id).get(0);
 	}
 	
 	public List<Product> getProductByName(String name) {
@@ -69,7 +70,14 @@ public class ProductCatalog {
 		}
 		return productList;
 	}
+	
 	public long getSize(){
 		return productDao.getSize();
 	}
+	
+	public ArrayList<HashMap<String, String>> selectAllData() {
+		return productDao.selectAllData();
+	}
+
+	
 }
