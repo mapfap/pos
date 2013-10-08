@@ -1,7 +1,6 @@
 package com.refresh.pos.database;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import android.content.ContentValues;
@@ -12,13 +11,12 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteStatement;
 import android.util.Log;
 
-public class ProductDaoAndroid extends SQLiteOpenHelper implements ProductDao {
+public class InventoryDaoAndroid extends SQLiteOpenHelper implements Dao {
 
 	private static final int DATABASE_VERSION = 1;
 	private static final String DATABASE_NAME = "pos_database";
-	private static final String TABLE_NAME = "product_catalog";
 
-	public ProductDaoAndroid(Context context) {
+	public InventoryDaoAndroid(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
 	}
 
@@ -27,15 +25,13 @@ public class ProductDaoAndroid extends SQLiteOpenHelper implements ProductDao {
 
 		database.execSQL("CREATE TABLE product_catalog"
 				+ "(_id INTEGER PRIMARY KEY," + "name TEXT(100),"
-				+ "barcode TEXT(100));");
+				+ "barcode TEXT(100)," +
+				" sale_price FLOAT );");
 
 		database.execSQL("CREATE TABLE stock" + "(_id INTEGER PRIMARY KEY,"
 				+ "product_id INTEGER," + "amount INTEGER," + "cost FLOAT,"
 				+ "date_added DATETIME);");
 
-		database.execSQL("CREATE TABLE sale_price"
-				+ "(_id INTEGER PRIMARY KEY," + "product_id INTEGER,"
-				+ "price FLOAT);");
 
 		Log.d("CREATE DATABASE", "Create Database Successfully.");
 	}
@@ -62,6 +58,8 @@ public class ProductDaoAndroid extends SQLiteOpenHelper implements ProductDao {
 								cursor.getString(cursor.getColumnIndex("name")));
 						content.put("barcode", cursor.getString(cursor
 								.getColumnIndex("barcode")));
+						content.put("sale_price", cursor.getString(cursor
+								.getColumnIndex("sale_price")));
 						list.add(content);
 					} while (cursor.moveToNext());
 				}
@@ -111,37 +109,5 @@ public class ProductDaoAndroid extends SQLiteOpenHelper implements ProductDao {
 		return bytes;
 	}
 
-	@Override
-	public ArrayList<HashMap<String, String>> selectAllData() {
-		try {
-
-			ArrayList<HashMap<String, String>> MyArrList = new ArrayList<HashMap<String, String>>();
-			HashMap<String, String> map;
-
-			SQLiteDatabase db;
-			db = this.getReadableDatabase(); // Read Data
-
-			String strSQL = "SELECT  * FROM " + TABLE_NAME;
-			Cursor cursor = db.rawQuery(strSQL, null);
-
-			if (cursor != null) {
-				if (cursor.moveToFirst()) {
-					do {
-						map = new HashMap<String, String>();
-						map.put("_id", cursor.getString(0));
-						map.put("name", cursor.getString(1));
-						map.put("barcode", cursor.getString(2));
-						MyArrList.add(map);
-					} while (cursor.moveToNext());
-				}
-			}
-			cursor.close();
-			db.close();
-			return MyArrList;
-
-		} catch (Exception e) {
-			return null;
-		}
-	}
 
 }

@@ -15,13 +15,14 @@ public class ProductFactory {
 		return instance;
 	}
 	
-	public Product createProduct(int id, String name, String barcode) {
-		Product product = new Product(id, name, barcode);
+	public Product createProduct(int id, String name, String barcode, double salePrice) {
+		Product product = new Product(id, name, barcode, salePrice);
 		return product;
 	}
 	
-	public Product createProduct(String name, String barcode) {
-		Product product = new Product(name, barcode);
+	public Product createProduct(String name, String barcode, double salePrice) {
+		Product product = new Product(Product.UNDEFINED, name, barcode, salePrice);
 		return product;
 	}
+	
 }

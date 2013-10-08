@@ -1,14 +1,11 @@
 package com.refresh.pos.database;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
-public interface ProductDao {
+public interface Dao {
 	public List<Object> select(String queryString);
 	public long insert(String tableName, Object content);
 	public boolean update();
 	public boolean delete();
 	public long getSize();
-	public ArrayList<HashMap<String, String>> selectAllData();
 }

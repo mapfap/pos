@@ -1,24 +1,25 @@
 package com.refresh.pos.ui;
 
-import com.refresh.pos.R;
-import com.refresh.pos.R.id;
-import com.refresh.pos.R.layout;
-import com.refresh.pos.R.menu;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.TextView;
+
+import com.refresh.pos.R;
+import com.refresh.pos.core.Inventory;
+import com.refresh.pos.database.Dao;
+import com.refresh.pos.database.InventoryDaoAndroid;
 
 public class MainActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		
+		Dao dao = new InventoryDaoAndroid(this);
+		Inventory.setProductDao(dao);
 		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);

@@ -3,28 +3,20 @@ package com.refresh.pos.ui;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import com.refresh.pos.R;
-import com.refresh.pos.R.id;
-import com.refresh.pos.R.layout;
-import com.refresh.pos.core.ProductCatalogController;
-import com.refresh.pos.database.ProductDao;
-import com.refresh.pos.database.ProductDaoAndroid;
-
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.Toast;
+
+import com.refresh.pos.R;
+import com.refresh.pos.core.Inventory;
 
 public class ShowListActivity extends Activity {
 
-	private ProductCatalogController productCatalogController;
+	private Inventory inventory;
 	ArrayList<HashMap<String, String>> productList;
 	ArrayList<HashMap<String, String>> stockList;
 
@@ -33,9 +25,11 @@ public class ShowListActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_showlist);
 
-		ProductDao productDao = new ProductDaoAndroid(this);
-		productCatalogController = new ProductCatalogController(productDao);
-		productList = productCatalogController.selectAllData();
+		inventory = Inventory.getInstance();
+		
+		
+		// return list of product not map   TODO: FIX IT @mapfap
+		productList = inventory.getAllProduct();
 
 		// listView1
 		ListView lisView1 = (ListView) findViewById(R.id.listView1);

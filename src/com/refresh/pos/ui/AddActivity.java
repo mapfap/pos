@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
@@ -14,18 +13,15 @@ import android.widget.Toast;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import com.refresh.pos.R;
-import com.refresh.pos.R.id;
-import com.refresh.pos.R.layout;
-import com.refresh.pos.R.menu;
-import com.refresh.pos.core.ProductCatalogController;
-import com.refresh.pos.database.ProductDao;
-import com.refresh.pos.database.ProductDaoAndroid;
+import com.refresh.pos.core.Inventory;
+import com.refresh.pos.database.NoDaoSetException;
 
 @SuppressLint("NewApi")
 public class AddActivity extends Activity {
 	
 	private EditText itemBarcode;
-	private ProductCatalogController productCatalogController;
+	private Inventory inventory;
+//	private ProductCatalogController productCatalogController;
 	
 	public void onActivityResult(int requestCode, int resultCode, Intent intent) {
 //		Log.d("BARCODE", "BARCODE 'onActivityResult' Successfully.");
@@ -35,7 +31,7 @@ public class AddActivity extends Activity {
 //
 		if (scanningResult != null) {
 			String scanContent = scanningResult.getContents();
-			String scanFormat = scanningResult.getFormatName();
+//			String scanFormat = scanningResult.getFormatName();
 //			Toast.makeText(AddActivity.this,"got >> " + scanContent , Toast.LENGTH_SHORT).show();
 			itemBarcode.setText(scanContent);
 //
@@ -52,8 +48,13 @@ public class AddActivity extends Activity {
 		setContentView(R.layout.activity_add);
 		super.onCreate(savedInstanceState);
 		
-		ProductDao productDao = new ProductDaoAndroid(this);
-		productCatalogController = new ProductCatalogController(productDao);
+		try {
+			inventory = Inventory.getInstance();
+		} catch (NoDaoSetException e) {
+			e.printStackTrace();
+		}
+		
+//		productCatalogController = new ProductCatalogController(productDao);
 		
 		final EditText itemName = (EditText) findViewById(R.id.nameTxt);
 		itemBarcode = (EditText) findViewById(R.id.barcodeTxt);
@@ -78,7 +79,8 @@ public class AddActivity extends Activity {
 							Toast.LENGTH_SHORT).show();
 				}
 				else{
-					boolean success = productCatalogController.add(itemName.getText().toString(),itemBarcode.getText().toString());
+//					boolean success = inventory.addNewProduct(itemName.getText().toString(),itemBarcode.getText().toString(),Integer.parseInt(itemPrice.getText()));
+					boolean success = inventory.addNewProduct(itemName.getText().toString(),itemBarcode.getText().toString(),0);
 					if(success){
 						Toast.makeText(AddActivity.this,
 								"Successfully Add : "+itemName.getText().toString(), Toast.LENGTH_SHORT)
