@@ -1,5 +1,9 @@
 package com.refresh.pos.core;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 import com.refresh.pos.database.Dao;
 import com.refresh.pos.database.NoDaoSetException;
 
@@ -52,4 +56,5 @@ public class Inventory {
 	public Product getProductbyId(int id) {
 		return productCatalog.getProductById(id);
 	}
+
 }
