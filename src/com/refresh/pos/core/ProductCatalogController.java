@@ -28,6 +28,16 @@ public class ProductCatalogController {
 	public ArrayList<HashMap<String, String>> selectAllData() {
 		return productCatalog.selectAllData();
 	}
+	public String[] getProductNamebyBarcode(String barcode){
+		String[] out = new String[2];
+		if(productCatalog.getProductByBarcode(barcode)==null){
+			return null;
+		}
+		Product get = productCatalog.getProductByBarcode(barcode);
+		out[0] = get.name;
+		out[1] = get.barcode;
+		return out;
+	}
 
 	
 }
