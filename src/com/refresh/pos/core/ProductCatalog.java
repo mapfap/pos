@@ -33,7 +33,7 @@ public class ProductCatalog {
 	}
 	
 	private List<Product> getProductBy(String reference, String value) {
-		String queryString = "SELECT * FROM " + TABLE_NAME + "WHERE " + reference + " = " + value;
+		String queryString = "SELECT * FROM " + TABLE_NAME + " WHERE " + reference + " = " + value + " ;";
 		@SuppressWarnings("unchecked")
 		List<ContentValues> contents = (List) dao.select(queryString);
 		List<Product> productList = new ArrayList<Product>();
@@ -48,7 +48,9 @@ public class ProductCatalog {
 	}
 	
 	public Product getProductByBarcode(String barcode) {
-		return getProductBy("barcode", barcode).get(0);
+		List<Product> list = getProductBy("barcode", barcode);
+		if (list.isEmpty()) return productFactory.createProduct(Product.UNDEFINED,"name","barcode",0);
+		return list.get(0);
 	}
 	
 	public Product getProductById(int id) {
