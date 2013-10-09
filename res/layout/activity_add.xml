@@ -17,7 +17,7 @@
             android:text="Product Name" />
 
         <EditText
-            android:id="@+id/EditText01"
+            android:id="@+id/nameTxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1.03"
@@ -35,14 +35,14 @@
             android:orientation="vertical" >
 
             <TextView
-                android:id="@+id/TextView02"
+                android:id="@+id/barcode"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.03"
                 android:text="BarCode" />
 
             <EditText
-                android:id="@+id/EditText02"
+                android:id="@+id/barcodeTxt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.03"
@@ -53,7 +53,7 @@
             </EditText>
         </LinearLayout>
         <Button
-            android:id="@+id/Button02"
+            android:id="@+id/scanButton"
             style="@style/ButtonText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
