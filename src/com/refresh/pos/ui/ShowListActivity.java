@@ -7,6 +7,7 @@ import java.util.Map;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
@@ -19,6 +20,7 @@ import com.refresh.pos.database.NoDaoSetException;
 public class ShowListActivity extends Activity {
 
 	private Inventory inventory;
+	private ListView lisView1;
 //	private List<Map<String, String>> stockList;
 	List<HashMap<String, String>> stockList;
 
@@ -51,7 +53,7 @@ public class ShowListActivity extends Activity {
 //		}
 
 		// listView1
-		ListView lisView1 = (ListView) findViewById(R.id.listView1);
+		lisView1 = (ListView) findViewById(R.id.listView1);
 
 		SimpleAdapter sAdap;
 		sAdap = new SimpleAdapter(ShowListActivity.this, stockList,
@@ -59,6 +61,7 @@ public class ShowListActivity extends Activity {
 						"barcode","sale_price" }, new int[] { R.id.ColProductID,
 						R.id.ColName, R.id.ColBarcode });
 		lisView1.setAdapter(sAdap);
+		
 
 		final Button addProductButton = (Button) findViewById(R.id.addNewProduct);
 
@@ -66,6 +69,22 @@ public class ShowListActivity extends Activity {
 			public void onClick(View v) {
 				Intent newActivity = new Intent(ShowListActivity.this,AddActivity.class);
 				startActivity(newActivity);
+			}
+		});
+		final Button refreshButton = (Button) findViewById(R.id.refreshButton);
+		refreshButton.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+//				Log.v(">>>>","Refresh!");
+				stockList = inventory.getProductCatalog().getAllProductAsMap();
+				SimpleAdapter sAdap;
+				sAdap = new SimpleAdapter(ShowListActivity.this, stockList,
+						R.layout.activity_column, new String[] { "name",
+								"barcode","sale_price" }, new int[] { R.id.ColProductID,
+								R.id.ColName, R.id.ColBarcode });
+				lisView1.setAdapter(sAdap);
+				
 			}
 		});
 
