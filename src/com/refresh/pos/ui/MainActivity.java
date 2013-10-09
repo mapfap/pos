@@ -44,6 +44,16 @@ public class MainActivity extends Activity {
 				startActivity(newActivity);
 			}
 		});
+		final Button stockButton = (Button) findViewById(R.id.stockButton);
+		stockButton.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent newActivity = new Intent(MainActivity.this,ShowStockActivity.class);
+				startActivity(newActivity);
+			}
+		});
+		
 		final Button testButton = (Button) findViewById(R.id.saleButton);
 		testButton.setOnClickListener(new View.OnClickListener() {
 			

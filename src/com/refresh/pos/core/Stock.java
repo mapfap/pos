@@ -8,7 +8,7 @@ import android.content.ContentValues;
 
 import com.refresh.pos.database.Dao;
 
-class Stock {
+public class Stock {
 
 	private Dao dao;
 	private static final String TABLE_NAME = "stock";
@@ -72,11 +72,10 @@ class Stock {
 		for (ProductLot pl : productLotList) {
 			
 			HashMap<String, String> map = new HashMap<String, String>();
-			map.put("_id", pl.getId()+"");
-	        map.put("date_added", pl.getDateAdded());
+			map.put("name", pl.getProduct().getName()+"");
 	        map.put("amount", pl.getAmount()+"");
-	        map.put("product_id", pl.getProductId()+"");
 	        map.put("cost", pl.getCost()+"");
+	        map.put("date_added", pl.getDateAdded());
 			productLotListOfMap.add(map);
 		}
 		return productLotListOfMap;

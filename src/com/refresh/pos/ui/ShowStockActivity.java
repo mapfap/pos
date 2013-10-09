@@ -19,12 +19,12 @@ import com.refresh.pos.database.NoDaoSetException;
 public class ShowStockActivity extends Activity {
 
 	private Inventory inventory;
-	List<HashMap<String, String>> stockList;
+	private List<HashMap<String, String>> stockList;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_showlist);
+		setContentView(R.layout.activity_showstock);
 
 		try {
 			
@@ -38,7 +38,7 @@ public class ShowStockActivity extends Activity {
 //				productList.get(0).getId()+productList.get(0).getSalePrice(),
 //				Toast.LENGTH_SHORT).show();
 		
-//		stockList = inventory.getStock().getAllProductLotAsMap();
+		stockList = inventory.getStock().getAllProductLotAsMap();
 		
 //		for (Product product : productList) {
 //			Map<String, String> map = new HashMap<String, String>();
@@ -49,24 +49,24 @@ public class ShowStockActivity extends Activity {
 // 	        stockList.add(map);
 //		}
 
-//		// listView1
-//		ListView lisView1 = (ListView) findViewById(R.id.listView1);
-//
-//		SimpleAdapter sAdap;
-//		sAdap = new SimpleAdapter(ShowStockActivity.this, stockList,
-//				R.layout.activity_column, new String[] { "name",
-//						"amount","cost","date_added" }, new int[] { R.id.ColName,
-//						R.id.ColAmount, R.id.ColCost, R.id.Date });
-//		lisView1.setAdapter(sAdap);
-//
-//		final Button addProductButton = (Button) findViewById(R.id.addProductLotButton);
-//
-//		addProductLotButton.setOnClickListener(new View.OnClickListener() {
-//			public void onClick(View v) {
-//				Intent newActivity = new Intent(ShowStockActivity.this,StockAddActivity.class);
-//				startActivity(newActivity);
-//			}
-//		});
+		// listView1
+		ListView lisView1 = (ListView) findViewById(R.id.listView1);
+
+		SimpleAdapter sAdap;
+		sAdap = new SimpleAdapter(ShowStockActivity.this, stockList,
+				R.layout.activity_columnstock, new String[] { "name",
+						"amount","cost","date_added" }, new int[] { R.id.ColName,
+						R.id.ColAmount, R.id.ColCost, R.id.ColDate });
+		lisView1.setAdapter(sAdap);
+
+		final Button addStockButton = (Button) findViewById(R.id.addStock);
+
+		addStockButton.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				Intent newActivity = new Intent(ShowStockActivity.this,StockAddActivity.class);
+				startActivity(newActivity);
+			}
+		});
 
 	}
 
