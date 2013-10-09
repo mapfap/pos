@@ -52,20 +52,6 @@ public class Inventory {
 		return productCatalog.addNewProduct(productFactory.createProduct(name, barcode, price));
 	}
 
-	// Show All Data
-	public ArrayList<HashMap<String, String>> SelectAllStock() {
-		ArrayList<HashMap<String, String>> stockList = new ArrayList<HashMap<String, String>>();
-		List<Product> productList = this.getProductCatalog().getAllProduct();
-		for (Product product : productList) {
-			HashMap<String, String> map = new HashMap<String, String>();
-	        map.put("_id", product.getId()+"");
- 	        map.put("name", product.getName());
- 	        map.put("barcode", product.getBarcode());
- 	        map.put("sale_price", product.getSalePrice()+"");
- 	        stockList.add(map);
-		}
-		return stockList;
-
-	}
+	
 
 }

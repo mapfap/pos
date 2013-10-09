@@ -1,7 +1,9 @@
 package com.refresh.pos.core;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import android.content.ContentValues;
 
@@ -61,7 +63,7 @@ public class ProductCatalog {
 		return getProductBy("name", name);
 	}
 
-	public List<Product> getAllProduct() {
+	public List<Product> getAllProductAsList() {
 		String queryString = "SELECT * FROM " + TABLE_NAME;
 		@SuppressWarnings("unchecked")
 		List<ContentValues> contents = (List) dao.select(queryString);
@@ -74,6 +76,20 @@ public class ProductCatalog {
 			);
 		}
 		return productList;
+	}
+	
+	public List<HashMap<String, String>> getAllProductAsMap() {
+		List<HashMap<String, String>> productListOfMap = new ArrayList<HashMap<String, String>>();
+		List<Product> productList = getAllProductAsList();
+		for (Product p : productList) {
+			HashMap<String, String> map = new HashMap<String, String>();
+	        map.put("_id", p.getId()+"");
+	         map.put("name", p.getName());
+	         map.put("barcode", p.getBarcode());
+	         map.put("sale_price", p.getSalePrice()+"");
+	         productListOfMap.add(map);
+		}
+		return productListOfMap;
 	}
 	
 	public long getSize(){

@@ -1,7 +1,8 @@
 package com.refresh.pos.ui;
 
-import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -19,7 +20,7 @@ public class ShowListActivity extends Activity {
 
 	private Inventory inventory;
 //	private List<Map<String, String>> stockList;
-	ArrayList<HashMap<String, String>> stockList;
+	List<HashMap<String, String>> stockList;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -38,7 +39,7 @@ public class ShowListActivity extends Activity {
 //				productList.get(0).getId()+productList.get(0).getSalePrice(),
 //				Toast.LENGTH_SHORT).show();
 		
-		stockList = inventory.SelectAllStock();
+		stockList = inventory.getProductCatalog().getAllProductAsMap();
 		
 //		for (Product product : productList) {
 //			Map<String, String> map = new HashMap<String, String>();
