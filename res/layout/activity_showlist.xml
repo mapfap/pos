@@ -11,13 +11,74 @@
 
         <TextView
             android:id="@+id/textView1"
-            android:layout_width="wrap_content"
+            android:layout_width="0dip"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:layout_span="1"
-            android:gravity="center"
+            android:layout_weight="0.9"
+            android:gravity="left"
             android:text="List Product : "
             android:textAppearance="?android:attr/textAppearanceLarge" />
+        
+        <Button
+            android:id="@+id/refreshButton"
+            style="@style/ButtonText"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:background="@drawable/btn_red"
+            android:text="Re" />
+    </TableRow>
+     <View
+        android:layout_height="1dip"
+        android:background="#CCCCCC" />
+
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dip" 
+        android:background="#CFCFCF">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:text="" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="Name" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:text="" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:text="Barcode" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:text="" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Price" />
+        
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:text="" />
     </TableRow>
 
     <View
@@ -53,7 +114,8 @@
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:layout_marginTop="24dp"
-        android:text="@string/addNewProduct" /> -->
+        android:text="@string/addNewProduct" />
+        -->
 
         <Button
             android:id="@+id/addNewProduct"
@@ -61,7 +123,6 @@
             android:background="@drawable/btn_green"
             android:text="@string/addNewProduct" >
         </Button>
-        
     </LinearLayout>
 
 </TableLayout>
