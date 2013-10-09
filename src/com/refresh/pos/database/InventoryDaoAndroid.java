@@ -52,14 +52,10 @@ public class InventoryDaoAndroid extends SQLiteOpenHelper implements Dao {
 				if (cursor.moveToFirst()) {
 					do {
 						ContentValues content = new ContentValues();
-						content.put("_id",
-								cursor.getInt(cursor.getColumnIndex("_id")));
-						content.put("name",
-								cursor.getString(cursor.getColumnIndex("name")));
-						content.put("barcode", cursor.getString(cursor
-								.getColumnIndex("barcode")));
-						content.put("sale_price", cursor.getDouble(cursor
-								.getColumnIndex("sale_price")));
+						String[] columnNames = cursor.getColumnNames();
+						for (String columnName : columnNames) {
+							content.put(columnName, cursor.getString(cursor.getColumnIndex(columnName)));
+						}
 						list.add(content);
 					} while (cursor.moveToNext());
 				}
