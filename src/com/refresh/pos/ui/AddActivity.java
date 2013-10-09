@@ -83,6 +83,8 @@ public class AddActivity extends Activity {
 						Toast.makeText(AddActivity.this,
 								"Successfully Add : "+itemName.getText().toString(), Toast.LENGTH_SHORT)
 								.show();
+						itemName.setText("");
+						itemBarcode.setText("");
 					}
 					else{
 						Toast.makeText(AddActivity.this, "Failed to insert data",
