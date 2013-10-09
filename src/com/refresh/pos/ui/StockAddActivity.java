@@ -18,6 +18,7 @@ public class StockAddActivity extends Activity{
 	private EditText itemBarcode;
 	private EditText itemName;
 	private Inventory inventory;
+	private int amount;
 	
 	public void onActivityResult(int requestCode, int resultCode, Intent intent) {
 //		Log.d("BARCODE", "BARCODE 'onActivityResult' Successfully.");
@@ -58,7 +59,8 @@ public class StockAddActivity extends Activity{
 		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_stockadd);
-		
+		final EditText amountTxt = (EditText) findViewById(R.id.amountTxt);
+		amount = Integer.parseInt(amountTxt.getText().toString());
 		itemName = (EditText) findViewById(R.id.nameTxt);
 		itemBarcode = (EditText) findViewById(R.id.barcodeTxt);
 		itemBarcode.setEnabled(false);
@@ -75,6 +77,30 @@ public class StockAddActivity extends Activity{
 				}
 			}
 		);
+		final Button plusButton = (Button) findViewById(R.id.plus);
+		plusButton.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				amount++;
+				amountTxt.setText(amount+"");
+			}
+		});
+		final Button minButton = (Button) findViewById(R.id.min);
+		minButton.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				if(amount==0){
+					
+				}
+				else{
+					amount--;
+					amountTxt.setText(amount+"");
+				}
+				
+			}
+		});
 	}
 	
 }
