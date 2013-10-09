@@ -9,7 +9,8 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity" >
 
-    <!--<Button
+    <!--
+        <Button
         android:id="@+id/productCatalog"
         android:layout_width="270dp"
         android:layout_height="132dp"
@@ -20,14 +21,23 @@
     <Button
         android:id="@+id/productCatalog"
         style="@style/ButtonText"
-        android:background="@drawable/btn_black"
+        android:layout_weight="1"
+        android:background="@drawable/btn_green"
         android:text="@string/productCatalog" >
     </Button>
 
-    <ImageButton
-        android:id="@+id/imageButton1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_launcher" />
+    <Button
+        android:id="@+id/stockButton"
+        style="@style/ButtonText"
+        android:layout_weight="1"
+        android:background="@drawable/btn_blue"
+        android:text="@string/stock" />
+
+    <Button
+        android:id="@+id/saleButton"
+        style="@style/ButtonText"
+        android:layout_weight="1"
+        android:background="@drawable/btn_red"
+        android:text="@string/sale" />
 
 </LinearLayout>

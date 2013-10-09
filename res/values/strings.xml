@@ -31,5 +31,7 @@
     </style>
 
     <string name="title_activity_show_stock">ShowStockActivity</string>
+    <string name="stock">Stock</string>
+    <string name="sale">Sale</string>
 
 </resources>
