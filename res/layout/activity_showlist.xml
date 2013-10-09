@@ -11,13 +11,22 @@
 
         <TextView
             android:id="@+id/textView1"
-            android:layout_width="wrap_content"
+            android:layout_width="0dip"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:layout_span="1"
-            android:gravity="center"
+            android:layout_weight="0.9"
+            android:gravity="left"
             android:text="List Product : "
             android:textAppearance="?android:attr/textAppearanceLarge" />
+        
+        <Button
+            android:id="@+id/refreshButton"
+            style="@style/ButtonText"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:background="@drawable/btn_red"
+            android:text="Re" />
     </TableRow>
      <View
         android:layout_height="1dip"
