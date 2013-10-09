@@ -54,13 +54,12 @@ public class MainActivity extends Activity {
 			}
 		});
 		
-		final Button testButton = (Button) findViewById(R.id.saleButton);
-		testButton.setOnClickListener(new View.OnClickListener() {
+		final Button saleButton = (Button) findViewById(R.id.saleButton);
+		saleButton.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-				Intent newActivity = new Intent(MainActivity.this,StockAddActivity.class);
-				startActivity(newActivity);
+				
 			}
 		});
 
