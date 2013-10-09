@@ -3,6 +3,7 @@ package com.refresh.pos.ui;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -24,18 +25,18 @@ public class StockAddActivity extends Activity{
 	private EditText itemPrice;
 	private Inventory inventory;
 	private int amount;
-	
+
 	public void onActivityResult(int requestCode, int resultCode, Intent intent) {
-//		Log.d("BARCODE", "BARCODE 'onActivityResult' Successfully.");
-		
+		//		Log.d("BARCODE", "BARCODE 'onActivityResult' Successfully.");
+
 		IntentResult scanningResult = IntentIntegrator.parseActivityResult(
 				requestCode, resultCode, intent);
-//
+		//
 		if (scanningResult != null) {
 			String scanContent = scanningResult.getContents();
-//			String scanFormat = scanningResult.getFormatName();
-//			Toast.makeText(AddActivity.this,"got >> " + scanContent , Toast.LENGTH_SHORT).show();
-//			itemBarcode.setText(scanContent);
+			//			String scanFormat = scanningResult.getFormatName();
+			//			Toast.makeText(AddActivity.this,"got >> " + scanContent , Toast.LENGTH_SHORT).show();
+			//			itemBarcode.setText(scanContent);
 			String name = inventory.getProductCatalog().getProductByBarcode(scanContent).getName();
 			if(name.equals("UNDEFINED")){
 				Toast.makeText(StockAddActivity.this,
@@ -46,14 +47,14 @@ public class StockAddActivity extends Activity{
 				itemBarcode.setText(scanContent);
 				itemName.setText(name);
 			}
-//
+			//
 		} else {
 			Toast.makeText(StockAddActivity.this,
 					"Failed to retrieve barcode." + resultCode, Toast.LENGTH_SHORT)
 					.show();
 		}
 	}
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		try {
@@ -61,15 +62,15 @@ public class StockAddActivity extends Activity{
 		} catch (NoDaoSetException e) {
 			e.printStackTrace();
 		}
-		
+
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_stockadd);
 		final EditText amountTxt = (EditText) findViewById(R.id.amountTxt);
 		amount = Integer.parseInt(amountTxt.getText().toString());
 		itemName = (EditText) findViewById(R.id.nameTxt);
 		itemBarcode = (EditText) findViewById(R.id.barcodeTxt);
-//		itemBarcode.setEnabled(false);
-//		itemName.setEnabled(false);
+		//		itemBarcode.setEnabled(false);
+		//		itemName.setEnabled(false);
 		itemPrice = (EditText) findViewById(R.id.costTxt);
 		final Button scanButton = (Button) findViewById(R.id.scanButton);
 		scanButton.setOnClickListener(new View.OnClickListener() {
@@ -77,14 +78,14 @@ public class StockAddActivity extends Activity{
 			public void onClick(View v) {
 				IntentIntegrator scanIntegrator = new IntentIntegrator(StockAddActivity.this);
 				scanIntegrator.initiateScan();
-				
-				
-				}
+
+
 			}
-		);
+		}
+				);
 		final Button plusButton = (Button) findViewById(R.id.plus);
 		plusButton.setOnClickListener(new View.OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				amount = Integer.parseInt(amountTxt.getText().toString());
@@ -94,45 +95,55 @@ public class StockAddActivity extends Activity{
 		});
 		final Button minButton = (Button) findViewById(R.id.min);
 		minButton.setOnClickListener(new View.OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				if(amount==0){
-					
+
 				}
 				else{
 					amount = Integer.parseInt(amountTxt.getText().toString());
 					amount--;
 					amountTxt.setText(amount+"");
 				}
-				
+
 			}
 		});
 		final Button addButton = (Button) findViewById(R.id.addButton);
 		addButton.setOnClickListener(new View.OnClickListener() {
-			
+
+			@SuppressLint("NewApi")
 			@Override
 			public void onClick(View v) {
-				Date now = new Date();
-				String time = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss Z").format(now);
-				int id = inventory.getProductCatalog().getProductByBarcode(itemBarcode.getText().toString()).getId();
-				boolean success = inventory.getStock().addNewProductLot(time, amount, id,Double.parseDouble(itemPrice.getText().toString()));
-				if(success){
+				boolean checkPrice = itemPrice.getText().toString().isEmpty();
+				boolean checkBarcode = itemBarcode.getText().toString().isEmpty();
+				if(checkPrice||checkBarcode){
 					Toast.makeText(StockAddActivity.this,
-							"Successfully Add : "+itemName.getText().toString(), Toast.LENGTH_SHORT)
+							"Still have some Blank Field!", Toast.LENGTH_SHORT)
 							.show();
 				}
 				else{
-					Toast.makeText(StockAddActivity.this,
-							"FAIL to Add : "+itemName.getText().toString(), Toast.LENGTH_SHORT)
-							.show();
+					Date now = new Date();
+					String time = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss Z").format(now);
+					int id = inventory.getProductCatalog().getProductByBarcode(itemBarcode.getText().toString()).getId();
+					boolean success = inventory.getStock().addNewProductLot(time, amount, id,Double.parseDouble(itemPrice.getText().toString()));
+					if(success){
+						Toast.makeText(StockAddActivity.this,
+								"Successfully Add : "+itemName.getText().toString(), Toast.LENGTH_SHORT)
+								.show();
+					}
+					else{
+						Toast.makeText(StockAddActivity.this,
+								"FAIL to Add : "+itemName.getText().toString(), Toast.LENGTH_SHORT)
+								.show();
+					}
 				}
 			}
 		});
-		
+
 		final Button clearButton = (Button) findViewById(R.id.clearButton);
 		clearButton.setOnClickListener(new View.OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				amount=0;
@@ -140,9 +151,9 @@ public class StockAddActivity extends Activity{
 				itemName.setText("");
 				itemPrice.setText("");
 				amountTxt.setText(amount+"");
-				
+
 			}
 		});
 	}
-	
+
 }
