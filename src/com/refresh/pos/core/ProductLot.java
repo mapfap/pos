@@ -11,7 +11,7 @@ public class ProductLot {
 	}
 	
 	public Product getProduct() {
-		return ProductFactory.getInstance().createProduct("", "", 0);
+		return ProductFactory.getInstance().createProduct(0,"", "", 0);
 	}
 	
 	public double getCost() {

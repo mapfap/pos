@@ -40,10 +40,4 @@ public class Inventory {
 		return instance;
 	}
 
-	public boolean addNewProduct(String name, String barcode, int price) {
-		return productCatalog.addNewProduct(productFactory.createProduct(name, barcode, price));
-	}
-
-	
-
 }

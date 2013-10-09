@@ -7,7 +7,8 @@ public class Product {
 	private String name;
 	private String barcode;
 	private double salePrice;
-	public static final int UNDEFINED = -1;
+	public static final String UNDEFINED = "UNDEFINED";
+	public static final int UNDEFINED_ID = -1;
 	
 	public Product(int id, String name, String barcode, double salePrice) {
 		this.id = id;

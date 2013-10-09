@@ -30,42 +30,51 @@ public final class R {
         public static final int ic_launcher=0x7f020006;
     }
     public static final class id {
-        public static final int ColBarcode=0x7f08000a;
-        public static final int ColName=0x7f080009;
-        public static final int ColProductID=0x7f080008;
-        public static final int LinearLayout1=0x7f080011;
-        public static final int action_settings=0x7f080018;
-        public static final int addButton=0x7f080005;
-        public static final int addNewProduct=0x7f080012;
-        public static final int amountTxt=0x7f080016;
-        public static final int barcode=0x7f080002;
-        public static final int barcodeTxt=0x7f080003;
-        public static final int clearButton=0x7f080006;
-        public static final int imageButton1=0x7f08000c;
-        public static final int linearLayout1=0x7f080007;
-        public static final int listView1=0x7f080010;
-        public static final int min=0x7f080015;
-        public static final int nameTxt=0x7f080001;
-        public static final int plus=0x7f080017;
-        public static final int productCatalog=0x7f08000b;
-        public static final int productName=0x7f080000;
-        public static final int scanButton=0x7f080004;
-        public static final int tableLayout1=0x7f08000d;
-        public static final int tableRow1=0x7f08000e;
-        public static final int textView1=0x7f08000f;
-        public static final int textView2=0x7f080013;
-        public static final int textView3=0x7f080014;
+        public static final int Button02=0x7f080003;
+        public static final int ColBarcode=0x7f08000d;
+        public static final int ColName=0x7f08000c;
+        public static final int ColProductID=0x7f08000b;
+        public static final int EditText01=0x7f080002;
+        public static final int EditText02=0x7f080005;
+        public static final int LinearLayout1=0x7f080013;
+        public static final int TextView01=0x7f080001;
+        public static final int TextView02=0x7f080004;
+        public static final int action_settings=0x7f08001f;
+        public static final int addButton=0x7f080008;
+        public static final int addNewProduct=0x7f080014;
+        public static final int amountTxt=0x7f08001b;
+        public static final int barcodeTxt=0x7f080015;
+        public static final int clearButton=0x7f080009;
+        public static final int costTxt=0x7f08001e;
+        public static final int imageButton1=0x7f08000f;
+        public static final int linearLayout1=0x7f08000a;
+        public static final int listView1=0x7f080012;
+        public static final int min=0x7f08001a;
+        public static final int nameTxt=0x7f080018;
+        public static final int plus=0x7f08001c;
+        public static final int priceTxt=0x7f080007;
+        public static final int productCatalog=0x7f08000e;
+        public static final int productPrice=0x7f080006;
+        public static final int scanButton=0x7f080016;
+        public static final int tableLayout1=0x7f080000;
+        public static final int tableRow1=0x7f080010;
+        public static final int textView1=0x7f080011;
+        public static final int textView2=0x7f080017;
+        public static final int textView3=0x7f080019;
+        public static final int textView4=0x7f08001d;
     }
     public static final class layout {
         public static final int activity_add=0x7f030000;
         public static final int activity_column=0x7f030001;
         public static final int activity_main=0x7f030002;
         public static final int activity_showlist=0x7f030003;
-        public static final int activity_stockadd=0x7f030004;
+        public static final int activity_showstock=0x7f030004;
+        public static final int activity_stockadd=0x7f030005;
     }
     public static final class menu {
         public static final int main=0x7f070000;
-        public static final int showlist=0x7f070001;
+        public static final int show_stock=0x7f070001;
+        public static final int showlist=0x7f070002;
     }
     public static final class string {
         public static final int action_settings=0x7f050001;
@@ -79,6 +88,7 @@ public final class R {
         public static final int scan=0x7f050005;
         public static final int select=0x7f050002;
         public static final int selectAll=0x7f050007;
+        public static final int title_activity_show_stock=0x7f05000e;
         public static final int title_activity_showlist=0x7f05000a;
         public static final int update=0x7f050004;
         public static final int zero=0x7f050008;

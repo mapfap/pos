@@ -78,7 +78,7 @@ public class AddActivity extends Activity {
 				}
 				else{
 //					boolean success = inventory.addNewProduct(itemName.getText().toString(),itemBarcode.getText().toString(),Integer.parseInt(itemPrice.getText()));
-					boolean success = inventory.addNewProduct(itemName.getText().toString(),itemBarcode.getText().toString(),0);
+					boolean success = inventory.getProductCatalog().addNewProduct(itemName.getText().toString(),itemBarcode.getText().toString(),0);
 					if(success){
 						Toast.makeText(AddActivity.this,
 								"Successfully Add : "+itemName.getText().toString(), Toast.LENGTH_SHORT)

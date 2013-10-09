@@ -20,11 +20,11 @@ public class ProductCatalog {
 
 	private static ProductFactory productFactory = ProductFactory.getInstance();
 
-	public boolean addNewProduct(Product product) {
+	public boolean addNewProduct(String name, String barcode, double salePrice) {
 		ContentValues content = new ContentValues();
-		content.put("name", product.getName());
-		content.put("barcode", product.getBarcode());
-		content.put("sale_price", product.getSalePrice());
+		content.put("name", name);
+		content.put("barcode", barcode);
+		content.put("sale_price", salePrice);
 		
 		long respond = dao.insert(TABLE_NAME, content);
 		return respond != -1;
@@ -51,7 +51,7 @@ public class ProductCatalog {
 	
 	public Product getProductByBarcode(String barcode) {
 		List<Product> list = getProductBy("barcode", barcode);
-		if (list.isEmpty()) return productFactory.createProduct(Product.UNDEFINED,"UNDEFINED","barcode",0);
+		if (list.isEmpty()) return productFactory.createProduct(Product.UNDEFINED_ID,Product.UNDEFINED,Product.UNDEFINED,0);
 		return list.get(0);
 	}
 	
