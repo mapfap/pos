@@ -105,7 +105,7 @@
     <SlidingDrawer
         android:id="@+id/slidingDrawer1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="59dp"
         android:content="@+id/content"
         android:handle="@+id/handle" >
 
@@ -118,7 +118,7 @@
         <LinearLayout
             android:id="@+id/content"
             android:layout_width="match_parent"
-            android:layout_height="103dp" >
+            android:layout_height="66dp" >
 
                 <Button
                     android:id="@+id/addButton"
