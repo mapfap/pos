@@ -72,7 +72,7 @@ public class AddActivity extends Activity {
 		final Button addButton = (Button) findViewById(R.id.addButton);
 		addButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				if(itemName.getText().toString().isEmpty()||itemBarcode.getText().toString().isEmpty()){
+				if(itemName.getText().toString().isEmpty()||itemBarcode.getText().toString().isEmpty()||itemPrice.getText().toString().isEmpty()){
 					Toast.makeText(AddActivity.this, "It's still have some blank",
 							Toast.LENGTH_SHORT).show();
 				}
