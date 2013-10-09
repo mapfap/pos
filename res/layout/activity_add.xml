@@ -28,18 +28,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
 
-        <Button
-            android:id="@+id/Button02"
-            style="@style/ButtonText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/btn_blue"
-            android:text="@string/scan"
-            android:textSize="12sp"
-            android:width="50sp" />
-
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_weight="0.67"
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
@@ -61,6 +51,14 @@
                 <requestFocus />
             </EditText>
         </LinearLayout>
+        <Button
+            android:id="@+id/Button02"
+            style="@style/ButtonText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:background="@drawable/btn_blue"
+            android:text="@string/scan"/>
     </LinearLayout>
 
     <LinearLayout
