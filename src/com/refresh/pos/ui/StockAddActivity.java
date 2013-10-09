@@ -1,8 +1,12 @@
 package com.refresh.pos.ui;
 
+import java.util.Date;
+import java.text.SimpleDateFormat;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -109,8 +113,20 @@ public class StockAddActivity extends Activity{
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				
+				Date now = new Date();
+				String time = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss Z").format(now);
+				int id = inventory.getProductCatalog().getProductByBarcode(itemBarcode.getText().toString()).getId();
+				boolean success = inventory.getStock().addNewProductLot(time, amount, id,Double.parseDouble(itemPrice.getText().toString()));
+				if(success){
+					Toast.makeText(StockAddActivity.this,
+							"Successfully Add : "+itemName.getText().toString(), Toast.LENGTH_SHORT)
+							.show();
+				}
+				else{
+					Toast.makeText(StockAddActivity.this,
+							"FAIL to Add : "+itemName.getText().toString(), Toast.LENGTH_SHORT)
+							.show();
+				}
 			}
 		});
 		

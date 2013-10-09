@@ -22,7 +22,7 @@ public class Stock {
 		ContentValues content = new ContentValues();
 		content.put("date_added", dateAdded);
 		content.put("amount", amount);
-		content.put("productId", productId);
+		content.put("product_Id", productId);
 		content.put("cost", cost);
 		long respond = dao.insert(TABLE_NAME, content);
 		return respond != -1;
