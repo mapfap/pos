@@ -29,8 +29,17 @@ public class StockAddActivity extends Activity{
 			String scanContent = scanningResult.getContents();
 //			String scanFormat = scanningResult.getFormatName();
 //			Toast.makeText(AddActivity.this,"got >> " + scanContent , Toast.LENGTH_SHORT).show();
-			itemBarcode.setText(scanContent);
-			
+//			itemBarcode.setText(scanContent);
+			String name = inventory.getProductCatalog().getProductByBarcode(scanContent).getName();
+			if(name.equals("UNDEFINED")){
+				Toast.makeText(StockAddActivity.this,
+						"Can not find " + scanContent +" in database", Toast.LENGTH_SHORT)
+						.show();
+			}
+			else{
+				itemBarcode.setText(scanContent);
+				itemName.setText(name);
+			}
 //
 		} else {
 			Toast.makeText(StockAddActivity.this,
@@ -59,9 +68,9 @@ public class StockAddActivity extends Activity{
 		scanButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-//				IntentIntegrator scanIntegrator = new IntentIntegrator(StockAddActivity.this);
-//				scanIntegrator.initiateScan();
-				itemName.setText(inventory.getProductCatalog().getProductByBarcode("8851959139707").getName());
+				IntentIntegrator scanIntegrator = new IntentIntegrator(StockAddActivity.this);
+				scanIntegrator.initiateScan();
+				
 				
 				}
 			}
