@@ -39,4 +39,12 @@ public class ProductLot {
 	public double getCost() {
 		return cost;
 	}
+
+	public int getId() {
+		return id;
+	}
+
+	public int getProductId() {
+		return productId;
+	}
 }

@@ -12,6 +12,7 @@ class Stock {
 
 	private Dao dao;
 	private static final String TABLE_NAME = "stock";
+	private static ProductLotFactory productLotFactory = ProductLotFactory.getInstance();
 
 	public Stock(Dao dao) {
 		this.dao = dao;
@@ -27,10 +28,6 @@ class Stock {
 		return respond != -1;
 	}
 	
-
-	public List<ProductLot> getAllProductLotAsList() {
-		return new ArrayList<ProductLot>();	
-	}
 
 	public ProductLot getProductLotById(int id) {
 		return null;
@@ -52,16 +49,34 @@ class Stock {
 		return new ArrayList<ProductLot>();
 	}
 
+	public List<ProductLot> getAllProductLotAsList() {
+		String queryString = "SELECT * FROM " + TABLE_NAME;
+		@SuppressWarnings("unchecked")
+		List<ContentValues> contents = (List) dao.select(queryString);
+		List<ProductLot> productLotList = new ArrayList<ProductLot>();
+		for (ContentValues content: contents) {
+			productLotList.add( 
+				productLotFactory.createProductLot( content.getAsInteger("_id"),
+						content.getAsString("date_added"),
+						content.getAsDouble("amount"),
+						content.getAsInteger("product_id"),
+						content.getAsDouble("cost"))
+			);
+		}
+		return productLotList;
+	}
+	
 	public List<HashMap<String, String>> getAllProductLotAsMap() {
 		List<HashMap<String, String>> productLotListOfMap = new ArrayList<HashMap<String, String>>();
-		List<ProductLot> productList = getAllProductLotAsList();
-		for (ProductLot p : productList) {
-			String name = p.getProduct().getName();
+		List<ProductLot> productLotList = getAllProductLotAsList();
+		for (ProductLot pl : productLotList) {
+			
 			HashMap<String, String> map = new HashMap<String, String>();
-			map.put("name", name);
-			map.put("amount", p.getAmount()+"");
-			map.put("cost", p.getCost()+"");
-			map.put("date_added", p.getDateAdded()+"");
+			map.put("_id", pl.getId()+"");
+	        map.put("date_added", pl.getDateAdded());
+	        map.put("amount", pl.getAmount()+"");
+	        map.put("product_id", pl.getProductId()+"");
+	        map.put("cost", pl.getCost()+"");
 			productLotListOfMap.add(map);
 		}
 		return productLotListOfMap;
