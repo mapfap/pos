@@ -3,18 +3,18 @@ Mobile POS
 
 DEVELOPERS
 -------------
-Natchanon Hongladaromp________________nongfoxza
+Natchanon Hongladaromp________________<a href="https://github.com/nongfoxza">nongfoxza</a>
 
-Sarun Wongtanakarn____________________mapfap
+Sarun Wongtanakarn____________________<a href="https://github.com/mapfap">mapfap</a>
 
-Thunyathon Jaruchotrattanasakul__________lostseaway
+Thunyathon Jaruchotrattanasakul__________<a href="https://github.com/lostseaway">lostseaway</a>
 
-Veerapat Threeravipark__________________teeravipark
+Veerapat Threeravipark__________________<a href="https://github.com/teeravipark">teeravipark</a>
 
 
 Project's Page
 -------------
-<a href="http://www.mapfap.com/refresh"> LINK HERE </a>
+<a href="http://mapfap.com/refresh"> LINK HERE </a>
 
 
 Directory
