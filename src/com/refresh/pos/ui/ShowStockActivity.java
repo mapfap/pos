@@ -19,6 +19,7 @@ import com.refresh.pos.database.NoDaoSetException;
 public class ShowStockActivity extends Activity {
 
 	private Inventory inventory;
+	private ListView lisView1;
 	private List<HashMap<String, String>> stockList;
 
 	@Override
@@ -50,7 +51,7 @@ public class ShowStockActivity extends Activity {
 //		}
 
 		// listView1
-		ListView lisView1 = (ListView) findViewById(R.id.listView1);
+		lisView1 = (ListView) findViewById(R.id.listView1);
 
 		SimpleAdapter sAdap;
 		sAdap = new SimpleAdapter(ShowStockActivity.this, stockList,
@@ -65,6 +66,20 @@ public class ShowStockActivity extends Activity {
 			public void onClick(View v) {
 				Intent newActivity = new Intent(ShowStockActivity.this,StockAddActivity.class);
 				startActivity(newActivity);
+			}
+		});
+		final Button refreshButton = (Button) findViewById(R.id.refreshButton);
+		refreshButton.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				stockList = inventory.getStock().getAllProductLotAsMap();
+				SimpleAdapter sAdap;
+				sAdap = new SimpleAdapter(ShowStockActivity.this, stockList,
+						R.layout.activity_columnstock, new String[] { "name",
+								"amount","cost","date_added" }, new int[] { R.id.ColName,
+								R.id.ColAmount, R.id.ColCost, R.id.ColDate });
+				lisView1.setAdapter(sAdap);
 			}
 		});
 
