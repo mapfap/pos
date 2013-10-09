@@ -124,7 +124,7 @@ public class StockAddActivity extends Activity{
 				}
 				else{
 					Date now = new Date();
-					String time = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss Z").format(now);
+					String time = new SimpleDateFormat("dd MMM yyyy").format(now);
 					int id = inventory.getProductCatalog().getProductByBarcode(itemBarcode.getText().toString()).getId();
 					boolean success = inventory.getStock().addNewProductLot(time, amount, id,Double.parseDouble(itemPrice.getText().toString()));
 					if(success){

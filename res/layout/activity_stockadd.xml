@@ -45,7 +45,7 @@
                     android:textSize="20sp" />
 
                 <EditText
-                    android:id="@+id/EditText01"
+                    android:id="@+id/barcodeTxt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.03"
@@ -55,7 +55,7 @@
             </LinearLayout>
 
             <Button
-                android:id="@+id/Button01"
+                android:id="@+id/scanButton"
                 style="@style/ButtonText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
