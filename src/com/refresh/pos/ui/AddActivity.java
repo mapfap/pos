@@ -86,6 +86,7 @@ public class AddActivity extends Activity {
 						itemName.setText("");
 						itemBarcode.setText("");
 						itemPrice.setText("");
+						//test
 					}
 					else{
 						Toast.makeText(AddActivity.this, "Failed to insert data",
