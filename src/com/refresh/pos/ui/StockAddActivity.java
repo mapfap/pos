@@ -101,6 +101,27 @@ public class StockAddActivity extends Activity{
 				
 			}
 		});
+		final Button addButton = (Button) findViewById(R.id.addButton);
+		addButton.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		final Button clearButton = (Button) findViewById(R.id.clearButton);
+		clearButton.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				amount=0;
+				itemBarcode.setText("");
+				itemName.setText("");
+				amountTxt.setText(amount+"");
+				
+			}
+		});
 	}
 	
 }
