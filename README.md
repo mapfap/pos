@@ -1,18 +1,23 @@
 Mobile POS
 =====
 
-DEVELOPERS<br>
+DEVELOPERS
 -------------
-Natchanon Hongladaromp [nongfoxza] <br>
-Sarun Wongtanakarn [mapfap]<br>
-Thunyathon Jaruchotrattanasakul [lostseaway] <br>
-Veerapat Threeravipark [teeravipark] <br>
+Natchanon Hongladaromp________________nongfoxza
 
-Project's Page<br>
--------------
-<a href="http://www.mapfap.com/refresh"> LINK HERE </a><br>
+Sarun Wongtanakarn____________________mapfap
 
-Attention!<br>
+Thunyathon Jaruchotrattanasakul__________lostseaway
+
+Veerapat Threeravipark__________________teeravipark
+
+
+Project's Page
 -------------
-/src &nbsp;&nbsp;&nbsp;&nbsp; Source code<br>
+<a href="http://www.mapfap.com/refresh"> LINK HERE </a>
+
+
+Directory
+-------------
+/src______Source code
 ...
