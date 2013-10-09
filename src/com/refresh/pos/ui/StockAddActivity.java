@@ -69,8 +69,8 @@ public class StockAddActivity extends Activity{
 		amount = Integer.parseInt(amountTxt.getText().toString());
 		itemName = (EditText) findViewById(R.id.nameTxt);
 		itemBarcode = (EditText) findViewById(R.id.barcodeTxt);
-		//		itemBarcode.setEnabled(false);
-		//		itemName.setEnabled(false);
+				itemBarcode.setEnabled(false);
+				itemName.setEnabled(false);
 		itemPrice = (EditText) findViewById(R.id.costTxt);
 		final Button scanButton = (Button) findViewById(R.id.scanButton);
 		scanButton.setOnClickListener(new View.OnClickListener() {
