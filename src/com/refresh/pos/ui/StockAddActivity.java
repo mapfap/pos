@@ -82,6 +82,7 @@ public class StockAddActivity extends Activity{
 			
 			@Override
 			public void onClick(View v) {
+				amount = Integer.parseInt(amountTxt.getText().toString());
 				amount++;
 				amountTxt.setText(amount+"");
 			}
@@ -95,6 +96,7 @@ public class StockAddActivity extends Activity{
 					
 				}
 				else{
+					amount = Integer.parseInt(amountTxt.getText().toString());
 					amount--;
 					amountTxt.setText(amount+"");
 				}
