@@ -17,6 +17,7 @@ import com.refresh.pos.database.NoDaoSetException;
 public class StockAddActivity extends Activity{
 	private EditText itemBarcode;
 	private EditText itemName;
+	private EditText itemPrice;
 	private Inventory inventory;
 	private int amount;
 	
@@ -65,7 +66,7 @@ public class StockAddActivity extends Activity{
 		itemBarcode = (EditText) findViewById(R.id.barcodeTxt);
 		itemBarcode.setEnabled(false);
 		itemName.setEnabled(false);
-		
+		itemPrice = (EditText) findViewById(R.id.costTxt);
 		final Button scanButton = (Button) findViewById(R.id.scanButton);
 		scanButton.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -112,6 +113,7 @@ public class StockAddActivity extends Activity{
 				
 			}
 		});
+		
 		final Button clearButton = (Button) findViewById(R.id.clearButton);
 		clearButton.setOnClickListener(new View.OnClickListener() {
 			
@@ -120,6 +122,7 @@ public class StockAddActivity extends Activity{
 				amount=0;
 				itemBarcode.setText("");
 				itemName.setText("");
+				itemPrice.setText("");
 				amountTxt.setText(amount+"");
 				
 			}
