@@ -29,6 +29,7 @@
         android:layout_height="wrap_content" >
 
         <LinearLayout
+            android:layout_width="0dip"
             android:layout_weight="0.67"
             android:layout_height="wrap_content"
             android:orientation="vertical" >
