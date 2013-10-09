@@ -16,7 +16,7 @@
     <string name="productCatalog">Product Catalog</string>
     <string name="addNewProduct">Add New Product</string>
 
-	<style name="ButtonText">
+    <style name="ButtonText">
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">#ffffff</item>
@@ -29,6 +29,7 @@
         <item name="android:shadowDy">1</item>
         <item name="android:shadowRadius">2</item>
     </style>
-  
+
+    <string name="title_activity_show_stock">ShowStockActivity</string>
 
 </resources>

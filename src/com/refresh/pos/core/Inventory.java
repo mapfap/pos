@@ -1,13 +1,5 @@
 package com.refresh.pos.core;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-
 import com.refresh.pos.database.Dao;
 import com.refresh.pos.database.NoDaoSetException;
 

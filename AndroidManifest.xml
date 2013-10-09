@@ -34,9 +34,13 @@
             android:theme="@style/AppTheme" />
         <activity
             android:name="com.refresh.pos.ui.ShowListActivity"
-            android:label="Product Catalog" 
+            android:label="Product Catalog"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" >
+        </activity>
+        <activity
+            android:name="com.refresh.pos.ui.ShowStockActivity"
+            android:label="@string/title_activity_show_stock" >
         </activity>
     </application>
 
