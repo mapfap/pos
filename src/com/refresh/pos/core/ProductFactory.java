@@ -20,9 +20,4 @@ public class ProductFactory {
 		return product;
 	}
 	
-//	public Product createProduct(String name, String barcode, double salePrice) {
-//		Product product = new Product(Product.UNDEFINED, name, barcode, salePrice);
-//		return product;
-//	}
-	
 }

@@ -16,6 +16,17 @@ class Stock {
 	public Stock(Dao dao) {
 		this.dao = dao;
 	}
+	
+	public boolean addNewProductLot(String dateAdded, double amount, int productId, double cost) {
+		ContentValues content = new ContentValues();
+		content.put("date_added", dateAdded);
+		content.put("amount", amount);
+		content.put("productId", productId);
+		content.put("cost", cost);
+		long respond = dao.insert(TABLE_NAME, content);
+		return respond != -1;
+	}
+	
 
 	public List<ProductLot> getAllProductLotAsList() {
 		return new ArrayList<ProductLot>();	

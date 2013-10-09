@@ -1,20 +1,42 @@
 package com.refresh.pos.core;
 
+import com.refresh.pos.database.NoDaoSetException;
+
 public class ProductLot {
 	
-	public String getDateAdded() {
-		return "";
+	
+	private int id;
+	private String dateAdded;
+	private double amount;
+	private int productId;
+	private double cost;
+
+	public ProductLot(int id, String dateAdded, double amount, int productId, double cost) {
+		this.id = id;
+		this.dateAdded = dateAdded;
+		this.amount = amount;
+		this.productId = productId;
+		this.cost = cost;
 	}
 	
-	public long getAmount() {
-		return 0;
+	public String getDateAdded() {
+		return dateAdded;
+	}
+	
+	public double getAmount() {
+		return amount;
 	}
 	
 	public Product getProduct() {
-		return ProductFactory.getInstance().createProduct(0,"", "", 0);
+		try {
+			return Inventory.getInstance().getProductCatalog().getProductById(productId);
+		} catch (NoDaoSetException e) {
+			e.printStackTrace();
+		}
+		return Product.UNDEFINED_PRODUCT;
 	}
 	
 	public double getCost() {
-		return 0;
+		return cost;
 	}
 }

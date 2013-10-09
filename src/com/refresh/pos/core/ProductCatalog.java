@@ -51,7 +51,7 @@ public class ProductCatalog {
 	
 	public Product getProductByBarcode(String barcode) {
 		List<Product> list = getProductBy("barcode", barcode);
-		if (list.isEmpty()) return productFactory.createProduct(Product.UNDEFINED_ID,Product.UNDEFINED,Product.UNDEFINED,0);
+		if (list.isEmpty()) return Product.UNDEFINED_PRODUCT;
 		return list.get(0);
 	}
 	
