@@ -55,7 +55,7 @@ public class AddActivity extends Activity {
 		} catch (NoDaoSetException e) {
 			e.printStackTrace();
 		}
-		
+		final EditText itemPrice = (EditText) findViewById(R.id.priceTxt);
 		final EditText itemName = (EditText) findViewById(R.id.nameTxt);
 		itemBarcode = (EditText) findViewById(R.id.barcodeTxt);
 		
@@ -78,13 +78,14 @@ public class AddActivity extends Activity {
 				}
 				else{
 //					boolean success = inventory.addNewProduct(itemName.getText().toString(),itemBarcode.getText().toString(),Integer.parseInt(itemPrice.getText()));
-					boolean success = inventory.getProductCatalog().addNewProduct(itemName.getText().toString(),itemBarcode.getText().toString(),0);
+					boolean success = inventory.getProductCatalog().addNewProduct(itemName.getText().toString(),itemBarcode.getText().toString(),Double.parseDouble(itemPrice.getText().toString()));
 					if(success){
 						Toast.makeText(AddActivity.this,
 								"Successfully Add : "+itemName.getText().toString(), Toast.LENGTH_SHORT)
 								.show();
 						itemName.setText("");
 						itemBarcode.setText("");
+						itemPrice.setText("");
 					}
 					else{
 						Toast.makeText(AddActivity.this, "Failed to insert data",
@@ -100,6 +101,7 @@ public class AddActivity extends Activity {
 			public void onClick(View v) {
 				itemName.setText("");
 				itemBarcode.setText("");
+				itemPrice.setText("");
 				
 			}
 		});
