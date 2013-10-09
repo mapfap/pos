@@ -44,7 +44,7 @@ public class MainActivity extends Activity {
 				startActivity(newActivity);
 			}
 		});
-		final ImageButton testButton = (ImageButton) findViewById(R.id.imageButton1);
+		final Button testButton = (Button) findViewById(R.id.saleButton);
 		testButton.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
