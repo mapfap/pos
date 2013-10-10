@@ -41,7 +41,7 @@
                 android:layout_weight="1.03"
                 android:textSize="18sp"
                 android:ems="20"
-                android:inputType="number" />
+                android:inputType="text" />
         </LinearLayout>
 
         <LinearLayout
@@ -83,7 +83,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.03"
-                    android:text="BarCode"
+                    android:text="Barcode"
                     android:textSize="20sp" />
 
                 <EditText
@@ -212,7 +212,7 @@
                 android:layout_weight="1.03"
                 android:textSize="18sp"
                 android:ems="20"
-                android:inputType="number" >
+                android:inputType="numberDecimal" >
 
                 <requestFocus />
             </EditText>
