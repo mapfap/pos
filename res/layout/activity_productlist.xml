@@ -6,7 +6,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="match_parent" >
 
         <TextView
             android:id="@+id/textView1"
@@ -18,10 +18,55 @@
             android:textSize="50sp" />
     </LinearLayout>
 
-    <ListView
-        android:id="@+id/listView"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
-    </ListView>
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <EditText
+                android:id="@+id/searchTxt"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2" />
+
+            <Button
+                android:id="@+id/searchBtn"
+                style="@style/ButtonText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_black"
+                android:textSize="15sp"
+                android:text="Search" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="10000" >
+
+        <ListView
+            android:id="@+id/listView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+        </ListView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/LinearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dip" >
+
+        <Button
+            android:id="@+id/addNewProduct"
+            style="@style/ButtonText"
+            android:background="@drawable/btn_green"
+            android:text="Add" />
+    </LinearLayout>
 
 </LinearLayout>
