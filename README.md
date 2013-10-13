@@ -17,7 +17,8 @@ Project's Page
 <a href="http://mapfap.com/refresh"> LINK HERE </a>
 
 
-Directory
+Repository Contents
 -------------
-/src______Source code
-...
+<p>/src&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Source code</p>
+<p>README.md&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;summary description of project and repository contents</p>
+<p>.gitignore&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Files not to commit to repository.</p>
