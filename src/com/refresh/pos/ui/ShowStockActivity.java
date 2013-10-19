@@ -2,7 +2,6 @@ package com.refresh.pos.ui;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import android.app.Activity;
 import android.content.Intent;

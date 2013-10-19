@@ -12,7 +12,6 @@ public class Stock {
 
 	private Dao dao;
 	private static final String TABLE_NAME = "stock";
-	private static ProductLotFactory productLotFactory = ProductLotFactory.getInstance();
 
 	public Stock(Dao dao) {
 		this.dao = dao;
@@ -56,7 +55,7 @@ public class Stock {
 		List<ProductLot> productLotList = new ArrayList<ProductLot>();
 		for (ContentValues content: contents) {
 			productLotList.add( 
-				productLotFactory.createProductLot( content.getAsInteger("_id"),
+				new ProductLot(content.getAsInteger("_id"),
 						content.getAsString("date_added"),
 						content.getAsDouble("amount"),
 						content.getAsInteger("product_id"),

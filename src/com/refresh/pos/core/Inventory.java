@@ -8,7 +8,6 @@ public class Inventory {
 	private ProductCatalog productCatalog;
 	private static Inventory instance = null;
 	private static Dao dao = null;
-	private static ProductFactory productFactory;
 	
 	private Inventory() throws NoDaoSetException {
 		if (!isInventoryDaoSet()) {
@@ -16,7 +15,6 @@ public class Inventory {
 		}
 		stock = new Stock(dao);
 		productCatalog = new ProductCatalog(dao);
-		productFactory = ProductFactory.getInstance();
 	}
 	
 	public static boolean isInventoryDaoSet() {

@@ -3,7 +3,6 @@ package com.refresh.pos.core;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import android.content.ContentValues;
 
@@ -17,8 +16,6 @@ public class ProductCatalog {
 	public ProductCatalog(Dao dao) {
 		this.dao = dao;
 	}
-
-	private static ProductFactory productFactory = ProductFactory.getInstance();
 
 	public boolean addNewProduct(String name, String barcode, double salePrice) {
 		ContentValues content = new ContentValues();
@@ -41,7 +38,7 @@ public class ProductCatalog {
 		List<Product> productList = new ArrayList<Product>();
 		for (ContentValues content: contents) {
 			productList.add(
-				productFactory.createProduct( content.getAsInteger("_id"),
+				new Product(content.getAsInteger("_id"),
 						content.getAsString("name"), content.getAsString("barcode"),content.getAsDouble("sale_price")
 						 )
 			);
@@ -70,7 +67,7 @@ public class ProductCatalog {
 		List<Product> productList = new ArrayList<Product>();
 		for (ContentValues content: contents) {
 			productList.add( 
-				productFactory.createProduct( content.getAsInteger("_id"),
+				new Product( content.getAsInteger("_id"),
 						content.getAsString("name"), content.getAsString("barcode")
 						,content.getAsDouble("sale_price"))
 			);

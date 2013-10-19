@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 
 import com.refresh.pos.R;
 import com.refresh.pos.core.Inventory;
