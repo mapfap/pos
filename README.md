@@ -3,13 +3,13 @@ Mobile POS
 
 DEVELOPERS
 -------------
-Natchanon Hongladaromp________________<a href="https://github.com/nongfoxza">nongfoxza</a>
+<a href="https://www.facebook.com/NongFoxZa">Natchanon Hongladaromp</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/nongfoxza">nongfoxza</a>
 
-Sarun Wongtanakarn____________________<a href="https://github.com/mapfap">mapfap</a>
+<a href="https://www.facebook.com/mapfapfap">Sarun Wongtanakarn</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/mapfap">mapfap</a>
 
-Thunyathon Jaruchotrattanasakul__________<a href="https://github.com/lostseaway">lostseaway</a>
+<a href="https://www.facebook.com/LostSeaWay">Thunyathon Jaruchotrattanasakul</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/lostseaway">lostseaway</a>
 
-Veerapat Threeravipark__________________<a href="https://github.com/teeravipark">teeravipark</a>
+<a href="https://www.facebook.com/TheInnoZenT">Veerapat Threeravipark</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/teeravipark">teeravipark</a>
 
 
 Project's Page
@@ -17,7 +17,8 @@ Project's Page
 <a href="http://mapfap.com/refresh"> LINK HERE </a>
 
 
-Directory
+Repository Contents
 -------------
-/src______Source code
-...
+<p>/src&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Source code</p>
+<p>README.md&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;summary description of project and repository contents</p>
+<p>.gitignore&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Files not to commit to repository.</p>
