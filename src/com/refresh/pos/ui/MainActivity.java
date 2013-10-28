@@ -9,7 +9,9 @@ import android.widget.Button;
 
 import com.refresh.pos.R;
 import com.refresh.pos.core.Inventory;
-import com.refresh.pos.database.Dao;
+import com.refresh.pos.database.AndroidDatabase;
+import com.refresh.pos.database.Database;
+import com.refresh.pos.database.InventoryDao;
 import com.refresh.pos.database.InventoryDaoAndroid;
 
 public class MainActivity extends Activity {
@@ -17,24 +19,18 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		
-		Dao dao = new InventoryDaoAndroid(this);
-		Inventory.setProductDao(dao);
+		Database database = new AndroidDatabase(this);
+		InventoryDao inventoryDao = new InventoryDaoAndroid((AndroidDatabase)database);
+		
+		Inventory.setInventoryDao(inventoryDao);
 		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-
-//		final Button updateButton = (Button) findViewById(R.id.updateButton);
-//		final TextView dbSizeText = (TextView) findViewById(R.id.dbSize);
-//		updateButton.setOnClickListener(new OnClickListener() {
-//			@Override
-//			public void onClick(View v) {
-//				long size = productCatalogController.getSize();
-//				dbSizeText.setText(size + " ");
-//			}
-//		});
-
 		
-		
+		createButton();
+	}
+
+	private void createButton() {
 		final Button productCatalogButton = (Button) findViewById(R.id.productCatalog);
 
 		productCatalogButton.setOnClickListener(new View.OnClickListener() {
@@ -61,7 +57,7 @@ public class MainActivity extends Activity {
 				
 			}
 		});
-
+		
 	}
 
 	@Override

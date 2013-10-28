@@ -33,9 +33,6 @@ public class StockAddActivity extends Activity{
 		//
 		if (scanningResult != null) {
 			String scanContent = scanningResult.getContents();
-			//			String scanFormat = scanningResult.getFormatName();
-			//			Toast.makeText(AddActivity.this,"got >> " + scanContent , Toast.LENGTH_SHORT).show();
-			//			itemBarcode.setText(scanContent);
 			String name = inventory.getProductCatalog().getProductByBarcode(scanContent).getName();
 			if(name.equals("UNDEFINED")){
 				Toast.makeText(StockAddActivity.this,
@@ -125,7 +122,7 @@ public class StockAddActivity extends Activity{
 					Date now = new Date();
 					String time = new SimpleDateFormat("dd MMM yyyy").format(now);
 					int id = inventory.getProductCatalog().getProductByBarcode(itemBarcode.getText().toString()).getId();
-					boolean success = inventory.getStock().addNewProductLot(time, amount, id,Double.parseDouble(itemPrice.getText().toString()));
+					boolean success = inventory.getStock().addProductLot(time, amount, id,Double.parseDouble(itemPrice.getText().toString()));
 					if(success){
 						Toast.makeText(StockAddActivity.this,
 								"Successfully Add : "+itemName.getText().toString(), Toast.LENGTH_SHORT)

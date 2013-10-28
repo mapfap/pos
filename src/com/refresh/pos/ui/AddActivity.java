@@ -15,31 +15,32 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import com.refresh.pos.R;
 import com.refresh.pos.core.Inventory;
+import com.refresh.pos.core.ProductCatalog;
 import com.refresh.pos.database.InventoryDaoAndroid;
 import com.refresh.pos.database.NoDaoSetException;
 
 @SuppressLint("NewApi")
 public class AddActivity extends Activity {
-	
+
 	private EditText itemBarcode;
-	private Inventory inventory;
-	
+	private ProductCatalog productCatalog;
+
 	public void onActivityResult(int requestCode, int resultCode, Intent intent) {
 		Log.d("BARCODE", "BARCODE 'onActivityResult' Successfully.");
-		
+
 		IntentResult scanningResult = IntentIntegrator.parseActivityResult(
 				requestCode, resultCode, intent);
 
 		if (scanningResult != null) {
 			String scanContent = scanningResult.getContents();
-//			String scanFormat = scanningResult.getFormatName();
-//			Toast.makeText(AddActivity.this,"got >> " + scanContent , Toast.LENGTH_SHORT).show();
+			// String scanFormat = scanningResult.getFormatName();
+			// Toast.makeText(AddActivity.this,"got >> " + scanContent ,
+			// Toast.LENGTH_SHORT).show();
 			itemBarcode.setText(scanContent);
-//
 		} else {
 			Toast.makeText(AddActivity.this,
-					"Failed to retrieve barcode." + resultCode, Toast.LENGTH_SHORT)
-					.show();
+					"Failed to retrieve barcode." + resultCode,
+					Toast.LENGTH_SHORT).show();
 		}
 	}
 
@@ -48,65 +49,75 @@ public class AddActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_add);
 		super.onCreate(savedInstanceState);
-		
+
 		try {
-			Inventory.setProductDao(new InventoryDaoAndroid(AddActivity.this));
-			inventory = Inventory.getInstance();
+			productCatalog = Inventory.getInstance().getProductCatalog();
 		} catch (NoDaoSetException e) {
 			e.printStackTrace();
 		}
+		
 		final EditText itemPrice = (EditText) findViewById(R.id.priceTxt);
 		final EditText itemName = (EditText) findViewById(R.id.nameTxt);
 		itemBarcode = (EditText) findViewById(R.id.barcodeTxt);
-		
+
 		final Button scanButton = (Button) findViewById(R.id.scanButton);
 		scanButton.setOnClickListener(new View.OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
-				IntentIntegrator scanIntegrator = new IntentIntegrator(AddActivity.this);
+				IntentIntegrator scanIntegrator = new IntentIntegrator(
+						AddActivity.this);
 				scanIntegrator.initiateScan();
 			}
 		});
-		
+
 		final Button addButton = (Button) findViewById(R.id.addButton);
 		addButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				if(itemName.getText().toString().isEmpty()||itemBarcode.getText().toString().isEmpty()||itemPrice.getText().toString().isEmpty()){
-					Toast.makeText(AddActivity.this, "It's still have some blank",
-							Toast.LENGTH_SHORT).show();
-				}
-				else{
-//					boolean success = inventory.addNewProduct(itemName.getText().toString(),itemBarcode.getText().toString(),Integer.parseInt(itemPrice.getText()));
-					boolean success = inventory.getProductCatalog().addNewProduct(itemName.getText().toString(),itemBarcode.getText().toString(),Double.parseDouble(itemPrice.getText().toString()));
-					if(success){
-						Toast.makeText(AddActivity.this,
-								"Successfully Add : "+itemName.getText().toString(), Toast.LENGTH_SHORT)
-								.show();
+				if (itemName.getText().toString().isEmpty()
+						|| itemBarcode.getText().toString().isEmpty()
+						|| itemPrice.getText().toString().isEmpty()) {
+					Toast.makeText(AddActivity.this,
+							"It's still have some blank", Toast.LENGTH_SHORT)
+							.show();
+				} else {
+
+					boolean success = productCatalog.addProduct(itemName
+							.getText().toString(), itemBarcode.getText()
+							.toString(), Double.parseDouble(itemPrice.getText()
+							.toString()));
+
+					if (success) {
+						Toast.makeText(
+								AddActivity.this,
+								"Successfully Add : "
+										+ itemName.getText().toString(),
+								Toast.LENGTH_SHORT).show();
 						itemName.setText("");
 						itemBarcode.setText("");
 						itemPrice.setText("");
-						//test
-					}
-					else{
-						Toast.makeText(AddActivity.this, "Failed to insert data",
-								Toast.LENGTH_SHORT).show();
+						// test
+					} else {
+						Toast.makeText(AddActivity.this,
+								"Failed to insert data", Toast.LENGTH_SHORT)
+								.show();
 					}
 				}
 			}
 		});
 		final Button clearButton = (Button) findViewById(R.id.clearButton);
 		clearButton.setOnClickListener(new View.OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				itemName.setText("");
 				itemBarcode.setText("");
 				itemPrice.setText("");
-				
+
 			}
 		});
 	}
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.

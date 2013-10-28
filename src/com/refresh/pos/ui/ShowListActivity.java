@@ -12,14 +12,15 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
 import com.refresh.pos.R;
+import com.refresh.pos.core.DataParser;
 import com.refresh.pos.core.Inventory;
+import com.refresh.pos.core.ProductCatalog;
 import com.refresh.pos.database.NoDaoSetException;
 
 public class ShowListActivity extends Activity {
 
-	private Inventory inventory;
 	private ListView lisView1;
-//	private List<Map<String, String>> stockList;
+	private ProductCatalog productCatalog;
 	List<HashMap<String, String>> stockList;
 
 	@Override
@@ -28,29 +29,14 @@ public class ShowListActivity extends Activity {
 		setContentView(R.layout.activity_showlist);
 
 		try {
-			
-			inventory = Inventory.getInstance();
+			productCatalog = Inventory.getInstance().getProductCatalog();
 		} catch (NoDaoSetException e) {
 			e.printStackTrace();
 		}
 
-//		List<Product> productList = inventory.getProductCatalog().getAllProduct();
-//		Toast.makeText(ShowListActivity.this,productList.get(0).getName()+productList.get(0).getBarcode()+
-//				productList.get(0).getId()+productList.get(0).getSalePrice(),
-//				Toast.LENGTH_SHORT).show();
 		
-		stockList = inventory.getProductCatalog().getAllProductAsMap();
+		stockList = DataParser.parseMap(productCatalog.getAllProduct());
 		
-//		for (Product product : productList) {
-//			Map<String, String> map = new HashMap<String, String>();
-//	        map.put("_id", product.getId()+"");
-// 	        map.put("name", product.getName());
-// 	        map.put("barcode", product.getBarcode());
-// 	        map.put("sale_price", product.getSalePrice()+"");
-// 	        stockList.add(map);
-//		}
-
-		// listView1
 		lisView1 = (ListView) findViewById(R.id.listView1);
 
 		SimpleAdapter sAdap;
@@ -75,7 +61,7 @@ public class ShowListActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 //				Log.v(">>>>","Refresh!");
-				stockList = inventory.getProductCatalog().getAllProductAsMap();
+				stockList = DataParser.parseMap(productCatalog.getAllProduct());
 				SimpleAdapter sAdap;
 				sAdap = new SimpleAdapter(ShowListActivity.this, stockList,
 						R.layout.activity_column, new String[] { "name",

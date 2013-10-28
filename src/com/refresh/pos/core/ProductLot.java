@@ -10,6 +10,7 @@ public class ProductLot {
 	private double amount;
 	private int productId;
 	private double cost;
+	public static final int UNDEFINED_ID = -1;
 
 	public ProductLot(int id, String dateAdded, double amount, int productId, double cost) {
 		this.id = id;

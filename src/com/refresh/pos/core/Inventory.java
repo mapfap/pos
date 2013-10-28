@@ -1,28 +1,28 @@
 package com.refresh.pos.core;
 
-import com.refresh.pos.database.Dao;
+import com.refresh.pos.database.InventoryDao;
 import com.refresh.pos.database.NoDaoSetException;
 
 public class Inventory {
 	private Stock stock;
 	private ProductCatalog productCatalog;
 	private static Inventory instance = null;
-	private static Dao dao = null;
+	private static InventoryDao inventoryDao = null;
 	
 	private Inventory() throws NoDaoSetException {
 		if (!isInventoryDaoSet()) {
 			throw new NoDaoSetException();
 		}
-		stock = new Stock(dao);
-		productCatalog = new ProductCatalog(dao);
+		stock = new Stock(inventoryDao);
+		productCatalog = new ProductCatalog(inventoryDao);
 	}
 	
 	public static boolean isInventoryDaoSet() {
-		return dao != null;
+		return inventoryDao != null;
 	}
 	
-	public static void setProductDao(Dao d) {
-		dao = d;
+	public static void setInventoryDao(InventoryDao dao) {
+		inventoryDao = dao;
 	}
 	
 	public ProductCatalog getProductCatalog() {
@@ -37,5 +37,7 @@ public class Inventory {
 		if (instance == null) instance = new Inventory();
 		return instance;
 	}
+
+
 
 }
