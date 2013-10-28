@@ -10,14 +10,14 @@ public class Inventory {
 	private static InventoryDao inventoryDao = null;
 	
 	private Inventory() throws NoDaoSetException {
-		if (!isInventoryDaoSet()) {
+		if (!isDaoSet()) {
 			throw new NoDaoSetException();
 		}
 		stock = new Stock(inventoryDao);
 		productCatalog = new ProductCatalog(inventoryDao);
 	}
 	
-	public static boolean isInventoryDaoSet() {
+	public static boolean isDaoSet() {
 		return inventoryDao != null;
 	}
 	

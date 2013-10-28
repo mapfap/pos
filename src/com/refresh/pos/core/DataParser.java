@@ -5,8 +5,7 @@ import java.util.List;
 
 public class DataParser {
 
-	public static List<HashMap<String, String>> parseMap(
-			List list) {
+	public static List<HashMap<String, String>> parseMap(List list) {
 		return null;
 	}
 
