@@ -1,5 +1,6 @@
 package com.refresh.pos.ui;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -58,6 +59,7 @@ public class ShowStockActivity extends Activity {
 	}
 	
 	private void showList() {
+		stockList = new ArrayList<Map<String, String>>();
 		List<ProductLot> stck = stock.getAllProductLot();
 		for(ProductLot productLot : stck) {
 			stockList.add(productLot.toMap());
@@ -65,7 +67,7 @@ public class ShowStockActivity extends Activity {
 
 		SimpleAdapter sAdap;
 		sAdap = new SimpleAdapter(ShowStockActivity.this, stockList,
-				R.layout.activity_columnstock, new String[] { "name",
+				R.layout.activity_columnstock, new String[] { "productName",
 						"amount","cost","dateAdded" }, new int[] { R.id.ColName,
 						R.id.ColAmount, R.id.ColCost, R.id.ColDate });
 		lisView1.setAdapter(sAdap);

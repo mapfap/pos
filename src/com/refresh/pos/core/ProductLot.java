@@ -57,7 +57,7 @@ public class ProductLot {
 		map.put("id",id+"");
 		map.put("dateAdded", dateAdded);
 		map.put("amount", amount+"");
-		map.put("productId", productId+"");
+		map.put("productName", productId+"");
 		map.put("cost", cost+"");
 		return map;
 	}

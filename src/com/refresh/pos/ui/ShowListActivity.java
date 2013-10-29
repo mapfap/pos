@@ -1,11 +1,13 @@
 package com.refresh.pos.ui;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
@@ -34,10 +36,10 @@ public class ShowListActivity extends Activity {
 			e.printStackTrace();
 		}
 		
-		showList();
 
 		
 		lisView1 = (ListView) findViewById(R.id.listView1);
+		showList();
 		
 		final Button addProductButton = (Button) findViewById(R.id.addNewProduct);
 
@@ -60,16 +62,21 @@ public class ShowListActivity extends Activity {
 	
 	private void showList() {
 		
+		Log.d("MAPFAP", "SHOWLIST");
+//		Log.d("MAPFAP", "SHOWLIST");
+//		Log.d("MAPFAP", "SHOWLIST");
+		stockList = new ArrayList<Map<String, String>>();
 		List<Product> catalog = productCatalog.getAllProduct();
 		for(Product product : catalog) {
 			stockList.add(product.toMap());
+//			Log.d("MAPFAP", product.getName());
 		}
 		
 		SimpleAdapter sAdap;
 		sAdap = new SimpleAdapter(ShowListActivity.this, stockList,
 				R.layout.activity_column, new String[] { "name",
-						"barcode","salePrice" }, new int[] { R.id.ColProductID,
-						R.id.ColName, R.id.ColBarcode });
+						"barcode"}, new int[] { R.id.ColProductID,
+						R.id.ColName});
 		lisView1.setAdapter(sAdap);
 	}
 
