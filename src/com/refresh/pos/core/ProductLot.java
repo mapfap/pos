@@ -1,5 +1,8 @@
 package com.refresh.pos.core;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import com.refresh.pos.database.NoDaoSetException;
 
 public class ProductLot {
@@ -47,5 +50,15 @@ public class ProductLot {
 
 	public int getProductId() {
 		return productId;
+	}
+
+	public Map<String, String> toMap() {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("id",id+"");
+		map.put("dateAdded", dateAdded);
+		map.put("amount", amount+"");
+		map.put("productId", productId+"");
+		map.put("cost", cost+"");
+		return map;
 	}
 }

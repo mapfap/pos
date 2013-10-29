@@ -1,5 +1,8 @@
 package com.refresh.pos.core;
 
+import java.util.HashMap;
+import java.util.Map;
+
 
 public class Product {
 
@@ -33,6 +36,16 @@ public class Product {
 	
 	public double getSalePrice() {
 		return salePrice;
+	}
+
+	public Map<String, String> toMap() {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("id",id+"");
+		map.put("name", name);
+		map.put("barcode", barcode);
+		map.put("salePrice", salePrice+"");
+		return map;
+		
 	}
 	
 }
