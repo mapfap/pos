@@ -71,7 +71,7 @@ public class ShowListActivity extends Activity {
 		SimpleAdapter sAdap;
 		sAdap = new SimpleAdapter(ShowListActivity.this, stockList,
 				R.layout.activity_column, new String[] { "name",
-						"barcode"}, new int[] { R.id.ColProductID,
+						"barcode"}, new int[] { R.id.ColBarcode,
 						R.id.ColName});
 		lisView1.setAdapter(sAdap);
 	}

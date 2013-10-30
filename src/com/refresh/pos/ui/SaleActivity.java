@@ -1,5 +1,8 @@
 package com.refresh.pos.ui;
 
+import java.util.List;
+import java.util.Map;
+
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import com.refresh.pos.R;
@@ -18,6 +21,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,7 +30,8 @@ public class SaleActivity extends Activity  {
 	private int amount = 0;
 	private EditText itemBarcode;
 	private EditText itemName;
-	private Inventory inventory;
+	private ListView lisView1;
+	List<Map<String, String>> inventoryList;
 	public void onActivityResult(int requestCode, int resultCode, Intent intent) {
 		Log.d("BARCODE", "BARCODE 'onActivityResult' Successfully.");
 
@@ -60,6 +65,8 @@ public class SaleActivity extends Activity  {
 		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_sale);
+		
+//		lisView1 = (listView1) findViewById(R.id);
 		
 		final TextView totalPrice = (TextView) findViewById(R.id.total);
 		totalPrice.setEnabled(false);
