@@ -156,13 +156,13 @@
             android:text="Add" />
 
         <Button
-            android:id="@+id/clearButton"
+            android:id="@+id/cancelButton"
             style="@style/ButtonText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/btn_yellow"
-            android:text="Clear" />
+            android:background="@drawable/btn_red"
+            android:text="Cancel" />
     </LinearLayout>
 
 </LinearLayout>
