@@ -50,7 +50,7 @@
         android:layout_weight="10000" >
 
         <ListView
-            android:id="@+id/listView"
+            android:id="@+id/listView1"
             android:layout_width="match_parent"
             android:layout_height="match_parent" >
         </ListView>

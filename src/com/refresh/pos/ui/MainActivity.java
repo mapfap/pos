@@ -40,8 +40,8 @@ public class MainActivity extends Activity {
 
 		productCatalogButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				Intent newActivity = new Intent(MainActivity.this,ShowListActivity.class);
-//				Intent newActivity = new Intent(MainActivity.this,ShowInventoryActivity.class);
+//				Intent newActivity = new Intent(MainActivity.this,ShowListActivity.class);
+				Intent newActivity = new Intent(MainActivity.this,ShowInventoryActivity.class);
 				startActivity(newActivity);
 			}
 		});
