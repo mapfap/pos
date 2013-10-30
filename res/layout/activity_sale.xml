@@ -87,16 +87,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/btn_yellow"
+            android:background="@drawable/btn_red"
             android:text="Clear" />
     </LinearLayout>
 
     <Button
-        android:id="@+id/makeSale"
+        android:id="@+id/payment"
         style="@style/ButtonText"
-        android:background="@drawable/btn_blue"
+        android:background="@drawable/btn_purple"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Make Sale" />
+        android:text="Payment" />
 
 </LinearLayout>
