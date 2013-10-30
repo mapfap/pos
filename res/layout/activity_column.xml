@@ -16,34 +16,23 @@
 		android:layout_width="0dp"
 		android:layout_height="wrap_content" 
 		android:layout_weight="2"
-		android:textSize="18sp"
+		
 		android:text="ProductID"/>
 
 	<TextView
 		android:layout_width="0dp"
 		android:layout_height="wrap_content" 
 		android:layout_weight="0.5"
-		android:textSize="18sp"
+		
 		android:text=""/>
 	<TextView
 		android:id="@+id/ColName" 
 		android:layout_width="0dp"
 		android:layout_height="wrap_content" 
 		android:layout_weight="2"
-		android:textSize="18sp"
+		
 		android:text="Name"/>
 
-<!--  	<TextView
-		android:layout_width="0dp"
-		android:layout_height="wrap_content" 
-		android:layout_weight="0.5"
-		android:text=""/>
-	<TextView
-	    android:id="@+id/ColBarcode"
-	    android:layout_width="0dp"
-	    android:layout_height="wrap_content"
-	    android:layout_weight="3"
-	    android:text="Barcode" />-->
 	
 	<TextView
 		android:layout_width="0dp"
@@ -51,13 +40,7 @@
 		android:layout_weight="0.5"
 		android:textSize="18sp"
 		android:text=""/>
-	
-	
-	<TextView
-		android:layout_width="0dp"
-		android:layout_height="wrap_content" 
-		android:layout_weight="1"
-		android:text=""/>
+
 	<TextView
 	    android:id="@+id/ColSalePrice"
 	    android:layout_width="0dp"
