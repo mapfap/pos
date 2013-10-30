@@ -51,14 +51,6 @@ public class SaleActivity extends Activity  {
 		popDialog.setTitle("Add Item");
 		popDialog.setView(Viewlayout);
 		
-		final Button cancelButton = (Button) findViewById(R.id.cancel);
-		cancelButton.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				
-			}
-		});
 		
 		popDialog.create();
 		popDialog.show();
