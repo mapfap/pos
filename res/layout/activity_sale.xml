@@ -54,7 +54,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Price / Unit" />
-
     </TableRow>
 
     <ListView
@@ -62,7 +61,6 @@
         android:layout_width="match_parent"
         android:layout_height="209dp"
         android:layout_weight="1.09" >
-
     </ListView>
 
     <LinearLayout
@@ -70,22 +68,28 @@
         android:layout_height="wrap_content" >
 
         <Button
-            android:id="@+id/clear"
-            android:layout_width="wrap_content"
+            android:id="@+id/addSaleItem"
+            style="@style/ButtonText"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.51"
-            android:text="Clear" />
+            android:layout_weight="1"
+            android:background="@drawable/btn_green"
+            android:text="Add" />
 
         <Button
-            android:id="@+id/addSaleItem"
-            android:layout_width="wrap_content"
+            android:id="@+id/clear"
+            style="@style/ButtonText"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.56"
-            android:text="Add" />
+            android:layout_weight="1"
+            android:background="@drawable/btn_yellow"
+            android:text="Clear" />
     </LinearLayout>
 
     <Button
         android:id="@+id/makeSale"
+        style="@style/ButtonText"
+        android:background="@drawable/btn_blue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Make Sale" />
