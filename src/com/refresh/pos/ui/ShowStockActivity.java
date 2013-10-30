@@ -72,5 +72,9 @@ public class ShowStockActivity extends Activity {
 						R.id.ColAmount, R.id.ColCost, R.id.ColDate });
 		lisView1.setAdapter(sAdap);
 	}
+	
+	private void addStock(){
+		
+	}
 
 }

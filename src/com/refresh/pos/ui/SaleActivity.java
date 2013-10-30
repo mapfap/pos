@@ -86,6 +86,14 @@ public class SaleActivity extends Activity  {
 			}
 		});
 		
+		final Button cancelButton = (Button) dialog.findViewById(R.id.cancelButton);
+		cancelButton.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				dialog.dismiss();
+			}
+		});
 		dialog.show();
 	}
 
