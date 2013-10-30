@@ -94,7 +94,7 @@
     <Button
         android:id="@+id/payment"
         style="@style/ButtonText"
-        android:background="@drawable/btn_purple"
+        android:background="@drawable/btn_orange"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Payment" />
