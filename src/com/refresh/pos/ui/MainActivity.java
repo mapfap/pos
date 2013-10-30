@@ -59,7 +59,8 @@ public class MainActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				
+				Intent newActivity = new Intent(MainActivity.this,SaleActivity.class);
+				startActivity(newActivity);
 			}
 		});
 		
