@@ -3,6 +3,8 @@ package com.refresh.pos.ui;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import com.refresh.pos.R;
+import com.refresh.pos.core.Inventory;
+import com.refresh.pos.database.NoDaoSetException;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -21,19 +23,32 @@ import android.widget.Toast;
 
 public class SaleActivity extends Activity  {
 
+	private int amount = 0;
 	private EditText itemBarcode;
+	private EditText itemName;
+	private Inventory inventory;
 	public void onActivityResult(int requestCode, int resultCode, Intent intent) {
 		Log.d("BARCODE", "BARCODE 'onActivityResult' Successfully.");
 
 		IntentResult scanningResult = IntentIntegrator.parseActivityResult(
 				requestCode, resultCode, intent);
-
+//			Log.d("BARCODE",scanningResult.toString());
 		if (scanningResult != null) {
 			String scanContent = scanningResult.getContents();
-			// String scanFormat = scanningResult.getFormatName();
-			// Toast.makeText(AddActivity.this,"got >> " + scanContent ,
-			// Toast.LENGTH_SHORT).show();
-			itemBarcode.setText(scanContent);
+			String name = "";
+			try {
+				name = Inventory.getInstance().getProductCatalog().getProductByBarcode(scanContent).getName();
+			} catch (NoDaoSetException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			if(name.equals("UNDEFINED")){
+				Log.d("Barcode","Can't find");
+			}
+			else{
+				itemBarcode.setText(scanContent);
+				itemName.setText(name);
+			}
 		} else {
 			Toast.makeText(SaleActivity.this,
 					"Failed to retrieve barcode." + resultCode,
@@ -74,7 +89,10 @@ public class SaleActivity extends Activity  {
 		dialog.setTitle("Add Item");
 
 		
+		itemName = (EditText) dialog.findViewById(R.id.nameTxt);
 		itemBarcode = (EditText) dialog.findViewById(R.id.barcodeTxt);
+		final EditText amountTxt = (EditText) dialog.findViewById(R.id.amountTxt);
+		amount = Integer.parseInt(amountTxt.getText().toString());
 		final Button scanButton = (Button) dialog.findViewById(R.id.scanButton);
 		scanButton.setOnClickListener(new View.OnClickListener() {
 
@@ -92,6 +110,33 @@ public class SaleActivity extends Activity  {
 			@Override
 			public void onClick(View v) {
 				dialog.dismiss();
+			}
+		});
+		
+		final Button plusButton = (Button) dialog.findViewById(R.id.plus);
+		plusButton.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				amount = Integer.parseInt(amountTxt.getText().toString());
+				amount++;
+				amountTxt.setText(amount+"");
+			}
+		});
+		final Button minButton = (Button) dialog.findViewById(R.id.min);
+		minButton.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				if(amount==0){
+
+				}
+				else{
+					amount = Integer.parseInt(amountTxt.getText().toString());
+					amount--;
+					amountTxt.setText(amount+"");
+				}
+
 			}
 		});
 		dialog.show();
