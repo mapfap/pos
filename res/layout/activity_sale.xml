@@ -4,21 +4,26 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Total" />
-
-    <EditText
-        android:id="@+id/totalPrice"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="number" >
+        android:layout_height="63dp" >
 
-        <requestFocus />
-    </EditText>
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="28sp"
+            android:text="Total" />
+
+        <TextView
+            android:id="@+id/total"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:text="0.00"
+            android:textSize="48sp" />
+
+    </LinearLayout>
 
     <TableRow
         android:id="@+id/tableRow1"
