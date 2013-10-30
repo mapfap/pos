@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class SaleActivity extends Activity  {
 
@@ -20,7 +21,7 @@ public class SaleActivity extends Activity  {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_sale);
 		
-		final EditText totalPrice = (EditText) findViewById(R.id.totalPrice);
+		final TextView totalPrice = (TextView) findViewById(R.id.total);
 		totalPrice.setEnabled(false);
 		
 		final Button addButton = (Button) findViewById(R.id.addSaleItem);
