@@ -1,91 +1,158 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/dialog_addItem"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Barcode" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
 
-        <EditText
-            android:id="@+id/editText1"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="0dip"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:inputType="number" >
+            android:layout_weight="0.67"
+            android:orientation="vertical" >
 
-            <requestFocus />
-        </EditText>
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.03"
+                android:textSize="20sp"
+                android:text="Name" />
 
-        <Button
-            android:id="@+id/button1"
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.61"
-            android:text="Scan" />
-
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Amount" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="-" />
-
-        <EditText
-            android:id="@+id/editText2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:inputType="number" />
-
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="+" />
-
+            <EditText
+                android:id="@+id/nameTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.03"
+                android:textSize="18sp"
+                android:ems="20"
+                android:inputType="text" />
+        </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="15dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <LinearLayout
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.67"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/barcode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.03"
+                    android:text="Barcode"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/barcodeTxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.03"
+                    android:ems="20"
+                    android:inputType="number"
+                    android:textSize="18sp" >
+
+                    <requestFocus />
+                </EditText>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/scanButton"
+                style="@style/ButtonText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_blue"
+                android:text="@string/scan"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="15dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content" >
 
-        <Button
-            android:id="@+id/cancel"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="0dip"
             android:layout_height="wrap_content"
-            android:layout_weight="0.47"
-            android:text="Cancel" />
+            android:layout_weight="0.67"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.03"
+                android:textSize="20sp"
+                android:text="Amount" />
+
+            <EditText
+                android:id="@+id/amountTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.03"
+                android:ems="20"
+                android:inputType="number"
+                android:textSize="18sp"
+                android:text="0" />
+        </LinearLayout>
 
         <Button
-            android:id="@+id/button5"
-            android:layout_width="wrap_content"
+            android:id="@+id/min"
+            style="@style/ButtonText"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/btn_purple"
+            android:text="-"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/plus"
+            style="@style/ButtonText"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/btn_purple"
+            android:text="+"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/addButton"
+            style="@style/ButtonText"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.54"
+            android:layout_weight="1"
+            android:background="@drawable/btn_green"
             android:text="Add" />
-
     </LinearLayout>
 
 </LinearLayout>
