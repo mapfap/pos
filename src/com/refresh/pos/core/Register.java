@@ -52,26 +52,17 @@ public class Register {
 		return true;
 	}
 	
-	/**
-	 * Returns the total price of a current sale. (zero if there is no sale.)
-	 */
 	public double getTotal() {
-		if (currentSale == null) return 0.0;
+		if (currentSale == null) return 0;
 		return currentSale.getTotal();
 		
 	}
 
-	/**
-	 * End a sale and return the total price of sale. 
-	 * @return total price of sale
-	 */
-	public double endSale() {
+	public void endSale() {
 		double total = currentSale.getTotal();
-		//TODO save the sale in SalesLedger
-//		currentSale.setChangedAndNotifyObservers();
-		currentSale.deleteObservers(); // remove all the observers
+		saleDao.endSale(Calendar.getInstance());
+//		currentSale.deleteObservers();
 		this.currentSale = null;
-		return total; // This is not high cohesion. but for now there is no SalesLedger yet.
 	}
 	
 	

@@ -8,4 +8,6 @@ public interface SaleDao {
 
 	Sale initiateSale(Calendar startTime);
 
+	void endSale(Calendar instance);
+
 }

@@ -8,18 +8,18 @@ import java.util.Observable;
 
 public class Sale extends Observable {
 	
+	private final int id;
 	private Calendar startTime;
 	private Calendar endTime;
 	private String getNote;
 	private List<LineItem> items;
-	private final int id;
 
 	public Sale(int id, Calendar startTime) {
 		this.id = id;
 		items = new ArrayList<LineItem>( );
 		startTime = Calendar.getInstance();
 	}
-
+	
 	public boolean addLineItem(Product product, int quantity) {
 		
 		for (LineItem lineItem : items) {
@@ -54,13 +54,11 @@ public class Sale extends Observable {
 	}
 
 	public double getTotal() {
-		double total = 0.0;
-		for( LineItem lineItem : items ) {
+		double total = 0;
+		for(LineItem lineItem : items) {
 			total += lineItem.getTotal();
 		}
 		return total;
 	}
-
-
 
 }

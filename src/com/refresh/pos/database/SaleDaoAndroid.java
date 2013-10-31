@@ -23,4 +23,10 @@ public class SaleDaoAndroid implements SaleDao {
 		return new Sale(id,startTime);
 	}
 
+	@Override
+	public void endSale(Calendar instance) {
+		//database.update();
+		
+	}
+
 }
