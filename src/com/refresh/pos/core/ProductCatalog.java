@@ -14,8 +14,8 @@ public class ProductCatalog {
 
 	public boolean addProduct(String name, String barcode, double salePrice) {
 		Product product = new Product(Product.UNDEFINED_ID, name, barcode, salePrice);		
-		long respond = inventoryDao.addProduct(product);
-		return respond != -1;
+		int id = inventoryDao.addProduct(product);
+		return id != -1;
 	}
 
 	public boolean editProduct(Product product) {

@@ -98,7 +98,7 @@ public class SaleActivity extends Activity  {
 		
 		itemName = (EditText) dialog.findViewById(R.id.nameTxt);
 		itemBarcode = (EditText) dialog.findViewById(R.id.barcodeTxt);
-		final EditText amountTxt = (EditText) dialog.findViewById(R.id.amountTxt);
+		final EditText amountTxt = (EditText) dialog.findViewById(R.id.quantityTxt);
 		amount = Integer.parseInt(amountTxt.getText().toString());
 		final Button scanButton = (Button) dialog.findViewById(R.id.scanButton);
 		scanButton.setOnClickListener(new View.OnClickListener() {

@@ -10,15 +10,15 @@ public class ProductLot {
 	
 	private int id;
 	private String dateAdded;
-	private double amount;
+	private double quantity;
 	private int productId;
 	private double cost;
 	public static final int UNDEFINED_ID = -1;
 
-	public ProductLot(int id, String dateAdded, double amount, int productId, double cost) {
+	public ProductLot(int id, String dateAdded, double quantity, int productId, double cost) {
 		this.id = id;
 		this.dateAdded = dateAdded;
-		this.amount = amount;
+		this.quantity = quantity;
 		this.productId = productId;
 		this.cost = cost;
 	}
@@ -27,8 +27,8 @@ public class ProductLot {
 		return dateAdded;
 	}
 	
-	public double getAmount() {
-		return amount;
+	public double getQuantity() {
+		return quantity;
 	}
 	
 	public Product getProduct() {
@@ -56,7 +56,7 @@ public class ProductLot {
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("id",id+"");
 		map.put("dateAdded", dateAdded);
-		map.put("amount", amount+"");
+		map.put("quantity", quantity+"");
 		map.put("productName", productId+"");
 		map.put("cost", cost+"");
 		return map;

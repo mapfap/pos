@@ -23,7 +23,7 @@ public class StockAddActivity extends Activity{
 	private EditText itemName;
 	private EditText itemPrice;
 	private Inventory inventory;
-	private int amount;
+	private double quantity;
 
 	public void onActivityResult(int requestCode, int resultCode, Intent intent) {
 		//		Log.d("BARCODE", "BARCODE 'onActivityResult' Successfully.");
@@ -61,8 +61,8 @@ public class StockAddActivity extends Activity{
 
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_stockadd);
-		final EditText amountTxt = (EditText) findViewById(R.id.amountTxt);
-		amount = Integer.parseInt(amountTxt.getText().toString());
+		final EditText quantityTxt = (EditText) findViewById(R.id.quantityTxt);
+		quantity = Double.parseDouble(quantityTxt.getText().toString());
 		itemName = (EditText) findViewById(R.id.nameTxt);
 		itemBarcode = (EditText) findViewById(R.id.barcodeTxt);
 				itemBarcode.setEnabled(false);
@@ -84,9 +84,9 @@ public class StockAddActivity extends Activity{
 
 			@Override
 			public void onClick(View v) {
-				amount = Integer.parseInt(amountTxt.getText().toString());
-				amount++;
-				amountTxt.setText(amount+"");
+				quantity = Integer.parseInt(quantityTxt.getText().toString());
+				quantity++;
+				quantityTxt.setText(quantity+"");
 			}
 		});
 		final Button minButton = (Button) findViewById(R.id.min);
@@ -94,13 +94,13 @@ public class StockAddActivity extends Activity{
 
 			@Override
 			public void onClick(View v) {
-				if(amount==0){
+				if(quantity==0){
 
 				}
 				else{
-					amount = Integer.parseInt(amountTxt.getText().toString());
-					amount--;
-					amountTxt.setText(amount+"");
+					quantity = Double.parseDouble(quantityTxt.getText().toString());
+					quantity--;
+					quantityTxt.setText(quantity+"");
 				}
 
 			}
@@ -122,7 +122,7 @@ public class StockAddActivity extends Activity{
 					Date now = new Date();
 					String time = new SimpleDateFormat("dd MMM yyyy").format(now);
 					int id = inventory.getProductCatalog().getProductByBarcode(itemBarcode.getText().toString()).getId();
-					boolean success = inventory.getStock().addProductLot(time, amount, id,Double.parseDouble(itemPrice.getText().toString()));
+					boolean success = inventory.getStock().addProductLot(time, quantity, id,Double.parseDouble(itemPrice.getText().toString()));
 					if(success){
 						Toast.makeText(StockAddActivity.this,
 								"Successfully Add : "+itemName.getText().toString(), Toast.LENGTH_SHORT)
@@ -142,11 +142,11 @@ public class StockAddActivity extends Activity{
 
 			@Override
 			public void onClick(View v) {
-				amount=0;
+				quantity=0;
 				itemBarcode.setText("");
 				itemName.setText("");
 				itemPrice.setText("");
-				amountTxt.setText(amount+"");
+				quantityTxt.setText(quantity+"");
 
 			}
 		});

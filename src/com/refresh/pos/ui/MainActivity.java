@@ -27,7 +27,7 @@ public class MainActivity extends Activity {
 		SaleDao saleDao = new SaleDaoAndroid(database);
 		
 		Inventory.setInventoryDao(inventoryDao);
-		Sale.setSaleDao(saleDao);
+//		Sale.setSaleDao(saleDao);
 		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
