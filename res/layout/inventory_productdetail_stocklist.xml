@@ -21,7 +21,7 @@
 
                 <ImageView
                     android:id="@+id/productImage"
-                    android:layout_width="124dp"
+                    android:layout_width="100dp"
                     android:layout_height="120dp"
                     android:src="@drawable/ic_launcher" />
 
@@ -142,7 +142,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.5"
-                    android:text="Quantity" />
+                    android:text="Amount" />
 
                 <TextView
                     android:layout_width="0dp"
