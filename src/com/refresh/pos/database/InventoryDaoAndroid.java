@@ -26,38 +26,37 @@ public class InventoryDaoAndroid implements InventoryDao {
         int id = database.insert(DatabaseContents.TABLE_PRODUCT_CATALOG.toString(), content);
         return id;
 	}
-
-
-	@Override
-	public List<Product> getAllProduct() {
-		String queryString = "SELECT * FROM " + DatabaseContents.TABLE_PRODUCT_CATALOG.toString();
-        @SuppressWarnings("unchecked")
-        List<ContentValues> contents = (List) database.select(queryString);
-        List<Product> list = new ArrayList<Product>();
+	
+	private List<Product> toProductList(List<ContentValues> contents) {
+		List<Product> list = new ArrayList<Product>();
         for (ContentValues content: contents) {
-                list.add( 
-                        new Product( content.getAsInteger("_id"),
-                                        content.getAsString("name"), content.getAsString("barcode")
-                                        ,content.getAsDouble("sale_price"))
+                list.add(new Product(
+                		content.getAsInteger("_id"),
+                        content.getAsString("name"),
+                        content.getAsString("barcode"),
+                        content.getAsDouble("sale_price"))
                 );
         }
         return list;
 	}
+
+
+	@Override
+	public List<Product> getAllProduct() {
+        return getAllProduct("");
+	}
+	
+	private List<Product> getAllProduct(String condition) {
+		String queryString = "SELECT * FROM " + DatabaseContents.TABLE_PRODUCT_CATALOG.toString() + condition;
+        @SuppressWarnings("unchecked")
+        List<Product> list = toProductList((List) database.select(queryString));
+        return list;
+	}
 	
 	private List<Product> getProductBy(String reference, String value) {
-        String queryString = "SELECT * FROM " + DatabaseContents.TABLE_PRODUCT_CATALOG.toString() + " WHERE " + reference + " = " + value + " ;";
-        @SuppressWarnings("unchecked")
-        List<ContentValues> contents = (List) database.select(queryString);
-        List<Product> productList = new ArrayList<Product>();
-        for (ContentValues content: contents) {
-                productList.add(
-                        new Product(content.getAsInteger("_id"),
-                                        content.getAsString("name"), content.getAsString("barcode"),content.getAsDouble("sale_price")
-                                         )
-                );
-        }
-        return productList;
-}
+        String condition = " WHERE " + reference + " = " + value + " ;";
+        return getAllProduct(condition);
+	}
 
 	@Override
 	public Product getProductByBarcode(String barcode) {
@@ -73,8 +72,12 @@ public class InventoryDaoAndroid implements InventoryDao {
 
 	@Override
 	public boolean editProduct(Product product) {
-		// TODO Auto-generated method stub
-		return false;
+		ContentValues content = new ContentValues();
+		content.put("_id", product.getId());
+		content.put("name", product.getName());
+        content.put("barcode", product.getBarcode());
+        content.put("sale_price", product.getSalePrice());
+		return database.update(DatabaseContents.TABLE_PRODUCT_CATALOG.toString(), content);
 	}
 	
 	

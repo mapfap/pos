@@ -1,7 +1,5 @@
 package com.refresh.pos.core;
 
-import java.util.Calendar;
-
 import com.refresh.pos.database.NoDaoSetException;
 import com.refresh.pos.database.SaleDao;
 
@@ -30,46 +28,30 @@ public class Register {
 		saleDao = dao;	
 	}
 	
-	public void initiateSale(String startTime) {
+	public Sale initiateSale(String startTime) {
 		if (currentSale != null) {
-			// end the sell and create new one
+			return currentSale;
 		}
 		currentSale = saleDao.initiateSale(startTime);
-		// add observers
-//		for(Observer view: saleobservers ) {
-//			sale.addObserver(view);
-//			if (view instanceof POSUI) ((POSUI)view).setSale(sale);
-//		}
+		return currentSale;
 	}
 	
-
-	public boolean addItem(Product product, int quantity) {
+	public int addItem(Product product, int quantity) {
 		if (quantity <= 0 || currentSale == null)
-			return false;
-		currentSale.addLineItem(product, quantity);
-		return true;
+			return -1;
+		LineItem lineItem = currentSale.addLineItem(product, quantity);
+		return saleDao.addLineItem(currentSale.getId(), lineItem);
 	}
 	
 	public double getTotal() {
 		if (currentSale == null) return 0;
 		return currentSale.getTotal();
-		
 	}
 
 	public void endSale(String endTime) {
 		double total = currentSale.getTotal();
 		saleDao.endSale(currentSale, endTime);
-//		currentSale.deleteObservers();
-		this.currentSale = null;
+		currentSale = null;
 	}
 	
-	
-//	public void addSaleObserver(Observer obs) {
-//		if ( !saleobservers.contains(obs) ) {
-//			saleobservers.add(obs);
-//			if (sale != null) sale.addObserver(obs);
-////			view.setSale(sale);
-//		}
-//	}
-
 }

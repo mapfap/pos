@@ -26,6 +26,18 @@ public class Product {
 		return name;
 	}
 	
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setBarcode(String barcode) {
+		this.barcode = barcode;
+	}
+
+	public void setSalePrice(double salePrice) {
+		this.salePrice = salePrice;
+	}
+
 	public int getId() {
 		return id;
 	}

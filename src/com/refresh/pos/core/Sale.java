@@ -19,26 +19,27 @@ public class Sale extends Observable {
 		this.startTime = startTime;
 		this.status = "???";
 		items = new ArrayList<LineItem>( );
-		
 	}
 	
-	public boolean addLineItem(Product product, int quantity) {
+	public Sale(int id, String startTime, String endTime, String status) {
+		this.id = id;
+		this.startTime = startTime;
+		this.status = status;
+		this.endTime = endTime;
+	}
+	
+	public LineItem addLineItem(Product product, int quantity) {
 		
 		for (LineItem lineItem : items) {
 			if (lineItem.getProductId() == product.getId()) {
 				lineItem.addQuantity(quantity);
-				super.setChanged();
-				super.notifyObservers();
-				return true;
+				return lineItem;
 			}
 		}
 		
-		if ( items.add(new LineItem(product, quantity)) ) {
-			super.setChanged();
-			super.notifyObservers();
-			return true;
-		}
-		return false;
+		LineItem lineItem = new LineItem(product, quantity);
+		items.add(lineItem);
+		return lineItem;
 	}
 	
 	public int size() {
