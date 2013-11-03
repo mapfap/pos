@@ -46,11 +46,10 @@ public class AndroidDatabase extends SQLiteOpenHelper implements Database {
 				
 				+ "_id INTEGER PRIMARY KEY,"
 				+ "status TEXT(40),"
-				+ "note TEXT(100),"
 				+ "payment TEXT(50),"
-				+ "quantity DOUBLE,"
-				+ "date_start DATETIME,"
-				+ "date_end DATETIME"
+				+ "total_price DOUBLE,"
+				+ "start_time DATETIME,"
+				+ "end_time DATETIME"
 				
 				+ ");");
 		Log.d("CREATE DATABASE", "Create " + DatabaseContents.TABLE_SALE.toString() + " Successfully.");
@@ -137,9 +136,16 @@ public class AndroidDatabase extends SQLiteOpenHelper implements Database {
 	}
 
 	@Override
-	public boolean delete() {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean delete(String tableName, int id) {
+		try {
+			SQLiteDatabase database = this.getWritableDatabase();
+			database.delete(tableName, " _id = ?", new String[]{id+""});
+			return true;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
 	}
 
 }

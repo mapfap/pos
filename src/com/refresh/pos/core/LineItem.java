@@ -14,7 +14,7 @@ public class LineItem {
 		this.quantity = quantity;
 	}
 
-	public long getProductId() {
+	public int getProductId() {
 		return product.getId();
 	}
 	

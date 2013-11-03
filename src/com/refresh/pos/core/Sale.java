@@ -9,15 +9,17 @@ import java.util.Observable;
 public class Sale extends Observable {
 	
 	private final int id;
-	private Calendar startTime;
-	private Calendar endTime;
-	private String getNote;
+	private String startTime;
+	private String endTime;
+	private String status;
 	private List<LineItem> items;
 
-	public Sale(int id, Calendar startTime) {
+	public Sale(int id, String startTime) {
 		this.id = id;
+		this.startTime = startTime;
+		this.status = "???";
 		items = new ArrayList<LineItem>( );
-		startTime = Calendar.getInstance();
+		
 	}
 	
 	public boolean addLineItem(Product product, int quantity) {
@@ -49,9 +51,6 @@ public class Sale extends Observable {
 		return null;
 	}
 
-	public Calendar getDate() {
-		return startTime;
-	}
 
 	public double getTotal() {
 		double total = 0;
@@ -59,6 +58,26 @@ public class Sale extends Observable {
 			total += lineItem.getTotal();
 		}
 		return total;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public String getStartTime() {
+		return startTime;
+	}
+	
+	public String getEndTime() {
+		return endTime;
+	}
+
+	public String getPayment() {
+		return "CASH";
+	}
+
+	public String getStatus() {
+		return status;
 	}
 
 }

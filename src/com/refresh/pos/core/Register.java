@@ -30,11 +30,11 @@ public class Register {
 		saleDao = dao;	
 	}
 	
-	public void initiateSale() {
+	public void initiateSale(String startTime) {
 		if (currentSale != null) {
 			// end the sell and create new one
 		}
-		currentSale = saleDao.initiateSale(Calendar.getInstance());
+		currentSale = saleDao.initiateSale(startTime);
 		// add observers
 //		for(Observer view: saleobservers ) {
 //			sale.addObserver(view);
@@ -44,10 +44,8 @@ public class Register {
 	
 
 	public boolean addItem(Product product, int quantity) {
-		if (quantity <= 0)
+		if (quantity <= 0 || currentSale == null)
 			return false;
-		if (currentSale == null)
-			initiateSale();
 		currentSale.addLineItem(product, quantity);
 		return true;
 	}
@@ -58,9 +56,9 @@ public class Register {
 		
 	}
 
-	public void endSale() {
+	public void endSale(String endTime) {
 		double total = currentSale.getTotal();
-		saleDao.endSale(Calendar.getInstance());
+		saleDao.endSale(currentSale, endTime);
 //		currentSale.deleteObservers();
 		this.currentSale = null;
 	}

@@ -1,13 +1,14 @@
 package com.refresh.pos.database;
 
-import java.util.Calendar;
-
+import com.refresh.pos.core.LineItem;
 import com.refresh.pos.core.Sale;
 
 public interface SaleDao {
 
-	Sale initiateSale(Calendar startTime);
+	Sale initiateSale(String startTime);
 
-	void endSale(Calendar instance);
+	void endSale(Sale sale, String endTime);
+
+	int addLineItem(int saleId, LineItem lineItem);
 
 }
