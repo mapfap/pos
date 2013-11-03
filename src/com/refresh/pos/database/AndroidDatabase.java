@@ -121,9 +121,19 @@ public class AndroidDatabase extends SQLiteOpenHelper implements Database {
 	}
 
 	@Override
-	public boolean update() {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean update(String tableName, Object content) {
+		try {
+			SQLiteDatabase database = this.getWritableDatabase();
+			ContentValues cont = (ContentValues) content;
+			// this array will always contains only one element. 
+			String[] array = new String[]{cont.get("_id")+""};
+			database.update(tableName, cont, " _id = ?", array);
+			return true;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
 	}
 
 	@Override

@@ -18,6 +18,7 @@ public class SaleDaoAndroid implements SaleDao {
 	public Sale initiateSale(Calendar startTime) {
 		ContentValues content = new ContentValues();
         content.put("start_time", startTime.toString());
+        content.put("status", "ON PROCESS");
         
         int id = database.insert(DatabaseContents.TABLE_SALE.toString(), content);
 		return new Sale(id,startTime);
