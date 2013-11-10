@@ -29,6 +29,7 @@ import com.refresh.pos.database.NoDaoSetException;
 
 public class InventoryActivity extends Activity {
 
+	protected static final int SEARCH_LIMIT = 0;
 	private ListView inventoryListView;
 	private ProductCatalog productCatalog;
 	List<Map<String, String>> inventoryList;
@@ -67,7 +68,7 @@ public class InventoryActivity extends Activity {
 		
 		searchBox.addTextChangedListener(new TextWatcher(){
 	        public void afterTextChanged(Editable s) {
-	        	if (s.length() >= 2) {
+	        	if (s.length() >= SEARCH_LIMIT) {
 	        		search();
 	        	}
 	        }
