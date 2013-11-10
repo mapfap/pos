@@ -5,14 +5,21 @@
     android:orientation="vertical" >
 
     <ImageButton
-        android:id="@+id/imageButton1"
+        android:id="@+id/inventoryButton"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:src="@drawable/btn_blue" />
 
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/stockButton"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:src="@drawable/btn_red" />
+    
+    <ImageButton
+        android:id="@+id/saleButton"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"

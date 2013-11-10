@@ -1,17 +1,13 @@
 package com.refresh.pos.ui;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.zxing.integration.android.IntentIntegrator;
@@ -19,29 +15,24 @@ import com.google.zxing.integration.android.IntentResult;
 import com.refresh.pos.R;
 import com.refresh.pos.core.Inventory;
 import com.refresh.pos.core.ProductCatalog;
-import com.refresh.pos.database.InventoryDaoAndroid;
 import com.refresh.pos.database.NoDaoSetException;
 
-@SuppressLint("NewApi")
-public class AddActivity extends Activity {
+public class AddProductActivity extends Activity {
 
 	private EditText itemBarcode;
 	private ProductCatalog productCatalog;
 
 	public void onActivityResult(int requestCode, int resultCode, Intent intent) {
-		Log.d("BARCODE", "BARCODE 'onActivityResult' Successfully.");
+		Log.d("BARCODE", "retrive the result.");
 
 		IntentResult scanningResult = IntentIntegrator.parseActivityResult(
 				requestCode, resultCode, intent);
 
 		if (scanningResult != null) {
 			String scanContent = scanningResult.getContents();
-			// String scanFormat = scanningResult.getFormatName();
-			// Toast.makeText(AddActivity.this,"got >> " + scanContent ,
-			// Toast.LENGTH_SHORT).show();
 			itemBarcode.setText(scanContent);
 		} else {
-			Toast.makeText(AddActivity.this,
+			Toast.makeText(AddProductActivity.this,
 					"Failed to retrieve barcode." + resultCode,
 					Toast.LENGTH_SHORT).show();
 		}
@@ -49,42 +40,49 @@ public class AddActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_add);
-		super.onCreate(savedInstanceState);
-
+		initUI(savedInstanceState);
+		
 		try {
 			productCatalog = Inventory.getInstance().getProductCatalog();
 		} catch (NoDaoSetException e) {
 			e.printStackTrace();
 		}
-		
-		final EditText itemPrice = (EditText) findViewById(R.id.priceTxt);
-		final EditText itemName = (EditText) findViewById(R.id.nameTxt);
-		itemBarcode = (EditText) findViewById(R.id.barcodeTxt);
 
-		final Button scanButton = (Button) findViewById(R.id.scanButton);
+	}
+
+	private void initUI(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_addproduct);
+		itemBarcode = (EditText) findViewById(R.id.barcodeBox);
+		final ImageButton scanButton = (ImageButton) findViewById(R.id.scanButton);
+		final EditText itemPrice = (EditText) findViewById(R.id.priceBox);
+		final EditText itemName = (EditText) findViewById(R.id.nameBox);
+		final ImageButton addButton = (ImageButton) findViewById(R.id.confirmButton);
+//		final ImageButton clearButton = (ImageButton) findViewById(R.id.clearButton);
+
 		scanButton.setOnClickListener(new View.OnClickListener() {
-
 			@Override
 			public void onClick(View v) {
-				IntentIntegrator scanIntegrator = new IntentIntegrator(
-						AddActivity.this);
+				IntentIntegrator scanIntegrator = new IntentIntegrator(AddProductActivity.this);
 				scanIntegrator.initiateScan();
 			}
 		});
 
-		final Button addButton = (Button) findViewById(R.id.addButton);
 		addButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				if (itemName.getText().toString().isEmpty()
-						|| itemBarcode.getText().toString().isEmpty()
-						|| itemPrice.getText().toString().isEmpty()) {
-					Toast.makeText(AddActivity.this,
-							"It's still have some blank", Toast.LENGTH_SHORT)
+				if (itemName.getText().toString().equals("")) {
+					Toast.makeText(AddProductActivity.this,
+							"Please input product's name.", Toast.LENGTH_SHORT)
+							.show();
+				} else if (itemBarcode.getText().toString().equals("")) {
+					Toast.makeText(AddProductActivity.this,
+							"Please input product's barcode.", Toast.LENGTH_SHORT)
+							.show();
+				} else if (itemPrice.getText().toString().equals("")) {
+					Toast.makeText(AddProductActivity.this,
+							"Please input product's price.", Toast.LENGTH_SHORT)
 							.show();
 				} else {
-
 					boolean success = productCatalog.addProduct(itemName
 							.getText().toString(), itemBarcode.getText()
 							.toString(), Double.parseDouble(itemPrice.getText()
@@ -92,42 +90,41 @@ public class AddActivity extends Activity {
 
 					if (success) {
 						Toast.makeText(
-								AddActivity.this,
+								AddProductActivity.this,
 								"Successfully Add : "
 										+ itemName.getText().toString(),
 								Toast.LENGTH_SHORT).show();
+						
 						itemName.setText("");
 						itemBarcode.setText("");
 						itemPrice.setText("");
-						// test
+						
 					} else {
-						Toast.makeText(AddActivity.this,
+						Toast.makeText(AddProductActivity.this,
 								"Failed to insert data", Toast.LENGTH_SHORT)
 								.show();
 					}
 				}
 			}
 		});
-		final Button clearButton = (Button) findViewById(R.id.clearButton);
-		clearButton.setOnClickListener(new View.OnClickListener() {
+		
+//		clearButton.setOnClickListener(new View.OnClickListener() {
+//
+//			@Override
+//			public void onClick(View v) {
+//				itemName.setText("");
+//				itemBarcode.setText("");
+//				itemPrice.setText("");
+//
+//			}
+//		});
 
-			@Override
-			public void onClick(View v) {
-				itemName.setText("");
-				itemBarcode.setText("");
-				itemPrice.setText("");
-
-			}
-		});
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
-	
-
 
 }
