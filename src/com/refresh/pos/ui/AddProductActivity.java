@@ -26,7 +26,21 @@ public class AddProductActivity extends Activity {
 	private EditText nameBox;
 	private ImageButton confirmButton;
 	private ImageButton clearButton;
+	private ImageButton backButton;
 
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		
+		try {
+			productCatalog = Inventory.getInstance().getProductCatalog();
+		} catch (NoDaoSetException e) {
+			e.printStackTrace();
+		}
+		
+		initUI(savedInstanceState);
+	}
+	
+	
 	public void onActivityResult(int requestCode, int resultCode, Intent intent) {
 		Log.d("BARCODE", "retrive the result.");
 
@@ -43,17 +57,6 @@ public class AddProductActivity extends Activity {
 		}
 	}
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		initUI(savedInstanceState);
-		
-		try {
-			productCatalog = Inventory.getInstance().getProductCatalog();
-		} catch (NoDaoSetException e) {
-			e.printStackTrace();
-		}
-
-	}
 
 	private void initUI(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -63,7 +66,15 @@ public class AddProductActivity extends Activity {
 		priceBox = (EditText) findViewById(R.id.priceBox);
 		nameBox = (EditText) findViewById(R.id.nameBox);
 		confirmButton = (ImageButton) findViewById(R.id.confirmButton);
+		backButton = (ImageButton) findViewById(R.id.backButton);
 //		clearButton = (ImageButton) findViewById(R.id.clearButton);
+		
+		backButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				AddProductActivity.this.finish();
+			}
+		});
 
 		scanButton.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -100,6 +111,8 @@ public class AddProductActivity extends Activity {
 								Toast.LENGTH_SHORT).show();
 						
 						clearAllBox();
+						AddProductActivity.this.finish();
+						
 						
 					} else {
 						Toast.makeText(AddProductActivity.this,

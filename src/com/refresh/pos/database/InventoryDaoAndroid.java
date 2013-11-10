@@ -120,6 +120,12 @@ public class InventoryDaoAndroid implements InventoryDao {
 		return getSimilarProductBy("name", name);
 	}
 
+	@Override
+	public List<Product> searchProduct(String search) {
+		String condition = " WHERE name LIKE '%" + search + "%' OR barcode LIKE '%" + search + "%' ;";
+        return getAllProduct(condition);
+	}
+
 
 
 }

@@ -24,12 +24,27 @@
         
         <activity
             android:name="com.refresh.pos.ui.InventoryActivity"
-            android:label="@string/app_name" >
+            android:label="Inventory" >
         </activity>
         
         <activity
             android:name="com.refresh.pos.ui.AddProductActivity"
-            android:label="@string/app_name" >
+            android:label="Add Product" >
+        </activity>
+
+        <activity
+            android:name="com.refresh.pos.ui.AddProductLotActivity"
+            android:label="Add Product Lot" >
+        </activity>
+        
+        <activity
+            android:name="com.refresh.pos.ui.ProductDetailActivity"
+            android:label="Product Detail" >
+        </activity>
+        
+        <activity
+            android:name="com.refresh.pos.ui.SaleActivity"
+            android:label="Sale" >
         </activity>
         
     </application>

@@ -22,8 +22,6 @@ public class HomeActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		
-		initUI(savedInstanceState);
-
 		Database database = new AndroidDatabase(this);
 		InventoryDao inventoryDao = new InventoryDaoAndroid(database);
 		SaleDao saleDao = new SaleDaoAndroid(database);
@@ -31,6 +29,7 @@ public class HomeActivity extends Activity {
 		Inventory.setInventoryDao(inventoryDao);
 		Register.setSaleDao(saleDao);
 		
+		initUI(savedInstanceState);
 	}
 
 	private void initUI(Bundle savedInstanceState) {
@@ -55,13 +54,13 @@ public class HomeActivity extends Activity {
 //			}
 //		});
 //		
-//		saleButton.setOnClickListener(new View.OnClickListener() {
-//			@Override
-//			public void onClick(View v) {
-//				Intent newActivity = new Intent(Home.this,SaleActivity.class);
-//				startActivity(newActivity);
-//			}
-//		});
+		saleButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent newActivity = new Intent(HomeActivity.this,SaleActivity.class);
+				startActivity(newActivity);
+			}
+		});
 		
 	}
 

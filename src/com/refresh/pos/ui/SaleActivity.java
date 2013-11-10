@@ -1,31 +1,31 @@
-//package com.refresh.pos.ui;
-//
-//import java.util.List;
-//import java.util.Map;
-//
-//import com.google.zxing.integration.android.IntentIntegrator;
-//import com.google.zxing.integration.android.IntentResult;
-//import com.refresh.pos.R;
-//import com.refresh.pos.core.Inventory;
-//import com.refresh.pos.database.NoDaoSetException;
-//
-//import android.app.Activity;
-//import android.app.AlertDialog;
-//import android.app.Dialog;
-//import android.content.Intent;
-//import android.os.Bundle;
-//import android.util.Log;
-//import android.view.LayoutInflater;
-//import android.view.Menu;
-//import android.view.View;
-//import android.view.ViewGroup;
-//import android.widget.Button;
-//import android.widget.EditText;
-//import android.widget.ListView;
-//import android.widget.TextView;
-//import android.widget.Toast;
-//
-//public class SaleActivity extends Activity  {
+package com.refresh.pos.ui;
+
+import java.util.List;
+import java.util.Map;
+
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
+import com.refresh.pos.R;
+import com.refresh.pos.core.Inventory;
+import com.refresh.pos.database.NoDaoSetException;
+
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class SaleActivity extends Activity  {
 //
 //	private int amount = 0;
 //	private EditText itemBarcode;
@@ -60,11 +60,12 @@
 //					Toast.LENGTH_SHORT).show();
 //		}
 //	}
-//	@Override
-//	protected void onCreate(Bundle savedInstanceState) {
-//		
-//		super.onCreate(savedInstanceState);
-//		setContentView(R.layout.activity_sale);
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_sale);
 //		
 ////		lisView1 = (listView1) findViewById(R.id);
 //		
@@ -147,6 +148,6 @@
 //			}
 //		});
 //		dialog.show();
-//	}
-//
-//}
+	}
+
+}

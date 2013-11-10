@@ -9,14 +9,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:src="@drawable/btn_blue" />
+        android:src="@drawable/btn_green" />
 
     <ImageButton
         android:id="@+id/stockButton"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:src="@drawable/btn_red" />
+        android:src="@drawable/btn_blue" />
     
     <ImageButton
         android:id="@+id/saleButton"

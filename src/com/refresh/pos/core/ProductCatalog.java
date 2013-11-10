@@ -51,5 +51,9 @@ public class ProductCatalog {
 		return inventoryDao.getProductByName(name);
 	}
 
+	public List<Product> searchProduct(String search) {
+		return inventoryDao.searchProduct(search);
+	}
+
 	
 }

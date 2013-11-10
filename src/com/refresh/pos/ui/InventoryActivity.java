@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -16,7 +17,10 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 import com.refresh.pos.R;
 import com.refresh.pos.core.Inventory;
 import com.refresh.pos.core.Product;
@@ -31,6 +35,7 @@ public class InventoryActivity extends Activity {
 	private ImageButton addProductButton;
 	private ImageButton searchButton;
 	private EditText searchBox;
+	private ImageButton scanButton;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -42,7 +47,6 @@ public class InventoryActivity extends Activity {
 		}
 		
 		initUI(savedInstanceState);
-		
 	}
 	
 	private void initUI(Bundle savedInstanceState) {
@@ -51,6 +55,7 @@ public class InventoryActivity extends Activity {
 		inventoryListView = (ListView) findViewById(R.id.inventoryListView);
 		addProductButton = (ImageButton) findViewById(R.id.addProductButton);
 		searchButton = (ImageButton) findViewById(R.id.searchButton);
+		scanButton = (ImageButton) findViewById(R.id.scanButton);
 		searchBox = (EditText) findViewById(R.id.searchBox);
 		
 		addProductButton.setOnClickListener(new View.OnClickListener() {
@@ -63,7 +68,7 @@ public class InventoryActivity extends Activity {
 		searchBox.addTextChangedListener(new TextWatcher(){
 	        public void afterTextChanged(Editable s) {
 	        	if (s.length() >= 2) {
-	        		showList(productCatalog.getProductByName(s.toString()));
+	        		search();
 	        	}
 	        }
 	        public void beforeTextChanged(CharSequence s, int start, int count, int after){}
@@ -79,11 +84,19 @@ public class InventoryActivity extends Activity {
 		inventoryListView.setOnItemClickListener(new OnItemClickListener() {
 		      public void onItemClick(AdapterView<?> myAdapter, View myView, int position, long mylng) {
 		    	  String id = inventoryList.get(position).get("id").toString();
-//		    	  Intent newActivity = new Intent(ShowInventoryActivity.this,ShowItemActivity.class);
-//		    	  newActivity.putExtra("product_id", id);
-//				  startActivity(newActivity);  	    	  
+		    	  Intent newActivity = new Intent(InventoryActivity.this, ProductDetailActivity.class);
+		    	  newActivity.putExtra("id", id);
+		    	  startActivity(newActivity);  	    	  
 		      }     
-      });
+		});
+
+		scanButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				IntentIntegrator scanIntegrator = new IntentIntegrator(InventoryActivity.this);
+				scanIntegrator.initiateScan();
+			}
+		});
 		
 	}
 
@@ -107,11 +120,31 @@ public class InventoryActivity extends Activity {
 	}
 
 	private void search() {
-		String name = searchBox.getText().toString();
-		if (name.equals("")) {
+		String search = searchBox.getText().toString();
+		if (search.equals("")) {
 			showList(productCatalog.getAllProduct());
 		} else {
-			showList(productCatalog.getProductByName(name));
+			List<Product> result = productCatalog.searchProduct(search);
+			showList(result);
+			if (result.isEmpty()) {
+				Toast.makeText(InventoryActivity.this, "No results matched.", Toast.LENGTH_SHORT).show();
+			}
+		}
+	}
+	
+	public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+		Log.d("BARCODE", "retrive the result.");
+
+		IntentResult scanningResult = IntentIntegrator.parseActivityResult(
+				requestCode, resultCode, intent);
+
+		if (scanningResult != null) {
+			String scanContent = scanningResult.getContents();
+			searchBox.setText(scanContent);
+		} else {
+			Toast.makeText(InventoryActivity.this,
+					"Failed to retrieve barcode." + resultCode,
+					Toast.LENGTH_SHORT).show();
 		}
 	}
 

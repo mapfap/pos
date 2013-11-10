@@ -1,24 +1,24 @@
-//package com.refresh.pos.ui;
-//
-//import java.text.SimpleDateFormat;
-//import java.util.Date;
-//
-//import android.annotation.SuppressLint;
-//import android.app.Activity;
-//import android.content.Intent;
-//import android.os.Bundle;
-//import android.view.View;
-//import android.widget.Button;
-//import android.widget.EditText;
-//import android.widget.Toast;
-//
-//import com.google.zxing.integration.android.IntentIntegrator;
-//import com.google.zxing.integration.android.IntentResult;
-//import com.refresh.pos.R;
-//import com.refresh.pos.core.Inventory;
-//import com.refresh.pos.database.NoDaoSetException;
-//
-//public class StockAddActivity extends Activity{
+package com.refresh.pos.ui;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
+import com.refresh.pos.R;
+import com.refresh.pos.core.Inventory;
+import com.refresh.pos.database.NoDaoSetException;
+
+public class AddProductLotActivity extends Activity{
 //	private EditText itemBarcode;
 //	private EditText itemName;
 //	private EditText itemPrice;
@@ -51,16 +51,16 @@
 //		}
 //	}
 //
-//	@Override
-//	protected void onCreate(Bundle savedInstanceState) {
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
 //		try {
 //			inventory = Inventory.getInstance();
 //		} catch (NoDaoSetException e) {
 //			e.printStackTrace();
 //		}
 //
-//		super.onCreate(savedInstanceState);
-//		setContentView(R.layout.activity_stockadd);
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_addproductlot);
 //		final EditText quantityTxt = (EditText) findViewById(R.id.quantityTxt);
 //		quantity = Double.parseDouble(quantityTxt.getText().toString());
 //		itemName = (EditText) findViewById(R.id.nameTxt);
@@ -150,6 +150,6 @@
 //
 //			}
 //		});
-//	}
-//
-//}
+	}
+
+}
