@@ -47,5 +47,9 @@ public class ProductCatalog {
 		return false;
 	}
 
+	public List<Product> getProductByName(String name) {
+		return inventoryDao.getProductByName(name);
+	}
+
 	
 }

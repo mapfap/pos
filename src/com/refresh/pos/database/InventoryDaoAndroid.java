@@ -57,6 +57,11 @@ public class InventoryDaoAndroid implements InventoryDao {
         String condition = " WHERE " + reference + " = " + value + " ;";
         return getAllProduct(condition);
 	}
+	
+	private List<Product> getSimilarProductBy(String reference, String value) {
+        String condition = " WHERE " + reference + " LIKE '%" + value + "%' ;";
+        return getAllProduct(condition);
+	}
 
 	@Override
 	public Product getProductByBarcode(String barcode) {
@@ -108,6 +113,11 @@ public class InventoryDaoAndroid implements InventoryDao {
                 );
         }
         return list;
+	}
+
+	@Override
+	public List<Product> getProductByName(String name) {
+		return getSimilarProductBy("name", name);
 	}
 
 

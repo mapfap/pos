@@ -15,5 +15,6 @@ public interface InventoryDao {
 
 	int addProductLot(ProductLot productLot);
 	List<ProductLot> getAllProductLot();
+	List<Product> getProductByName(String name);
 	
 }
