@@ -65,7 +65,8 @@ public class SaleActivity extends Activity  {
 	protected void onCreate(Bundle savedInstanceState) {
 		
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_sale);
+//		setContentView(R.layout.activity_sale);
+		setContentView(R.layout.tabtest);
 //		
 ////		lisView1 = (listView1) findViewById(R.id);
 //		

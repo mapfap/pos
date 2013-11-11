@@ -15,6 +15,9 @@
     <string name="hello_world">Hello world!</string>
     <string name="productCatalog">Product Catalog</string>
     <string name="addNewProduct">Add New Product</string>
+    <string name="content">Image</string>
+    <string name="menu_settings">Settings</string>
+    
 
     <style name="ButtonText">
         <item name="android:layout_width">fill_parent</item>

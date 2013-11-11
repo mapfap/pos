@@ -3,7 +3,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
 
+        <TextView
+            android:layout_height="wrap_content" 
+            android:layout_width="250dp"
+            android:text=""/>
+    </LinearLayout>
+    
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
@@ -13,7 +23,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:src="@android:drawable/ic_menu_camera" />
+            android:contentDescription="@string/content"
+            android:src="@android:drawable/ic_scan_button" />
 
         <EditText
             android:id="@+id/searchBox"
@@ -28,9 +39,16 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:src="@android:drawable/ic_menu_search" />
+        
+        
 
     </LinearLayout>
 
+    <TextView 
+            android:layout_width="0dp" 
+            android:layout_height="20dp"  
+            android:text="" />
+    
     <ListView
         android:id="@+id/inventoryListView"
         android:layout_width="match_parent"

@@ -47,6 +47,8 @@
             android:label="Sale" >
         </activity>
         
+       
+        
     </application>
 
 </manifest>
