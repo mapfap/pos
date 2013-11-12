@@ -55,7 +55,7 @@ public class InventoryActivity extends Activity {
 		setContentView(R.layout.activity_inventory);
 		inventoryListView = (ListView) findViewById(R.id.inventoryListView);
 		addProductButton = (ImageButton) findViewById(R.id.addProductButton);
-		searchButton = (ImageButton) findViewById(R.id.searchButton);
+//		searchButton = (ImageButton) findViewById(R.id.searchButton);
 		scanButton = (ImageButton) findViewById(R.id.scanButton);
 		searchBox = (EditText) findViewById(R.id.searchBox);
 		
@@ -76,11 +76,11 @@ public class InventoryActivity extends Activity {
 	        public void onTextChanged(CharSequence s, int start, int before, int count){}
 	    }); 
 		
-		searchButton.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View v) {
-				search();
-			}
-		});
+//		searchButton.setOnClickListener(new View.OnClickListener() {
+//			public void onClick(View v) {
+//				search();
+//			}
+//		});
 		
 		inventoryListView.setOnItemClickListener(new OnItemClickListener() {
 		      public void onItemClick(AdapterView<?> myAdapter, View myView, int position, long mylng) {

@@ -18,32 +18,47 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" > 
 
-        
+        <TextView 
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content"  
+            android:text="" 
+            android:layout_weight="0.2"/>
         <ImageButton
             android:id="@+id/scanButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="0.3"
             android:contentDescription="@string/content"
             android:src="@drawable/scan_button" 
             android:scaleType="fitCenter"
             android:adjustViewBounds="true"
        		android:padding="1dp"/>
 
+         <TextView 
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content"  
+            android:text="" 
+            android:layout_weight="0.2"/>
         <EditText
             android:id="@+id/searchBox"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.40"
+            android:layout_weight="0.5"
             android:ems="10" />
+        
+         <TextView 
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content"  
+            android:text="" 
+            android:layout_weight="0.2"/>
 
-        <ImageButton
+       <!--  <ImageButton
             android:id="@+id/searchButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:src="@android:drawable/ic_menu_search" />
-        
+         -->
         
 
     </LinearLayout>
@@ -65,6 +80,9 @@
         android:id="@+id/addProductButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@android:drawable/ic_input_add" />
+        android:adjustViewBounds="true"
+        android:padding="1dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/add_button" />
 
 </LinearLayout>
