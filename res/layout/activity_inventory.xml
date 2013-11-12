@@ -16,15 +16,19 @@
     
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content" > 
 
+        
         <ImageButton
             android:id="@+id/scanButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:contentDescription="@string/content"
-            android:src="@android:drawable/ic_scan_button" />
+            android:src="@drawable/scan_button" 
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+       		android:padding="1dp"/>
 
         <EditText
             android:id="@+id/searchBox"
