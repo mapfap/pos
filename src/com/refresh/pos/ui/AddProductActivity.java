@@ -1,6 +1,8 @@
 package com.refresh.pos.ui;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -66,15 +68,7 @@ public class AddProductActivity extends Activity {
 		priceBox = (EditText) findViewById(R.id.priceBox);
 		nameBox = (EditText) findViewById(R.id.nameBox);
 		confirmButton = (ImageButton) findViewById(R.id.confirmButton);
-//		backButton = (ImageButton) findViewById(R.id.backButton);
 		clearButton = (ImageButton) findViewById(R.id.clearButton);
-		
-//		backButton.setOnClickListener(new View.OnClickListener() {
-//			@Override
-//			public void onClick(View v) {
-//				AddProductActivity.this.finish();
-//			}
-//		});
 
 		scanButton.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -124,13 +118,30 @@ public class AddProductActivity extends Activity {
 		});
 		
 		clearButton.setOnClickListener(new View.OnClickListener() {
+
 			@Override
 			public void onClick(View v) {
 				if(barcodeBox.getText().toString().equals("") && nameBox.getText().toString().equals("") && priceBox.getText().toString().equals("")){
-					AddProductActivity.this.finish();
+
+					final AlertDialog.Builder adb = new AlertDialog.Builder(
+							AddProductActivity.this);
+					adb.setTitle("Back to inventory?");
+					adb.setMessage("Are you sure to go back?");
+					adb.setNegativeButton("Stay here.", null);
+					adb.setPositiveButton("Back to inventory.", new DialogInterface.OnClickListener() {
+						
+			            @Override
+			            public void onClick(DialogInterface dialog, int which) {
+			            	AddProductActivity.this.finish();  
+			            }
+
+			        });
+					adb.show();
+
 				}
-				else
+				else {
 					clearAllBox();
+				}
 			}
 		});
 
