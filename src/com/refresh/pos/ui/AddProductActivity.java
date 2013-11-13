@@ -66,15 +66,15 @@ public class AddProductActivity extends Activity {
 		priceBox = (EditText) findViewById(R.id.priceBox);
 		nameBox = (EditText) findViewById(R.id.nameBox);
 		confirmButton = (ImageButton) findViewById(R.id.confirmButton);
-		backButton = (ImageButton) findViewById(R.id.backButton);
-//		clearButton = (ImageButton) findViewById(R.id.clearButton);
+//		backButton = (ImageButton) findViewById(R.id.backButton);
+		clearButton = (ImageButton) findViewById(R.id.clearButton);
 		
-		backButton.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				AddProductActivity.this.finish();
-			}
-		});
+//		backButton.setOnClickListener(new View.OnClickListener() {
+//			@Override
+//			public void onClick(View v) {
+//				AddProductActivity.this.finish();
+//			}
+//		});
 
 		scanButton.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -111,7 +111,7 @@ public class AddProductActivity extends Activity {
 								Toast.LENGTH_SHORT).show();
 						
 						clearAllBox();
-						AddProductActivity.this.finish();
+//						AddProductActivity.this.finish();
 						
 						
 					} else {
@@ -123,12 +123,16 @@ public class AddProductActivity extends Activity {
 			}
 		});
 		
-//		clearButton.setOnClickListener(new View.OnClickListener() {
-//			@Override
-//			public void onClick(View v) {
-//				clearAllBox();
-//			}
-//		});
+		clearButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				if(barcodeBox.getText().toString().equals("") && nameBox.getText().toString().equals("") && priceBox.getText().toString().equals("")){
+					AddProductActivity.this.finish();
+				}
+				else
+					clearAllBox();
+			}
+		});
 
 	}
 	
