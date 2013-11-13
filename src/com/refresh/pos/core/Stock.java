@@ -23,8 +23,8 @@ public class Stock {
 		return null;
 	}
 
-	public ProductLot getProductLotByProductId(int id) {
-		return null;
+	public List<ProductLot> getProductLotByProductId(int id) {
+		return getAllProductLot();
 	}
 
 	public List<ProductLot> getAllProductLot() {

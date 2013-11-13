@@ -45,17 +45,17 @@ public class ProductStockTabActivity extends Activity {
 	private void initUI(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.tab_stock);
-		stockListView = (ListView) findViewById(R.id.stockListView);
-		addProductLotButton = (ImageButton) findViewById(R.id.addProductLotButton);
-
-		addProductLotButton.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View v) {
-				// TODO: FIX IT , 
-//				Intent newActivity = new Intent(ProductStockTabActivity.this, AddProductLotActivity.class);
-//				newActivity.putExtra("id", product.getId()+"");
-//				startActivity(newActivity);
-			}
-		});
+//		stockListView = (ListView) findViewById(R.id.stockListView);
+//		addProductLotButton = (ImageButton) findViewById(R.id.addProductLotButton);
+//
+//		addProductLotButton.setOnClickListener(new View.OnClickListener() {
+//			public void onClick(View v) {
+//				// TODO: FIX IT , 
+////				Intent newActivity = new Intent(ProductStockTabActivity.this, AddProductLotActivity.class);
+////				newActivity.putExtra("id", product.getId()+"");
+////				startActivity(newActivity);
+//			}
+//		});
 
 
 	}

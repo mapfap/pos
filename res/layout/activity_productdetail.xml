@@ -24,22 +24,11 @@
                 android:id="@android:id/tabcontent"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" >
-
-                <LinearLayout
-                    android:id="@+id/tab1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical" >
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/tab2"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical" >
-
-                </LinearLayout>
+				<include layout="@layout/tab_detail"
+				    android:id="@+id/tab1"/>
+          		<include layout="@layout/tab_stock"
+          		    android:id="@+id/tab2"/>
+                
             </FrameLayout>
         </LinearLayout>
     </TabHost>

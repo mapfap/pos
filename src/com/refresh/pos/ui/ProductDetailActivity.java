@@ -1,30 +1,106 @@
 package com.refresh.pos.ui;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.TabHost;
-import android.widget.TabHost.TabSpec;
+import android.widget.TextView;
 
 import com.refresh.pos.R;
+import com.refresh.pos.core.Inventory;
+import com.refresh.pos.core.Product;
+import com.refresh.pos.core.ProductCatalog;
+import com.refresh.pos.core.ProductLot;
+import com.refresh.pos.core.Stock;
+import com.refresh.pos.database.NoDaoSetException;
 
 public class ProductDetailActivity extends Activity {
+
+	private ProductCatalog productCatalog;
+	private Stock stock;
+	private Product product;
+	private List<Map<String, String>> stockList;
+	private TextView nameBox;
+	private TextView barcodeBox;
+	private TextView priceBox;
+	private ImageButton addProductLotButton;
+	private TabHost mTabHost;
+	private ListView stockListView;
+	private String id;
+
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	public void onCreate(Bundle savedInstanceState) {
+		try {
+			stock = Inventory.getInstance().getStock();
+			productCatalog = Inventory.getInstance().getProductCatalog();
+		} catch (NoDaoSetException e) {
+			e.printStackTrace();
+		}
+		
+		initUI(savedInstanceState);
+		
+	}
+	
+	private void initUI(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_productdetail);
-		TabHost tabHost = (TabHost) findViewById(android.R.id.tabs);
-		TabSpec tab1 = tabHost.newTabSpec("");
-		TabSpec tab2 = tabHost.newTabSpec("");
-		tab1.setIndicator("Detail");
-		Intent ProductCatAc = new Intent(this,ProductDetailTabActivity.class);
-		tab1.setContent( ProductCatAc.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-		tab1.setContent( ProductCatAc );
-		tab2.setIndicator("Stock");
-		Intent StockAc =  new Intent(this,ProductStockTabActivity.class);
-		tab2.setContent( StockAc.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-		tab2.setContent( StockAc );
-		tabHost.addTab( tab1 );
-		tabHost.addTab( tab2 );
+		mTabHost = (TabHost) findViewById(android.R.id.tabhost);
+        mTabHost.setup();
+        
+        mTabHost.addTab(mTabHost.newTabSpec("tab_test1").setIndicator("Detail").setContent(R.id.tab1));
+        mTabHost.addTab(mTabHost.newTabSpec("tab_test2").setIndicator("Stock").setContent(R.id.tab2));
+        
+        mTabHost.setCurrentTab(0);
+        stockListView = (ListView) findViewById(R.id.stockListView);
+		nameBox = (TextView) findViewById(R.id.nameBox);
+		priceBox = (TextView) findViewById(R.id.priceBox);
+		barcodeBox = (TextView) findViewById(R.id.barcodeBox);
+		addProductLotButton = (ImageButton) findViewById(R.id.addProductLotButton);
+
+		id = getIntent().getStringExtra("id");
+		product = productCatalog.getProductById(Integer.parseInt(id));
+		nameBox.setText(product.getName());
+		priceBox.setText(product.getSalePrice()+"");
+		barcodeBox.setText(product.getBarcode());
+		
+		showList(stock.getProductLotByProductId(Integer.parseInt(id)));
+		addProductLotButton.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				Intent newActivity = new Intent(ProductDetailActivity.this, AddProductLotActivity.class);
+				newActivity.putExtra("id", product.getId()+"");
+				startActivity(newActivity);
+			}
+		});
+		
+
+}
+	
+	private void showList(List<ProductLot> list) {
+
+		stockList = new ArrayList<Map<String, String>>();
+		for(ProductLot productLot : list) {
+			
+			stockList.add(productLot.toMap());
+		}
+
+		SimpleAdapter sAdap;
+		sAdap = new SimpleAdapter(ProductDetailActivity.this, stockList,
+				R.layout.listview_productstock, new String[]{"dateAdded","cost","quantity"}, new int[] {R.id.dateAdded,R.id.cost,R.id.quantity});
+		stockListView.setAdapter(sAdap);
 	}
+	
+	@Override
+	protected void onResume() {
+		showList(stock.getProductLotByProductId(Integer.parseInt(id)));
+		super.onResume();
+	}
+
 }

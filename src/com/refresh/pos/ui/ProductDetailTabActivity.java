@@ -43,15 +43,15 @@ public class ProductDetailTabActivity extends Activity {
 	private void initUI(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.tab_detail);
-		nameBox = (TextView) findViewById(R.id.nameBox);
-		priceBox = (TextView) findViewById(R.id.priceBox);
-		barcodeBox = (TextView) findViewById(R.id.barcodeBox);
-
-		String id = getIntent().getStringExtra("id");
-		product = productCatalog.getProductById(Integer.parseInt(id));
-		nameBox.setText(product.getName());
-		priceBox.setText(product.getSalePrice()+"");
-		barcodeBox.setText(product.getBarcode());
+//		nameBox = (TextView) findViewById(R.id.nameBox);
+//		priceBox = (TextView) findViewById(R.id.priceBox);
+//		barcodeBox = (TextView) findViewById(R.id.barcodeBox);
+//
+//		String id = getIntent().getStringExtra("id");
+//		product = productCatalog.getProductById(Integer.parseInt(id));
+//		nameBox.setText(product.getName());
+//		priceBox.setText(product.getSalePrice()+"");
+//		barcodeBox.setText(product.getBarcode());
 
 	}
 
