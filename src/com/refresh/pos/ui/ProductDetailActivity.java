@@ -59,6 +59,7 @@ public class ProductDetailActivity extends Activity {
 		addProductLotButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				Intent newActivity = new Intent(ProductDetailActivity.this, AddProductLotActivity.class);
+				newActivity.putExtra("id", product.getId()+"");
 				startActivity(newActivity);
 			}
 		});

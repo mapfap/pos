@@ -50,7 +50,7 @@
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/quantity"
+                android:id="@+id/quantityBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="20"

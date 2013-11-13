@@ -76,6 +76,7 @@ public class AddProductLotActivity extends Activity{
 			id = getIntent().getStringExtra("id");
 			confirmButton.setOnClickListener(new View.OnClickListener() {
 				public void onClick(View v) {
+					
 					if (costBox.getText().toString().equals("")) {
 						Toast.makeText(AddProductLotActivity.this,
 								"Please input product's cost.", Toast.LENGTH_SHORT)
@@ -85,7 +86,11 @@ public class AddProductLotActivity extends Activity{
 								"Please input product's quantity.", Toast.LENGTH_SHORT)
 								.show();
 					} else {
-						boolean success = stock.addProductLot((new Date()).toString(), Double.parseDouble(quantityBox.getText().toString()), Integer.parseInt(id), Double.parseDouble(costBox.getText().toString()));
+						boolean success = stock.addProductLot(
+								(new Date()).toString(), 
+								Double.parseDouble(quantityBox.getText().toString()), 
+								Integer.parseInt(id), 
+								Double.parseDouble(costBox.getText().toString()));
 
 						if (success) {
 							Toast.makeText(AddProductLotActivity.this,"Successfully Add Stock: ",Toast.LENGTH_SHORT).show();
