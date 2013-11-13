@@ -22,7 +22,7 @@ public class AddProductLotActivity extends Activity{
 	private Stock stock;
 	private ImageButton confirmButton;
 	private ImageButton clearButton;
-	private String productId;
+	private String id;
 	
 //	private Inventory inventory;
 //	private double quantity;
@@ -67,11 +67,13 @@ public class AddProductLotActivity extends Activity{
 		private void initUI(Bundle savedInstanceState) {
 			super.onCreate(savedInstanceState);
 			setContentView(R.layout.activity_addproductlot);
+			
 			costBox = (EditText) findViewById(R.id.costBox);
 			quantityBox = (EditText) findViewById(R.id.quantityBox);
 			confirmButton = (ImageButton) findViewById(R.id.confirmButton);
 			clearButton = (ImageButton) findViewById(R.id.clearButton);
-			productId = getIntent().getExtras().get("id").toString();
+			
+			id = getIntent().getStringExtra("id");
 			confirmButton.setOnClickListener(new View.OnClickListener() {
 				public void onClick(View v) {
 					if (costBox.getText().toString().equals("")) {
@@ -83,7 +85,7 @@ public class AddProductLotActivity extends Activity{
 								"Please input product's quantity.", Toast.LENGTH_SHORT)
 								.show();
 					} else {
-						boolean success = stock.addProductLot((new Date()).toString(), Double.parseDouble(quantityBox.getText().toString()), Integer.parseInt(productId), Double.parseDouble(costBox.getText().toString()));
+						boolean success = stock.addProductLot((new Date()).toString(), Double.parseDouble(quantityBox.getText().toString()), Integer.parseInt(id), Double.parseDouble(costBox.getText().toString()));
 
 						if (success) {
 							Toast.makeText(AddProductLotActivity.this,"Successfully Add Stock: ",Toast.LENGTH_SHORT).show();
