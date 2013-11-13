@@ -56,7 +56,7 @@
     </LinearLayout>
 
     <ListView
-        android:id="@+id/inventoryListView"
+        android:id="@+id/saleListView"
         android:layout_width="match_parent"
         android:layout_height="184dp"
         android:layout_weight="0.21" >

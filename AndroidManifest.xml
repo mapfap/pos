@@ -51,6 +51,10 @@
             android:name="com.refresh.pos.ui.StockActivity"
             android:label="Stock" >
         </activity>
+        <activity
+            android:name="com.refresh.pos.ui.SaleProductCatalog"
+            android:label="SaleCatalog" >
+        </activity>
         
         <activity
             android:name="com.refresh.pos.ui.ProductDetailTabActivity"

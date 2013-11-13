@@ -1,5 +1,8 @@
 package com.refresh.pos.core;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class LineItem {
 	
 	private final Product product;
@@ -36,5 +39,14 @@ public class LineItem {
 
 	public double getTotal() {
 		return product.getSalePrice() * quantity;
+	}
+	
+	public Map<String, String> toMap() {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("name", product.getName());
+		map.put("quantity",quantity+"");
+		map.put("price",getTotal()+"");
+		return map;
+		
 	}
 }
