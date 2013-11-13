@@ -53,6 +53,8 @@ public class InventoryActivity extends Activity {
 	private void initUI(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_inventory);
+		
+		
 		inventoryListView = (ListView) findViewById(R.id.inventoryListView);
 		addProductButton = (ImageButton) findViewById(R.id.addProductButton);
 //		searchButton = (ImageButton) findViewById(R.id.searchButton);
