@@ -17,5 +17,7 @@ public interface InventoryDao {
 	List<ProductLot> getAllProductLot();
 	List<Product> getProductByName(String name);
 	List<Product> searchProduct(String search);
-	
+	List<ProductLot> getProductLotById(int id);
+	List<ProductLot> getProductLotByProductId(int id);
+
 }

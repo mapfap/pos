@@ -126,6 +126,16 @@ public class InventoryDaoAndroid implements InventoryDao {
         return getAllProduct(condition);
 	}
 
+	@Override
+	public List<ProductLot> getProductLotById(int id) {
+		return null;
+	}
+
+	@Override
+	public List<ProductLot> getProductLotByProductId(int id) {
+		return null;
+	}
+
 
 
 }

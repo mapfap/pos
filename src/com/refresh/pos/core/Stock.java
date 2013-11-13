@@ -24,7 +24,7 @@ public class Stock {
 	}
 
 	public List<ProductLot> getProductLotByProductId(int id) {
-		return getAllProductLot();
+		return inventoryDao.getProductLotByProductId(id);
 	}
 
 	public List<ProductLot> getAllProductLot() {
