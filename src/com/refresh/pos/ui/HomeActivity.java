@@ -51,9 +51,9 @@ public class HomeActivity extends Activity {
 		stockButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-//				Intent newActivity = new Intent(HomeActivity.this,ShowStockActivity.class);
-//				startActivity(newActivity);
-				testAddProduct();
+				Intent newActivity = new Intent(HomeActivity.this,StockActivity.class);
+				startActivity(newActivity);
+//				testAddProduct();
 			}
 		});
 		

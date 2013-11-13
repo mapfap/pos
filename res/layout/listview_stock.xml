@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
+   android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center_vertical" >
 
     <TableRow
         android:layout_width="match_parent"
@@ -11,25 +11,39 @@
         android:padding="5dip" >
 
         <TextView
-            android:id="@+id/nameTxt"
+            android:id="@+id/name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:text="Name" />
 
         <TextView
-            android:id="@+id/quantityTxt"
+            android:id="@+id/date"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1.5"
-            android:text="Quantity" />
+            android:text="Date" />
+        
+        <TextView
+            android:id="@+id/cost"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.5"
+            android:text="Cost" />
 
         <TextView
-            android:id="@+id/priceTxt"
+            android:id="@+id/total"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1.5"
-            android:text="Price" />
+            android:text="Total" />
+        
+        <TextView
+            android:id="@+id/left"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.5"
+            android:text="Left" />
     </TableRow>
 
 </LinearLayout>
