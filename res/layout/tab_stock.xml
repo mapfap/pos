@@ -36,7 +36,7 @@
         </TableRow>
 
         <ListView
-            android:id="@+id/listView1"
+            android:id="@+id/stockListView"
             android:layout_width="match_parent"
             android:layout_height="90dp"
             android:layout_weight="3.96" >
