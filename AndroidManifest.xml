@@ -47,6 +47,12 @@
             android:label="Sale" >
         </activity>
         
+        <activity
+            android:name="com.refresh.pos.ui.StockActivity"
+            android:label="Stock" >
+        </activity>
+        
+        
        
         
     </application>
