@@ -27,6 +27,9 @@ public class Sale extends Observable {
 		this.status = status;
 		this.endTime = endTime;
 	}
+	public List<LineItem> getAllLineItem(){
+		return items;
+	}
 	
 	public LineItem addLineItem(Product product, int quantity) {
 		
