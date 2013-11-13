@@ -29,6 +29,7 @@
                 android:layout_weight="1.03"
                 android:ems="20"
                 android:textSize="18sp" />
+             <requestFocus />
         </LinearLayout>
 
         <ImageButton
@@ -65,7 +66,7 @@
                 android:inputType="text"
                 android:textSize="18sp" />
 
-            <requestFocus />
+           
         </LinearLayout>
     </LinearLayout>
 

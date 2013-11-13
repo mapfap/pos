@@ -22,7 +22,7 @@
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/costTxt"
+                android:id="@+id/costBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="20"
@@ -64,15 +64,15 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal" >
 
-        <ImageButton
-            android:id="@+id/imageButton2"
+         <ImageButton
+            android:id="@+id/clearButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:src="@android:drawable/ic_menu_revert" />
+            android:src="@android:drawable/ic_menu_delete" />
 
-        <ImageButton
-            android:id="@+id/imageButton1"
+         <ImageButton
+            android:id="@+id/confirmButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"

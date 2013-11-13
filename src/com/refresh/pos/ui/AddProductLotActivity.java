@@ -1,27 +1,29 @@
 package com.refresh.pos.ui;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
-import com.google.zxing.integration.android.IntentIntegrator;
-import com.google.zxing.integration.android.IntentResult;
 import com.refresh.pos.R;
 import com.refresh.pos.core.Inventory;
+import com.refresh.pos.core.Stock;
 import com.refresh.pos.database.NoDaoSetException;
 
 public class AddProductLotActivity extends Activity{
 //	private EditText itemBarcode;
-//	private EditText itemName;
-//	private EditText itemPrice;
+	private EditText costBox;
+	private EditText quantityBox;
+	private Stock stock;
+	private ImageButton confirmButton;
+	private ImageButton clearButton;
+	private String productId;
+	
 //	private Inventory inventory;
 //	private double quantity;
 //
@@ -53,14 +55,63 @@ public class AddProductLotActivity extends Activity{
 //
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-//		try {
-//			inventory = Inventory.getInstance();
-//		} catch (NoDaoSetException e) {
-//			e.printStackTrace();
-//		}
-//
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_addproductlot);
+		try {
+			stock = Inventory.getInstance().getStock();
+		} catch (NoDaoSetException e) {
+			e.printStackTrace();
+		}
+
+		initUI(savedInstanceState);
+	}
+
+		private void initUI(Bundle savedInstanceState) {
+			super.onCreate(savedInstanceState);
+			setContentView(R.layout.activity_addproductlot);
+			costBox = (EditText) findViewById(R.id.costBox);
+			quantityBox = (EditText) findViewById(R.id.quantityBox);
+			confirmButton = (ImageButton) findViewById(R.id.confirmButton);
+			clearButton = (ImageButton) findViewById(R.id.clearButton);
+			productId = getIntent().getExtras().get("id").toString();
+			confirmButton.setOnClickListener(new View.OnClickListener() {
+				public void onClick(View v) {
+					if (costBox.getText().toString().equals("")) {
+						Toast.makeText(AddProductLotActivity.this,
+								"Please input product's cost.", Toast.LENGTH_SHORT)
+								.show();
+					} else if (quantityBox.getText().toString().equals("")) {
+						Toast.makeText(AddProductLotActivity.this,
+								"Please input product's quantity.", Toast.LENGTH_SHORT)
+								.show();
+					} else {
+						boolean success = stock.addProductLot((new Date()).toString(), Double.parseDouble(quantityBox.getText().toString()), Integer.parseInt(productId), Double.parseDouble(costBox.getText().toString()));
+
+						if (success) {
+							Toast.makeText(AddProductLotActivity.this,"Successfully Add Stock: ",Toast.LENGTH_SHORT).show();
+							clearAllBox();
+//							AddProductActivity.this.finish();
+							
+							
+						} else {
+							Toast.makeText(AddProductLotActivity.this,"Failed to Add Stock" ,Toast.LENGTH_SHORT).show();
+						}
+					}
+				}
+			});
+			
+			clearButton.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					if(quantityBox.getText().toString().equals("") && costBox.getText().toString().equals("")){
+						AddProductLotActivity.this.finish();
+					}
+					else
+						clearAllBox();
+				}
+			});
+	
+		}
+//		super.onCreate(savedInstanceState);
+//		setContentView(R.layout.activity_addproductlot);
 //		final EditText quantityTxt = (EditText) findViewById(R.id.quantityTxt);
 //		quantity = Double.parseDouble(quantityTxt.getText().toString());
 //		itemName = (EditText) findViewById(R.id.nameTxt);
@@ -150,6 +201,16 @@ public class AddProductLotActivity extends Activity{
 //
 //			}
 //		});
-	}
+//	}
+		private void clearAllBox() {
+			costBox.setText("");
+			quantityBox.setText("");
+		}
+
+		@Override
+		public boolean onCreateOptionsMenu(Menu menu) {
+			getMenuInflater().inflate(R.menu.main, menu);
+			return true;
+		}
 
 }
