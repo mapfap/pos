@@ -7,6 +7,7 @@ import java.util.Map;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -45,33 +46,34 @@ public class ProductDetailActivity extends Activity {
 			e.printStackTrace();
 		}
 		
+		Log.d("Product Detail", "id = " + getIntent().getStringExtra("id").toString());
+		id = getIntent().getStringExtra("id");
+		product = productCatalog.getProductById(Integer.parseInt(id));
+		
+		
 		initUI(savedInstanceState);
+		
+		
+		nameBox.setText(product.getName());
+		priceBox.setText(product.getSalePrice()+"");
+		barcodeBox.setText(product.getBarcode());
 		
 	}
 	
 	private void initUI(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_productdetail);
-		mTabHost = (TabHost) findViewById(android.R.id.tabhost);
-        mTabHost.setup();
-        
-        mTabHost.addTab(mTabHost.newTabSpec("tab_test1").setIndicator("Detail").setContent(R.id.tab1));
-        mTabHost.addTab(mTabHost.newTabSpec("tab_test2").setIndicator("Stock").setContent(R.id.tab2));
-        
-        mTabHost.setCurrentTab(0);
-        stockListView = (ListView) findViewById(R.id.stockListView);
+		stockListView = (ListView) findViewById(R.id.stockListView);
 		nameBox = (TextView) findViewById(R.id.nameBox);
 		priceBox = (TextView) findViewById(R.id.priceBox);
 		barcodeBox = (TextView) findViewById(R.id.barcodeBox);
 		addProductLotButton = (ImageButton) findViewById(R.id.addProductLotButton);
-
-		id = getIntent().getStringExtra("id");
-		product = productCatalog.getProductById(Integer.parseInt(id));
-		nameBox.setText(product.getName());
-		priceBox.setText(product.getSalePrice()+"");
-		barcodeBox.setText(product.getBarcode());
+		mTabHost = (TabHost) findViewById(android.R.id.tabhost);
+		mTabHost.setup();
+		mTabHost.addTab(mTabHost.newTabSpec("tab_test1").setIndicator("Detail").setContent(R.id.tab1));
+		mTabHost.addTab(mTabHost.newTabSpec("tab_test2").setIndicator("Stock").setContent(R.id.tab2));
+		mTabHost.setCurrentTab(0);
 		
-		showList(stock.getProductLotByProductId(Integer.parseInt(id)));
 		addProductLotButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				Intent newActivity = new Intent(ProductDetailActivity.this, AddProductLotActivity.class);
@@ -79,15 +81,12 @@ public class ProductDetailActivity extends Activity {
 				startActivity(newActivity);
 			}
 		});
-		
-
-}
+	}
 	
 	private void showList(List<ProductLot> list) {
 
 		stockList = new ArrayList<Map<String, String>>();
 		for(ProductLot productLot : list) {
-			
 			stockList.add(productLot.toMap());
 		}
 
@@ -99,8 +98,8 @@ public class ProductDetailActivity extends Activity {
 	
 	@Override
 	protected void onResume() {
-		showList(stock.getProductLotByProductId(Integer.parseInt(id)));
 		super.onResume();
+		showList(stock.getProductLotByProductId(Integer.parseInt(id)));
 	}
 
 }

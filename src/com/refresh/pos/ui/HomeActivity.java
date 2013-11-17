@@ -3,6 +3,7 @@ package com.refresh.pos.ui;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.ImageButton;
@@ -21,25 +22,21 @@ import com.refresh.pos.database.SaleDaoAndroid;
 
 public class HomeActivity extends Activity {
 
+	private ImageButton inventoryButton;
+	private ImageButton stockButton;
+	private ImageButton saleButton;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		
-		Database database = new AndroidDatabase(this);
-		InventoryDao inventoryDao = new InventoryDaoAndroid(database);
-		SaleDao saleDao = new SaleDaoAndroid(database);
-		
-		Inventory.setInventoryDao(inventoryDao);
-		Register.setSaleDao(saleDao);
-		
 		initUI(savedInstanceState);
 	}
 
 	private void initUI(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home);
-		final ImageButton inventoryButton = (ImageButton) findViewById(R.id.inventoryButton);
-		final ImageButton stockButton = (ImageButton) findViewById(R.id.stockButton);
-		final ImageButton saleButton = (ImageButton) findViewById(R.id.saleButton);
+		inventoryButton = (ImageButton) findViewById(R.id.inventoryButton);
+		stockButton = (ImageButton) findViewById(R.id.stockButton);
+		saleButton = (ImageButton) findViewById(R.id.saleButton);
 		
 		inventoryButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {

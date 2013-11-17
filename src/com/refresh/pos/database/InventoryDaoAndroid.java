@@ -97,23 +97,6 @@ public class InventoryDaoAndroid implements InventoryDao {
          return id;
 	}
 
-	@Override
-	public List<ProductLot> getAllProductLot() {
-		String queryString = "SELECT * FROM " + DatabaseContents.TABLE_STOCK.toString();
-        @SuppressWarnings("unchecked")
-        List<ContentValues> contents = (List) database.select(queryString);
-        List<ProductLot> list = new ArrayList<ProductLot>();
-        for (ContentValues content: contents) {
-                list.add( 
-                        new ProductLot(content.getAsInteger("_id"),
-                                        content.getAsString("date_added"),
-                                        content.getAsDouble("quantity"),
-                                        content.getAsInteger("product_id"),
-                                        content.getAsDouble("cost"))
-                );
-        }
-        return list;
-	}
 
 	@Override
 	public List<Product> getProductByName(String name) {
@@ -125,17 +108,42 @@ public class InventoryDaoAndroid implements InventoryDao {
 		String condition = " WHERE name LIKE '%" + search + "%' OR barcode LIKE '%" + search + "%' ;";
         return getAllProduct(condition);
 	}
+	
+	private List<ProductLot> getAllProductLot(String condition) {
+		String queryString = "SELECT * FROM " + DatabaseContents.TABLE_STOCK.toString() + condition;
+        @SuppressWarnings("unchecked")
+        List<ProductLot> list = toProductLotList((List) database.select(queryString));
+        return list;
+	}
 
-	@Override
-	public List<ProductLot> getProductLotById(int id) {
-		return null;
+	private List<ProductLot> toProductLotList(List<ContentValues> contents) {
+		List<ProductLot> list = new ArrayList<ProductLot>();
+		for (ContentValues content: contents) {
+			list.add( 
+					new ProductLot(content.getAsInteger("_id"),
+							content.getAsString("date_added"),
+							content.getAsDouble("quantity"),
+							content.getAsInteger("product_id"),
+							content.getAsDouble("cost"))
+					);
+		}
+		return list;
 	}
 
 	@Override
 	public List<ProductLot> getProductLotByProductId(int id) {
-		return null;
+		return getAllProductLot(" WHERE product_id = " + id);
+	}
+	
+	@Override
+	public List<ProductLot> getProductLotById(int id) {
+		return getAllProductLot(" WHERE _id = " + id);
 	}
 
+	@Override
+	public List<ProductLot> getAllProductLot() {
+		return getAllProductLot("");
+	}
 
 
 }

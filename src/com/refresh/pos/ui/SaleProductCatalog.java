@@ -24,17 +24,18 @@ import android.widget.SimpleAdapter;
 import android.widget.AdapterView.OnItemClickListener;
 
 public class SaleProductCatalog extends Activity {
-	private Register regis;
+	private Register register;
 	private ProductCatalog productCatalog;
 	private ListView saleListView;
 	private ArrayList<Map<String, String>> inventoryList;
 	protected void onCreate(Bundle savedInstanceState) {
+		
 		try {
 			productCatalog = Inventory.getInstance().getProductCatalog();
+			register = Register.getInstance();
 		} catch (NoDaoSetException e) {
 			e.printStackTrace();
 		}
-		
 		
 		initUI(savedInstanceState);
 	}
@@ -42,28 +43,30 @@ public class SaleProductCatalog extends Activity {
 	private void initUI(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_productsalecatalog);
-		try {
-			regis = Register.getInstance();
-		} catch (NoDaoSetException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		saleListView = (ListView) findViewById(R.id.saleListView);
-		showList(productCatalog.getAllProduct());
+		
 		saleListView.setOnItemClickListener(new OnItemClickListener(){
 
 			@Override
 			public void onItemClick(AdapterView<?> myAdapter, View myView, int position, long mylng) {
 				String id = inventoryList.get(position).get("id").toString();
-				Product n = productCatalog.getProductById(Integer.parseInt(id));
-				regis.addItem(n,1);
+				Product product = productCatalog.getProductById(Integer.parseInt(id));
+				register.addItem(product, 1);
+				
 				Intent newActivity = new Intent(SaleProductCatalog.this, SaleActivity.class);
-		    	 startActivity(newActivity);
+				startActivity(newActivity);
 			}
 			
 		});
-		
 	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		showList(productCatalog.getAllProduct());
+	}
+	
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.main, menu);

@@ -35,46 +35,74 @@ import android.widget.Toast;
 
 public class SaleActivity extends Activity  {
 
-	private ListView inventoryListView;
-	private Sale nowSale;
+	private ListView lineItemListView;
+	private Sale currentSale;
+	private Register register;
 	private ArrayList<Map<String, String>> saleList;
 	private ListView saleListView;
+	private ImageButton addButton;
+	private TextView totalPrice;
+	private ImageButton payButton;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		Log.d("SALE", "I'm created!!");
+		
+		try {
+			register = Register.getInstance();
+		} catch (NoDaoSetException e) {
+			e.printStackTrace();
+		}
+		
+		currentSale = register.initiateSale((new Date()).toString());
+		
 		initUI(savedInstanceState);
 	}
 
 	private void initUI(Bundle savedInstanceState) {
-		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_sale);
-		try {
-			nowSale = Register.getInstance().initiateSale((new Date()).toString());
-		} catch (NoDaoSetException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
 		saleListView = (ListView) findViewById(R.id.sale_List);
-		showList(nowSale.getAllLineItem());
-		final ImageButton addButton = (ImageButton) findViewById(R.id.sale_addButton);
+		totalPrice = (TextView) findViewById(R.id.totalPrice);
+		addButton = (ImageButton) findViewById(R.id.sale_addButton);
+		payButton = (ImageButton) findViewById(R.id.payButton);
+		
 		addButton.setOnClickListener(new View.OnClickListener() {
-			
 			@Override
 			public void onClick(View v) {
 				Intent newActivity = new Intent(SaleActivity.this, SaleProductCatalog.class);
 				startActivity(newActivity);
 			}
 		});
-		final TextView totalPrice = (TextView) findViewById(R.id.totalPrice);
-		totalPrice.setText(nowSale.getTotal()+"");
+		
+		payButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				register.endSale((new Date()).toString());
+				SaleActivity.this.finish();
+				
+				Intent intent = new Intent(SaleActivity.this, HomeActivity.class);
+			    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			    startActivity(intent);
+			}
+		});
+		
 	}
+	
+	@Override
+	protected void onResume() {
+		super.onResume();
+		Log.d("SALE", "I'm back!!!");
+		showList(currentSale.getAllLineItem());
+		totalPrice.setText(currentSale.getTotal()+"");
+	}
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
+	
 	private void showList(List<LineItem> list) {
 		
 		saleList = new ArrayList<Map<String, String>>();

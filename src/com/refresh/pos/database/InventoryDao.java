@@ -8,15 +8,18 @@ import com.refresh.pos.core.ProductLot;
 public interface InventoryDao {
 
 	int addProduct(Product product);
-	List<Product> getAllProduct();
-	Product getProductByBarcode(String barcode);
-	Product getProductById(int id);
+	int addProductLot(ProductLot productLot);
+
 	boolean editProduct(Product product);
 
-	int addProductLot(ProductLot productLot);
-	List<ProductLot> getAllProductLot();
+	Product getProductById(int id);
+	Product getProductByBarcode(String barcode);
+	
+	List<Product> getAllProduct();
 	List<Product> getProductByName(String name);
 	List<Product> searchProduct(String search);
+	
+	List<ProductLot> getAllProductLot();
 	List<ProductLot> getProductLotById(int id);
 	List<ProductLot> getProductLotByProductId(int id);
 
