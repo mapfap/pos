@@ -11,9 +11,9 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.refresh.pos.R;
-import com.refresh.pos.core.Inventory;
-import com.refresh.pos.core.Stock;
 import com.refresh.pos.database.NoDaoSetException;
+import com.refresh.pos.domain.Inventory;
+import com.refresh.pos.domain.Stock;
 
 public class AddProductLotActivity extends Activity{
 //	private EditText itemBarcode;

@@ -9,14 +9,14 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.refresh.pos.R;
-import com.refresh.pos.core.Inventory;
-import com.refresh.pos.core.Register;
 import com.refresh.pos.database.AndroidDatabase;
 import com.refresh.pos.database.Database;
 import com.refresh.pos.database.InventoryDao;
 import com.refresh.pos.database.InventoryDaoAndroid;
 import com.refresh.pos.database.SaleDao;
 import com.refresh.pos.database.SaleDaoAndroid;
+import com.refresh.pos.domain.Inventory;
+import com.refresh.pos.domain.Register;
 
 /**
  * This is the first activity page, core-app and database created here.

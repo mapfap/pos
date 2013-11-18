@@ -16,12 +16,12 @@ import android.widget.TabHost;
 import android.widget.TextView;
 
 import com.refresh.pos.R;
-import com.refresh.pos.core.Inventory;
-import com.refresh.pos.core.Product;
-import com.refresh.pos.core.ProductCatalog;
-import com.refresh.pos.core.ProductLot;
-import com.refresh.pos.core.Stock;
 import com.refresh.pos.database.NoDaoSetException;
+import com.refresh.pos.domain.Inventory;
+import com.refresh.pos.domain.Product;
+import com.refresh.pos.domain.ProductCatalog;
+import com.refresh.pos.domain.ProductLot;
+import com.refresh.pos.domain.Stock;
 
 public class ProductDetailActivity extends Activity {
 

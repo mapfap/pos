@@ -15,9 +15,9 @@ import android.widget.Toast;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import com.refresh.pos.R;
-import com.refresh.pos.core.Inventory;
-import com.refresh.pos.core.ProductCatalog;
 import com.refresh.pos.database.NoDaoSetException;
+import com.refresh.pos.domain.Inventory;
+import com.refresh.pos.domain.ProductCatalog;
 
 public class AddProductActivity extends Activity {
 

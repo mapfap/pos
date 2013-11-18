@@ -8,12 +8,12 @@ import java.util.Map;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import com.refresh.pos.R;
-import com.refresh.pos.core.Inventory;
-import com.refresh.pos.core.LineItem;
-import com.refresh.pos.core.Product;
-import com.refresh.pos.core.Register;
-import com.refresh.pos.core.Sale;
 import com.refresh.pos.database.NoDaoSetException;
+import com.refresh.pos.domain.Inventory;
+import com.refresh.pos.domain.LineItem;
+import com.refresh.pos.domain.Product;
+import com.refresh.pos.domain.Register;
+import com.refresh.pos.domain.Sale;
 
 import android.app.Activity;
 import android.app.AlertDialog;

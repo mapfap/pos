@@ -1,4 +1,4 @@
-package com.refresh.pos.core;
+package com.refresh.pos.domain;
 
 import java.util.ArrayList;
 import java.util.Calendar;

@@ -20,11 +20,11 @@ import android.widget.Toast;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import com.refresh.pos.R;
-import com.refresh.pos.core.Inventory;
-import com.refresh.pos.core.Product;
-import com.refresh.pos.core.ProductLot;
-import com.refresh.pos.core.Stock;
 import com.refresh.pos.database.NoDaoSetException;
+import com.refresh.pos.domain.Inventory;
+import com.refresh.pos.domain.Product;
+import com.refresh.pos.domain.ProductLot;
+import com.refresh.pos.domain.Stock;
 
 public class StockActivity extends Activity {
 

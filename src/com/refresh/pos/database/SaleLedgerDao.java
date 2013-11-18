@@ -2,8 +2,8 @@ package com.refresh.pos.database;
 
 import java.util.List;
 
-import com.refresh.pos.core.LineItem;
-import com.refresh.pos.core.Sale;
+import com.refresh.pos.domain.LineItem;
+import com.refresh.pos.domain.Sale;
 
 public interface SaleLedgerDao {
 

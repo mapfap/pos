@@ -5,8 +5,8 @@ import java.util.List;
 
 import android.content.ContentValues;
 
-import com.refresh.pos.core.Product;
-import com.refresh.pos.core.ProductLot;
+import com.refresh.pos.domain.Product;
+import com.refresh.pos.domain.ProductLot;
 
 public class InventoryDaoAndroid implements InventoryDao {
 

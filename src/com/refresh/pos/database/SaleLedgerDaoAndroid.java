@@ -5,8 +5,8 @@ import java.util.List;
 
 import android.content.ContentValues;
 
-import com.refresh.pos.core.LineItem;
-import com.refresh.pos.core.Sale;
+import com.refresh.pos.domain.LineItem;
+import com.refresh.pos.domain.Sale;
 
 public class SaleLedgerDaoAndroid implements SaleLedgerDao {
 	

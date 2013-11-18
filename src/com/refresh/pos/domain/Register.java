@@ -1,4 +1,4 @@
-package com.refresh.pos.core;
+package com.refresh.pos.domain;
 
 import com.refresh.pos.database.NoDaoSetException;
 import com.refresh.pos.database.SaleDao;

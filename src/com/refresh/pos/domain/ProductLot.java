@@ -1,4 +1,4 @@
-package com.refresh.pos.core;
+package com.refresh.pos.domain;
 
 import java.util.HashMap;
 import java.util.Map;

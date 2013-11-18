@@ -2,8 +2,8 @@ package com.refresh.pos.database;
 
 import android.content.ContentValues;
 
-import com.refresh.pos.core.LineItem;
-import com.refresh.pos.core.Sale;
+import com.refresh.pos.domain.LineItem;
+import com.refresh.pos.domain.Sale;
 
 
 

@@ -10,8 +10,6 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.refresh.pos.R;
-import com.refresh.pos.core.Inventory;
-import com.refresh.pos.core.Register;
 import com.refresh.pos.database.AndroidDatabase;
 import com.refresh.pos.database.Database;
 import com.refresh.pos.database.InventoryDao;
@@ -19,6 +17,8 @@ import com.refresh.pos.database.InventoryDaoAndroid;
 import com.refresh.pos.database.NoDaoSetException;
 import com.refresh.pos.database.SaleDao;
 import com.refresh.pos.database.SaleDaoAndroid;
+import com.refresh.pos.domain.Inventory;
+import com.refresh.pos.domain.Register;
 
 public class HomeActivity extends Activity {
 
