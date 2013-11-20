@@ -15,21 +15,27 @@ import com.refresh.pos.domain.Register;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
 public class SaleProductCatalog extends Activity {
+	protected static final int SEARCH_LIMIT = 0;
 	private Register register;
 	private ProductCatalog productCatalog;
 	private ListView saleListView;
 	private ArrayList<Map<String, String>> inventoryList;
+	private EditText searchBox;
 	protected void onCreate(Bundle savedInstanceState) {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -48,7 +54,7 @@ public class SaleProductCatalog extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_productsalecatalog);
 		saleListView = (ListView) findViewById(R.id.saleListView);
-		
+		searchBox = (EditText) findViewById(R.id.searchBox);
 		saleListView.setOnItemClickListener(new OnItemClickListener(){
 
 			@Override
@@ -62,6 +68,16 @@ public class SaleProductCatalog extends Activity {
 			}
 			
 		});
+		
+		searchBox.addTextChangedListener(new TextWatcher(){
+	        public void afterTextChanged(Editable s) {
+	        	if (s.length() >= SEARCH_LIMIT) {
+	        		search();
+	        	}
+	        }
+	        public void beforeTextChanged(CharSequence s, int start, int count, int after){}
+	        public void onTextChanged(CharSequence s, int start, int before, int count){}
+	    }); 
 	}
 
 	@Override
@@ -75,6 +91,20 @@ public class SaleProductCatalog extends Activity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
+	}
+	
+
+	private void search() {
+		String search = searchBox.getText().toString();
+		if (search.equals("")) {
+			showList(productCatalog.getAllProduct());
+		} else {
+			List<Product> result = productCatalog.searchProduct(search);
+			showList(result);
+			if (result.isEmpty()) {
+				Toast.makeText(SaleProductCatalog.this, "No results matched.", Toast.LENGTH_SHORT).show();
+			}
+		}
 	}
 	
 	private void showList(List<Product> list) {
