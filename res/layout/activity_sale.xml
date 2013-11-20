@@ -79,7 +79,7 @@
                 android:src="@android:drawable/ic_search_category_default" />
 
             <ImageButton
-                android:id="@+id/imageButton3"
+                android:id="@+id/sale_clearButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"

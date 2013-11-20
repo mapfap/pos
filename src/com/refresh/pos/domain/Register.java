@@ -53,5 +53,8 @@ public class Register {
 		saleDao.endSale(currentSale, endTime);
 		currentSale = null;
 	}
+	public void clear(){
+		
+	}
 	
 }
