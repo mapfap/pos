@@ -11,6 +11,8 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -37,7 +39,9 @@ public class StockActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+	
 		try {
 			stock = Inventory.getInstance().getStock();
 		} catch (NoDaoSetException e) {

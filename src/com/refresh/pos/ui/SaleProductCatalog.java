@@ -18,6 +18,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -29,7 +31,9 @@ public class SaleProductCatalog extends Activity {
 	private ListView saleListView;
 	private ArrayList<Map<String, String>> inventoryList;
 	protected void onCreate(Bundle savedInstanceState) {
-		
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+	
 		try {
 			productCatalog = Inventory.getInstance().getProductCatalog();
 			register = Register.getInstance();

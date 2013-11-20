@@ -11,6 +11,8 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.EditText;
@@ -40,7 +42,9 @@ public class InventoryActivity extends Activity {
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+	
 		try {
 			productCatalog = Inventory.getInstance().getProductCatalog();
 		} catch (NoDaoSetException e) {
