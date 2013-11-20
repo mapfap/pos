@@ -15,6 +15,8 @@ import android.widget.Toast;
 import com.refresh.pos.R;
 import com.refresh.pos.database.NoDaoSetException;
 import com.refresh.pos.domain.Inventory;
+import com.refresh.pos.domain.Product;
+import com.refresh.pos.domain.ProductCatalog;
 import com.refresh.pos.domain.Stock;
 
 public class AddProductLotActivity extends Activity{
@@ -25,6 +27,8 @@ public class AddProductLotActivity extends Activity{
 	private ImageButton confirmButton;
 	private ImageButton clearButton;
 	private String id;
+	private ProductCatalog productCatalog;
+	private Product product;
 	
 //	private Inventory inventory;
 //	private double quantity;
@@ -62,6 +66,7 @@ public class AddProductLotActivity extends Activity{
 	
 		try {
 			stock = Inventory.getInstance().getStock();
+			productCatalog = Inventory.getInstance().getProductCatalog();
 		} catch (NoDaoSetException e) {
 			e.printStackTrace();
 		}
@@ -79,6 +84,8 @@ public class AddProductLotActivity extends Activity{
 			clearButton = (ImageButton) findViewById(R.id.clearButton);
 			
 			id = getIntent().getStringExtra("id");
+			product = productCatalog.getProductById(Integer.parseInt(id));
+			
 			confirmButton.setOnClickListener(new View.OnClickListener() {
 				public void onClick(View v) {
 					
@@ -93,8 +100,8 @@ public class AddProductLotActivity extends Activity{
 					} else {
 						boolean success = stock.addProductLot(
 								(new Date()).toString(), 
-								Double.parseDouble(quantityBox.getText().toString()), 
-								Integer.parseInt(id), 
+								Integer.parseInt(quantityBox.getText().toString()), 
+								product, 
 								Double.parseDouble(costBox.getText().toString()));
 
 						if (success) {

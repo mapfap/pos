@@ -18,6 +18,7 @@ import com.refresh.pos.database.InventoryDao;
 import com.refresh.pos.database.InventoryDaoAndroid;
 import com.refresh.pos.database.SaleDao;
 import com.refresh.pos.database.SaleDaoAndroid;
+import com.refresh.pos.domain.DateTimeStrategy;
 import com.refresh.pos.domain.Inventory;
 import com.refresh.pos.domain.Register;
 
@@ -32,6 +33,7 @@ public class LoaderActivity extends Activity {
 
 	private LinearLayout layout;
 	private Button goButton;
+	private boolean gone;
 	
 
 	@Override
@@ -53,6 +55,9 @@ public class LoaderActivity extends Activity {
 		
 		Inventory.setInventoryDao(inventoryDao);
 		Register.setSaleDao(saleDao);
+		
+		DateTimeStrategy.setLocale("th", "TH");
+		
 		Log.d("Core App", "INITIATE");
 	}
 
@@ -61,17 +66,20 @@ public class LoaderActivity extends Activity {
 		setContentView(R.layout.activity_loader);
 		goButton = (Button) findViewById(R.id.goButton);
 		goButton.setOnClickListener(new View.OnClickListener() {
+
 			public void onClick(View v) {
 				Intent newActivity = new Intent(LoaderActivity.this, HomeActivity.class);
 				startActivity(newActivity);
+				gone = true;
 			}
 		});
 		 new Handler().postDelayed(new Runnable() {
              @Override
              public void run() {
- 				Intent newActivity = new Intent(LoaderActivity.this, HomeActivity.class);
- 				startActivity(newActivity);
- 				finish();
+            	if (!gone) {
+            		Intent newActivity = new Intent(LoaderActivity.this, HomeActivity.class);
+            		startActivity(newActivity);
+             	}
              }
          }, 3000);
 	}

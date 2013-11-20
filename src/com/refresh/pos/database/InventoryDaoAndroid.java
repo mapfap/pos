@@ -91,8 +91,9 @@ public class InventoryDaoAndroid implements InventoryDao {
 		 ContentValues content = new ContentValues();
          content.put("date_added", productLot.getDateAdded());
          content.put("quantity",  productLot.getQuantity());
-         content.put("product_Id",  productLot.getProductId());
+         content.put("product_id",  productLot.getProduct().getId());
          content.put("cost",  productLot.getCost());
+         content.put("left",  productLot.getLeft());
          int id = database.insert(DatabaseContents.TABLE_STOCK.toString(), content);
          return id;
 	}
@@ -119,12 +120,15 @@ public class InventoryDaoAndroid implements InventoryDao {
 	private List<ProductLot> toProductLotList(List<ContentValues> contents) {
 		List<ProductLot> list = new ArrayList<ProductLot>();
 		for (ContentValues content: contents) {
-			list.add( 
+			int productId = content.getAsInteger("product_id");
+			Product product = getProductById(productId);
+					list.add( 
 					new ProductLot(content.getAsInteger("_id"),
 							content.getAsString("date_added"),
-							content.getAsDouble("quantity"),
-							content.getAsInteger("product_id"),
-							content.getAsDouble("cost"))
+							content.getAsInteger("quantity"),
+							product,
+							content.getAsDouble("cost"),
+							content.getAsInteger("left"))
 					);
 		}
 		return list;

@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -33,7 +34,7 @@ public class StockActivity extends Activity {
 	protected static final int SEARCH_LIMIT = 0;
 	private Stock stock;
 	private EditText searchBox;
-	private ImageButton scanButton;
+	private Button scanButton;
 	private ListView stockListView;
 	List<Map<String, String>> stockList;
 
@@ -57,7 +58,7 @@ public class StockActivity extends Activity {
 		setContentView(R.layout.activity_stock);
 
 		stockListView = (ListView) findViewById(R.id.stockListView);
-		scanButton = (ImageButton) findViewById(R.id.scanButton);
+		scanButton = (Button) findViewById(R.id.scanButton);
 		searchBox = (EditText) findViewById(R.id.searchBox);
 
 		searchBox.addTextChangedListener(new TextWatcher() {
@@ -66,14 +67,8 @@ public class StockActivity extends Activity {
 					search();
 				}
 			}
-
-			public void beforeTextChanged(CharSequence s, int start, int count,
-					int after) {
-			}
-
-			public void onTextChanged(CharSequence s, int start, int before,
-					int count) {
-			}
+			public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+			public void onTextChanged(CharSequence s, int start, int before,int count) {}
 		});
 		
 		showList(stock.getAllProductLot());
@@ -102,8 +97,8 @@ public class StockActivity extends Activity {
 
 		SimpleAdapter sAdap;
 		sAdap = new SimpleAdapter(StockActivity.this, stockList,
-				R.layout.listview_stock, new String[] { "productName" },
-				new int[] { R.id.name });
+				R.layout.listview_stock, new String[] { "productName", "dateAdded", "cost", "quantity", "left" },
+				new int[] { R.id.name, R.id.date, R.id.cost, R.id.total, R.id.left });
 		stockListView.setAdapter(sAdap);
 	}
 

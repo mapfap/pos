@@ -25,16 +25,11 @@
             android:layout_height="wrap_content"  
             android:text="" 
             android:layout_weight="0.2"/>
-        <ImageButton
+        <Button
             android:id="@+id/scanButton"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.2"
-            android:contentDescription="@string/content"
-            android:src="@drawable/scan_button" 
-            android:scaleType="fitCenter"
-            android:adjustViewBounds="true"
-       		android:padding="1dp"/>
+            android:layout_height="match_parent"
+            android:text="Scan" />
 
          <TextView 
             android:layout_width="wrap_content" 
