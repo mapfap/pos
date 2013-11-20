@@ -2,7 +2,7 @@ package com.refresh.pos.database;
 
 public enum DatabaseContents {
 	
-	DATABASE("pos_database1"),
+	DATABASE("pos_database4"),
 	TABLE_PRODUCT_CATALOG("product_catalog"),
 	TABLE_STOCK("stock"),
 	TABLE_SALE("sale"),
