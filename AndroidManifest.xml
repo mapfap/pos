@@ -69,6 +69,7 @@
             android:label="Stock" >
         </activity>
         
+       <activity android:name="org.achartengine.GraphicalActivity" />
         
        
         

@@ -148,5 +148,11 @@ public class AndroidDatabase extends SQLiteOpenHelper implements Database {
 			return false;
 		}
 	}
+	
+//	public void destroy() {
+//		database.execSQL("DROP DATABASE " + DatabaseContents.DATABASE.toString());
+//	}
+	
+	
 
 }

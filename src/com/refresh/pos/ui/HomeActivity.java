@@ -3,25 +3,16 @@ package com.refresh.pos.ui;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.refresh.pos.R;
-import com.refresh.pos.database.AndroidDatabase;
-import com.refresh.pos.database.Database;
-import com.refresh.pos.database.InventoryDao;
-import com.refresh.pos.database.InventoryDaoAndroid;
 import com.refresh.pos.database.NoDaoSetException;
-import com.refresh.pos.database.SaleDao;
-import com.refresh.pos.database.SaleDaoAndroid;
 import com.refresh.pos.domain.Inventory;
-import com.refresh.pos.domain.Register;
 
 public class HomeActivity extends Activity {
 
@@ -82,7 +73,9 @@ public class HomeActivity extends Activity {
 		demoButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				testAddProduct();
+//				testAddProduct();
+				Intent intent = (new Chart()).execute(HomeActivity.this);
+				startActivity(intent);
 			}
 		});
 		
