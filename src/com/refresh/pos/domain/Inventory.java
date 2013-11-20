@@ -38,6 +38,6 @@ public class Inventory {
 		return instance;
 	}
 
-
+	
 
 }

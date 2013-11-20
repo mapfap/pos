@@ -21,7 +21,7 @@ public class InventoryDaoAndroid implements InventoryDao {
 		ContentValues content = new ContentValues();
         content.put("name", product.getName());
         content.put("barcode", product.getBarcode());
-        content.put("sale_price", product.getSalePrice());
+        content.put("unit_price", product.getUnitPrice());
         
         int id = database.insert(DatabaseContents.TABLE_PRODUCT_CATALOG.toString(), content);
         return id;
@@ -34,12 +34,11 @@ public class InventoryDaoAndroid implements InventoryDao {
                 		content.getAsInteger("_id"),
                         content.getAsString("name"),
                         content.getAsString("barcode"),
-                        content.getAsDouble("sale_price"))
+                        content.getAsDouble("unit_price"))
                 );
         }
         return list;
 	}
-
 
 	@Override
 	public List<Product> getAllProduct() {
@@ -81,7 +80,7 @@ public class InventoryDaoAndroid implements InventoryDao {
 		content.put("_id", product.getId());
 		content.put("name", product.getName());
         content.put("barcode", product.getBarcode());
-        content.put("sale_price", product.getSalePrice());
+        content.put("unit_price", product.getUnitPrice());
 		return database.update(DatabaseContents.TABLE_PRODUCT_CATALOG.toString(), content);
 	}
 	

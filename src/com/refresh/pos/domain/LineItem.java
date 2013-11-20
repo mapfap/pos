@@ -38,7 +38,7 @@ public class LineItem {
 	}
 
 	public double getTotal() {
-		return product.getSalePrice() * quantity;
+		return product.getUnitPrice() * quantity;
 	}
 	
 	public Map<String, String> toMap() {

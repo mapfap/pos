@@ -35,7 +35,7 @@ public class ProductCatalog {
 		return inventoryDao.getAllProduct();
 	}
 	
-	public boolean setSalePrice(int id) {
+	public boolean setUnitPrice(int id) {
 		return false;
 	}
 	

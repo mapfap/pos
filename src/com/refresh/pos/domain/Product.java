@@ -9,7 +9,8 @@ public class Product {
 	private int id;
 	private String name;
 	private String barcode;
-	private double salePrice;
+	private double unitPrice;
+	
 	public static final String UNDEFINED = "UNDEFINED";
 	public static final int UNDEFINED_ID = -1;
 	public static final int UNDEFINED_PRICE = 0;
@@ -19,7 +20,7 @@ public class Product {
 		this.id = id;
 		this.name = name;
 		this.barcode = barcode;
-		this.salePrice = salePrice;
+		this.unitPrice = salePrice;
 	}
 	
 	public String getName() {
@@ -35,7 +36,7 @@ public class Product {
 	}
 
 	public void setSalePrice(double salePrice) {
-		this.salePrice = salePrice;
+		this.unitPrice = salePrice;
 	}
 
 	public int getId() {
@@ -46,8 +47,8 @@ public class Product {
 		return barcode;
 	}
 	
-	public double getSalePrice() {
-		return salePrice;
+	public double getUnitPrice() {
+		return unitPrice;
 	}
 
 	public Map<String, String> toMap() {
@@ -55,7 +56,7 @@ public class Product {
 		map.put("id",id+"");
 		map.put("name", name);
 		map.put("barcode", barcode);
-		map.put("salePrice", salePrice+"");
+		map.put("unitPrice", unitPrice+"");
 		return map;
 		
 	}

@@ -60,7 +60,7 @@ public class ProductDetailActivity extends Activity {
 		
 		
 		nameBox.setText(product.getName());
-		priceBox.setText(product.getSalePrice()+"");
+		priceBox.setText(product.getUnitPrice()+"");
 		barcodeBox.setText(product.getBarcode());
 		
 	}
