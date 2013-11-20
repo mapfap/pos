@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -25,7 +26,7 @@ public class AddProductActivity extends Activity {
 
 	private EditText barcodeBox;
 	private ProductCatalog productCatalog;
-	private ImageButton scanButton;
+	private Button scanButton;
 	private EditText priceBox;
 	private EditText nameBox;
 	private ImageButton confirmButton;
@@ -68,7 +69,7 @@ public class AddProductActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_addproduct);
 		barcodeBox = (EditText) findViewById(R.id.barcodeBox);
-		scanButton = (ImageButton) findViewById(R.id.scanButton);
+		scanButton = (Button) findViewById(R.id.scanButton);
 		priceBox = (EditText) findViewById(R.id.priceBox);
 		nameBox = (EditText) findViewById(R.id.nameBox);
 		confirmButton = (ImageButton) findViewById(R.id.confirmButton);

@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
@@ -24,9 +25,10 @@ import com.refresh.pos.domain.Register;
 
 public class HomeActivity extends Activity {
 
-	private ImageButton inventoryButton;
-	private ImageButton stockButton;
-	private ImageButton saleButton;
+	private Button inventoryButton;
+	private Button stockButton;
+	private Button saleButton;
+	private Button demoButton;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -39,9 +41,10 @@ public class HomeActivity extends Activity {
 	private void initUI(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home);
-		inventoryButton = (ImageButton) findViewById(R.id.inventoryButton);
-		stockButton = (ImageButton) findViewById(R.id.stockButton);
-		saleButton = (ImageButton) findViewById(R.id.saleButton);
+		inventoryButton = (Button) findViewById(R.id.inventoryButton);
+		stockButton = (Button) findViewById(R.id.stockButton);
+		saleButton = (Button) findViewById(R.id.saleButton);
+		demoButton = (Button) findViewById(R.id.demoButton);
 		
 		inventoryButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
@@ -67,17 +70,24 @@ public class HomeActivity extends Activity {
 			}
 		});
 		
+		demoButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				testAddProduct();
+			}
+		});
+		
 	}
 
 	protected void testAddProduct() {
 		try {
 			
 			Inventory.getInstance().getProductCatalog().addProduct("Apple iPhone 4s", "65005", 20900 );
-			Inventory.getInstance().getProductCatalog().addProduct("Apple iPhone 5", "65004", 25900 );
 			Inventory.getInstance().getProductCatalog().addProduct("Apple Macbook Air (mid-2012)", "68701", 32900 );
 			Inventory.getInstance().getProductCatalog().addProduct("Television ", "20004", 21000);
 			Inventory.getInstance().getProductCatalog().addProduct("Lettuce" , "80775", 10.75);
 			Inventory.getInstance().getProductCatalog().addProduct("Carrot", "10089", 8.50);
+			Inventory.getInstance().getProductCatalog().addProduct("Sumsung Television", "899089", 8.50);
 			Inventory.getInstance().getProductCatalog().addProduct("Applying UML and Pattern", "05667", 1.50);
 			Inventory.getInstance().getProductCatalog().addProduct("Code Complete 2nd Edition", "99887", 2.50);		
 			Toast.makeText(HomeActivity.this, "products added.", Toast.LENGTH_SHORT).show();

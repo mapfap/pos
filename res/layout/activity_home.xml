@@ -2,27 +2,79 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="horizontal" >
 
-    <ImageButton
-        android:id="@+id/inventoryButton"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:src="@drawable/btn_green" />
+        android:orientation="vertical" >
 
-    <ImageButton
-        android:id="@+id/stockButton"
+        <Button
+            android:id="@+id/inventoryButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            style="@style/ButtonText"
+            android:background="@drawable/btn_green"
+            android:text="Inventory"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/stockButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            style="@style/ButtonText"
+            android:background="@drawable/btn_red"
+            android:textSize="30sp"
+            android:text="Stock" />
+
+        <Button
+            android:id="@+id/saleButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            style="@style/ButtonText"
+            android:background="@drawable/btn_blue"
+            android:textSize="30sp"
+            android:text="Sale" />
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:src="@drawable/btn_blue" />
-    
-    <ImageButton
-        android:id="@+id/saleButton"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:src="@drawable/btn_red" />
+        android:orientation="vertical" >
+
+        <Button
+            android:id="@+id/reportButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            style="@style/ButtonText"
+            android:background="@drawable/btn_yellow"
+            android:textSize="30sp"
+            android:text="Report" />
+
+        <Button
+            android:id="@+id/historyButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            style="@style/ButtonText"
+            android:background="@drawable/btn_purple"
+            android:textSize="30sp"
+            android:text="History" />
+
+        <Button
+            android:id="@+id/demoButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            style="@style/ButtonText"
+            android:background="@drawable/btn_black"
+            android:textSize="30sp" />
+    </LinearLayout>
 
 </LinearLayout>

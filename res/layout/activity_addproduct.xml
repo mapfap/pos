@@ -32,11 +32,12 @@
              <requestFocus />
         </LinearLayout>
 
-        <ImageButton
+
+        <Button
             android:id="@+id/scanButton"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:src="@drawable/ic_menu_scan" />
+            android:text="Scan" />
     </LinearLayout>
 
     <LinearLayout

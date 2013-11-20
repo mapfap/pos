@@ -15,6 +15,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -35,10 +36,10 @@ public class InventoryActivity extends Activity {
 	private ListView inventoryListView;
 	private ProductCatalog productCatalog;
 	List<Map<String, String>> inventoryList;
-	private ImageButton addProductButton;
+	private Button addProductButton;
 	private ImageButton searchButton;
 	private EditText searchBox;
-	private ImageButton scanButton;
+	private Button scanButton;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -60,9 +61,9 @@ public class InventoryActivity extends Activity {
 		
 		
 		inventoryListView = (ListView) findViewById(R.id.inventoryListView);
-		addProductButton = (ImageButton) findViewById(R.id.addProductButton);
+		addProductButton = (Button) findViewById(R.id.addProductButton);
 //		searchButton = (ImageButton) findViewById(R.id.searchButton);
-		scanButton = (ImageButton) findViewById(R.id.scanButton);
+		scanButton = (Button) findViewById(R.id.scanButton);
 		searchBox = (EditText) findViewById(R.id.searchBox);
 		
 		addProductButton.setOnClickListener(new View.OnClickListener() {
