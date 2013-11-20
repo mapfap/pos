@@ -65,12 +65,7 @@
         </activity>
         
         <activity
-            android:name="com.refresh.pos.ui.ProductDetailTabActivity"
-            android:label="Stock" >
-        </activity>
-        
-        <activity
-            android:name="com.refresh.pos.ui.ProductStockTabActivity"
+            android:name="com.refresh.pos.ui.SaleLedgerActivity"
             android:label="Stock" >
         </activity>
         

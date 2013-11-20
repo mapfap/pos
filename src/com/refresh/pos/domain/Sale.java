@@ -2,7 +2,9 @@ package com.refresh.pos.domain;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Observable;
 
 
@@ -82,6 +84,15 @@ public class Sale extends Observable {
 
 	public String getStatus() {
 		return status;
+	}
+
+	public Map<String, String> toMap() {	
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("id",id+"");
+		map.put("startTime", DateTimeStrategy.format(startTime));
+		map.put("endTime", DateTimeStrategy.format(endTime));
+		map.put("status", getStatus());
+		return map;
 	}
 
 }

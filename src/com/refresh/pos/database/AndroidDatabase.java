@@ -60,7 +60,7 @@ public class AndroidDatabase extends SQLiteOpenHelper implements Database {
 				+ "_id INTEGER PRIMARY KEY,"
 				+ "sale_id INTEGER,"
 				+ "product_id INTEGER,"
-				+ "quantity DOUBLE,"
+				+ "quantity INTEGER,"
 				+ "unit_price DOUBLE"
 				
 				+ ");");

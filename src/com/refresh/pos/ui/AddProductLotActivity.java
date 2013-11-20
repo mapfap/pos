@@ -1,7 +1,5 @@
 package com.refresh.pos.ui;
 
-import java.util.Date;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -14,6 +12,7 @@ import android.widget.Toast;
 
 import com.refresh.pos.R;
 import com.refresh.pos.database.NoDaoSetException;
+import com.refresh.pos.domain.DateTimeStrategy;
 import com.refresh.pos.domain.Inventory;
 import com.refresh.pos.domain.Product;
 import com.refresh.pos.domain.ProductCatalog;
@@ -99,7 +98,7 @@ public class AddProductLotActivity extends Activity{
 								.show();
 					} else {
 						boolean success = stock.addProductLot(
-								(new Date()).toString(), 
+								DateTimeStrategy.getCurrentTime(), 
 								Integer.parseInt(quantityBox.getText().toString()), 
 								product, 
 								Double.parseDouble(costBox.getText().toString()));
@@ -189,7 +188,7 @@ public class AddProductLotActivity extends Activity{
 //							.show();
 //				}
 //				else{
-//					Date now = new Date();
+//					Date now = new Date(); << DEPRECATED
 //					String time = new SimpleDateFormat("dd MMM yyyy").format(now);
 //					int id = inventory.getProductCatalog().getProductByBarcode(itemBarcode.getText().toString()).getId();
 //					boolean success = inventory.getStock().addProductLot(time, quantity, id,Double.parseDouble(itemPrice.getText().toString()));

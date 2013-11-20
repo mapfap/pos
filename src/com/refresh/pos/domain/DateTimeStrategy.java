@@ -25,5 +25,9 @@ public class DateTimeStrategy {
 		Date ndate = new Date(date);
 		return formatter.format(ndate);
 	}
+	
+	public static String getCurrentTime() {
+		return (new Date()).toString();
+	}
 
 }

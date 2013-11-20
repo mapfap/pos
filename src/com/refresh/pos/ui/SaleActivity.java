@@ -1,23 +1,11 @@
 package com.refresh.pos.ui;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-import com.google.zxing.integration.android.IntentIntegrator;
-import com.google.zxing.integration.android.IntentResult;
-import com.refresh.pos.R;
-import com.refresh.pos.database.NoDaoSetException;
-import com.refresh.pos.domain.Inventory;
-import com.refresh.pos.domain.LineItem;
-import com.refresh.pos.domain.Product;
-import com.refresh.pos.domain.Register;
-import com.refresh.pos.domain.Sale;
-
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -28,13 +16,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.refresh.pos.R;
+import com.refresh.pos.database.NoDaoSetException;
+import com.refresh.pos.domain.DateTimeStrategy;
+import com.refresh.pos.domain.LineItem;
+import com.refresh.pos.domain.Register;
+import com.refresh.pos.domain.Sale;
 
 public class SaleActivity extends Activity  {
 
@@ -62,7 +56,7 @@ public class SaleActivity extends Activity  {
 			e.printStackTrace();
 		}
 		
-		currentSale = register.initiateSale((new Date()).toString());
+		currentSale = register.initiateSale(DateTimeStrategy.getCurrentTime());
 		
 		initUI(savedInstanceState);
 	}
@@ -113,6 +107,7 @@ public class SaleActivity extends Activity  {
 							double totalP = Double.parseDouble(totalPrice.getText().toString());
 							if(input>=totalP){
 								Log.v("Payment ","pass");
+								register.endSale(DateTimeStrategy.getCurrentTime());
 							}
 							else{
 								Log.v("Payment ",">");
@@ -131,7 +126,7 @@ public class SaleActivity extends Activity  {
 
 				popDialog.create();
 				popDialog.show();
-//				register.endSale((new Date()).toString());
+//				register.endSale(DateTimeStrategy.getCurrentTime()).toString());
 //				SaleActivity.this.finish();
 //				
 //				Intent intent = new Intent(SaleActivity.this, HomeActivity.class);

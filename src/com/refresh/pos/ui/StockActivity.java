@@ -71,7 +71,6 @@ public class StockActivity extends Activity {
 			public void onTextChanged(CharSequence s, int start, int before,int count) {}
 		});
 		
-		showList(stock.getAllProductLot());
 		
 //		stockListView.setOnItemClickListener(new OnItemClickListener() {
 //		      public void onItemClick(AdapterView<?> myAdapter, View myView, int position, long mylng) {

@@ -21,6 +21,7 @@ import com.refresh.pos.database.SaleDaoAndroid;
 import com.refresh.pos.domain.DateTimeStrategy;
 import com.refresh.pos.domain.Inventory;
 import com.refresh.pos.domain.Register;
+import com.refresh.pos.domain.SaleLedger;
 
 /**
  * This is the first activity page, core-app and database created here.
@@ -55,6 +56,7 @@ public class LoaderActivity extends Activity {
 		
 		Inventory.setInventoryDao(inventoryDao);
 		Register.setSaleDao(saleDao);
+		SaleLedger.setSaleDao(saleDao);
 		
 		DateTimeStrategy.setLocale("th", "TH");
 		
