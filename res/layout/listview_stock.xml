@@ -37,13 +37,6 @@
             android:layout_height="wrap_content"
             android:layout_weight="1.5"
             android:text="Total" />
-        
-        <TextView
-            android:id="@+id/left"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1.5"
-            android:text="Left" />
     </TableRow>
 
 </LinearLayout>
