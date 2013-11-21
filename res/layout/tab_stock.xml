@@ -42,10 +42,6 @@
             android:layout_weight="3.96" >
         </ListView>
 
-        <ImageButton
-            android:id="@+id/addProductLotButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@android:drawable/ic_input_add" />
+        
 
 </LinearLayout>

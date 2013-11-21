@@ -73,7 +73,7 @@ public class HomeActivity extends Activity {
 		demoButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-//				testAddProduct();
+				testAddProduct();
 				Intent intent = (new Chart()).execute(HomeActivity.this);
 				startActivity(intent);
 			}

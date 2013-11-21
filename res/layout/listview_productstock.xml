@@ -7,7 +7,7 @@
     <TableRow
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#CFCFCF"
+            android:background="#FFFFFF"
             android:padding="5dip" >
 
             <TextView
