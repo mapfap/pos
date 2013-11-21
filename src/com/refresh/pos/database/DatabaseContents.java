@@ -6,7 +6,8 @@ public enum DatabaseContents {
 	TABLE_PRODUCT_CATALOG("product_catalog"),
 	TABLE_STOCK("stock"),
 	TABLE_SALE("sale"),
-	TABLE_SALE_LINEITEM("sale_lineitem");
+	TABLE_SALE_LINEITEM("sale_lineitem"),
+	TABLE_STOCK_SUM("stock_sum");
 	
 	private String name;
 	private DatabaseContents(String name) {

@@ -13,7 +13,7 @@ public class Stock {
 	}
 	
 	public boolean addProductLot(String dateAdded, int quantity, Product product, double cost) {
-		ProductLot productLot = new ProductLot(ProductLot. UNDEFINED_ID, dateAdded, quantity, product, cost, quantity);
+		ProductLot productLot = new ProductLot(ProductLot. UNDEFINED_ID, dateAdded, quantity, product, cost);
 		int id = inventoryDao.addProductLot(productLot);
 		return id != -1;
 	}

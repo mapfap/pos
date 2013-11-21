@@ -96,8 +96,8 @@ public class StockActivity extends Activity {
 
 		SimpleAdapter sAdap;
 		sAdap = new SimpleAdapter(StockActivity.this, stockList,
-				R.layout.listview_stock, new String[] { "productName", "dateAdded", "cost", "quantity", "left" },
-				new int[] { R.id.name, R.id.date, R.id.cost, R.id.total, R.id.left });
+				R.layout.listview_stock, new String[] { "productName", "dateAdded", "cost", "quantity"},
+				new int[] { R.id.name, R.id.date, R.id.cost, R.id.total });
 		stockListView.setAdapter(sAdap);
 	}
 
