@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.content.ContentValues;
+import android.util.Log;
 
 import com.refresh.pos.domain.Product;
 import com.refresh.pos.domain.ProductLot;
@@ -103,11 +104,12 @@ public class InventoryDaoAndroid implements InventoryDao {
          content.put("cost",  productLot.getCost());
          int id = database.insert(DatabaseContents.TABLE_STOCK.toString(), content);
          
-//         
-//         ContentValues content2 = new ContentValues();
-//         content2.put("_id", id);
-//         content2.put("quantity", getStockSumById(id) + productLot.getQuantity());
-//         database.update(DatabaseContents.TABLE_STOCK_SUM.toString(), content2);   
+         
+         ContentValues content2 = new ContentValues();
+         content2.put("_id", productLot.getProduct().getId());
+         content2.put("quantity", getStockSumById(id) + productLot.getQuantity());
+         Log.d("fff","" + getStockSumById(id) + " " + id + " " +productLot.getQuantity() );
+         database.update(DatabaseContents.TABLE_STOCK_SUM.toString(), content2);   
          
          return id;
 	}

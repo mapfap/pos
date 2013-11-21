@@ -68,30 +68,11 @@
             android:background="#C0C0C0"
             android:gravity="center"
             android:paddingRight="3dp"
-            android:textSize="8sp"
+            android:textSize="12sp"
             android:text="Quantity" />
     </TableRow>
 
-    <TableRow
-        android:layout_width="0dp"
-        android:layout_height="30dp"
-        android:background="#000000"
-        android:layout_weight="0.75"
-        android:paddingBottom="1dip" 
-        android:paddingTop="1dip" 
-        android:paddingLeft="1dip"
-        android:paddingRight="1dip" >
 
-        <TextView
-            android:id="@+id/left"
-            android:layout_width="0dp"
-            android:layout_height="fill_parent"
-            android:layout_weight="0.75"
-            android:background="#C0C0C0"
-            android:gravity="center"
-            android:paddingRight="3dp"
-            android:text="Left" />
-    </TableRow>
 
 </LinearLayout>
 
