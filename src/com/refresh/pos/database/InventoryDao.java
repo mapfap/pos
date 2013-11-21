@@ -24,5 +24,6 @@ public interface InventoryDao {
 	List<ProductLot> getProductLotByProductId(int id);
 	
 	int getStockSumById(int id);
+	void updateStockSum(int productId, double quantity);
 
 }

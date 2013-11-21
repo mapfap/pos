@@ -26,6 +26,7 @@ import android.widget.Toast;
 import com.refresh.pos.R;
 import com.refresh.pos.database.NoDaoSetException;
 import com.refresh.pos.domain.DateTimeStrategy;
+import com.refresh.pos.domain.Inventory;
 import com.refresh.pos.domain.LineItem;
 import com.refresh.pos.domain.Register;
 import com.refresh.pos.domain.Sale;
@@ -108,6 +109,7 @@ public class SaleActivity extends Activity  {
 							if(input>=totalP){
 								Log.v("Payment ","pass");
 								register.endSale(DateTimeStrategy.getCurrentTime());
+								
 							}
 							else{
 								Log.v("Payment ",">");

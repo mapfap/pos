@@ -6,13 +6,13 @@ import java.util.Map;
 public class LineItem {
 	
 	private final Product product;
-	private double quantity;
+	private int quantity;
 
 	public LineItem(Product product) {
 		this(product, 1);
 	}
 
-	public LineItem(Product product, double quantity) {
+	public LineItem(Product product, int quantity) {
 		this.product = product;
 		this.quantity = quantity;
 	}
@@ -25,7 +25,7 @@ public class LineItem {
 		return product;
 	}
 
-	public double getQuantity() {
+	public int getQuantity() {
 		return quantity;
 	}
 

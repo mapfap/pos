@@ -174,5 +174,14 @@ public class InventoryDaoAndroid implements InventoryDao {
 		return quantity;
 	}
 
+	@Override
+	public void updateStockSum(int productId, double quantity) {
+		 ContentValues content = new ContentValues();
+         content.put("_id", productId);
+         content.put("quantity", getStockSumById(productId) - quantity);
+//         Log.d("fff","" + getStockSumById(id) + " " + id + " " +productLot.getQuantity() );
+         database.update(DatabaseContents.TABLE_STOCK_SUM.toString(), content);   
+	}
+
 
 }

@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.Observable;
 
 
-public class Sale extends Observable {
+public class Sale {
 	
 	private final int id;
 	private String startTime;

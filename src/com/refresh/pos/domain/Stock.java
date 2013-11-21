@@ -35,6 +35,11 @@ public class Stock {
 	public int getStockSumById(int id) {
 		return inventoryDao.getStockSumById(id);
 	}
+
+	public void updateStockSum(int productId, int quantity) {
+		inventoryDao.updateStockSum(productId,quantity);
+		
+	}
 	
 
 }

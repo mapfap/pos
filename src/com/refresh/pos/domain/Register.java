@@ -6,6 +6,7 @@ import com.refresh.pos.database.SaleDao;
 public class Register {
 	private static Register instance = null;
 	private static SaleDao saleDao = null;
+	private static Stock stock = null;
 	
 	private Sale currentSale;
 	
@@ -13,6 +14,8 @@ public class Register {
 		if (!isDaoSet()) {
 			throw new NoDaoSetException();
 		}
+		stock = Inventory.getInstance().getStock();
+		
 	}
 	
 	public static boolean isDaoSet() {
@@ -51,6 +54,11 @@ public class Register {
 	public void endSale(String endTime) {
 		double total = currentSale.getTotal();
 		saleDao.endSale(currentSale, endTime);
+		for(LineItem line : currentSale.getAllLineItem()){
+			stock.updateStockSum(line.getProductId(), line.getQuantity());
+			
+		}
+		
 		currentSale = null;
 	}
 	public void clear(){
