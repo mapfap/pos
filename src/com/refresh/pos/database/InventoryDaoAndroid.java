@@ -24,8 +24,17 @@ public class InventoryDaoAndroid implements InventoryDao {
         content.put("unit_price", product.getUnitPrice());
         
         int id = database.insert(DatabaseContents.TABLE_PRODUCT_CATALOG.toString(), content);
+        
+        
+    	ContentValues content2 = new ContentValues();
+        content2.put("_id", id);
+        content2.put("quantity", 0);
+        database.insert(DatabaseContents.TABLE_STOCK_SUM.toString(), content2);
+        
         return id;
 	}
+	
+	
 	
 	private List<Product> toProductList(List<ContentValues> contents) {
 		List<Product> list = new ArrayList<Product>();
@@ -93,6 +102,13 @@ public class InventoryDaoAndroid implements InventoryDao {
          content.put("product_id",  productLot.getProduct().getId());
          content.put("cost",  productLot.getCost());
          int id = database.insert(DatabaseContents.TABLE_STOCK.toString(), content);
+         
+//         
+//         ContentValues content2 = new ContentValues();
+//         content2.put("_id", id);
+//         content2.put("quantity", getStockSumById(id) + productLot.getQuantity());
+//         database.update(DatabaseContents.TABLE_STOCK_SUM.toString(), content2);   
+         
          return id;
 	}
 
@@ -144,6 +160,16 @@ public class InventoryDaoAndroid implements InventoryDao {
 	@Override
 	public List<ProductLot> getAllProductLot() {
 		return getAllProductLot("");
+	}
+
+	@Override
+	public int getStockSumById(int id) {
+//		return 11;
+		String queryString = "SELECT * FROM " + DatabaseContents.TABLE_STOCK_SUM.toString() + " WHERE _id = " + id;
+        @SuppressWarnings("unchecked")
+		List<ContentValues> contents = ((List) database.select(queryString));
+		int quantity = contents.get(0).getAsInteger("quantity");
+		return quantity;
 	}
 
 

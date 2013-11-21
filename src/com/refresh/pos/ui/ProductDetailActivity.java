@@ -38,6 +38,7 @@ public class ProductDetailActivity extends Activity {
 	private TabHost mTabHost;
 	private ListView stockListView;
 	private String id;
+	private TextView quantityBox;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -72,6 +73,8 @@ public class ProductDetailActivity extends Activity {
 		nameBox = (TextView) findViewById(R.id.nameBox);
 		priceBox = (TextView) findViewById(R.id.priceBox);
 		barcodeBox = (TextView) findViewById(R.id.barcodeBox);
+		quantityBox = (TextView) findViewById(R.id.quantityBox);
+		
 		addProductLotButton = (ImageButton) findViewById(R.id.addProductLotButton);
 		mTabHost = (TabHost) findViewById(android.R.id.tabhost);
 		mTabHost.setup();
@@ -104,6 +107,7 @@ public class ProductDetailActivity extends Activity {
 	@Override
 	protected void onResume() {
 		super.onResume();
+		quantityBox.setText(stock.getStockSumById(product.getId())+"");
 		showList(stock.getProductLotByProductId(Integer.parseInt(id)));
 	}
 

@@ -31,6 +31,10 @@ public class Stock {
 
 		return inventoryDao.getAllProductLot();
 	}
+
+	public int getStockSumById(int id) {
+		return inventoryDao.getStockSumById(id);
+	}
 	
 
 }

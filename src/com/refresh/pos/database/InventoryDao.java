@@ -22,5 +22,7 @@ public interface InventoryDao {
 	List<ProductLot> getAllProductLot();
 	List<ProductLot> getProductLotById(int id);
 	List<ProductLot> getProductLotByProductId(int id);
+	
+	int getStockSumById(int id);
 
 }

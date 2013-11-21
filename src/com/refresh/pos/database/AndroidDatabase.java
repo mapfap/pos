@@ -66,6 +66,7 @@ public class AndroidDatabase extends SQLiteOpenHelper implements Database {
 		Log.d("CREATE DATABASE", "Create " + DatabaseContents.TABLE_SALE_LINEITEM.toString() + " Successfully.");
 
 
+		// this _id is product_id but for update method, it is easier to use name _id
 		database.execSQL("CREATE TABLE " + DatabaseContents.TABLE_STOCK_SUM.toString() + "("
 				
 				+ "_id INTEGER PRIMARY KEY,"
