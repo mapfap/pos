@@ -21,6 +21,9 @@ public class SaleDaoAndroid implements SaleDao {
 		ContentValues content = new ContentValues();
         content.put("start_time", startTime.toString());
         content.put("status", "ON PROCESS");
+        content.put("payment", "n/a");
+        content.put("total_price", "n/a");
+        content.put("end_time", startTime.toString());
         
         int id = database.insert(DatabaseContents.TABLE_SALE.toString(), content);
 		return new Sale(id,startTime);

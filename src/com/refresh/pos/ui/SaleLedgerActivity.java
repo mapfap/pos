@@ -74,8 +74,8 @@ public class SaleLedgerActivity extends Activity {
 		saleList = new ArrayList<Map<String, String>>();
 		for (Sale sale : list) {
 			saleList.add(sale.toMap());
-			Log.d("ledger", sale.getStartTime());
-			Log.d("ledger", sale.getEndTime());
+//			Log.d("ledger", sale.getStartTime());
+//			Log.d("ledger", sale.getEndTime());
 		}
 		
 
