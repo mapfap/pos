@@ -6,34 +6,96 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal" >
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#CFCFCF"
-            android:padding="5dip" >
+    <TableRow
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:background="#000000"
+        android:layout_weight="2"
+        android:paddingTop="1dip" 
+        android:paddingBottom="1dip" 
+        android:paddingLeft="1dip"  >
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:text="Date Added"
-                android:gravity="center" />
+        <TextView
+            android:id="@+id/dateAdded"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="2"
+            android:background="#C0C0C0"
+            android:gravity="center"
+            android:paddingRight="3dp"
+            android:text="Date Added" />
+    </TableRow>
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1.5"
-                android:text="Cost"
-                android:gravity="center" />
+    <TableRow
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:background="#000000"
+        android:layout_weight="1.5"
+        android:paddingTop="1dip" 
+        android:paddingBottom="1dip" 
+        android:paddingLeft="1dip"  >
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1.5"
-                android:text="Quantity"
-                android:gravity="center" />
-        </TableRow>
+        <TextView
+            android:id="@+id/cost"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.5"
+            android:background="#C0C0C0"
+            android:gravity="center"
+            android:paddingRight="3dp"
+            android:text="Cost" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="0dp"
+        android:layout_height="fill_parent"
+        android:background="#000000"
+        android:layout_weight="0.75"
+        android:paddingTop="1dip" 
+        android:paddingBottom="1dip" 
+        android:paddingLeft="1dip" >
+
+        <TextView
+            android:id="@+id/quantity"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_weight="0.75"
+            android:background="#C0C0C0"
+            android:gravity="center"
+            android:paddingRight="3dp"
+            android:textSize="8sp"
+            android:text="Quantity" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:background="#000000"
+        android:layout_weight="0.75"
+        android:paddingBottom="1dip" 
+        android:paddingTop="1dip" 
+        android:paddingLeft="1dip"
+        android:paddingRight="1dip" >
+
+        <TextView
+            android:id="@+id/left"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="0.75"
+            android:background="#C0C0C0"
+            android:gravity="center"
+            android:paddingRight="3dp"
+            android:text="Left" />
+    </TableRow>
+
+</LinearLayout>
+
+        
 
         <ListView
             android:id="@+id/stockListView"

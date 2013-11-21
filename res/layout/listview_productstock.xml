@@ -2,45 +2,84 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
-    
+    android:orientation="horizontal" >
+
+
     <TableRow
-            android:layout_width="match_parent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="#000000"
+        android:layout_weight="2"
+        android:paddingBottom="1dip" 
+        android:paddingLeft="1dip"  >
+
+        <TextView
+            android:id="@+id/dateAdded"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="2"
             android:background="#FFFFFF"
-            android:padding="5dip" >
+            android:gravity="right"
+            android:paddingRight="3dp"
+            android:text="Date Added" />
+    </TableRow>
 
-            <TextView
-                android:id="@+id/dateAdded"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:text="Date Added"
-                android:gravity="right" />
+    <TableRow
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="#000000"
+        android:layout_weight="1.5"
+        android:paddingBottom="1dip" 
+        android:paddingLeft="1dip"  >
 
-            <TextView
-                android:id="@+id/cost"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1.5"
-                android:text="Cost"
-                android:gravity="right" />
+        <TextView
+            android:id="@+id/cost"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.5"
+            android:background="#FFFFFF"
+            android:gravity="right"
+            android:paddingRight="3dp"
+            android:text="Cost" />
+    </TableRow>
 
-            <TextView
-                android:id="@+id/quantity"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.75"
-                android:text="Q"
-                android:gravity="right" />
-            
-            <TextView
-                android:id="@+id/left"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.75"
-                android:text="L"
-                android:gravity="right" />
-        </TableRow>
+    <TableRow
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="#000000"
+        android:layout_weight="0.75"
+        android:paddingBottom="1dip" 
+        android:paddingLeft="1dip" >
+
+        <TextView
+            android:id="@+id/quantity"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.75"
+            android:background="#FFFFFF"
+            android:gravity="right"
+            android:paddingRight="3dp"
+            android:text="Q" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="#000000"
+        android:layout_weight="0.75"
+        android:paddingBottom="1dip" 
+        android:paddingLeft="1dip"
+        android:paddingRight="1dip" >
+
+        <TextView
+            android:id="@+id/left"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.75"
+            android:background="#FFFFFF"
+            android:gravity="right"
+            android:paddingRight="3dp"
+            android:text="L" />
+    </TableRow>
 
 </LinearLayout>
