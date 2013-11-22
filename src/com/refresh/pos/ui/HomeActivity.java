@@ -22,6 +22,7 @@ public class HomeActivity extends Activity {
 	private Button saleButton;
 	private Button demoButton;
 	private Button reportButton;
+	private Button historyButton;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +40,14 @@ public class HomeActivity extends Activity {
 		saleButton = (Button) findViewById(R.id.saleButton);
 		demoButton = (Button) findViewById(R.id.demoButton);
 		reportButton = (Button) findViewById(R.id.reportButton);
+		historyButton = (Button) findViewById(R.id.historyButton);
+		
+		reportButton.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				Intent newActivity = new Intent(HomeActivity.this, MainActivity.class);
+				startActivity(newActivity);
+			}
+		});
 		
 		reportButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {

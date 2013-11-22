@@ -36,7 +36,9 @@ public class MainActivity extends FragmentActivity {
 
 		FragmentTransaction transaction = getSupportFragmentManager()
 				.beginTransaction();
+		transaction.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right);
 		transaction.replace(R.id.fragment_place, newFragment);
+		
 		transaction.addToBackStack(null);
 		transaction.commit();
 	}
