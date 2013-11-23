@@ -7,17 +7,19 @@
 
     <TextView
         android:id="@+id/name"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:gravity="center_vertical"
-        android:text="Name"
+        android:layout_height="wrap_content"
+        android:layout_width="0dip"
+        android:layout_weight=".9"
+        android:paddingTop="5dip"
+        android:paddingBottom="5dip"
+        android:paddingLeft="30dip"
         android:textSize="20sp" />
 
-    <View
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
+     <View
+        android:id="@+id/optionView"
         android:layout_height="wrap_content"
-        android:layout_gravity=""
+        android:layout_width="0dip"
+        android:layout_weight=".1"
         android:background="@drawable/ic_action_overflow" />
 
 </LinearLayout>
