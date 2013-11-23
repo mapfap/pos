@@ -36,6 +36,7 @@ import com.refresh.pos.domain.Inventory;
 import com.refresh.pos.domain.Product;
 import com.refresh.pos.domain.ProductCatalog;
 import com.refresh.pos.domain.Register;
+import com.refresh.pos.domain.SaleLedger;
 
 public class InventoryFragment extends Fragment {
 
@@ -135,6 +136,23 @@ public class InventoryFragment extends Fragment {
 
 	private void search() {
 		String search = searchBox.getText().toString();
+		
+		//TODO: DELTE THIS
+		if (search.equals("motherlode")) {
+			searchBox.setText("");
+			testAddProduct();
+		} else if (search.equals("clear")) {
+			
+			try {
+				Inventory.getInstance().getProductCatalog().clearProductCatalog();
+				Inventory.getInstance().getStock().clearStock();
+				SaleLedger.getInstance().clearSaleLedger();
+			} catch (NoDaoSetException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		
 		if (search.equals("")) {
 			showList(productCatalog.getAllProduct());
 		} else {
@@ -159,6 +177,25 @@ public class InventoryFragment extends Fragment {
 			Toast.makeText(getActivity().getBaseContext() ,
 					"Failed to retrieve barcode." + resultCode,
 					Toast.LENGTH_SHORT).show();
+		}
+	}
+	
+	protected void testAddProduct() {
+		try {
+			
+			Inventory.getInstance().getProductCatalog().addProduct("Apple iPhone 4s", "65005", 20900 );
+			Inventory.getInstance().getProductCatalog().addProduct("Apple Macbook Air (mid-2012)", "68701", 32900 );
+			Inventory.getInstance().getProductCatalog().addProduct("Television ", "20004", 21000);
+			Inventory.getInstance().getProductCatalog().addProduct("Lettuce" , "80775", 10.75);
+			Inventory.getInstance().getProductCatalog().addProduct("Carrot", "10089", 8.50);
+			Inventory.getInstance().getProductCatalog().addProduct("Sumsung Television", "899089", 8.50);
+			Inventory.getInstance().getProductCatalog().addProduct("Applying UML and Pattern", "05667", 1.50);
+			Inventory.getInstance().getProductCatalog().addProduct("Code Complete 2nd Edition", "99887", 2.50);
+			
+			Toast.makeText(getActivity().getBaseContext(), "products added.", Toast.LENGTH_SHORT).show();
+			
+		} catch (NoDaoSetException e) {
+			e.printStackTrace();
 		}
 	}
 	

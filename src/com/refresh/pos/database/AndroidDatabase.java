@@ -145,18 +145,18 @@ public class AndroidDatabase extends SQLiteOpenHelper implements Database {
 		}
 	}
 
-	@Override
-	public boolean delete(String tableName, int id) {
-		try {
-			SQLiteDatabase database = this.getWritableDatabase();
-			database.delete(tableName, " _id = ?", new String[]{id+""});
-			return true;
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
-		}
-	}
+    @Override
+    public boolean delete(String tableName, int id) {
+            try {
+                    SQLiteDatabase database = this.getWritableDatabase();
+                    database.delete(tableName, " _id = ?", new String[]{id+""});
+                    return true;
+                    
+            } catch (Exception e) {
+                    e.printStackTrace();
+                    return false;
+            }
+    }
 	
 //	public void destroy() {
 //		database.execSQL("DROP DATABASE " + DatabaseContents.DATABASE.toString());

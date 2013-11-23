@@ -55,5 +55,9 @@ public class ProductCatalog {
 		return inventoryDao.searchProduct(search);
 	}
 
+	public void clearProductCatalog() {
+		inventoryDao.clearProductCatalog();
+	}
+
 	
 }

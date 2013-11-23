@@ -69,6 +69,15 @@ public class Register {
 		return currentSale;
 	}
 	
+	public boolean setCurrentSale(int id) {
+//		if (currentSale == null)
+//			initiateSale(DateTimeStrategy.getCurrentTime());
+//		return currentSale;
+		
+		currentSale = saleDao.getSaleById(id);
+		return false;
+	}
+	
 	public void cancleSale(){
 		// TODO : delete line item that added in database
 		if (currentSale != null)

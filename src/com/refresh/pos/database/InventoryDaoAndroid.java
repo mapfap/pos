@@ -183,5 +183,17 @@ public class InventoryDaoAndroid implements InventoryDao {
          database.update(DatabaseContents.TABLE_STOCK_SUM.toString(), content);   
 	}
 
+	@Override
+	public void clearProductCatalog() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void clearStock() {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }

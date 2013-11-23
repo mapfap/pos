@@ -19,4 +19,6 @@ public interface SaleDao {
 	
 	List<LineItem> getLineItem(Sale sale);
 
+	void clearSaleLedger();
+
 }

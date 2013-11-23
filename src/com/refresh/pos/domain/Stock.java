@@ -40,6 +40,11 @@ public class Stock {
 		inventoryDao.updateStockSum(productId,quantity);
 		
 	}
+
+	public void clearStock() {
+		inventoryDao.clearStock();
+		
+	}
 	
 
 }

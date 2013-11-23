@@ -36,4 +36,9 @@ public class SaleLedger {
 	public Sale getSaleById(int id) {
 		return saleDao.getSaleById(id);
 	}
+
+	public void clearSaleLedger() {
+		saleDao.clearSaleLedger();
+		
+	}
 }

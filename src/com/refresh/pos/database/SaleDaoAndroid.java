@@ -91,4 +91,10 @@ public class SaleDaoAndroid implements SaleDao {
 		return null;
 	}
 
+	@Override
+	public void clearSaleLedger() {
+		// TODO: don't forget to DELETE in line item 
+//		database.delete(DatabaseContents.TABLE_SALE.toString(), "");
+	}
+
 }
