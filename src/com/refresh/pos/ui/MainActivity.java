@@ -22,7 +22,8 @@ import android.util.Log;
 
 public class MainActivity extends FragmentActivity {
 
-    ViewPager viewPager=null;
+    private ViewPager viewPager = null;
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +34,11 @@ public class MainActivity extends FragmentActivity {
         viewPager= (ViewPager) findViewById(R.id.pager);
         FragmentManager fragmentManager = getSupportFragmentManager();
         viewPager.setAdapter(new MyFragmentStatePagerAdapter(fragmentManager));
+        viewPager.setCurrentItem(1);
+    }
+    
+    public ViewPager getViewPager() {
+    	return viewPager;
     }
     
 	/**

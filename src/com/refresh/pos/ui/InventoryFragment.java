@@ -8,6 +8,7 @@ import java.util.Map;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -38,7 +39,6 @@ public class InventoryFragment extends Fragment {
 	private ProductCatalog productCatalog;
 	List<Map<String, String>> inventoryList;
 	private Button addProductButton;
-	private ImageButton searchButton;
 	private EditText searchBox;
 	private Button scanButton;
 	
@@ -56,27 +56,13 @@ public class InventoryFragment extends Fragment {
 		
 		inventoryListView = (ListView) view.findViewById(R.id.inventoryListView);
 		addProductButton = (Button) view.findViewById(R.id.addProductButton);
-//		searchButton = (ImageButton) v.findViewById(R.id.searchButton);
 		scanButton = (Button) view.findViewById(R.id.scanButton);
 		searchBox = (EditText) view.findViewById(R.id.searchBox);
 		initUI();
 		return view;
 	}
-
-//	@Override
-//	public void onCreate(Bundle savedInstanceState) {
-//		requestWindowFeature(Window.FEATURE_NO_TITLE);
-//		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-//	
-//		
-//		initUI(savedInstanceState);
-//	}
 	
 	private void initUI() {
-//		super.onCreate(savedInstanceState);
-//		setContentView(R.layout.activity_inventory);
-		
-		
 		
 		addProductButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
@@ -93,20 +79,16 @@ public class InventoryFragment extends Fragment {
 	        }
 	        public void beforeTextChanged(CharSequence s, int start, int count, int after){}
 	        public void onTextChanged(CharSequence s, int start, int before, int count){}
-	    }); 
-		
-//		searchButton.setOnClickListener(new View.OnClickListener() {
-//			public void onClick(View v) {
-//				search();
-//			}
-//		});
+	    });
 		
 		inventoryListView.setOnItemClickListener(new OnItemClickListener() {
 		      public void onItemClick(AdapterView<?> myAdapter, View myView, int position, long mylng) {
 		    	  String id = inventoryList.get(position).get("id").toString();
-		    	  Intent newActivity = new Intent(getActivity().getBaseContext() , ProductDetailActivity.class);
-		    	  newActivity.putExtra("id", id);
-		    	  startActivity(newActivity);  	    	  
+//		    	  Intent newActivity = new Intent(getActivity().getBaseContext() , ProductDetailActivity.class);
+		    	  ViewPager viewPager = ((MainActivity) getActivity()).getViewPager();
+		    	  viewPager.setCurrentItem(0);
+//		    	  newActivity.putExtra("id", id);
+//		    	  startActivity(newActivity);  	    	  
 		      }     
 		});
 

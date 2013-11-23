@@ -16,6 +16,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -62,6 +63,7 @@ public class SaleFragment extends Fragment {
 		payButton = (ImageButton) view.findViewById(R.id.payButton);
 		clearButton = (ImageButton) view.findViewById(R.id.sale_clearButton);
 		
+		initUI();
 		return view;
 	}
 
@@ -72,13 +74,13 @@ public class SaleFragment extends Fragment {
 //		final AlertDialog.Builder adb = new AlertDialog.Builder(this);
 //		
 //		totalPrice.setText("0.00");
-//		addButton.setOnClickListener(new View.OnClickListener() {
-//			@Override
-//			public void onClick(View v) {
-//				Intent newActivity = new Intent(getActivity().getBaseContext(), SaleProductCatalog.class);
-//				startActivity(newActivity);
-//			}
-//		});
+		addButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				ViewPager viewPager = ((MainActivity) getActivity()).getViewPager();
+				viewPager.setCurrentItem(1);
+			}
+		});
 //		
 //		payButton.setOnClickListener(new View.OnClickListener() {
 //			@Override
