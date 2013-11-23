@@ -4,81 +4,35 @@
     android:versionCode="1"
     android:versionName="1.0" >
 
-    <uses-sdk
-        android:minSdkVersion="8"
-        android:targetSdkVersion="18" />
+    <uses-sdk android:minSdkVersion="8" android:targetSdkVersion="18" />
 
     <application
         android:allowBackup="true"
         android:debuggable="true"
-        android:icon="@drawable/ic_launcher"  >
-        
-        <activity
-            android:name="com.refresh.pos.ui.LoaderActivity"
-            android:launchMode="singleTop"
-            android:label="">
-        </activity>
-        
-        
+        android:icon="@drawable/ic_launcher"
+        android:theme="@style/AppTheme" >
+
         <activity
             android:name="com.refresh.pos.ui.MainActivity"
-            android:label="@string/app_name">
+            android:label="@string/app_name"
+            android:launchMode="singleTop" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            
         </activity>
         
-        
-        <activity
-            android:name="com.refresh.pos.ui.HomeActivity"
-            android:label="@string/app_name">
-        </activity>
-        
-        <activity
-            android:name="com.refresh.pos.ui.InventoryActivity"
-            android:label="Inventory" >
-        </activity>
-        
-        <activity
-            android:name="com.refresh.pos.ui.AddProductActivity"
-            android:label="Add Product" >
-        </activity>
-
-        <activity
-            android:name="com.refresh.pos.ui.AddProductLotActivity"
-            android:label="Add Product Lot" >
-        </activity>
-        
-        <activity
-            android:name="com.refresh.pos.ui.ProductDetailActivity"
-            android:label="Product Detail" >
-        </activity>
-        
-        <activity
-            android:name="com.refresh.pos.ui.SaleActivity"
-            android:label="Sale" >
-        </activity>
-        
-        <activity
-            android:name="com.refresh.pos.ui.StockActivity"
-            android:label="Stock" >
-        </activity>
-        <activity
-            android:name="com.refresh.pos.ui.SaleProductCatalog"
-            android:label="SaleCatalog" >
-        </activity>
-        
-        <activity
-            android:name="com.refresh.pos.ui.SaleLedgerActivity"
-            android:label="Stock" >
-        </activity>
-        
-       <activity android:name="org.achartengine.GraphicalActivity" />
-        
-       
-        
+        <activity android:name="com.refresh.pos.ui.LoaderActivity" />
+        <activity android:name="com.refresh.pos.ui.HomeActivity" />
+        <activity android:name="com.refresh.pos.ui.InventoryActivity" />
+        <activity android:name="com.refresh.pos.ui.AddProductActivity" />
+        <activity android:name="com.refresh.pos.ui.AddProductLotActivity" />
+        <activity android:name="com.refresh.pos.ui.ProductDetailActivity" />
+        <activity android:name="com.refresh.pos.ui.SaleActivity" />
+        <activity android:name="com.refresh.pos.ui.StockActivity" />
+        <activity android:name="com.refresh.pos.ui.SaleProductCatalog" />
+        <activity android:name="com.refresh.pos.ui.SaleLedgerActivity" />
+        <activity android:name="org.achartengine.GraphicalActivity" />
     </application>
 
 </manifest>
