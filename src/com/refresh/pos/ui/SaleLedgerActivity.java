@@ -46,7 +46,7 @@ public class SaleLedgerActivity extends Activity {
 
 	private void initUI(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_saleledger);
+		setContentView(R.layout.layout_report);
 
 		saleLedgerListView = (ListView) findViewById(R.id.saleListView);
 		searchBox = (EditText) findViewById(R.id.searchBox);
