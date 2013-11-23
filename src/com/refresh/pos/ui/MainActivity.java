@@ -22,7 +22,8 @@ import android.util.Log;
 
 public class MainActivity extends FragmentActivity {
 
-    private ViewPager viewPager = null;
+    private ViewPager viewPager;
+    private Announcer announcer;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,14 +32,19 @@ public class MainActivity extends FragmentActivity {
         
         initiateCoreApp();
         
+        announcer = new Announcer();
         viewPager= (ViewPager) findViewById(R.id.pager);
         FragmentManager fragmentManager = getSupportFragmentManager();
-        viewPager.setAdapter(new MyFragmentStatePagerAdapter(fragmentManager));
+        viewPager.setAdapter(new MyFragmentStatePagerAdapter(fragmentManager, announcer));
         viewPager.setCurrentItem(1);
     }
     
     public ViewPager getViewPager() {
     	return viewPager;
+    }
+    
+    public Announcer getAnnouncer() {
+    	return announcer;
     }
     
 	/**
@@ -63,15 +69,19 @@ public class MainActivity extends FragmentActivity {
 class MyFragmentStatePagerAdapter extends FragmentStatePagerAdapter
 {
 
-    public MyFragmentStatePagerAdapter(FragmentManager fragmentManager) {
+	private Announcer announcer;
+    public MyFragmentStatePagerAdapter(FragmentManager fragmentManager, Announcer announcer) {
         super(fragmentManager);
+        this.announcer = announcer;
     }
 
     @Override
     public Fragment getItem(int i) {
     	switch(i) {
     	case 0:
-    		return new ProductDetailFragment();
+    		ProductDetailFragment fragment = new ProductDetailFragment();
+    		announcer.addObserver(fragment);
+    		return fragment;
     	case 1:
     		return new InventoryFragment();
     	case 2:

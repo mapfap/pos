@@ -3,6 +3,8 @@ package com.refresh.pos.ui;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Observable;
+import java.util.Observer;
 
 import com.refresh.pos.R;
 import com.refresh.pos.database.NoDaoSetException;
@@ -29,7 +31,7 @@ import android.widget.TabHost;
 import android.widget.TextView;
 
 
-public class ProductDetailFragment extends Fragment {
+public class ProductDetailFragment extends Fragment implements Observer {
 
 	private ProductCatalog productCatalog;
 	private Stock stock;
@@ -41,7 +43,6 @@ public class ProductDetailFragment extends Fragment {
 	private ImageButton addProductLotButton;
 	private TabHost mTabHost;
 	private ListView stockListView;
-	private String id;
 	private TextView quantityBox;
 	
 	@Override
@@ -72,7 +73,6 @@ public class ProductDetailFragment extends Fragment {
 		
 		initUI();
 		
-		showProductDetail(2);
 		return view;
 	}
 
@@ -86,15 +86,24 @@ public class ProductDetailFragment extends Fragment {
 		});
 	}
 	
+	@Override
+	public void onResume() {
+		// onResume() is not called when at adjacent fragment
+		super.onResume();
+//		Log.d("resume detail", ContentManager.id + "");
+//		showProductDetail(ContentManager.id);
+	}
+	
 	public void showProductDetail(int id) {
-		
-		product = productCatalog.getProductById(id);
-		
-		nameBox.setText(product.getName());
-		priceBox.setText(product.getUnitPrice()+"");
-		barcodeBox.setText(product.getBarcode());
+//		if (id != ContentManager.UNDEFINED) {
+			product = productCatalog.getProductById(id);
 
-		showList(stock.getProductLotByProductId(id));
+			nameBox.setText(product.getName());
+			priceBox.setText(product.getUnitPrice()+"");
+			barcodeBox.setText(product.getBarcode());
+
+			showList(stock.getProductLotByProductId(id));
+//		}
 	}
 	
 	private void showList(List<ProductLot> list) {
@@ -106,5 +115,16 @@ public class ProductDetailFragment extends Fragment {
 		sAdap = new SimpleAdapter(getActivity().getBaseContext(), stockList,
 				R.layout.listview_productstock, new String[]{"dateAdded","cost","quantity"}, new int[] {R.id.dateAdded,R.id.cost,R.id.quantity});
 		stockListView.setAdapter(sAdap);
+	}
+
+	@Override
+	public void update(Observable arg0, Object arg1) {
+		try {
+			int id = (Integer) arg1;
+			showProductDetail(id);
+		} catch (Exception e) {			
+			e.printStackTrace();
+			Log.d("product datail", "invalid data = " + arg1);
+		}
 	}
 }

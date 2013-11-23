@@ -7,22 +7,20 @@
     
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
-    
-
+        android:layout_height="0dip"
+        android:layout_weight="0.2" >
+        
         <Button
             android:id="@+id/scanButton"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.2"
+            android:layout_height="match_parent"
             android:text="Scan" />
 
         <EditText
             android:id="@+id/searchBox"
             android:hint="Enter name or barcode here."
             android:layout_width="250dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1.5"
             android:ems="10" />        
 
@@ -31,15 +29,16 @@
     <ListView
         android:id="@+id/inventoryListView"
         android:layout_width="match_parent"
-        android:layout_height="184dp"
-        android:layout_weight="0.21" >
+        android:layout_height="0dip"
+        android:layout_weight="0.8" >
 
     </ListView>
 
     <Button
         android:id="@+id/addProductButton"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dip"
+        android:layout_weight="0.2"
         android:text="ADD NEW PRODUCT" />
 
 </LinearLayout>

@@ -6,7 +6,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="0dip"
+        android:layout_weight="0.2" >
 
         <TextView
             android:id="@+id/textView1"
@@ -25,10 +26,11 @@
     </LinearLayout>
 
     <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="260dp"
-        android:layout_weight="1.30"
-        android:orientation="vertical" >
+        android:layout_height="0dip"
+        android:layout_weight="0.6" >
+   
 
         <TableRow
             android:layout_width="match_parent"
@@ -64,33 +66,23 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical" >
+        android:layout_height="0dip"
+        android:layout_weight="0.2"
+        android:orientation="horizontal" >
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+        <Button
+            android:id="@+id/sale_addButton"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:text="ADD" />
 
-            <ImageButton
-                android:id="@+id/sale_addButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:src="@android:drawable/ic_search_category_default" />
-
-            <ImageButton
-                android:id="@+id/sale_clearButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:src="@drawable/ic_menu_clear" />
-        </LinearLayout>
-
-        <ImageButton
+        <Button
             android:id="@+id/payButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_menu_payment"  />
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:text="END" />
     </LinearLayout>
 
 </LinearLayout>

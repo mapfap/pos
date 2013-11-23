@@ -7,8 +7,7 @@
     <TabHost
         android:id="@android:id/tabhost"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="2.52" >
+        android:layout_height="wrap_content" >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -17,6 +16,7 @@
 
             <TabWidget
                 android:id="@android:id/tabs"
+                
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" >
             </TabWidget>
@@ -25,18 +25,24 @@
                 android:id="@android:id/tabcontent"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" >
-				<include layout="@layout/tab_detail"
-				    android:id="@+id/tab1"/>
-          		<include layout="@layout/tab_stock"
-          		    android:id="@+id/tab2"/>
+
+                <include
+                    android:id="@+id/tab1"
+                    layout="@layout/tab_detail" />
+
+                <include
+                    android:id="@+id/tab2"
+                    layout="@layout/tab_stock" />
                 
             </FrameLayout>
         </LinearLayout>
     </TabHost>
-            <ImageButton
-            android:id="@+id/addProductLotButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@android:drawable/ic_input_add" />
+
+    <ImageButton
+        android:id="@+id/addProductLotButton"
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="0.2"
+        android:src="@android:drawable/ic_input_add" />
 
 </LinearLayout>

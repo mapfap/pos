@@ -42,6 +42,9 @@ public class InventoryFragment extends Fragment {
 	private EditText searchBox;
 	private Button scanButton;
 	
+	private Announcer announcer;
+	private ViewPager viewPager;
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -58,7 +61,13 @@ public class InventoryFragment extends Fragment {
 		addProductButton = (Button) view.findViewById(R.id.addProductButton);
 		scanButton = (Button) view.findViewById(R.id.scanButton);
 		searchBox = (EditText) view.findViewById(R.id.searchBox);
+		
+		MainActivity main = (MainActivity) getActivity();
+		viewPager = main.getViewPager();
+		announcer = main.getAnnouncer();
+		
 		initUI();
+		
 		return view;
 	}
 	
@@ -83,12 +92,9 @@ public class InventoryFragment extends Fragment {
 		
 		inventoryListView.setOnItemClickListener(new OnItemClickListener() {
 		      public void onItemClick(AdapterView<?> myAdapter, View myView, int position, long mylng) {
-		    	  String id = inventoryList.get(position).get("id").toString();
-//		    	  Intent newActivity = new Intent(getActivity().getBaseContext() , ProductDetailActivity.class);
-		    	  ViewPager viewPager = ((MainActivity) getActivity()).getViewPager();
-		    	  viewPager.setCurrentItem(0);
-//		    	  newActivity.putExtra("id", id);
-//		    	  startActivity(newActivity);  	    	  
+		    	  int id = Integer.parseInt(inventoryList.get(position).get("id").toString());
+		    	  announcer.announce(id);
+		    	  viewPager.setCurrentItem(0);  	  
 		      }     
 		});
 

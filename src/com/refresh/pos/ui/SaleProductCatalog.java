@@ -63,8 +63,8 @@ public class SaleProductCatalog extends Activity {
 				Product product = productCatalog.getProductById(Integer.parseInt(id));
 				register.addItem(product, 1);
 				
-				Intent newActivity = new Intent(SaleProductCatalog.this, SaleActivity.class);
-				startActivity(newActivity);
+//				Intent newActivity = new Intent(SaleProductCatalog.this, SaleActivity.class);
+//				startActivity(newActivity);
 			}
 			
 		});

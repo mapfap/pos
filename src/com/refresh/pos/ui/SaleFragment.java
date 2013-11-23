@@ -4,32 +4,23 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
+import android.widget.TextView;
+
 import com.refresh.pos.R;
 import com.refresh.pos.database.NoDaoSetException;
 import com.refresh.pos.domain.DateTimeStrategy;
 import com.refresh.pos.domain.LineItem;
 import com.refresh.pos.domain.Register;
 import com.refresh.pos.domain.Sale;
-
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
-import android.widget.TextView;
-import android.widget.Toast;
 
 public class SaleFragment extends Fragment {
     
@@ -38,10 +29,10 @@ public class SaleFragment extends Fragment {
 	private Register register;
 	private ArrayList<Map<String, String>> saleList;
 	private ListView saleListView;
-	private ImageButton addButton;
+	private Button addButton;
 	private TextView totalPrice;
-	private ImageButton payButton;
-	private ImageButton clearButton;
+	private Button payButton;
+//	private Button clearButton;
 
 	
 	@Override
@@ -59,9 +50,9 @@ public class SaleFragment extends Fragment {
 		
 		saleListView = (ListView) view.findViewById(R.id.sale_List);
 		totalPrice = (TextView) view.findViewById(R.id.totalPrice);
-		addButton = (ImageButton) view.findViewById(R.id.sale_addButton);
-		payButton = (ImageButton) view.findViewById(R.id.payButton);
-		clearButton = (ImageButton) view.findViewById(R.id.sale_clearButton);
+		addButton = (Button) view.findViewById(R.id.sale_addButton);
+		payButton = (Button) view.findViewById(R.id.payButton);
+//		clearButton = (ImageButton) view.findViewById(R.id.sale_clearButton);
 		
 		initUI();
 		return view;
