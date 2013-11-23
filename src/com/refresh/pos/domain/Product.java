@@ -35,8 +35,8 @@ public class Product {
 		this.barcode = barcode;
 	}
 
-	public void setSalePrice(double salePrice) {
-		this.unitPrice = salePrice;
+	public void setUnitPrice(double unitPrice) {
+		this.unitPrice = unitPrice;
 	}
 
 	public int getId() {

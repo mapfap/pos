@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -17,9 +19,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
@@ -28,9 +30,12 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import com.refresh.pos.R;
 import com.refresh.pos.database.NoDaoSetException;
+import com.refresh.pos.domain.ButtonAdapter;
+import com.refresh.pos.domain.DateTimeStrategy;
 import com.refresh.pos.domain.Inventory;
 import com.refresh.pos.domain.Product;
 import com.refresh.pos.domain.ProductCatalog;
+import com.refresh.pos.domain.Register;
 
 public class InventoryFragment extends Fragment {
 
@@ -64,7 +69,7 @@ public class InventoryFragment extends Fragment {
 		
 		MainActivity main = (MainActivity) getActivity();
 		viewPager = main.getViewPager();
-		announcer = main.getAnnouncer();
+		announcer = main.getAnnouncers().get("Sale");
 		
 		initUI();
 		
@@ -94,7 +99,9 @@ public class InventoryFragment extends Fragment {
 		      public void onItemClick(AdapterView<?> myAdapter, View myView, int position, long mylng) {
 		    	  int id = Integer.parseInt(inventoryList.get(position).get("id").toString());
 		    	  announcer.announce(id);
-		    	  viewPager.setCurrentItem(0);  	  
+//		    	  register.initiateSale(DateTimeStrategy.getCurrentTime());
+//		    	  register.addItem(productCatalog.getProductById(id), 1);
+		    	  viewPager.setCurrentItem(2);
 		      }     
 		});
 
@@ -115,9 +122,8 @@ public class InventoryFragment extends Fragment {
 			inventoryList.add(product.toMap());
 		}
 		
-		SimpleAdapter sAdap;
-		sAdap = new SimpleAdapter(getActivity().getBaseContext(), inventoryList,
-				R.layout.listview_inventory, new String[]{"name"}, new int[] {R.id.name});
+		ButtonAdapter sAdap = new ButtonAdapter(getActivity().getBaseContext(), inventoryList,
+				R.layout.listview_inventory, new String[]{"name"}, new int[] {R.id.name}, R.id.optionView, "id");
 		inventoryListView.setAdapter(sAdap);
 	}
 	
@@ -155,5 +161,5 @@ public class InventoryFragment extends Fragment {
 					Toast.LENGTH_SHORT).show();
 		}
 	}
-
+	
 }

@@ -40,8 +40,9 @@ public class Register {
 	}
 	
 	public int addItem(Product product, int quantity) {
-		if (quantity <= 0 || currentSale == null)
-			return -1;
+//		if (quantity <= 0 || currentSale == null)
+//			return -1;
+		if (currentSale == null) initiateSale(DateTimeStrategy.getCurrentTime());
 		LineItem lineItem = currentSale.addLineItem(product, quantity);
 		return saleDao.addLineItem(currentSale.getId(), lineItem);
 	}
@@ -52,17 +53,26 @@ public class Register {
 	}
 
 	public void endSale(String endTime) {
-		double total = currentSale.getTotal();
-		saleDao.endSale(currentSale, endTime);
-		for(LineItem line : currentSale.getAllLineItem()){
-			stock.updateStockSum(line.getProductId(), line.getQuantity());
-			
+		if (currentSale != null) {
+			double total = currentSale.getTotal();
+			saleDao.endSale(currentSale, endTime);
+			for(LineItem line : currentSale.getAllLineItem()){
+				stock.updateStockSum(line.getProductId(), line.getQuantity());
+			}
+			currentSale = null;
 		}
-		
-		currentSale = null;
 	}
-	public void clear(){
-		
+	
+	public Sale getCurrentSale() {
+		if (currentSale == null)
+			initiateSale(DateTimeStrategy.getCurrentTime());
+		return currentSale;
+	}
+	
+	public void cancleSale(){
+		// TODO : delete line item that added in database
+		if (currentSale != null)
+			endSale(DateTimeStrategy.getCurrentTime());
 	}
 	
 }

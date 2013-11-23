@@ -1,5 +1,17 @@
 package com.refresh.pos.ui;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.view.ViewPager;
+import android.util.Log;
+import android.view.View;
+
 import com.refresh.pos.R;
 import com.refresh.pos.database.AndroidDatabase;
 import com.refresh.pos.database.Database;
@@ -12,18 +24,12 @@ import com.refresh.pos.domain.Inventory;
 import com.refresh.pos.domain.Register;
 import com.refresh.pos.domain.SaleLedger;
 
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.util.Log;
-
 public class MainActivity extends FragmentActivity {
 
     private ViewPager viewPager;
-    private Announcer announcer;
+//    private Announcer productDetailAnnouncer;
+//    private Announcer saleAnnouncer;
+    Map<String, Announcer> announcers;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,19 +38,29 @@ public class MainActivity extends FragmentActivity {
         
         initiateCoreApp();
         
-        announcer = new Announcer();
+        announcers = new HashMap<String, Announcer>();
+        announcers.put("Product Detail", new Announcer());
+        announcers.put("Sale", new Announcer());
         viewPager= (ViewPager) findViewById(R.id.pager);
         FragmentManager fragmentManager = getSupportFragmentManager();
-        viewPager.setAdapter(new MyFragmentStatePagerAdapter(fragmentManager, announcer));
+        viewPager.setAdapter(new MyFragmentStatePagerAdapter(fragmentManager, announcers));
         viewPager.setCurrentItem(1);
     }
+    
+	public void optionOnClickHandler(View view) {
+		viewPager.setCurrentItem(0);
+		String id = view.getTag().toString();
+		ContentManager.put("id", id);
+		announcers.get("Product Detail").announce(Integer.parseInt(id));
+//		Log.d("inventory", "tag = " + view.getTag());
+	}
     
     public ViewPager getViewPager() {
     	return viewPager;
     }
     
-    public Announcer getAnnouncer() {
-    	return announcer;
+    public Map<String, Announcer> getAnnouncers() {
+    	return announcers;
     }
     
 	/**
@@ -69,23 +85,25 @@ public class MainActivity extends FragmentActivity {
 class MyFragmentStatePagerAdapter extends FragmentStatePagerAdapter
 {
 
-	private Announcer announcer;
-    public MyFragmentStatePagerAdapter(FragmentManager fragmentManager, Announcer announcer) {
+	private Map<String, Announcer> announcers;
+    public MyFragmentStatePagerAdapter(FragmentManager fragmentManager, Map<String, Announcer> announcers) {
         super(fragmentManager);
-        this.announcer = announcer;
+        this.announcers = announcers;
     }
 
     @Override
     public Fragment getItem(int i) {
     	switch(i) {
     	case 0:
-    		ProductDetailFragment fragment = new ProductDetailFragment();
-    		announcer.addObserver(fragment);
-    		return fragment;
+    		ProductDetailFragment productDetailFragment = new ProductDetailFragment();
+    		announcers.get("Product Detail").addObserver(productDetailFragment);
+    		return productDetailFragment;
     	case 1:
     		return new InventoryFragment();
     	case 2:
-    		return new SaleFragment();
+    		SaleFragment saleFragment = new SaleFragment();
+    		announcers.get("Sale").addObserver(saleFragment);
+    		return saleFragment;
     	case 3:
     		return new ReportFragment();
     	default:

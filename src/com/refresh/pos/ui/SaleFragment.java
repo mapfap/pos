@@ -3,10 +3,14 @@ package com.refresh.pos.ui;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Observable;
+import java.util.Observer;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,21 +22,23 @@ import android.widget.TextView;
 import com.refresh.pos.R;
 import com.refresh.pos.database.NoDaoSetException;
 import com.refresh.pos.domain.DateTimeStrategy;
+import com.refresh.pos.domain.Inventory;
 import com.refresh.pos.domain.LineItem;
+import com.refresh.pos.domain.ProductCatalog;
 import com.refresh.pos.domain.Register;
 import com.refresh.pos.domain.Sale;
 
-public class SaleFragment extends Fragment {
+public class SaleFragment extends Fragment implements Observer {
     
 	private ListView lineItemListView;
 	private Sale currentSale;
 	private Register register;
 	private ArrayList<Map<String, String>> saleList;
 	private ListView saleListView;
-	private Button addButton;
+	private Button clearButton;
 	private TextView totalPrice;
-	private Button payButton;
-//	private Button clearButton;
+	private Button endButton;
+	private ProductCatalog productCatalog;
 
 	
 	@Override
@@ -40,6 +46,7 @@ public class SaleFragment extends Fragment {
 		
 		try {
 			register = Register.getInstance();
+			productCatalog = Inventory.getInstance().getProductCatalog();
 		} catch (NoDaoSetException e) {
 			e.printStackTrace();
 		}
@@ -50,9 +57,8 @@ public class SaleFragment extends Fragment {
 		
 		saleListView = (ListView) view.findViewById(R.id.sale_List);
 		totalPrice = (TextView) view.findViewById(R.id.totalPrice);
-		addButton = (Button) view.findViewById(R.id.sale_addButton);
-		payButton = (Button) view.findViewById(R.id.payButton);
-//		clearButton = (ImageButton) view.findViewById(R.id.sale_clearButton);
+		clearButton = (Button) view.findViewById(R.id.clearButton);
+		endButton = (Button) view.findViewById(R.id.endButton);
 		
 		initUI();
 		return view;
@@ -63,19 +69,18 @@ public class SaleFragment extends Fragment {
 //		final AlertDialog.Builder popDialog = new AlertDialog.Builder(this);
 //		final LayoutInflater inflater = (LayoutInflater)this.getSystemService(LAYOUT_INFLATER_SERVICE);
 //		final AlertDialog.Builder adb = new AlertDialog.Builder(this);
-//		
-//		totalPrice.setText("0.00");
-		addButton.setOnClickListener(new View.OnClickListener() {
+
+		clearButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				ViewPager viewPager = ((MainActivity) getActivity()).getViewPager();
 				viewPager.setCurrentItem(1);
 			}
 		});
-//		
-//		payButton.setOnClickListener(new View.OnClickListener() {
-//			@Override
-//			public void onClick(View v) {
+
+		endButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
 //				final View Viewlayout = inflater.inflate(R.layout.dialog_payment,
 //						(ViewGroup) findViewById(R.id.layout_paymentDialog)); 
 //				
@@ -111,46 +116,29 @@ public class SaleFragment extends Fragment {
 //						adb.setMessage("Plese Confirm");
 //					}
 //				});
-//				
-//				
-//
+				
+				
+
 //				popDialog.create();
 //				popDialog.show();
-//				register.endSale(DateTimeStrategy.getCurrentTime()).toString());
-//				SaleActivity.this.finish();
-//				
-//				Intent intent = new Intent(SaleActivity.this, HomeActivity.class);
-//			    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//			    startActivity(intent);
+				register.endSale(DateTimeStrategy.getCurrentTime());
+				updateData();
 				
-//			}
-//		});
+			}
+		});
 		
-//		clearButton.setOnClickListener(new View.OnClickListener() {
-//			
-//			@Override
-//			public void onClick(View v) {
-//				register.clear();
-//				showList(currentSale.getAllLineItem());
-//			}
-//		});
+		clearButton.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				register.cancleSale();
+				updateData();
+			}
+		});
 		
 		
 	}
-	
-//	@Override
-//	public void onResume() {
-//		super.onResume();
-//		Log.d("SALE", "I'm back!!!");
-//		showList(currentSale.getAllLineItem());
-//		totalPrice.setText(currentSale.getTotal()+"");
-//	}
-//
-//	@Override
-//	public boolean onCreateOptionsMenu(Menu menu) {
-//		getMenuInflater().inflate(R.menu.main, menu);
-//		return true;
-//	}
+
 	
 	private void showList(List<LineItem> list) {
 		
@@ -175,6 +163,32 @@ public class SaleFragment extends Fragment {
 	      {  
 	          return false;  
 	      }  
+	}
+
+	@Override
+	public void update(Observable arg0, Object arg1) {
+		try {
+			int id = (Integer) arg1;
+			register.addItem(productCatalog.getProductById(id), 1);
+			Log.d("sale", "data = " + arg1);
+			updateData();
+		} catch (Exception e) {			
+//			e.printStackTrace();
+			Log.d("sale", "invalid data = " + arg1);
+		}
+	}
+	
+	
+	
+	private void updateData() {
+		showList(register.getCurrentSale().getAllLineItem());
+		totalPrice.setText(register.getTotal() + "");
+	}
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		updateData();
 	}
 
 }

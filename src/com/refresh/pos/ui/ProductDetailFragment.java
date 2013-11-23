@@ -90,12 +90,12 @@ public class ProductDetailFragment extends Fragment implements Observer {
 	public void onResume() {
 		// onResume() is not called when at adjacent fragment
 		super.onResume();
-//		Log.d("resume detail", ContentManager.id + "");
-//		showProductDetail(ContentManager.id);
+		Log.d("resume detail", ContentManager.get("id"));
+		showProductDetail(Integer.parseInt(ContentManager.get("id")));
 	}
 	
 	public void showProductDetail(int id) {
-//		if (id != ContentManager.UNDEFINED) {
+		if (id != Integer.parseInt(ContentManager.UNDEFINED)) {
 			product = productCatalog.getProductById(id);
 
 			nameBox.setText(product.getName());
@@ -103,7 +103,7 @@ public class ProductDetailFragment extends Fragment implements Observer {
 			barcodeBox.setText(product.getBarcode());
 
 			showList(stock.getProductLotByProductId(id));
-//		}
+		}
 	}
 	
 	private void showList(List<ProductLot> list) {

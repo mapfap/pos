@@ -41,19 +41,19 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
+                android:layout_weight="0.65"
                 android:text="Name" />
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1.5"
+                android:layout_weight="0.15"
                 android:text="Quantity" />
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1.5"
+                android:layout_weight="0.2"
                 android:text="Price" />
         </TableRow>
 
@@ -71,14 +71,14 @@
         android:orientation="horizontal" >
 
         <Button
-            android:id="@+id/sale_addButton"
+            android:id="@+id/clearButton"
             android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_weight="0.5"
-            android:text="ADD" />
+            android:text="CLEAR" />
 
         <Button
-            android:id="@+id/payButton"
+            android:id="@+id/endButton"
             android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_weight="0.5"
