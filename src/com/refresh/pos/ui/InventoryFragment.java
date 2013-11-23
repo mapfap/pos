@@ -1,18 +1,19 @@
 package com.refresh.pos.ui;
 
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
@@ -30,7 +31,7 @@ import com.refresh.pos.domain.Inventory;
 import com.refresh.pos.domain.Product;
 import com.refresh.pos.domain.ProductCatalog;
 
-public class InventoryActivity extends Activity {
+public class InventoryFragment extends Fragment {
 
 	protected static final int SEARCH_LIMIT = 0;
 	private ListView inventoryListView;
@@ -40,35 +41,46 @@ public class InventoryActivity extends Activity {
 	private ImageButton searchButton;
 	private EditText searchBox;
 	private Button scanButton;
-
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		requestWindowFeature(Window.FEATURE_NO_TITLE);
-		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 	
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		
 		try {
 			productCatalog = Inventory.getInstance().getProductCatalog();
 		} catch (NoDaoSetException e) {
 			e.printStackTrace();
 		}
 		
-		initUI(savedInstanceState);
+		View view = inflater.inflate(R.layout.layout_inventory, container, false);
+		
+		inventoryListView = (ListView) view.findViewById(R.id.inventoryListView);
+		addProductButton = (Button) view.findViewById(R.id.addProductButton);
+//		searchButton = (ImageButton) v.findViewById(R.id.searchButton);
+		scanButton = (Button) view.findViewById(R.id.scanButton);
+		searchBox = (EditText) view.findViewById(R.id.searchBox);
+		initUI();
+		return view;
 	}
+
+//	@Override
+//	public void onCreate(Bundle savedInstanceState) {
+//		requestWindowFeature(Window.FEATURE_NO_TITLE);
+//		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+//	
+//		
+//		initUI(savedInstanceState);
+//	}
 	
-	private void initUI(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_inventory);
+	private void initUI() {
+//		super.onCreate(savedInstanceState);
+//		setContentView(R.layout.activity_inventory);
 		
 		
-		inventoryListView = (ListView) findViewById(R.id.inventoryListView);
-		addProductButton = (Button) findViewById(R.id.addProductButton);
-//		searchButton = (ImageButton) findViewById(R.id.searchButton);
-		scanButton = (Button) findViewById(R.id.scanButton);
-		searchBox = (EditText) findViewById(R.id.searchBox);
 		
 		addProductButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				Intent newActivity = new Intent(InventoryActivity.this,AddProductActivity.class);
+				Intent newActivity = new Intent(getActivity().getBaseContext() ,AddProductActivity.class);
 				startActivity(newActivity);
 			}
 		});
@@ -92,7 +104,7 @@ public class InventoryActivity extends Activity {
 		inventoryListView.setOnItemClickListener(new OnItemClickListener() {
 		      public void onItemClick(AdapterView<?> myAdapter, View myView, int position, long mylng) {
 		    	  String id = inventoryList.get(position).get("id").toString();
-		    	  Intent newActivity = new Intent(InventoryActivity.this, ProductDetailActivity.class);
+		    	  Intent newActivity = new Intent(getActivity().getBaseContext() , ProductDetailActivity.class);
 		    	  newActivity.putExtra("id", id);
 		    	  startActivity(newActivity);  	    	  
 		      }     
@@ -101,7 +113,7 @@ public class InventoryActivity extends Activity {
 		scanButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				IntentIntegrator scanIntegrator = new IntentIntegrator(InventoryActivity.this);
+				IntentIntegrator scanIntegrator = new IntentIntegrator(getActivity());
 				scanIntegrator.initiateScan();
 			}
 		});
@@ -116,13 +128,13 @@ public class InventoryActivity extends Activity {
 		}
 		
 		SimpleAdapter sAdap;
-		sAdap = new SimpleAdapter(InventoryActivity.this, inventoryList,
+		sAdap = new SimpleAdapter(getActivity().getBaseContext(), inventoryList,
 				R.layout.listview_inventory, new String[]{"name"}, new int[] {R.id.name});
 		inventoryListView.setAdapter(sAdap);
 	}
 	
 	@Override
-	protected void onResume() {
+	public void onResume() {
 		super.onResume();
 		search();
 	}
@@ -135,7 +147,7 @@ public class InventoryActivity extends Activity {
 			List<Product> result = productCatalog.searchProduct(search);
 			showList(result);
 			if (result.isEmpty()) {
-				Toast.makeText(InventoryActivity.this, "No results matched.", Toast.LENGTH_SHORT).show();
+				Toast.makeText(getActivity().getBaseContext() , "No results matched.", Toast.LENGTH_SHORT).show();
 			}
 		}
 	}
@@ -150,7 +162,7 @@ public class InventoryActivity extends Activity {
 			String scanContent = scanningResult.getContents();
 			searchBox.setText(scanContent);
 		} else {
-			Toast.makeText(InventoryActivity.this,
+			Toast.makeText(getActivity().getBaseContext() ,
 					"Failed to retrieve barcode." + resultCode,
 					Toast.LENGTH_SHORT).show();
 		}

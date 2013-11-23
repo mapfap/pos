@@ -1,37 +1,16 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/LinearLayout1"
-    android:layout_width="match_parent"
+<android.support.v4.view.ViewPager
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="match_parent"
-    tools:context=".MainActivity" >
+    android:id="@+id/pager"
+    android:layout_width="match_parent">
+    <android.support.v4.view.PagerTitleStrip
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/title"
+        android:background="#33B5E5"
+        android:layout_gravity="top"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp">
 
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:orientation="vertical" >
-
-        <Button
-            android:id="@+id/button1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="onSelectFragment"
-            android:text="One" />
-
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="onSelectFragment"
-            android:text="Two" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/fragment_place"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="3"
-        android:orientation="vertical" >
-    </LinearLayout>
-
-</LinearLayout>
+    </android.support.v4.view.PagerTitleStrip>
+</android.support.v4.view.ViewPager>

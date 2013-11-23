@@ -64,7 +64,7 @@ public class SaleActivity extends Activity  {
 
 	private void initUI(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_sale);
+		setContentView(R.layout.layout_sale);
 		saleListView = (ListView) findViewById(R.id.sale_List);
 		totalPrice = (TextView) findViewById(R.id.totalPrice);
 		addButton = (ImageButton) findViewById(R.id.sale_addButton);
