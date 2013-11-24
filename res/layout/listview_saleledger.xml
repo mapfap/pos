@@ -12,30 +12,51 @@
 
         <TextView
             android:id="@+id/sid"
-            android:layout_width="0dp"
+            android:layout_width="0dip"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Name" />
+            android:layout_weight="0.1"
+            android:text="id" />
 
         <TextView
             android:id="@+id/startTime"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1.5"
-            android:text="Quantity" />
+            android:layout_weight="0.1"
+            android:text="start" />
 
-        <TextView
+     <!--    <TextView
             android:id="@+id/endTime"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1.5"
-            android:text="Price" />
-         <TextView
+            android:layout_weight="0.1"
+            android:text="end" /> -->
+
+        <TextView
             android:id="@+id/status"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1.5"
-            android:text="Price" />
+            android:layout_weight="0.1"
+            android:text="status" />
+        <TextView
+            android:id="@+id/total"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1"
+            android:text="total" />
+        <TextView
+            android:id="@+id/orders"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1"
+            android:text="orders" />
+
+        <View
+            android:id="@+id/optionView"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1"
+            android:background="@drawable/ic_action_overflow"
+            android:onClick="suspendSaleOnClickHandler" />
     </TableRow>
 
 </LinearLayout>

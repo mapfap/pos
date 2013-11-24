@@ -9,7 +9,7 @@
         android:id="@+id/name"
         android:layout_height="wrap_content"
         android:layout_width="0dip"
-        android:layout_weight=".9"
+        android:layout_weight="0.9"
         android:paddingTop="5dip"
         android:paddingBottom="5dip"
         android:paddingLeft="30dip"
@@ -19,7 +19,7 @@
         android:id="@+id/optionView"
         android:layout_height="wrap_content"
         android:layout_width="0dip"
-        android:layout_weight=".1"
+        android:layout_weight="0.1"
         android:onClick="optionOnClickHandler"
         android:background="@drawable/ic_action_overflow" />
 

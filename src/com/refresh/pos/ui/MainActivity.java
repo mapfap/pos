@@ -47,6 +47,10 @@ public class MainActivity extends FragmentActivity {
         viewPager.setCurrentItem(1);
     }
     
+    public void suspendSaleOnClickHandler(View view) {
+    	Log.d("main + ledger","remove button clicked!");
+    }
+    
 	public void optionOnClickHandler(View view) {
 		viewPager.setCurrentItem(0);
 		String id = view.getTag().toString();

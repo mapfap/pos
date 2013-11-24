@@ -87,8 +87,8 @@ public class ReportFragment extends Fragment {
 		
 		SimpleAdapter sAdap;
 		sAdap = new SimpleAdapter(getActivity().getBaseContext() , saleList,
-				R.layout.listview_saleledger, new String[] { "id", "startTime", "endTime", "status"},
-				new int[] { R.id.sid, R.id.startTime, R.id.endTime, R.id.status });
+				R.layout.listview_saleledger, new String[] { "id", "startTime", "status", "total", "orders"},
+				new int[] { R.id.sid, R.id.startTime, R.id.status , R.id.total, R.id.orders});
 		saleLedgerListView.setAdapter(sAdap);
 	}
 

@@ -16,9 +16,9 @@ public interface SaleDao {
 	List<Sale> getAllSale();
 
 	Sale getSaleById(int id);
-	
-	List<LineItem> getLineItem(Sale sale);
 
 	void clearSaleLedger();
+
+	List<LineItem> getLineItem(int saleId);
 
 }

@@ -6,6 +6,7 @@ import java.util.List;
 import android.content.ContentValues;
 
 import com.refresh.pos.domain.LineItem;
+import com.refresh.pos.domain.Product;
 import com.refresh.pos.domain.Sale;
 
 
@@ -45,14 +46,12 @@ public class SaleDaoAndroid implements SaleDao {
 	public int addLineItem(int saleId, LineItem lineItem) {
 		ContentValues content = new ContentValues();
         content.put("sale_id", saleId);
-        content.put("product_id", lineItem.getProductId());
+        content.put("product_id", lineItem.getProduct().getId());
         content.put("quantity", lineItem.getQuantity());
         content.put("unit_price", lineItem.getTotal());
         int id = database.insert(DatabaseContents.TABLE_SALE_LINEITEM.toString(), content);
         return id;
 	}
-
-	
 
 	@Override
 	public List<Sale> getAllSale() {
@@ -79,16 +78,32 @@ public class SaleDaoAndroid implements SaleDao {
                 		content.getAsInteger("_id"),
                         content.getAsString("start_time"),
                         content.getAsString("end_time"),
-                        content.getAsString("status"))
+                        content.getAsString("status"),
+                        getLineItem(content.getAsInteger("_id")))
                 );
         }
         return list;
 	}
 
 	@Override
-	public List<LineItem> getLineItem(Sale sale) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<LineItem> getLineItem(int saleId) {
+		String queryString = "SELECT * FROM " + DatabaseContents.TABLE_SALE_LINEITEM.toString() + " WHERE sale_id = " + saleId;
+		@SuppressWarnings("unchecked")
+		List<ContentValues> contents = (List) database.select(queryString);
+		List<LineItem> list = new ArrayList<LineItem>();
+		for (ContentValues content: contents) {
+
+			int productId = content.getAsInteger("product_id");
+			String queryString2 = "SELECT * FROM " + DatabaseContents.TABLE_PRODUCT_CATALOG.toString() + " WHERE _id = " + productId;
+			@SuppressWarnings("unchecked")
+			List<ContentValues> contents2 = (List) database.select(queryString2);
+			List<Product> productList = new ArrayList<Product>();
+			for (ContentValues content2: contents2) {   	
+				productList.add(new Product(productId, content2.getAsString("name"), content2.getAsString("barcode"), content2.getAsDouble("unit_price")));
+			}
+			list.add(new LineItem(productList.get(0), content.getAsInteger("quantity")));
+		}
+		return list;
 	}
 
 	@Override

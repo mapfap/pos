@@ -17,18 +17,17 @@ public class Sale {
 	private List<LineItem> items;
 
 	public Sale(int id, String startTime) {
-		this.id = id;
-		this.startTime = startTime;
-		this.status = "???";
-		items = new ArrayList<LineItem>( );
+		this(id, startTime, startTime, "???", new ArrayList<LineItem>());
 	}
 	
-	public Sale(int id, String startTime, String endTime, String status) {
+	public Sale(int id, String startTime, String endTime, String status, List<LineItem> items) {
 		this.id = id;
 		this.startTime = startTime;
 		this.status = status;
 		this.endTime = endTime;
+		this.items = items;
 	}
+	
 	public List<LineItem> getAllLineItem(){
 		return items;
 	}
@@ -36,7 +35,7 @@ public class Sale {
 	public LineItem addLineItem(Product product, int quantity) {
 		
 		for (LineItem lineItem : items) {
-			if (lineItem.getProductId() == product.getId()) {
+			if (lineItem.getProduct().getId() == product.getId()) {
 				lineItem.addQuantity(quantity);
 				return lineItem;
 			}
@@ -85,6 +84,9 @@ public class Sale {
 	public String getStatus() {
 		return status;
 	}
+	public int getOrders() {
+		return items.size();
+	}
 
 	public Map<String, String> toMap() {	
 		Map<String, String> map = new HashMap<String, String>();
@@ -92,6 +94,9 @@ public class Sale {
 		map.put("startTime", DateTimeStrategy.format(startTime));
 		map.put("endTime", DateTimeStrategy.format(endTime));
 		map.put("status", getStatus());
+		map.put("total", getTotal() + "");
+		map.put("orders", getOrders() + "");
+		
 		return map;
 	}
 

@@ -70,20 +70,20 @@ public class SaleLedgerActivity extends Activity {
 	}
 
 	private void showList(List<Sale> list) {
-
-		saleList = new ArrayList<Map<String, String>>();
-		for (Sale sale : list) {
-			saleList.add(sale.toMap());
-//			Log.d("ledger", sale.getStartTime());
-//			Log.d("ledger", sale.getEndTime());
-		}
-		
-
-		SimpleAdapter sAdap;
-		sAdap = new SimpleAdapter(SaleLedgerActivity.this, saleList,
-				R.layout.listview_saleledger, new String[] { "id", "startTime", "endTime", "status"},
-				new int[] { R.id.sid, R.id.startTime, R.id.endTime, R.id.status });
-		saleLedgerListView.setAdapter(sAdap);
+////
+//		saleList = new ArrayList<Map<String, String>>();
+//		for (Sale sale : list) {
+//			saleList.add(sale.toMap());
+////			Log.d("ledger", sale.getStartTime());
+////			Log.d("ledger", sale.getEndTime());
+//		}
+//		
+//
+//		SimpleAdapter sAdap;
+//		sAdap = new SimpleAdapter(SaleLedgerActivity.this, saleList,
+//				R.layout.listview_saleledger, new String[] { "id", "startTime", "endTime", "status"},
+//				new int[] { R.id.sid, R.id.startTime, R.id.endTime, R.id.status });
+//		saleLedgerListView.setAdapter(sAdap);
 	}
 
 	@Override
