@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.achartengine.ChartFactory;
+import org.achartengine.GraphicalView;
 import org.achartengine.chart.PointStyle;
 import org.achartengine.renderer.SimpleSeriesRenderer;
 import org.achartengine.renderer.XYMultipleSeriesRenderer;
@@ -15,7 +16,7 @@ import android.graphics.Color;
 
 public class Chart extends AbstractChart {
 
-	public Intent execute(Context context) {
+	public GraphicalView execute(Context context) {
 		String[] titles = new String[] { "New tickets", "Fixed tickets" };
 		List<Date[]> dates = new ArrayList<Date[]>();
 		List<double[]> values = new ArrayList<double[]>();
@@ -57,9 +58,7 @@ public class Chart extends AbstractChart {
 			seriesRenderer.setDisplayChartValues(true);
 		}
 		renderer.setXRoundedLabels(false);
-		return ChartFactory
-				.getTimeChartIntent(context,
-						buildDateDataset(titles, dates, values), renderer,
-						"MM/dd/yyyy");
+		return ChartFactory.getTimeChartView(context, buildDateDataset(titles, dates, values), renderer, "dd/MM/yyyy");
+				
 	}
 }

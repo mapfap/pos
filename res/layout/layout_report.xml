@@ -2,29 +2,33 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:focusable="true"
     android:focusableInTouchMode="true"
-    android:focusable="true" >
+    android:orientation="vertical" >
 
-      <LinearLayout
+    <EditText
+        android:id="@+id/searchBox"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" > 
-        
-        <EditText
-            android:id="@+id/searchBox"
-            android:hint="Enter invoice ID here."
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1.5"
-            android:ems="10" /> 
-
-    </LinearLayout>
+        android:layout_height="0dip"
+        android:layout_weight="0.2"
+        android:ems="10"
+        android:hint="Enter invoice ID here." />
 
     <ListView
         android:id="@+id/saleListView"
         android:layout_width="match_parent"
-        android:layout_height="184dp"
-        android:layout_weight="0.21" >
-
+        android:layout_height="0dip"
+        android:layout_weight="0.4" >
     </ListView>
+    
+     <LinearLayout
+         android:id="@+id/chart"
+         android:layout_width="match_parent"
+         android:layout_height="0dip"
+         android:layout_weight="0.4"
+         android:background="#c4c4c4"
+         android:orientation="vertical" >
+
+    </LinearLayout>
+
 </LinearLayout>
