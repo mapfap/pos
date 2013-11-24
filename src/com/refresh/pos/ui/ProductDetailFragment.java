@@ -80,7 +80,7 @@ public class ProductDetailFragment extends Fragment implements Observer {
 		addProductLotButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				Intent newActivity = new Intent(getActivity().getBaseContext(), AddProductLotActivity.class);
-				newActivity.putExtra("id", product.getId()+"");
+				newActivity.putExtra("id", ContentManager.get("id"));
 				startActivity(newActivity);
 			}
 		});
@@ -92,6 +92,7 @@ public class ProductDetailFragment extends Fragment implements Observer {
 		super.onResume();
 		Log.d("resume detail", ContentManager.get("id"));
 		showProductDetail(Integer.parseInt(ContentManager.get("id")));
+		
 	}
 	
 	public void showProductDetail(int id) {
@@ -101,6 +102,7 @@ public class ProductDetailFragment extends Fragment implements Observer {
 			nameBox.setText(product.getName());
 			priceBox.setText(product.getUnitPrice()+"");
 			barcodeBox.setText(product.getBarcode());
+			quantityBox.setText(stock.getStockSumById(id)+"");
 
 			showList(stock.getProductLotByProductId(id));
 		}
