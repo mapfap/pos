@@ -50,6 +50,7 @@ public class InventoryFragment extends Fragment {
 	
 	private Announcer announcer;
 	private ViewPager viewPager;
+	private Register register;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -57,6 +58,7 @@ public class InventoryFragment extends Fragment {
 		
 		try {
 			productCatalog = Inventory.getInstance().getProductCatalog();
+			register = Register.getInstance();
 		} catch (NoDaoSetException e) {
 			e.printStackTrace();
 		}
@@ -99,9 +101,9 @@ public class InventoryFragment extends Fragment {
 		inventoryListView.setOnItemClickListener(new OnItemClickListener() {
 		      public void onItemClick(AdapterView<?> myAdapter, View myView, int position, long mylng) {
 		    	  int id = Integer.parseInt(inventoryList.get(position).get("id").toString());
+		    	  register.addItem(productCatalog.getProductById(id), 1);
 		    	  announcer.announce(id);
 //		    	  register.initiateSale(DateTimeStrategy.getCurrentTime());
-//		    	  register.addItem(productCatalog.getProductById(id), 1);
 		    	  viewPager.setCurrentItem(2);
 		      }     
 		});

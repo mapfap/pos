@@ -169,7 +169,7 @@ public class SaleFragment extends Fragment implements Observer {
 	public void update(Observable arg0, Object arg1) {
 		try {
 			int id = (Integer) arg1;
-			register.addItem(productCatalog.getProductById(id), 1);
+//			register.addItem(productCatalog.getProductById(id), 1);
 			Log.d("sale", "data = " + arg1);
 			updateData();
 		} catch (Exception e) {			
