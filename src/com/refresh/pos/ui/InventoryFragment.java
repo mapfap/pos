@@ -213,12 +213,8 @@ public class InventoryFragment extends Fragment {
 		}
 	}
 	public void showPopup(View anchorView) {
-		Log.v("popup",inflaters.toString());
-		View layout = inflaters.inflate(R.layout.activity_addproduct,(LinearLayout) getActivity().findViewById(R.id.layout_popupAddProduct));
-		popDialog.setTitle("Add New Product");
-		popDialog.setView(layout);
-		popDialog.create();
-		popDialog.show();
+		DummyDialogFragment newFragment = DummyDialogFragment.newInstance();
+	    newFragment.show(getFragmentManager(), "dialog");
 	}
 	
 }
