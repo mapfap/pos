@@ -7,13 +7,14 @@
     
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dip"
-        android:layout_weight="0.2" >
+        android:layout_height="wrap_content" >
         
         <Button
             android:id="@+id/scanButton"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            style="@style/ButtonText"
+            android:background="@drawable/btn_blue"
             android:text="Scan" />
 
         <EditText
@@ -37,8 +38,9 @@
     <Button
         android:id="@+id/addProductButton"
         android:layout_width="match_parent"
-        android:layout_height="0dip"
-        android:layout_weight="0.2"
+        android:layout_height="wrap_content"
+        style="@style/ButtonText"
+        android:background="@drawable/btn_green"
         android:text="ADD NEW PRODUCT" />
 
 </LinearLayout>

@@ -40,7 +40,7 @@ public class ProductDetailFragment extends Fragment implements Observer {
 	private TextView nameBox;
 	private TextView barcodeBox;
 	private TextView priceBox;
-	private ImageButton addProductLotButton;
+	private Button addProductLotButton;
 	private TabHost mTabHost;
 	private ListView stockListView;
 	private TextView quantityBox;
@@ -64,7 +64,7 @@ public class ProductDetailFragment extends Fragment implements Observer {
 		barcodeBox = (TextView) view.findViewById(R.id.barcodeBox);
 		quantityBox = (TextView) view.findViewById(R.id.quantityBox);
 		
-		addProductLotButton = (ImageButton) view.findViewById(R.id.addProductLotButton);
+		addProductLotButton = (Button) view.findViewById(R.id.addProductLotButton);
 		mTabHost = (TabHost) view.findViewById(android.R.id.tabhost);
 		mTabHost.setup();
 		mTabHost.addTab(mTabHost.newTabSpec("tab_test1").setIndicator("Detail").setContent(R.id.tab1));

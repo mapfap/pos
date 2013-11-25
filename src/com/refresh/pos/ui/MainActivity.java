@@ -3,6 +3,7 @@ package com.refresh.pos.ui;
 import java.util.HashMap;
 import java.util.Map;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -54,8 +55,11 @@ public class MainActivity extends FragmentActivity {
 	public void optionOnClickHandler(View view) {
 		viewPager.setCurrentItem(0);
 		String id = view.getTag().toString();
-		ContentManager.put("id", id);
-		announcers.get("Product Detail").announce(Integer.parseInt(id));
+		Intent newActivity = new Intent(MainActivity.this, ProductDetailActivity.class);
+        newActivity.putExtra("id", id);
+        startActivity(newActivity);  
+//		ContentManager.put("id", id);
+//		announcers.get("Product Detail").announce(Integer.parseInt(id));
 //		Log.d("inventory", "tag = " + view.getTag());
 	}
     
@@ -98,17 +102,17 @@ class MyFragmentStatePagerAdapter extends FragmentStatePagerAdapter
     @Override
     public Fragment getItem(int i) {
     	switch(i) {
+//    	case 0:
+//    		ProductDetailFragment productDetailFragment = new ProductDetailFragment();
+//    		announcers.get("Product Detail").addObserver(productDetailFragment);
+//    		return productDetailFragment;
     	case 0:
-    		ProductDetailFragment productDetailFragment = new ProductDetailFragment();
-    		announcers.get("Product Detail").addObserver(productDetailFragment);
-    		return productDetailFragment;
-    	case 1:
     		return new InventoryFragment();
-    	case 2:
+    	case 1:
     		SaleFragment saleFragment = new SaleFragment();
     		announcers.get("Sale").addObserver(saleFragment);
     		return saleFragment;
-    	case 3:
+    	case 2:
     		return new ReportFragment();
     	default:
     		return new ProductDetailFragment();
@@ -117,19 +121,17 @@ class MyFragmentStatePagerAdapter extends FragmentStatePagerAdapter
 
     @Override
     public int getCount() {
-        return 4;
+        return 3;
     }
 
     @Override
     public CharSequence getPageTitle(int i) {
     	switch(i) {
     	case 0:
-    		return "Product's Detail";
-    	case 1:
     		return "Inventory";
-    	case 2:
+    	case 1:
     		return "Sale";
-    	case 3:
+    	case 2:
     		return "Report";
     	default:
     		return "";

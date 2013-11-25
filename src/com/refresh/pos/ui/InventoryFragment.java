@@ -103,8 +103,8 @@ public class InventoryFragment extends Fragment {
 		    	  int id = Integer.parseInt(inventoryList.get(position).get("id").toString());
 		    	  register.addItem(productCatalog.getProductById(id), 1);
 		    	  announcer.announce(id);
-//		    	  register.initiateSale(DateTimeStrategy.getCurrentTime());
-		    	  viewPager.setCurrentItem(2);
+		    	  register.initiateSale(DateTimeStrategy.getCurrentTime());
+		    	  viewPager.setCurrentItem(1);
 		      }     
 		});
 
