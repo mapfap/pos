@@ -6,14 +6,18 @@ import java.util.List;
 import java.util.Map;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.support.v4.view.ViewPager.LayoutParams;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +26,9 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.PopupWindow;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
@@ -51,6 +57,8 @@ public class InventoryFragment extends Fragment {
 	private Announcer announcer;
 	private ViewPager viewPager;
 	private Register register;
+	private AlertDialog.Builder popDialog;
+	private LayoutInflater inflaters;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -64,6 +72,8 @@ public class InventoryFragment extends Fragment {
 		}
 		
 		View view = inflater.inflate(R.layout.layout_inventory, container, false);
+		popDialog = new AlertDialog.Builder(this.getActivity().getBaseContext());
+		inflaters = (LayoutInflater) this.getActivity().getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
 		
 		inventoryListView = (ListView) view.findViewById(R.id.inventoryListView);
 		addProductButton = (Button) view.findViewById(R.id.addProductButton);
@@ -83,8 +93,10 @@ public class InventoryFragment extends Fragment {
 		
 		addProductButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				Intent newActivity = new Intent(getActivity().getBaseContext() ,AddProductActivity.class);
-				startActivity(newActivity);
+//				Intent newActivity = new Intent(getActivity().getBaseContext() ,AddProductActivity.class);
+//				startActivity(newActivity);
+				
+				showPopup(v);
 			}
 		});
 		
@@ -199,6 +211,14 @@ public class InventoryFragment extends Fragment {
 		} catch (NoDaoSetException e) {
 			e.printStackTrace();
 		}
+	}
+	public void showPopup(View anchorView) {
+		Log.v("popup",inflaters.toString());
+		View layout = inflaters.inflate(R.layout.activity_addproduct,(LinearLayout) getActivity().findViewById(R.id.layout_popupAddProduct));
+		popDialog.setTitle("Add New Product");
+		popDialog.setView(layout);
+		popDialog.create();
+		popDialog.show();
 	}
 	
 }
