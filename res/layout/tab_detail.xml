@@ -12,26 +12,34 @@
         android:layout_height="match_parent"
         android:orientation="vertical" >
 
-        <TextView
+        <EditText
             android:id="@+id/nameBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Name"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textSize="26sp" />
+            android:textSize="26sp"
+            android:padding="10dip" 
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:textColor="#000000"
+            android:inputType="textNoSuggestions"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical"
+            android:padding="2dip" >
 
             <TextView
                 android:id="@+id/quantityLabel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Quantity"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:padding="2dip"
+                 />
 
             <TextView
                 android:id="@+id/quantityBox"
@@ -39,20 +47,25 @@
                 android:layout_height="wrap_content"
                 android:gravity="right"
                 android:text="0"
-                android:textSize="35sp" />
+                android:textSize="25sp"
+                android:padding="2dip"
+                android:background="#FFA07A" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical"
+            android:padding="2dip" >
 
             <TextView
                 android:id="@+id/profitLabel"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Profit per unit"
-                android:textSize="20sp" />
+                android:textSize="20sp" 
+                android:padding="2dip"
+                />
 
             <TextView
                 android:id="@+id/profitBox"
@@ -60,28 +73,38 @@
                 android:layout_height="wrap_content"
                 android:gravity="right"
                 android:text="0"
-                android:textSize="35sp" />
+                android:textSize="25sp" 
+                android:padding="2dip"
+                android:background="#FFA07A"/>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical"
+            android:padding="2dip" >
 
             <TextView
                 android:id="@+id/priceLabel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text=" Price"
-                android:textSize="20sp" />
+                android:text="Price"
+                android:textSize="20sp"
+                android:padding="2dip"
+                 />
 
-            <TextView
+            <EditText
                 android:id="@+id/priceBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="right"
                 android:text="0"
-                android:textSize="35sp" />
+                android:textSize="25sp"
+                android:padding="2dip" 
+                android:background="#87CEEB"
+                android:focusable="false"
+            	android:focusableInTouchMode="false"
+            	android:textColor="#000000"/>
         </LinearLayout>
 
    
@@ -89,24 +112,44 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical"
+    		android:paddingTop="2dip"
+            android:paddingBottom="20dip" >
 
             <TextView
                 android:id="@+id/barcodeLabel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text=" Barcode"
-                android:textSize="20sp" />
+                android:text="Barcode"
+                android:textSize="20sp" 
+                android:padding="2dip"
+               />
 
-            <TextView
+            <EditText
                 android:id="@+id/barcodeBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="right"
                 android:text="00000000"
-                android:textSize="35sp" />
+                android:textSize="25sp" 
+                android:padding="2dip"
+                android:background="#87CEEB"
+                android:focusable="false"
+            	android:focusableInTouchMode="false"
+           		android:textColor="#000000"/>
         </LinearLayout>
 
+        
+			<Button
+            android:id="@+id/submitEditButton"
+            android:layout_width="match_parent"
+        	android:layout_height="wrap_content"
+        	style="@style/ButtonText"
+        	android:background="@drawable/btn_green"
+            android:text="SUBMIT"
+            android:padding="10dip"
+            android:gravity="center"
+             />
     </LinearLayout>
 
 </LinearLayout>

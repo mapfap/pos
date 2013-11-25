@@ -37,10 +37,12 @@
         </LinearLayout>
     </TabHost>
 
-    <Button
+    <!-- <Button
         android:id="@+id/addProductLotButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add to Product's Stock"/>
+        style="@style/ButtonText"
+        android:background="@drawable/btn_green"
+        android:text="Add PRODUCT'S STOCK"/> -->
 
 </LinearLayout>
