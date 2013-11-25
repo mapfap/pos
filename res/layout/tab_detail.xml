@@ -149,6 +149,7 @@
             android:text="SUBMIT"
             android:padding="10dip"
             android:gravity="center"
+            
              />
     </LinearLayout>
 

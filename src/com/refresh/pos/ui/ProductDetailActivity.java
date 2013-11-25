@@ -70,6 +70,7 @@ public class ProductDetailActivity extends Activity {
 		priceBox = (EditText) findViewById(R.id.priceBox);
 		barcodeBox = (EditText) findViewById(R.id.barcodeBox);
 		submitEditButton = (Button) findViewById(R.id.submitEditButton);
+		submitEditButton.setVisibility(View.INVISIBLE);
 		addProductLotButton = (Button) findViewById(R.id.addProductLotButton);
 		mTabHost = (TabHost) findViewById(android.R.id.tabhost);
 		mTabHost.setup();
@@ -94,6 +95,7 @@ public class ProductDetailActivity extends Activity {
 				nameBox.setFocusable(true);
 				nameBox.setFocusableInTouchMode(true);
 				nameBox.setBackgroundColor(Color.parseColor("#C0FF3E"));
+				submitEditButton.setVisibility(View.VISIBLE);
 			}
 		});
 
@@ -103,6 +105,7 @@ public class ProductDetailActivity extends Activity {
 				priceBox.setFocusable(true);
 				priceBox.setFocusableInTouchMode(true);
 				priceBox.setBackgroundColor(Color.parseColor("#C0FF3E"));
+				submitEditButton.setVisibility(View.VISIBLE);
 			}
 		});
 
@@ -112,6 +115,7 @@ public class ProductDetailActivity extends Activity {
 				barcodeBox.setFocusable(true);
 				barcodeBox.setFocusableInTouchMode(true);
 				barcodeBox.setBackgroundColor(Color.parseColor("#C0FF3E"));
+				submitEditButton.setVisibility(View.VISIBLE);
 			}
 		});
 
@@ -127,9 +131,12 @@ public class ProductDetailActivity extends Activity {
 				barcodeBox.setFocusableInTouchMode(false);
 				barcodeBox.setBackgroundColor(Color.parseColor("#87CEEB"));
 				product.setName(nameBox.getText().toString());
+				if(priceBox.getText().toString().equals(""))
+					priceBox.setText("0.0");
 				product.setUnitPrice(Double.parseDouble(priceBox.getText().toString()));
 				product.setBarcode(barcodeBox.getText().toString());
 				productCatalog.editProduct(product);
+				submitEditButton.setVisibility(View.INVISIBLE);
 			}
 		});
 	}
