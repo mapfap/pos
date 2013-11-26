@@ -23,6 +23,7 @@ public class InventoryDaoAndroid implements InventoryDao {
         content.put("name", product.getName());
         content.put("barcode", product.getBarcode());
         content.put("unit_price", product.getUnitPrice());
+        content.put("status", "ACTIVE");
         
         int id = database.insert(DatabaseContents.TABLE_PRODUCT_CATALOG.toString(), content);
         

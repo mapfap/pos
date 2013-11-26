@@ -26,7 +26,8 @@ public class AndroidDatabase extends SQLiteOpenHelper implements Database {
 				+ "_id INTEGER PRIMARY KEY,"
 				+ "name TEXT(100),"
 				+ "barcode TEXT(100),"
-				+ "unit_price DOUBLE"
+				+ "unit_price DOUBLE,"
+				+ "status TEXT(10)"
 				
 				+ ");");
 		Log.d("CREATE DATABASE", "Create " + DatabaseContents.TABLE_PRODUCT_CATALOG.toString() + " Successfully.");
