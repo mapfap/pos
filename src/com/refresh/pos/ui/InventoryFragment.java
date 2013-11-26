@@ -36,7 +36,6 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import com.refresh.pos.R;
 import com.refresh.pos.database.NoDaoSetException;
-import com.refresh.pos.domain.ButtonAdapter;
 import com.refresh.pos.domain.DateTimeStrategy;
 import com.refresh.pos.domain.Inventory;
 import com.refresh.pos.domain.Product;

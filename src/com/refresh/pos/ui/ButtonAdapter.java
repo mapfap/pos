@@ -1,4 +1,4 @@
-package com.refresh.pos.domain;
+package com.refresh.pos.ui;
 
 import java.util.List;
 import java.util.Map;
