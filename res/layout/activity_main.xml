@@ -1,16 +1,16 @@
-<android.support.v4.view.ViewPager
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_height="match_parent"
+<android.support.v4.view.ViewPager xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/pager"
-    android:layout_width="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
     <android.support.v4.view.PagerTitleStrip
+        android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/title"
-        android:background="#33B5E5"
         android:layout_gravity="top"
-        android:paddingTop="4dp"
-        android:paddingBottom="4dp">
-
+        android:background="#33B5E5"
+        android:paddingBottom="4dp"
+        android:paddingTop="4dp" >
     </android.support.v4.view.PagerTitleStrip>
+
 </android.support.v4.view.ViewPager>
