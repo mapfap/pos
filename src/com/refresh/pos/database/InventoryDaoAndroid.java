@@ -54,6 +54,7 @@ public class InventoryDaoAndroid implements InventoryDao {
 	@Override
 	public List<Product> getAllProduct() {
         return getAllProduct("");
+//        return getAllProduct(" WHERE status = 'ACTIVE'");
 	}
 	
 	private List<Product> getAllProduct(String condition) {
@@ -91,6 +92,7 @@ public class InventoryDaoAndroid implements InventoryDao {
 		content.put("_id", product.getId());
 		content.put("name", product.getName());
         content.put("barcode", product.getBarcode());
+        content.put("status", "ACTIVE");
         content.put("unit_price", product.getUnitPrice());
 		return database.update(DatabaseContents.TABLE_PRODUCT_CATALOG.toString(), content);
 	}
@@ -196,6 +198,19 @@ public class InventoryDaoAndroid implements InventoryDao {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void suspendProduct(Product product) {
+		ContentValues content = new ContentValues();
+		content.put("_id", product.getId());
+		content.put("name", product.getName());
+		content.put("barcode", product.getBarcode());
+		content.put("status", "INACTIVE");
+		content.put("unit_price", product.getUnitPrice());
+
+	}
+	
+
 
 
 }

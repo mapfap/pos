@@ -34,18 +34,6 @@ public class ProductCatalog {
 	public List<Product> getAllProduct() {
 		return inventoryDao.getAllProduct();
 	}
-	
-	public boolean setUnitPrice(int id) {
-		return false;
-	}
-	
-	public boolean setName(int id) {
-		return false;
-	}
-	
-	public boolean setBarcode(int id) {
-		return false;
-	}
 
 	public List<Product> getProductByName(String name) {
 		return inventoryDao.getProductByName(name);
@@ -57,6 +45,10 @@ public class ProductCatalog {
 
 	public void clearProductCatalog() {
 		inventoryDao.clearProductCatalog();
+	}
+	
+	public void suspendProduct(Product product) {
+		inventoryDao.suspendProduct(product);
 	}
 
 	
