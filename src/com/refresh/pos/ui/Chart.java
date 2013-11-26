@@ -17,7 +17,7 @@ import android.graphics.Color;
 public class Chart extends AbstractChart {
 
 	public GraphicalView execute(Context context) {
-		String[] titles = new String[] { "New tickets", "Fixed tickets" };
+		String[] titles = new String[] { "Sale", "Sale Growth" };
 		List<Date[]> dates = new ArrayList<Date[]>();
 		List<double[]> values = new ArrayList<double[]>();
 		int length = titles.length;
@@ -45,7 +45,7 @@ public class Chart extends AbstractChart {
 		PointStyle[] styles = new PointStyle[] { PointStyle.POINT,
 				PointStyle.POINT };
 		XYMultipleSeriesRenderer renderer = buildRenderer(colors, styles);
-		setChartSettings(renderer, "Project work status", "Date", "Tickets",
+		setChartSettings(renderer, "Sale Growth Rate", "Date", "Sale",
 				dates.get(0)[0].getTime(), dates.get(0)[11].getTime(), 50, 190,
 				Color.GRAY, Color.LTGRAY);
 		renderer.setXLabels(0);

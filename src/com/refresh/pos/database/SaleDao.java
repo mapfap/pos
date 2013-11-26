@@ -21,4 +21,6 @@ public interface SaleDao {
 
 	List<LineItem> getLineItem(int saleId);
 
+	List<Sale> getAllSaleDuring(String start, String end);
+
 }

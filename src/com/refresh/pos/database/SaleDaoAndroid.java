@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.content.ContentValues;
+import android.util.Log;
 
 import com.refresh.pos.domain.LineItem;
 import com.refresh.pos.domain.Product;
@@ -23,7 +24,8 @@ public class SaleDaoAndroid implements SaleDao {
         content.put("start_time", startTime.toString());
         content.put("status", "ON PROCESS");
         content.put("payment", "n/a");
-        content.put("total_price", "n/a");
+        content.put("total", "0.0");
+        content.put("orders", "0");
         content.put("end_time", startTime.toString());
         
         int id = database.insert(DatabaseContents.TABLE_SALE.toString(), content);
@@ -36,7 +38,8 @@ public class SaleDaoAndroid implements SaleDao {
         content.put("_id", sale.getId());
         content.put("status", "ENDED");
         content.put("payment", "n/a");
-        content.put("total_price", "n/a");
+        content.put("total", sale.getTotal());
+        content.put("orders", sale.getOrders());
         content.put("start_time", sale.getStartTime());
         content.put("end_time", endTime);
 		database.update(DatabaseContents.TABLE_SALE.toString(), content);
@@ -57,19 +60,48 @@ public class SaleDaoAndroid implements SaleDao {
 	public List<Sale> getAllSale() {
 		return getAllSale("");
 	}
-
+	
 	@Override
-	public Sale getSaleById(int id) {
-		return getSaleBy("_id", id+"").get(0);
+	public List<Sale> getAllSaleDuring(String start, String end) {
+		// TODO : not yet implemeted.
+		return getAllSale("");
 	}
 	
-	private List<Sale> getSaleBy(String reference, String value) {
-        String condition = " WHERE " + reference + " = " + value + " ;";
-        return getAllSale(condition);
-	}
 	
+	/**
+	 * This method get all Sale *BUT* no LineItem will be loaded.
+	 * @param condition
+	 * @return
+	 */
 	public List<Sale> getAllSale(String condition) {
 		String queryString = "SELECT * FROM " + DatabaseContents.TABLE_SALE.toString() + condition;
+        @SuppressWarnings("unchecked")
+        List<ContentValues> contents = (List) database.select(queryString);
+        Log.d("saleDaoAndr", "all sale = "+ contents.size());
+        List<Sale> list = new ArrayList<Sale>();
+        for (ContentValues content: contents) {
+                list.add(new Sale(
+                		content.getAsInteger("_id"),
+                        content.getAsString("start_time"),
+                        content.getAsString("end_time"),
+                        content.getAsString("status"),
+                        content.getAsDouble("total"),
+                        content.getAsInteger("orders")
+                        
+                		)
+                );
+        }
+        return list;
+	}
+	
+	/**
+	 * This load complete data of Sale.
+	 * @param id Sale ID.
+	 * @return Sale of specific ID.
+	 */
+	@Override
+	public Sale getSaleById(int id) {
+		String queryString = "SELECT * FROM " + DatabaseContents.TABLE_SALE.toString() + " WHERE _id = " + id;
         @SuppressWarnings("unchecked")
         List<ContentValues> contents = (List) database.select(queryString);
         List<Sale> list = new ArrayList<Sale>();
@@ -82,7 +114,7 @@ public class SaleDaoAndroid implements SaleDao {
                         getLineItem(content.getAsInteger("_id")))
                 );
         }
-        return list;
+        return list.get(0);
 	}
 
 	@Override
