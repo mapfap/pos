@@ -148,6 +148,7 @@ public class InventoryFragment extends Fragment {
 	public void onResume() {
 		super.onResume();
 		search();
+		Log.d("inventoryFragment","onResume Fragment Inventory");
 	}
 
 	private void search() {
