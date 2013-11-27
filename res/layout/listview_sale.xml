@@ -26,7 +26,7 @@
                 android:background="#8033B5E5"
                 android:paddingRight="3dp"
                 android:text="Name"
-                android:textColor="#FFFFFF" />
+                android:textColor="#000000" />
         </TableRow>
 
         <TableRow
@@ -46,7 +46,7 @@
                 android:background="#8033B5E5"
                 android:paddingRight="3dp"
                 android:text="Quantity"
-                android:textColor="#FFFFFF" />
+                android:textColor="#000000" />
         </TableRow>
 
         <TableRow
@@ -67,7 +67,7 @@
                 android:background="#8033B5E5"
                 android:paddingRight="3dp"
                 android:text="Price"
-                android:textColor="#FFFFFF" />
+                android:textColor="#000000" />
         </TableRow>
     </LinearLayout>
 
