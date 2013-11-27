@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.achartengine.GraphicalView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
@@ -14,16 +15,21 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.AdapterView.OnItemClickListener;
 
 import com.refresh.pos.R;
+import com.refresh.pos.domain.DateTimeStrategy;
 import com.refresh.pos.domain.sale.Sale;
 import com.refresh.pos.domain.sale.SaleLedger;
 import com.refresh.pos.techicalservices.NoDaoSetException;
 import com.refresh.pos.ui.Chart;
+import com.refresh.pos.ui.MainActivity;
+import com.refresh.pos.ui.inventory.ProductDetailActivity;
 
 
 public class ReportFragment extends Fragment {
@@ -32,7 +38,7 @@ public class ReportFragment extends Fragment {
 	List<Map<String, String>> saleList;
 	private ListView saleLedgerListView;
 	private EditText searchBox;
-	private GraphicalView mChartView;
+//	private GraphicalView mChartView;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -43,20 +49,27 @@ public class ReportFragment extends Fragment {
 		} catch (NoDaoSetException e) {
 			e.printStackTrace();
 		}
-		View view = inflater.inflate(R.layout.layout_report, container, false);
+		View view = inflater.inflate(R.layout.layout_report2, container, false);
 		
 		saleLedgerListView = (ListView) view.findViewById(R.id.saleListView);
 		searchBox = (EditText) view.findViewById(R.id.searchBox);
 		
-
-		if (mChartView == null) {
-			LinearLayout layout = (LinearLayout) view.findViewById(R.id.chart);
-			mChartView = (new Chart()).execute(getActivity().getBaseContext());
-			layout.addView(mChartView, new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
-		} else {
-			mChartView.repaint();
-		}
-		
+		saleLedgerListView.setOnItemClickListener(new OnItemClickListener() {
+		      public void onItemClick(AdapterView<?> myAdapter, View myView, int position, long mylng) {
+		    	  String id = saleList.get(position).get("id").toString();
+		    	  Intent newActivity = new Intent(ReportFragment.this.getActivity().getBaseContext(), SaleDetailActivity.class);
+		          newActivity.putExtra("id", id);
+		          startActivity(newActivity);  
+		      }     
+		});
+//		if (mChartView == null) {
+//			LinearLayout layout = (LinearLayout) view.findViewById(R.id.chart);
+//			mChartView = (new Chart()).execute(getActivity().getBaseContext());
+//			layout.addView(mChartView, new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
+//		} else {
+//			mChartView.repaint();
+//		}
+//		
 		initUI();
 		return view;
 	}
@@ -88,8 +101,8 @@ public class ReportFragment extends Fragment {
 		
 		SimpleAdapter sAdap;
 		sAdap = new SimpleAdapter(getActivity().getBaseContext() , saleList,
-				R.layout.listview_saleledger, new String[] { "id", "startTime", "status", "total", "orders"},
-				new int[] { R.id.sid, R.id.startTime, R.id.status , R.id.total, R.id.orders});
+				R.layout.listview_saleledger2, new String[] { "id", "startTime", "total"},
+				new int[] { R.id.sid, R.id.startTime , R.id.total});
 		saleLedgerListView.setAdapter(sAdap);
 	}
 

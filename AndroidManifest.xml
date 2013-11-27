@@ -33,6 +33,7 @@
         <activity android:name="com.refresh.pos.ui.SaleProductCatalog" />
         <activity android:name="com.refresh.pos.ui.sale.SaleLedgerActivity" />
         <activity android:name="org.achartengine.GraphicalActivity" />
+        <activity android:name="com.refresh.pos.ui.sale.SaleDetailActivity" />
     </application>
 
 </manifest>
