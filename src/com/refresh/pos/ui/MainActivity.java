@@ -48,6 +48,7 @@ public class MainActivity extends FragmentActivity {
         announcers = new HashMap<String, Announcer>();
         announcers.put("Product Detail", new Announcer());
         announcers.put("Sale", new Announcer());
+        announcers.put("Inventory", new Announcer());
         viewPager= (ViewPager) findViewById(R.id.pager);
         FragmentManager fragmentManager = getSupportFragmentManager();
         viewPager.setAdapter(new MyFragmentStatePagerAdapter(fragmentManager, announcers));
@@ -106,6 +107,8 @@ class MyFragmentStatePagerAdapter extends FragmentStatePagerAdapter
     public Fragment getItem(int i) {
             switch(i) {
             case 0:
+            	InventoryFragment inventoryFragment = new InventoryFragment();
+                announcers.get("Inventory").addObserver(inventoryFragment);
                     return new InventoryFragment();
             case 1:
                     SaleFragment saleFragment = new SaleFragment();

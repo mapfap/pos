@@ -6,7 +6,9 @@ import com.refresh.pos.R;
 import com.refresh.pos.domain.inventory.Inventory;
 import com.refresh.pos.domain.inventory.ProductCatalog;
 import com.refresh.pos.techicalservices.NoDaoSetException;
+import com.refresh.pos.ui.Announcer;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -21,6 +23,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+@SuppressLint("ValidFragment")
 public class AddProductDialogFragment extends DialogFragment {
 
 	private EditText barcodeBox;
@@ -30,7 +33,14 @@ public class AddProductDialogFragment extends DialogFragment {
 	private EditText nameBox;
 	private Button confirmButton;
 	private Button clearButton;
+	private Announcer announcer;
 //	private ImageButton backButton;
+
+	public AddProductDialogFragment(Announcer announcer) {
+		super();
+		this.announcer = announcer;
+		
+	}
 
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -91,6 +101,8 @@ public class AddProductDialogFragment extends DialogFragment {
 										+ nameBox.getText().toString(),
 								Toast.LENGTH_SHORT).show();
 						
+						
+						announcer.announce("update");
 						clearAllBox();
 //						AddProductActivity.this.finish();
 						

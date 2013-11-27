@@ -4,6 +4,8 @@ package com.refresh.pos.ui.inventory;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Observable;
+import java.util.Observer;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -46,7 +48,7 @@ import com.refresh.pos.ui.Announcer;
 import com.refresh.pos.ui.ButtonAdapter;
 import com.refresh.pos.ui.MainActivity;
 
-public class InventoryFragment extends Fragment {
+public class InventoryFragment extends Fragment implements Observer{
 
 	protected static final int SEARCH_LIMIT = 0;
 	private ListView inventoryListView;
@@ -61,6 +63,7 @@ public class InventoryFragment extends Fragment {
 	private Register register;
 	private AlertDialog.Builder popDialog;
 	private LayoutInflater inflaters;
+	private MainActivity main;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -82,7 +85,7 @@ public class InventoryFragment extends Fragment {
 		scanButton = (Button) view.findViewById(R.id.scanButton);
 		searchBox = (EditText) view.findViewById(R.id.searchBox);
 		
-		MainActivity main = (MainActivity) getActivity();
+		main = (MainActivity) getActivity();
 		viewPager = main.getViewPager();
 		announcer = main.getAnnouncers().get("Sale");
 		
@@ -216,8 +219,14 @@ public class InventoryFragment extends Fragment {
 		}
 	}
 	public void showPopup(View anchorView) {
-		AddProductDialogFragment newFragment = new AddProductDialogFragment();
+		AddProductDialogFragment newFragment = new AddProductDialogFragment(main.getAnnouncers().get("Inventory"));
 	    newFragment.show(getFragmentManager(), "dialog");
+	}
+
+	@Override
+	public void update(Observable arg0, Object arg1) {
+		Log.d("inventoryFragment","update");
+		search();
 	}
 	
 }
