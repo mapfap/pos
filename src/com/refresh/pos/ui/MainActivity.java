@@ -22,8 +22,8 @@ import com.refresh.pos.domain.sale.Register;
 import com.refresh.pos.domain.sale.SaleLedger;
 import com.refresh.pos.techicalservices.AndroidDatabase;
 import com.refresh.pos.techicalservices.Database;
-import com.refresh.pos.techicalservices.invnetory.InventoryDao;
-import com.refresh.pos.techicalservices.invnetory.InventoryDaoAndroid;
+import com.refresh.pos.techicalservices.inventory.InventoryDao;
+import com.refresh.pos.techicalservices.inventory.InventoryDaoAndroid;
 import com.refresh.pos.techicalservices.sale.SaleDao;
 import com.refresh.pos.techicalservices.sale.SaleDaoAndroid;
 import com.refresh.pos.ui.inventory.InventoryFragment;
@@ -107,8 +107,8 @@ class MyFragmentStatePagerAdapter extends FragmentStatePagerAdapter
     public Fragment getItem(int i) {
     	switch(i) {
     	case 0:
-    		InventoryFragment inventoryFragment = new InventoryFragment();
-    		announcers.get("Inventory").addObserver(inventoryFragment);
+//    		InventoryFragment inventoryFragment = new InventoryFragment();
+//    		announcers.get("Inventory").addObserver(inventoryFragment);
     		return new InventoryFragment();
     	case 1:
     		SaleFragment saleFragment = new SaleFragment();

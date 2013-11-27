@@ -2,7 +2,7 @@ package com.refresh.pos.domain.inventory;
 
 import java.util.List;
 
-import com.refresh.pos.techicalservices.invnetory.InventoryDao;
+import com.refresh.pos.techicalservices.inventory.InventoryDao;
 
 public class Stock {
 

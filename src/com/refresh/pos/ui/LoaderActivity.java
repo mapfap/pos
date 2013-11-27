@@ -18,8 +18,8 @@ import com.refresh.pos.domain.sale.Register;
 import com.refresh.pos.domain.sale.SaleLedger;
 import com.refresh.pos.techicalservices.AndroidDatabase;
 import com.refresh.pos.techicalservices.Database;
-import com.refresh.pos.techicalservices.invnetory.InventoryDao;
-import com.refresh.pos.techicalservices.invnetory.InventoryDaoAndroid;
+import com.refresh.pos.techicalservices.inventory.InventoryDao;
+import com.refresh.pos.techicalservices.inventory.InventoryDaoAndroid;
 import com.refresh.pos.techicalservices.sale.SaleDao;
 import com.refresh.pos.techicalservices.sale.SaleDaoAndroid;
 

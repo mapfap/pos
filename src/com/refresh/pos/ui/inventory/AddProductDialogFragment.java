@@ -22,6 +22,7 @@ import com.refresh.pos.domain.inventory.Inventory;
 import com.refresh.pos.domain.inventory.ProductCatalog;
 import com.refresh.pos.techicalservices.NoDaoSetException;
 import com.refresh.pos.ui.Announcer;
+import com.refresh.pos.ui.UpdatableFragment;
 
 @SuppressLint("ValidFragment")
 public class AddProductDialogFragment extends DialogFragment {
@@ -33,13 +34,13 @@ public class AddProductDialogFragment extends DialogFragment {
 	private EditText nameBox;
 	private Button confirmButton;
 	private Button clearButton;
-	private Announcer announcer;
 //	private ImageButton backButton;
+	private UpdatableFragment fragment;
 
-	public AddProductDialogFragment(Announcer announcer) {
-		super();
-		this.announcer = announcer;
+	public AddProductDialogFragment(UpdatableFragment fragment) {
 		
+		super();
+		this.fragment = fragment;
 	}
 
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -102,7 +103,7 @@ public class AddProductDialogFragment extends DialogFragment {
 								Toast.LENGTH_SHORT).show();
 						
 						
-						announcer.announce("update");
+						fragment.update();
 						clearAllBox();
 //						AddProductActivity.this.finish();
 						

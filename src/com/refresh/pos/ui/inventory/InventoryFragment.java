@@ -40,8 +40,9 @@ import com.refresh.pos.techicalservices.NoDaoSetException;
 import com.refresh.pos.ui.Announcer;
 import com.refresh.pos.ui.ButtonAdapter;
 import com.refresh.pos.ui.MainActivity;
+import com.refresh.pos.ui.UpdatableFragment;
 
-public class InventoryFragment extends Fragment implements Observer{
+public class InventoryFragment extends UpdatableFragment {
 
 	protected static final int SEARCH_LIMIT = 0;
 	private ListView inventoryListView;
@@ -212,17 +213,14 @@ public class InventoryFragment extends Fragment implements Observer{
 		}
 	}
 	public void showPopup(View anchorView) {
-		AddProductDialogFragment newFragment = new AddProductDialogFragment(main.getAnnouncers().get("Inventory"));
+		AddProductDialogFragment newFragment = new AddProductDialogFragment(InventoryFragment.this);
 	    newFragment.show(getFragmentManager(), "dialog");
 	}
-
+	
 	@Override
-	public void update(Observable arg0, Object arg1) {
-		Log.d("inventoryFragment","update");
-//		search();
-		//
-		showList(productCatalog.getAllProduct());
-		
+	public void update() {
+		Log.d("inventoryFragment","CALLBACK!!!!! onUpdate");
+		search();
 	}
 	
 }

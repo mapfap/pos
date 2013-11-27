@@ -1,4 +1,4 @@
-package com.refresh.pos.techicalservices.invnetory;
+package com.refresh.pos.techicalservices.inventory;
 
 import java.util.ArrayList;
 import java.util.List;

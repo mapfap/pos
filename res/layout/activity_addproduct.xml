@@ -18,7 +18,7 @@
             android:layout_height="wrap_content" >
 
             <Button
-                android:id="@+id/scanButton"
+                android:id="@+id/confirmButton"
                 style="@style/ButtonText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -130,7 +130,7 @@
             android:text="CLEAR" />
 
         <Button
-            android:id="@+id/confirmButton"
+            android:id="@+id/scanButton"
             style="@style/ButtonText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

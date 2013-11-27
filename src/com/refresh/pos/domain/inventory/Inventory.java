@@ -1,7 +1,7 @@
 package com.refresh.pos.domain.inventory;
 
 import com.refresh.pos.techicalservices.NoDaoSetException;
-import com.refresh.pos.techicalservices.invnetory.InventoryDao;
+import com.refresh.pos.techicalservices.inventory.InventoryDao;
 
 public class Inventory {
 	private Stock stock;

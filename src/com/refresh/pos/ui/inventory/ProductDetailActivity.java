@@ -57,10 +57,10 @@ public class ProductDetailActivity extends Activity {
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		ActionBar actionBar = getActionBar();
-		actionBar.setDisplayHomeAsUpEnabled(true);
-		actionBar.setTitle("Product's Detail");
-		actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#33B5E5")));
+//		ActionBar actionBar = getActionBar();
+//		actionBar.setDisplayHomeAsUpEnabled(true);
+//		actionBar.setTitle("Product's Detail");
+//		actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#33B5E5")));
 		try {
 			stock = Inventory.getInstance().getStock();
 			productCatalog = Inventory.getInstance().getProductCatalog();
