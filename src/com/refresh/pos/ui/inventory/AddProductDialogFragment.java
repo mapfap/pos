@@ -1,8 +1,6 @@
 package com.refresh.pos.ui.inventory;
 
 import android.annotation.SuppressLint;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
@@ -21,7 +19,6 @@ import com.refresh.pos.R;
 import com.refresh.pos.domain.inventory.Inventory;
 import com.refresh.pos.domain.inventory.ProductCatalog;
 import com.refresh.pos.techicalservices.NoDaoSetException;
-import com.refresh.pos.ui.Announcer;
 import com.refresh.pos.ui.UpdatableFragment;
 
 @SuppressLint("ValidFragment")

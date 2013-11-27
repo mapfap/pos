@@ -29,10 +29,11 @@ import com.refresh.pos.domain.sale.SaleLedger;
 import com.refresh.pos.techicalservices.NoDaoSetException;
 import com.refresh.pos.ui.Chart;
 import com.refresh.pos.ui.MainActivity;
+import com.refresh.pos.ui.UpdatableFragment;
 import com.refresh.pos.ui.inventory.ProductDetailActivity;
 
 
-public class ReportFragment extends Fragment {
+public class ReportFragment extends UpdatableFragment {
 	
 	private SaleLedger saleLedger;
 	List<Map<String, String>> saleList;
@@ -109,8 +110,13 @@ public class ReportFragment extends Fragment {
 	@Override
 	public void onResume() {
 		Log.d("ledger",saleLedger.getAllSale().size()+"");
-		showList(saleLedger.getAllSale());
 		super.onResume();
+		update();
+	}
+
+	@Override
+	public void update() {
+		showList(saleLedger.getAllSale());
 	}
 
 }

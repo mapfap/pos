@@ -4,14 +4,12 @@ package com.refresh.pos.ui.inventory;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Observable;
-import java.util.Observer;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -37,11 +35,11 @@ import com.refresh.pos.domain.inventory.ProductCatalog;
 import com.refresh.pos.domain.sale.Register;
 import com.refresh.pos.domain.sale.SaleLedger;
 import com.refresh.pos.techicalservices.NoDaoSetException;
-import com.refresh.pos.ui.Announcer;
 import com.refresh.pos.ui.ButtonAdapter;
 import com.refresh.pos.ui.MainActivity;
 import com.refresh.pos.ui.UpdatableFragment;
 
+@SuppressLint("ValidFragment")
 public class InventoryFragment extends UpdatableFragment {
 
 	protected static final int SEARCH_LIMIT = 0;
@@ -52,13 +50,19 @@ public class InventoryFragment extends UpdatableFragment {
 	private EditText searchBox;
 	private Button scanButton;
 	
-	private Announcer announcer;
 	private ViewPager viewPager;
 	private Register register;
 	private AlertDialog.Builder popDialog;
 	private LayoutInflater inflaters;
 	private MainActivity main;
 	
+	private UpdatableFragment saleFragment;
+	
+	public InventoryFragment(UpdatableFragment saleFragment) {
+		super();
+		this.saleFragment = saleFragment;
+	}
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -81,10 +85,8 @@ public class InventoryFragment extends UpdatableFragment {
 		
 		main = (MainActivity) getActivity();
 		viewPager = main.getViewPager();
-		announcer = main.getAnnouncers().get("Sale");
 		
 		initUI();
-		
 		return view;
 	}
 	
@@ -92,9 +94,6 @@ public class InventoryFragment extends UpdatableFragment {
 		
 		addProductButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-//				Intent newActivity = new Intent(getActivity().getBaseContext() ,AddProductActivity.class);
-//				startActivity(newActivity);
-				
 				showPopup(v);
 			}
 		});
@@ -113,8 +112,7 @@ public class InventoryFragment extends UpdatableFragment {
 		      public void onItemClick(AdapterView<?> myAdapter, View myView, int position, long mylng) {
 		    	  int id = Integer.parseInt(inventoryList.get(position).get("id").toString());
 		    	  register.addItem(productCatalog.getProductById(id), 1);
-		    	  announcer.announce(id);
-		    	  register.initiateSale(DateTimeStrategy.getCurrentTime());
+		    	  saleFragment.update();
 		    	  viewPager.setCurrentItem(1);
 		      }     
 		});
@@ -166,7 +164,6 @@ public class InventoryFragment extends UpdatableFragment {
 			}
 		}
 		
-		
 		if (search.equals("")) {
 			showList(productCatalog.getAllProduct());
 		} else {
@@ -197,14 +194,19 @@ public class InventoryFragment extends UpdatableFragment {
 	protected void testAddProduct() {
 		try {
 			
-			Inventory.getInstance().getProductCatalog().addProduct("Apple iPhone 4s", "65005", 20900 );
-			Inventory.getInstance().getProductCatalog().addProduct("Apple Macbook Air (mid-2012)", "68701", 32900 );
-			Inventory.getInstance().getProductCatalog().addProduct("Television ", "20004", 21000);
+			Inventory.getInstance().getProductCatalog().addProduct("Apple iPhone 4s", "65005", 400 );
+			Inventory.getInstance().getProductCatalog().addProduct("Apple Macbook Air (mid-2012)", "68701", 329 );
+			Inventory.getInstance().getProductCatalog().addProduct("Television ", "20004", 200);
 			Inventory.getInstance().getProductCatalog().addProduct("Lettuce" , "80775", 10.75);
-			Inventory.getInstance().getProductCatalog().addProduct("Carrot", "10089", 8.50);
-			Inventory.getInstance().getProductCatalog().addProduct("Sumsung Television", "899089", 8.50);
+			Inventory.getInstance().getProductCatalog().addProduct("Carrot", "10089", 28.50);
+			Inventory.getInstance().getProductCatalog().addProduct("Sumsung Television", "899089", 48.50);
 			Inventory.getInstance().getProductCatalog().addProduct("Applying UML and Pattern", "05667", 1.50);
 			Inventory.getInstance().getProductCatalog().addProduct("Code Complete 2nd Edition", "99887", 2.50);
+			Inventory.getInstance().getProductCatalog().addProduct("Banana", "9822337", 32.50);
+			Inventory.getInstance().getProductCatalog().addProduct("Egg", "03011", 0.50);
+			Inventory.getInstance().getProductCatalog().addProduct("Tomato", "422337", 142.50);
+			Inventory.getInstance().getProductCatalog().addProduct("Ketchup", "941223", 3.50);
+			
 			
 			Toast.makeText(getActivity().getBaseContext(), "products added.", Toast.LENGTH_SHORT).show();
 			

@@ -1,7 +1,9 @@
 package com.refresh.pos.ui.sale;
 
 import com.refresh.pos.R;
+import com.refresh.pos.ui.UpdatableFragment;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
@@ -11,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+@SuppressLint("ValidFragment")
 public class PaymentFragmentDialog extends DialogFragment {
 	
 	private TextView totalPrice;
@@ -18,6 +21,14 @@ public class PaymentFragmentDialog extends DialogFragment {
 	private Button clearButton;
 	private Button confirmButton;
 	private String strtext;
+	private UpdatableFragment saleFragment;
+	private UpdatableFragment reportFragment;
+	
+	public PaymentFragmentDialog(UpdatableFragment saleFragment, UpdatableFragment reportFragment) {
+		super();
+		this.saleFragment = saleFragment;
+		this.reportFragment = reportFragment;
+	}
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -47,7 +58,7 @@ public class PaymentFragmentDialog extends DialogFragment {
 				else{
 					Bundle bundle=new Bundle();
 					bundle.putString("edttext",b-a+"");
-					EndPaymentFragmentDialog newFragment = new EndPaymentFragmentDialog();
+					EndPaymentFragmentDialog newFragment = new EndPaymentFragmentDialog(saleFragment, reportFragment);
 					newFragment.setArguments(bundle);
 				    newFragment.show(getFragmentManager(), "dialog");
 				    end();
