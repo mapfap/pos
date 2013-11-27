@@ -105,20 +105,20 @@ class MyFragmentStatePagerAdapter extends FragmentStatePagerAdapter
 
     @Override
     public Fragment getItem(int i) {
-            switch(i) {
-            case 0:
-            	InventoryFragment inventoryFragment = new InventoryFragment();
-                announcers.get("Inventory").addObserver(inventoryFragment);
-                    return new InventoryFragment();
-            case 1:
-                    SaleFragment saleFragment = new SaleFragment();
-                    announcers.get("Sale").addObserver(saleFragment);
-                    return saleFragment;
-            case 2:
-                    return new ReportFragment();
-            default:
-                    return new InventoryFragment();
-            }
+    	switch(i) {
+    	case 0:
+    		InventoryFragment inventoryFragment = new InventoryFragment();
+    		announcers.get("Inventory").addObserver(inventoryFragment);
+    		return new InventoryFragment();
+    	case 1:
+    		SaleFragment saleFragment = new SaleFragment();
+    		announcers.get("Sale").addObserver(saleFragment);
+    		return saleFragment;
+    	case 2:
+    		return new ReportFragment();
+    	default:
+    		return new InventoryFragment();
+    	}
     }
 
     @Override

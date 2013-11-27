@@ -226,7 +226,9 @@ public class InventoryFragment extends Fragment implements Observer{
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		Log.d("inventoryFragment","update");
-		search();
+//		search();
+		showList(productCatalog.getAllProduct());
+		
 	}
 	
 }
