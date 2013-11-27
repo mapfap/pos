@@ -27,6 +27,7 @@ import com.refresh.pos.domain.inventory.ProductCatalog;
 import com.refresh.pos.domain.sale.Register;
 import com.refresh.pos.domain.sale.Sale;
 import com.refresh.pos.techicalservices.NoDaoSetException;
+import com.refresh.pos.ui.Announcer;
 import com.refresh.pos.ui.MainActivity;
 import com.refresh.pos.ui.inventory.AddProductDialogFragment;
 
@@ -41,6 +42,7 @@ public class SaleFragment extends Fragment implements Observer {
 	private TextView totalPrice;
 	private Button endButton;
 	private ProductCatalog productCatalog;
+
 
 	
 	@Override
@@ -61,6 +63,7 @@ public class SaleFragment extends Fragment implements Observer {
 		totalPrice = (TextView) view.findViewById(R.id.totalPrice);
 		clearButton = (Button) view.findViewById(R.id.clearButton);
 		endButton = (Button) view.findViewById(R.id.endButton);
+		
 		
 		initUI();
 		return view;
@@ -128,9 +131,9 @@ public class SaleFragment extends Fragment implements Observer {
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		try {
-			int id = (Integer) arg1;
+//			int id = (Integer) arg1;
 //			register.addItem(productCatalog.getProductById(id), 1);
-			Log.d("sale", "data = " + arg1);
+//			Log.d("sale", "data = " + arg1);
 			updateData();
 		} catch (Exception e) {			
 //			e.printStackTrace();

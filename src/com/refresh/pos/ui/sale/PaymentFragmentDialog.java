@@ -8,29 +8,58 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class PaymentFragmentDialog extends DialogFragment {
 	
 	private TextView totalPrice;
+	private EditText input;
 	private Button clearButton;
+	private Button confirmButton;
+	private String strtext;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.dialog_payment, container,false);
-		String strtext=getArguments().getString("edttext");
+		strtext=getArguments().getString("edttext");
+		input = (EditText) v.findViewById(R.id.dialog_saleInput);
 		totalPrice = (TextView) v.findViewById(R.id.payment_total);
 		totalPrice.setText(strtext);
 		clearButton = (Button) v.findViewById(R.id.clearButton);
 		clearButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				end();
+			}
+		});
+		
+		confirmButton = (Button) v.findViewById(R.id.confirmButton);
+		confirmButton.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-			 
+				double a = Double.parseDouble(strtext);
+				double b = Double.parseDouble(input.getText().toString());
+				if(b<a){
+					
+				}
+				else{
+					Bundle bundle=new Bundle();
+					bundle.putString("edttext",b-a+"");
+					EndPaymentFragmentDialog newFragment = new EndPaymentFragmentDialog();
+					newFragment.setArguments(bundle);
+				    newFragment.show(getFragmentManager(), "dialog");
+				    end();
+				}
 				
 			}
 		});
 		return v;
+	}
+	private void end(){
+		this.dismiss();
+		
 	}
 	
 
