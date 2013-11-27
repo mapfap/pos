@@ -42,14 +42,10 @@ public class MainActivity extends FragmentActivity {
     @SuppressLint("NewApi")
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
-//        requestWindowFeature(Window.FEATURE_NO_TITLE);
-//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-    	
     	setContentView(R.layout.activity_main);
         viewPager= (ViewPager) findViewById(R.id.pager);
         
         ActionBar actionBar = getActionBar();
-		actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#33B5E5")));
 		actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
         
@@ -57,19 +53,16 @@ public class MainActivity extends FragmentActivity {
 
 			@Override
 			public void onTabReselected(Tab tab, FragmentTransaction ft) {
-				// TODO Auto-generated method stub
-				
+		
 			}
 
 			@Override
 			public void onTabSelected(Tab tab, FragmentTransaction ft) {
 				viewPager.setCurrentItem(tab.getPosition());
-				
 			}
 
 			@Override
 			public void onTabUnselected(Tab tab, FragmentTransaction ft) {
-				// TODO Auto-generated method stub
 				
 			}
 
@@ -88,6 +81,8 @@ public class MainActivity extends FragmentActivity {
                 actionBar.newTab()
                         .setText("Report")
                         .setTabListener(tabListener),2,false);
+        
+        actionBar.setStackedBackgroundDrawable(new ColorDrawable(Color.parseColor("#73bde5")));
         
         super.onCreate(savedInstanceState);
         initiateCoreApp();

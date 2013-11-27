@@ -86,7 +86,6 @@ public class InventoryFragment extends UpdatableFragment {
 		viewPager = main.getViewPager();
 		
 		initUI();
-		update();
 		return view;
 	}
 	
@@ -215,8 +214,13 @@ public class InventoryFragment extends UpdatableFragment {
 	
 	@Override
 	public void update() {
-//		Log.d("inventoryFragment","CALLBACK!!!!! onUpdate");
 		search();
+	}
+	
+	@Override
+	public void onResume() {
+		super.onResume();
+		update();
 	}
 	
 }
