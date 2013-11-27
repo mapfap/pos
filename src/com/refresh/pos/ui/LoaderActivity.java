@@ -43,6 +43,15 @@ public class LoaderActivity extends Activity {
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		initiateUI(savedInstanceState);
 	}
+	
+
+	private void go() {
+		gone = true;
+		Intent newActivity = new Intent(LoaderActivity.this,
+				MainActivity.class);
+		startActivity(newActivity);
+		LoaderActivity.this.finish();	
+	}
 
 	private void initiateUI(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -51,19 +60,15 @@ public class LoaderActivity extends Activity {
 		goButton.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View v) {
-				Intent newActivity = new Intent(LoaderActivity.this,
-						MainActivity.class);
-				startActivity(newActivity);
-				gone = true;
+				go();
 			}
+
 		});
 		new Handler().postDelayed(new Runnable() {
 			@Override
 			public void run() {
 				if (!gone) {
-					Intent newActivity = new Intent(LoaderActivity.this,
-							MainActivity.class);
-					startActivity(newActivity);
+					go();
 				}
 			}
 		}, 3000);
