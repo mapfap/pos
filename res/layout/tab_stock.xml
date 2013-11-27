@@ -23,7 +23,7 @@
                 android:layout_width="0dp"
                 android:layout_height="30dp"
                 android:layout_weight="2"
-                android:background="#000000"
+                android:background="#FFFFFF"
                 android:paddingBottom="1dip"
                 android:paddingLeft="1dip"
                 android:paddingTop="1dip" >
@@ -33,7 +33,8 @@
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
                     android:layout_weight="2"
-                    android:background="#C0C0C0"
+                    android:background="#33B5E5"
+                    android:textColor="#FFFFFF"
                     android:gravity="center"
                     android:paddingRight="3dp"
                     android:text="Date Added" />
@@ -43,7 +44,7 @@
                 android:layout_width="0dp"
                 android:layout_height="30dp"
                 android:layout_weight="1.5"
-                android:background="#000000"
+                android:background="#FFFFFF"
                 android:paddingBottom="1dip"
                 android:paddingLeft="1dip"
                 android:paddingTop="1dip" >
@@ -53,7 +54,8 @@
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
                     android:layout_weight="1.5"
-                    android:background="#C0C0C0"
+                    android:background="#33B5E5"
+                    android:textColor="#FFFFFF"
                     android:gravity="center"
                     android:paddingRight="3dp"
                     android:text="Cost" />
@@ -63,7 +65,7 @@
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
                 android:layout_weight="0.75"
-                android:background="#000000"
+                android:background="#FFFFFF"
                 android:paddingBottom="1dip"
                 android:paddingLeft="1dip"
                 android:paddingRight="1dip"
@@ -75,11 +77,11 @@
                     android:layout_width="0dp"
                     android:layout_height="30dp"
                     android:layout_weight="0.75"
-                    android:background="#C0C0C0"
+                    android:background="#33B5E5"
+                    android:textColor="#FFFFFF"
                     android:gravity="center"
                     android:paddingRight="3dp"
-                    android:text="Quantity"
-                    android:textSize="12sp" />
+                    android:text="Quantity" />
             </TableRow>
         </LinearLayout>
 

@@ -6,6 +6,7 @@ import android.view.Menu;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -22,8 +23,8 @@ public class AddProductLotActivity extends Activity{
 	private EditText costBox;
 	private EditText quantityBox;
 	private Stock stock;
-	private ImageButton confirmButton;
-	private ImageButton clearButton;
+	private Button confirmButton;
+	private Button clearButton;
 	private String id;
 	private ProductCatalog productCatalog;
 	private Product product;
@@ -49,8 +50,8 @@ public class AddProductLotActivity extends Activity{
 			
 			costBox = (EditText) findViewById(R.id.costBox);
 			quantityBox = (EditText) findViewById(R.id.quantityBox);
-			confirmButton = (ImageButton) findViewById(R.id.confirmButton);
-			clearButton = (ImageButton) findViewById(R.id.clearButton);
+			confirmButton = (Button) findViewById(R.id.confirmButton);
+			clearButton = (Button) findViewById(R.id.clearButton);
 			
 			id = getIntent().getStringExtra("id");
 			product = productCatalog.getProductById(Integer.parseInt(id));

@@ -25,7 +25,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:background="@drawable/btn_blue"
-                android:text="Scan" />
+                android:text="SCAN" />
 
             <EditText
                 android:id="@+id/searchBox"

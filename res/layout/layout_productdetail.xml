@@ -51,6 +51,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/btn_green"
-        android:text="Add PRODUCT&apos;S STOCK" />
+        android:text="ADD PRODUCT&apos;S STOCK" />
 
 </LinearLayout>

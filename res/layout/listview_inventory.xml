@@ -12,7 +12,7 @@
         android:layout_weight="0.9"
         android:paddingTop="5dip"
         android:paddingBottom="5dip"
-        android:paddingLeft="30dip"
+        android:paddingLeft="20dip"
         android:textSize="20sp" />
 
      <View
