@@ -1,4 +1,4 @@
-package com.refresh.pos.database;
+package com.refresh.pos.techicalservices;
 
 import java.util.List;
 

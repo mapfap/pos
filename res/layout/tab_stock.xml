@@ -84,13 +84,6 @@
             android:layout_height="90dp"
             android:layout_weight="3.96" >
         </ListView>
-<Button
-        android:id="@+id/addProductLotButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/ButtonText"
-        android:background="@drawable/btn_green"
-        android:text="Add PRODUCT'S STOCK"/>
         
 
 </LinearLayout>

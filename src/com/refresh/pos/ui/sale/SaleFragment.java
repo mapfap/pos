@@ -1,4 +1,4 @@
-package com.refresh.pos.ui;
+package com.refresh.pos.ui.sale;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,13 +20,14 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import com.refresh.pos.R;
-import com.refresh.pos.database.NoDaoSetException;
 import com.refresh.pos.domain.DateTimeStrategy;
-import com.refresh.pos.domain.Inventory;
-import com.refresh.pos.domain.LineItem;
-import com.refresh.pos.domain.ProductCatalog;
-import com.refresh.pos.domain.Register;
-import com.refresh.pos.domain.Sale;
+import com.refresh.pos.domain.inventory.Inventory;
+import com.refresh.pos.domain.inventory.LineItem;
+import com.refresh.pos.domain.inventory.ProductCatalog;
+import com.refresh.pos.domain.sale.Register;
+import com.refresh.pos.domain.sale.Sale;
+import com.refresh.pos.techicalservices.NoDaoSetException;
+import com.refresh.pos.ui.MainActivity;
 
 public class SaleFragment extends Fragment implements Observer {
     

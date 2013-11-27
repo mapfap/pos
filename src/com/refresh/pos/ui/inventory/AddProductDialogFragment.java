@@ -1,11 +1,11 @@
-package com.refresh.pos.ui;
+package com.refresh.pos.ui.inventory;
 
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import com.refresh.pos.R;
-import com.refresh.pos.database.NoDaoSetException;
-import com.refresh.pos.domain.Inventory;
-import com.refresh.pos.domain.ProductCatalog;
+import com.refresh.pos.domain.inventory.Inventory;
+import com.refresh.pos.domain.inventory.ProductCatalog;
+import com.refresh.pos.techicalservices.NoDaoSetException;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;

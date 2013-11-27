@@ -1,4 +1,4 @@
-package com.refresh.pos.ui;
+package com.refresh.pos.ui.sale;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,9 +20,10 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
 import com.refresh.pos.R;
-import com.refresh.pos.database.NoDaoSetException;
-import com.refresh.pos.domain.Sale;
-import com.refresh.pos.domain.SaleLedger;
+import com.refresh.pos.domain.sale.Sale;
+import com.refresh.pos.domain.sale.SaleLedger;
+import com.refresh.pos.techicalservices.NoDaoSetException;
+import com.refresh.pos.ui.Chart;
 
 
 public class ReportFragment extends Fragment {

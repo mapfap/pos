@@ -1,4 +1,4 @@
-package com.refresh.pos.ui;
+package com.refresh.pos.ui.inventory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,12 +18,12 @@ import android.widget.TabHost;
 import android.widget.TextView;
 
 import com.refresh.pos.R;
-import com.refresh.pos.database.NoDaoSetException;
-import com.refresh.pos.domain.Inventory;
-import com.refresh.pos.domain.Product;
-import com.refresh.pos.domain.ProductCatalog;
-import com.refresh.pos.domain.ProductLot;
-import com.refresh.pos.domain.Stock;
+import com.refresh.pos.domain.inventory.Inventory;
+import com.refresh.pos.domain.inventory.Product;
+import com.refresh.pos.domain.inventory.ProductCatalog;
+import com.refresh.pos.domain.inventory.ProductLot;
+import com.refresh.pos.domain.inventory.Stock;
+import com.refresh.pos.techicalservices.NoDaoSetException;
 
 public class ProductDetailActivity extends Activity {
 

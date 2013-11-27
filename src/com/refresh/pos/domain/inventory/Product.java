@@ -1,4 +1,4 @@
-package com.refresh.pos.domain;
+package com.refresh.pos.domain.inventory;
 
 import java.util.HashMap;
 import java.util.Map;

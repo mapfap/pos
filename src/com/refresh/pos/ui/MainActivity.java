@@ -14,16 +14,20 @@ import android.util.Log;
 import android.view.View;
 
 import com.refresh.pos.R;
-import com.refresh.pos.database.AndroidDatabase;
-import com.refresh.pos.database.Database;
-import com.refresh.pos.database.InventoryDao;
-import com.refresh.pos.database.InventoryDaoAndroid;
-import com.refresh.pos.database.SaleDao;
-import com.refresh.pos.database.SaleDaoAndroid;
 import com.refresh.pos.domain.DateTimeStrategy;
-import com.refresh.pos.domain.Inventory;
-import com.refresh.pos.domain.Register;
-import com.refresh.pos.domain.SaleLedger;
+import com.refresh.pos.domain.inventory.Inventory;
+import com.refresh.pos.domain.sale.Register;
+import com.refresh.pos.domain.sale.SaleLedger;
+import com.refresh.pos.techicalservices.AndroidDatabase;
+import com.refresh.pos.techicalservices.Database;
+import com.refresh.pos.techicalservices.invnetory.InventoryDao;
+import com.refresh.pos.techicalservices.invnetory.InventoryDaoAndroid;
+import com.refresh.pos.techicalservices.sale.SaleDao;
+import com.refresh.pos.techicalservices.sale.SaleDaoAndroid;
+import com.refresh.pos.ui.inventory.InventoryFragment;
+import com.refresh.pos.ui.inventory.ProductDetailActivity;
+import com.refresh.pos.ui.sale.ReportFragment;
+import com.refresh.pos.ui.sale.SaleFragment;
 
 public class MainActivity extends FragmentActivity {
 

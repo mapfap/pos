@@ -1,4 +1,4 @@
-package com.refresh.pos.ui;
+package com.refresh.pos.ui.inventory;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -11,12 +11,12 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.refresh.pos.R;
-import com.refresh.pos.database.NoDaoSetException;
 import com.refresh.pos.domain.DateTimeStrategy;
-import com.refresh.pos.domain.Inventory;
-import com.refresh.pos.domain.Product;
-import com.refresh.pos.domain.ProductCatalog;
-import com.refresh.pos.domain.Stock;
+import com.refresh.pos.domain.inventory.Inventory;
+import com.refresh.pos.domain.inventory.Product;
+import com.refresh.pos.domain.inventory.ProductCatalog;
+import com.refresh.pos.domain.inventory.Stock;
+import com.refresh.pos.techicalservices.NoDaoSetException;
 
 public class AddProductLotActivity extends Activity{
 	private EditText costBox;

@@ -1,4 +1,4 @@
-package com.refresh.pos.domain;
+package com.refresh.pos.domain.sale;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -6,6 +6,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Observable;
+
+import com.refresh.pos.domain.DateTimeStrategy;
+import com.refresh.pos.domain.inventory.LineItem;
+import com.refresh.pos.domain.inventory.Product;
 
 
 public class Sale {

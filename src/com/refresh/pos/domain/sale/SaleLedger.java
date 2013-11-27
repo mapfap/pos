@@ -1,9 +1,9 @@
-package com.refresh.pos.domain;
+package com.refresh.pos.domain.sale;
 
 import java.util.List;
 
-import com.refresh.pos.database.NoDaoSetException;
-import com.refresh.pos.database.SaleDao;
+import com.refresh.pos.techicalservices.NoDaoSetException;
+import com.refresh.pos.techicalservices.sale.SaleDao;
 
 public class SaleLedger {
 	

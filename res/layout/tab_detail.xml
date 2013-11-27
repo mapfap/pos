@@ -144,7 +144,7 @@
             style="@style/ButtonText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/btn_green"
+            android:background="@drawable/btn_blue"
             android:gravity="center"
             android:padding="10dip"
             android:text="SUBMIT" />

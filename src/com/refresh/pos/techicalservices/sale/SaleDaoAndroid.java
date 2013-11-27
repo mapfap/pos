@@ -1,4 +1,4 @@
-package com.refresh.pos.database;
+package com.refresh.pos.techicalservices.sale;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,9 +6,11 @@ import java.util.List;
 import android.content.ContentValues;
 import android.util.Log;
 
-import com.refresh.pos.domain.LineItem;
-import com.refresh.pos.domain.Product;
-import com.refresh.pos.domain.Sale;
+import com.refresh.pos.domain.inventory.LineItem;
+import com.refresh.pos.domain.inventory.Product;
+import com.refresh.pos.domain.sale.Sale;
+import com.refresh.pos.techicalservices.Database;
+import com.refresh.pos.techicalservices.DatabaseContents;
 
 
 

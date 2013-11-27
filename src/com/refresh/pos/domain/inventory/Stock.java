@@ -1,8 +1,8 @@
-package com.refresh.pos.domain;
+package com.refresh.pos.domain.inventory;
 
 import java.util.List;
 
-import com.refresh.pos.database.InventoryDao;
+import com.refresh.pos.techicalservices.invnetory.InventoryDao;
 
 public class Stock {
 

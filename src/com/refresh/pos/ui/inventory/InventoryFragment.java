@@ -1,4 +1,4 @@
-package com.refresh.pos.ui;
+package com.refresh.pos.ui.inventory;
 
 
 import java.util.ArrayList;
@@ -35,13 +35,16 @@ import android.widget.Toast;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import com.refresh.pos.R;
-import com.refresh.pos.database.NoDaoSetException;
 import com.refresh.pos.domain.DateTimeStrategy;
-import com.refresh.pos.domain.Inventory;
-import com.refresh.pos.domain.Product;
-import com.refresh.pos.domain.ProductCatalog;
-import com.refresh.pos.domain.Register;
-import com.refresh.pos.domain.SaleLedger;
+import com.refresh.pos.domain.inventory.Inventory;
+import com.refresh.pos.domain.inventory.Product;
+import com.refresh.pos.domain.inventory.ProductCatalog;
+import com.refresh.pos.domain.sale.Register;
+import com.refresh.pos.domain.sale.SaleLedger;
+import com.refresh.pos.techicalservices.NoDaoSetException;
+import com.refresh.pos.ui.Announcer;
+import com.refresh.pos.ui.ButtonAdapter;
+import com.refresh.pos.ui.MainActivity;
 
 public class InventoryFragment extends Fragment {
 

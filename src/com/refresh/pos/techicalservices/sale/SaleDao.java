@@ -1,9 +1,9 @@
-package com.refresh.pos.database;
+package com.refresh.pos.techicalservices.sale;
 
 import java.util.List;
 
-import com.refresh.pos.domain.LineItem;
-import com.refresh.pos.domain.Sale;
+import com.refresh.pos.domain.inventory.LineItem;
+import com.refresh.pos.domain.sale.Sale;
 
 public interface SaleDao {
 

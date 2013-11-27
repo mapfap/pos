@@ -1,9 +1,9 @@
-package com.refresh.pos.database;
+package com.refresh.pos.techicalservices.invnetory;
 
 import java.util.List;
 
-import com.refresh.pos.domain.Product;
-import com.refresh.pos.domain.ProductLot;
+import com.refresh.pos.domain.inventory.Product;
+import com.refresh.pos.domain.inventory.ProductLot;
 
 public interface InventoryDao {
 
