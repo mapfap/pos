@@ -55,6 +55,7 @@ public class ReportFragment extends UpdatableFragment {
 		          startActivity(newActivity);  
 		      }     
 		});
+		
 //		if (mChartView == null) {
 //			LinearLayout layout = (LinearLayout) view.findViewById(R.id.chart);
 //			mChartView = (new Chart()).execute(getActivity().getBaseContext());
@@ -62,8 +63,8 @@ public class ReportFragment extends UpdatableFragment {
 //		} else {
 //			mChartView.repaint();
 //		}
-//		
 		initUI();
+		update();
 		return view;
 	}
 
@@ -85,20 +86,12 @@ public class ReportFragment extends UpdatableFragment {
 		saleList = new ArrayList<Map<String, String>>();
 		for (Sale sale : list) {
 			saleList.add(sale.toMap());
-//			Log.d("ledger", sale.getStartTime());
 		}
 		
 		SimpleAdapter sAdap = new SimpleAdapter(getActivity().getBaseContext() , saleList,
 				R.layout.listview_saleledger2, new String[] { "id", "startTime", "total"},
 				new int[] { R.id.sid, R.id.startTime , R.id.total});
 		saleLedgerListView.setAdapter(sAdap);
-	}
-
-	@Override
-	public void onResume() {
-		Log.d("ledger",saleLedger.getAllSale().size()+"");
-		super.onResume();
-		update();
 	}
 
 	@Override

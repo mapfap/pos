@@ -88,7 +88,7 @@ public class SaleLedgerActivity extends Activity {
 
 	@Override
 	protected void onResume() {
-		Log.d("ledger",saleLedger.getAllSale().size()+"");
+//		Log.d("ledger",saleLedger.getAllSale().size()+"");
 		showList(saleLedger.getAllSale());
 		
 		super.onResume();

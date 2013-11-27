@@ -28,7 +28,6 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentIntegratorSupportV4;
 import com.google.zxing.integration.android.IntentResult;
 import com.refresh.pos.R;
-import com.refresh.pos.domain.DateTimeStrategy;
 import com.refresh.pos.domain.inventory.Inventory;
 import com.refresh.pos.domain.inventory.Product;
 import com.refresh.pos.domain.inventory.ProductCatalog;
@@ -87,6 +86,7 @@ public class InventoryFragment extends UpdatableFragment {
 		viewPager = main.getViewPager();
 		
 		initUI();
+		update();
 		return view;
 	}
 	
@@ -139,13 +139,6 @@ public class InventoryFragment extends UpdatableFragment {
 		inventoryListView.setAdapter(sAdap);
 	}
 	
-	@Override
-	public void onResume() {
-		super.onResume();
-		search();
-		Log.d("inventoryFragment","onResume Fragment Inventory");
-	}
-
 	private void search() {
 		String search = searchBox.getText().toString();
 		
@@ -207,6 +200,7 @@ public class InventoryFragment extends UpdatableFragment {
 			Inventory.getInstance().getProductCatalog().addProduct("Tomato", "422337", 142.50);
 			Inventory.getInstance().getProductCatalog().addProduct("Ketchup", "941223", 3.50);
 			
+			update();
 			
 			Toast.makeText(getActivity().getBaseContext(), "products added.", Toast.LENGTH_SHORT).show();
 			
@@ -221,7 +215,7 @@ public class InventoryFragment extends UpdatableFragment {
 	
 	@Override
 	public void update() {
-		Log.d("inventoryFragment","CALLBACK!!!!! onUpdate");
+//		Log.d("inventoryFragment","CALLBACK!!!!! onUpdate");
 		search();
 	}
 	

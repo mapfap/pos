@@ -41,8 +41,6 @@ public class SaleFragment extends UpdatableFragment {
 	private ProductCatalog productCatalog;
 	private UpdatableFragment reportFragment;
 
-
-	
 	public SaleFragment(UpdatableFragment reportFragment) {
 		super();
 		this.reportFragment = reportFragment;
@@ -67,7 +65,6 @@ public class SaleFragment extends UpdatableFragment {
 		clearButton = (Button) view.findViewById(R.id.clearButton);
 		endButton = (Button) view.findViewById(R.id.endButton);
 		
-		
 		initUI();
 		return view;
 	}
@@ -85,11 +82,7 @@ public class SaleFragment extends UpdatableFragment {
 		endButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-
 				showPopup(v);
-//				register.endSale(DateTimeStrategy.getCurrentTime());
-//				updateData();
-				
 			}
 		});
 		
@@ -101,8 +94,6 @@ public class SaleFragment extends UpdatableFragment {
 				update();
 			}
 		});
-		
-		
 	}
 
 	
