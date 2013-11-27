@@ -5,8 +5,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -16,15 +14,15 @@
             android:id="@+id/nameBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Name"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textSize="26sp"
-            android:padding="10dip" 
             android:focusable="false"
             android:focusableInTouchMode="false"
+            android:gravity="center"
+            android:inputType="textNoSuggestions"
+            android:padding="10dip"
+            android:text="Name"
+            android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="#000000"
-            android:inputType="textNoSuggestions"/>
+            android:textSize="26sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -36,20 +34,19 @@
                 android:id="@+id/quantityLabel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Quantity"
-                android:textSize="20sp"
                 android:padding="2dip"
-                 />
+                android:text="Quantity"
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/stockSumBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="#FFA07A"
                 android:gravity="right"
-                android:text="0"
-                android:textSize="25sp"
                 android:padding="2dip"
-                android:background="#FFA07A" />
+                android:text="0"
+                android:textSize="25sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -62,20 +59,19 @@
                 android:id="@+id/profitLabel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Profit per unit"
-                android:textSize="20sp" 
                 android:padding="2dip"
-                />
+                android:text="Profit per unit"
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/profitBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="#FFA07A"
                 android:gravity="right"
-                android:text="0"
-                android:textSize="25sp" 
                 android:padding="2dip"
-                android:background="#FFA07A"/>
+                android:text="0"
+                android:textSize="25sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -88,69 +84,75 @@
                 android:id="@+id/priceLabel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Price"
-                android:textSize="20sp"
                 android:padding="2dip"
-                 />
+                android:text="Price"
+                android:textSize="20sp" />
 
             <EditText
                 android:id="@+id/priceBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="right"
-                android:text="0"
-                android:textSize="25sp"
-                android:padding="2dip" 
                 android:background="#87CEEB"
                 android:focusable="false"
-            	android:focusableInTouchMode="false"
-            	android:textColor="#000000"/>
+                android:focusableInTouchMode="false"
+                android:gravity="right"
+                android:padding="2dip"
+                android:text="0"
+                android:inputType="number"
+                android:textColor="#000000"
+                android:textSize="25sp" />
         </LinearLayout>
-
-   
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-    		android:paddingTop="2dip"
-            android:paddingBottom="20dip" >
+            android:padding="2dip" >
 
             <TextView
                 android:id="@+id/barcodeLabel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Barcode"
-                android:textSize="20sp" 
                 android:padding="2dip"
-               />
+                android:text="Barcode"
+                android:textSize="20sp" />
 
             <EditText
                 android:id="@+id/barcodeBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="right"
-                android:text="00000000"
-                android:textSize="25sp" 
-                android:padding="2dip"
                 android:background="#87CEEB"
                 android:focusable="false"
-            	android:focusableInTouchMode="false"
-           		android:textColor="#000000"/>
+                android:focusableInTouchMode="false"
+                android:gravity="right"
+                android:padding="2dip"
+                android:text="00000000"
+                android:textColor="#000000"
+                android:inputType="number"
+                android:textSize="25sp" />
         </LinearLayout>
 
-        
-			<Button
-            android:id="@+id/submitEditButton"
+        <android.support.v7.widget.Space
+            android:id="@+id/space1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
             android:layout_width="match_parent"
-        	android:layout_height="wrap_content"
-        	style="@style/ButtonText"
-        	android:background="@drawable/btn_green"
-            android:text="SUBMIT"
-            android:padding="10dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="2.35"
+            android:orientation="vertical" >
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/submitEditButton"
+            style="@style/ButtonText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_green"
             android:gravity="center"
-            
-             />
+            android:padding="10dip"
+            android:text="SUBMIT" />
     </LinearLayout>
 
 </LinearLayout>
