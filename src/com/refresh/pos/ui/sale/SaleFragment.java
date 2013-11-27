@@ -151,9 +151,12 @@ public class SaleFragment extends Fragment implements Observer {
 		updateData();
 	}
 	public void showPopup(View anchorView) {
+		Bundle bundle=new Bundle();
+		bundle.putString("edttext",totalPrice.getText().toString());
 		PaymentFragmentDialog newFragment = new PaymentFragmentDialog();
-		newFragment.getDialog().setTitle("Payment : ");
+		newFragment.setArguments(bundle);
 	    newFragment.show(getFragmentManager(), "dialog");
+	
 	}
 
 }
