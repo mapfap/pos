@@ -28,6 +28,7 @@ import com.refresh.pos.domain.sale.Register;
 import com.refresh.pos.domain.sale.Sale;
 import com.refresh.pos.techicalservices.NoDaoSetException;
 import com.refresh.pos.ui.MainActivity;
+import com.refresh.pos.ui.inventory.AddProductDialogFragment;
 
 public class SaleFragment extends Fragment implements Observer {
     
@@ -66,10 +67,6 @@ public class SaleFragment extends Fragment implements Observer {
 	}
 
 	private void initUI() {
-		
-//		final AlertDialog.Builder popDialog = new AlertDialog.Builder(this);
-//		final LayoutInflater inflater = (LayoutInflater)this.getSystemService(LAYOUT_INFLATER_SERVICE);
-//		final AlertDialog.Builder adb = new AlertDialog.Builder(this);
 
 		clearButton.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -82,48 +79,10 @@ public class SaleFragment extends Fragment implements Observer {
 		endButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-//				final View Viewlayout = inflater.inflate(R.layout.dialog_payment,
-//						(ViewGroup) findViewById(R.id.layout_paymentDialog)); 
-//				
-//				popDialog.setView(Viewlayout);
-//				TextView total =  (TextView) Viewlayout.findViewById(R.id.payment_total);	
-//				final EditText inputPayment = (EditText)Viewlayout.findViewById(R.id.dialog_saleInput);	
-//				total.setText(totalPrice.getText());
-//				popDialog.setNegativeButton("Cancel", null);
-//				popDialog.setPositiveButton("Ok", new AlertDialog.OnClickListener() {
-//					public void onClick(DialogInterface dialog, int arg1) {
-//						if(inputPayment.getText().equals("")){
-//							Log.v("Payment ","empty");
-//							Toast.makeText(getActivity().getBaseContext(),"HAVE SOME BLANK PLZ FILL UP",Toast.LENGTH_SHORT).show();
-//						}
-//						else if(tryParseDouble(inputPayment.getText().toString())){
-//							
-//							double input = Double.parseDouble(inputPayment.getText().toString());
-//							double totalP = Double.parseDouble(totalPrice.getText().toString());
-//							if(input>=totalP){
-//								Log.v("Payment ","pass");
-//								register.endSale(DateTimeStrategy.getCurrentTime());
-//								
-//							}
-//							else{
-//								Log.v("Payment ",">");
-//								Toast.makeText(getActivity().getBaseContext(),"Not Enough Money!",Toast.LENGTH_SHORT).show();
-//							}
-//						}
-//						else{
-//							
-//						}
-//						adb.setTitle("Payment Success");
-//						adb.setMessage("Plese Confirm");
-//					}
-//				});
-				
-				
 
-//				popDialog.create();
-//				popDialog.show();
-				register.endSale(DateTimeStrategy.getCurrentTime());
-				updateData();
+				showPopup(v);
+//				register.endSale(DateTimeStrategy.getCurrentTime());
+//				updateData();
 				
 			}
 		});
@@ -190,6 +149,11 @@ public class SaleFragment extends Fragment implements Observer {
 	public void onResume() {
 		super.onResume();
 		updateData();
+	}
+	public void showPopup(View anchorView) {
+		PaymentFragmentDialog newFragment = new PaymentFragmentDialog();
+		newFragment.getDialog().setTitle("Payment : ");
+	    newFragment.show(getFragmentManager(), "dialog");
 	}
 
 }
