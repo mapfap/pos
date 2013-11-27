@@ -2,9 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:focusable="true"
-    android:focusableInTouchMode="true"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:layout_margin="10dp" >
 
     <EditText
         android:id="@+id/searchBox"
@@ -16,19 +15,16 @@
     <ListView
         android:id="@+id/saleListView"
         android:layout_width="match_parent"
-        android:layout_height="191dp"
-        android:layout_weight="0.14" >
-
+        android:layout_height="306dp"
+        android:layout_weight="3.33" >
     </ListView>
-    
-     <LinearLayout
-         android:id="@+id/chart"
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content"
-         android:layout_weight="0.20"
-         android:background="#c4c4c4"
-         android:orientation="vertical" >
 
+    <LinearLayout
+        android:id="@+id/chart"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="#c4c4c4"
+        android:orientation="vertical" >
     </LinearLayout>
 
 </LinearLayout>

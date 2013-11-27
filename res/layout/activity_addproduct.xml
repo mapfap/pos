@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id = "@+id/layout_popupAddProduct"
+    android:id="@+id/layout_popupAddProduct"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
@@ -30,14 +30,16 @@
                 android:layout_weight="1.03"
                 android:ems="20"
                 android:textSize="18sp" />
-             <requestFocus />
-        </LinearLayout>
 
+            <requestFocus />
+        </LinearLayout>
 
         <Button
             android:id="@+id/scanButton"
+            style="@style/ButtonText"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:background="@drawable/btn_blue"
             android:text="Scan" />
     </LinearLayout>
 
@@ -67,8 +69,6 @@
                 android:ems="20"
                 android:inputType="text"
                 android:textSize="18sp" />
-
-           
         </LinearLayout>
     </LinearLayout>
 
@@ -98,6 +98,7 @@
                 android:ems="20"
                 android:inputType="numberDecimal"
                 android:textSize="18sp" />
+            
         </LinearLayout>
     </LinearLayout>
 
@@ -106,19 +107,22 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal" >
 
-        <ImageButton
+ <Button
             android:id="@+id/clearButton"
+            style="@style/ButtonText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:src="@android:drawable/ic_menu_delete" />
-
-        <ImageButton
+            android:background="@drawable/btn_yellow"
+            android:text="CLEAR" />
+        <Button
             android:id="@+id/confirmButton"
+            style="@style/ButtonText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:src="@android:drawable/ic_input_add" />
+            android:background="@drawable/btn_green"
+            android:text="COMFIRM" />
     </LinearLayout>
 
 </LinearLayout>

@@ -28,9 +28,9 @@ public class AddProductDialogFragment extends DialogFragment {
 	private Button scanButton;
 	private EditText priceBox;
 	private EditText nameBox;
-	private ImageButton confirmButton;
-	private ImageButton clearButton;
-	private ImageButton backButton;
+	private Button confirmButton;
+	private Button clearButton;
+//	private ImageButton backButton;
 
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -49,8 +49,8 @@ public class AddProductDialogFragment extends DialogFragment {
 		scanButton = (Button) v.findViewById(R.id.scanButton);
 		priceBox = (EditText) v.findViewById(R.id.priceBox);
 		nameBox = (EditText) v.findViewById(R.id.nameBox);
-		confirmButton = (ImageButton) v.findViewById(R.id.confirmButton);
-		clearButton = (ImageButton) v.findViewById(R.id.clearButton);
+		confirmButton = (Button) v.findViewById(R.id.confirmButton);
+		clearButton = (Button) v.findViewById(R.id.clearButton);
 
 		initUI();
 		return v;
