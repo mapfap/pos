@@ -47,9 +47,12 @@ public class ProductDetailActivity extends Activity {
 	private EditText priceBox;
 	private Button addProductLotButton;
 	private Button submitEditButton;
+	private Button cancelEditButton;
 	private TabHost mTabHost;
 	private ListView stockListView;
 	private String id;
+	private String[] remember;
+	private int[] count;
 
 
 	@Override
@@ -71,7 +74,8 @@ public class ProductDetailActivity extends Activity {
 		product = productCatalog.getProductById(Integer.parseInt(id));
 
 		initUI(savedInstanceState);
-
+		remember = new String[3];
+		count = new int[3];
 		nameBox.setText(product.getName());
 		priceBox.setText(product.getUnitPrice() + "");
 		barcodeBox.setText(product.getBarcode());
@@ -88,6 +92,8 @@ public class ProductDetailActivity extends Activity {
 		stockSumBox = (TextView) findViewById(R.id.stockSumBox);
 		submitEditButton = (Button) findViewById(R.id.submitEditButton);
 		submitEditButton.setVisibility(View.INVISIBLE);
+		cancelEditButton = (Button) findViewById(R.id.cancelEditButton);
+		cancelEditButton.setVisibility(View.INVISIBLE);
 		addProductLotButton = (Button) findViewById(R.id.addProductLotButton);
 		mTabHost = (TabHost) findViewById(android.R.id.tabhost);
 		mTabHost.setup();
@@ -113,6 +119,17 @@ public class ProductDetailActivity extends Activity {
 				nameBox.setFocusableInTouchMode(true);
 				nameBox.setBackgroundColor(Color.parseColor("#C0FF3E"));
 				submitEditButton.setVisibility(View.VISIBLE);
+				cancelEditButton.setVisibility(View.VISIBLE);
+				if(count[0] == 0){
+					remember[0] = nameBox.getText().toString();
+					if(count[1] == 0){
+						remember[1] = priceBox.getText().toString();
+					}
+					if(count[2] == 0){
+						remember[2] = barcodeBox.getText().toString();
+					}
+					count[0]++;
+				}
 			}
 		});
 
@@ -123,6 +140,17 @@ public class ProductDetailActivity extends Activity {
 				priceBox.setFocusableInTouchMode(true);
 				priceBox.setBackgroundColor(Color.parseColor("#C0FF3E"));
 				submitEditButton.setVisibility(View.VISIBLE);
+				cancelEditButton.setVisibility(View.VISIBLE);
+				if(count[1] == 0){
+					remember[1] = priceBox.getText().toString();
+					if(count[0] == 0){
+						remember[0] = nameBox.getText().toString();
+					}
+					if(count[2] == 0){
+						remember[2] = barcodeBox.getText().toString();
+					}
+					count[1]++;
+				}
 			}
 		});
 
@@ -133,6 +161,17 @@ public class ProductDetailActivity extends Activity {
 				barcodeBox.setFocusableInTouchMode(true);
 				barcodeBox.setBackgroundColor(Color.parseColor("#C0FF3E"));
 				submitEditButton.setVisibility(View.VISIBLE);
+				cancelEditButton.setVisibility(View.VISIBLE);
+				if(count[2] == 0){
+					remember[2] = barcodeBox.getText().toString();
+					if(count[0] == 0){
+						remember[0] = nameBox.getText().toString();
+					}
+					if(count[1] == 0){
+						remember[1] = priceBox.getText().toString();
+					}
+					count[2]++;
+				}
 			}
 		});
 
@@ -154,6 +193,32 @@ public class ProductDetailActivity extends Activity {
 				product.setBarcode(barcodeBox.getText().toString());
 				productCatalog.editProduct(product);
 				submitEditButton.setVisibility(View.INVISIBLE);
+				cancelEditButton.setVisibility(View.INVISIBLE);
+				count[0] = 0;
+				count[1] = 0;
+				count[2] = 0;
+			}
+		});
+		
+		cancelEditButton.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				nameBox.setFocusable(false);
+				nameBox.setFocusableInTouchMode(false);
+				nameBox.setBackgroundColor(Color.parseColor("#FFFFFF"));
+				priceBox.setFocusable(false);
+				priceBox.setFocusableInTouchMode(false);
+				priceBox.setBackgroundColor(Color.parseColor("#87CEEB"));
+				barcodeBox.setFocusable(false);
+				barcodeBox.setFocusableInTouchMode(false);
+				barcodeBox.setBackgroundColor(Color.parseColor("#87CEEB"));
+				submitEditButton.setVisibility(View.INVISIBLE);
+				cancelEditButton.setVisibility(View.INVISIBLE);
+				nameBox.setText(remember[0]);
+				priceBox.setText(remember[1]);
+				barcodeBox.setText(remember[2]);
+				count[0] = 0;
+				count[1] = 0;
+				count[2] = 0;
 			}
 		});
 	}
