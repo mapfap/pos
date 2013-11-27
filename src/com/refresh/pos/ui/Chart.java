@@ -11,7 +11,6 @@ import org.achartengine.renderer.SimpleSeriesRenderer;
 import org.achartengine.renderer.XYMultipleSeriesRenderer;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
 
 public class Chart extends AbstractChart {

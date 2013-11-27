@@ -79,7 +79,7 @@ public class SaleDaoAndroid implements SaleDao {
 		String queryString = "SELECT * FROM " + DatabaseContents.TABLE_SALE.toString() + condition;
         @SuppressWarnings("unchecked")
         List<ContentValues> contents = (List) database.select(queryString);
-        Log.d("saleDaoAndr", "all sale = "+ contents.size());
+//        Log.d("saleDaoAndr", "all sale = "+ contents.size());
         List<Sale> list = new ArrayList<Sale>();
         for (ContentValues content: contents) {
                 list.add(new Sale(

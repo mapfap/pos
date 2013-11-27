@@ -2,6 +2,7 @@ package com.refresh.pos.ui.sale;
 
 import com.refresh.pos.R;
 
+import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.graphics.Color;
@@ -11,6 +12,7 @@ import android.view.MenuItem;
 
 public class SaleDetailActivity extends Activity{
 	
+	@SuppressLint("NewApi")
 	public void onCreate(Bundle savedInstanceState) {
 		ActionBar actionBar = getActionBar();
 		actionBar.setDisplayHomeAsUpEnabled(true);

@@ -3,11 +3,7 @@ package com.refresh.pos.ui;
 import java.util.List;
 import java.util.Map;
 
-import com.refresh.pos.R;
-
-import android.app.Activity;
 import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SimpleAdapter;

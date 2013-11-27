@@ -131,7 +131,7 @@ public class SaleFragment extends UpdatableFragment {
 
 	public void showPopup(View anchorView) {
 		Bundle bundle = new Bundle();
-		bundle.putString("edttext",totalPrice.getText().toString());
+		bundle.putString("edttext", totalPrice.getText().toString());
 		PaymentFragmentDialog newFragment = new PaymentFragmentDialog(SaleFragment.this, reportFragment);
 		newFragment.setArguments(bundle);
 		newFragment.show(getFragmentManager(), "dialog");
