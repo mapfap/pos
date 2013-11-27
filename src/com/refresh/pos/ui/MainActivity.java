@@ -1,6 +1,12 @@
 package com.refresh.pos.ui;
 
+import android.annotation.SuppressLint;
+import android.app.ActionBar;
+import android.app.ActionBar.Tab;
+import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -33,18 +39,66 @@ public class MainActivity extends FragmentActivity {
 
     private ViewPager viewPager;
     
-    @Override
+    @SuppressLint("NewApi")
+	@Override
     protected void onCreate(Bundle savedInstanceState) {
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        //requestWindowFeature(Window.FEATURE_NO_TITLE);
+        //getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+    	
+    	setContentView(R.layout.activity_main);
+        viewPager= (ViewPager) findViewById(R.id.pager);
+        
+        ActionBar actionBar = getActionBar();
+		actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#33B5E5")));
+        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+        
+        ActionBar.TabListener tabListener = new ActionBar.TabListener() {
+
+			@Override
+			public void onTabReselected(Tab tab, FragmentTransaction ft) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void onTabSelected(Tab tab, FragmentTransaction ft) {
+				viewPager.setCurrentItem(tab.getPosition());
+				
+			}
+
+			@Override
+			public void onTabUnselected(Tab tab, FragmentTransaction ft) {
+				// TODO Auto-generated method stub
+				
+			}
+
+        };
+        
+        
+        actionBar.addTab(
+                actionBar.newTab()
+                        .setText("Inventory")
+                        .setTabListener(tabListener),0,false);
+        actionBar.addTab(
+                actionBar.newTab()
+                        .setText("Sale")
+                        .setTabListener(tabListener),1,true);
+        actionBar.addTab(
+                actionBar.newTab()
+                        .setText("Report")
+                        .setTabListener(tabListener),2,false);
         
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
         initiateCoreApp();
-        
-        viewPager= (ViewPager) findViewById(R.id.pager);
         FragmentManager fragmentManager = getSupportFragmentManager();
         viewPager.setAdapter(new MyFragmentStatePagerAdapter(fragmentManager));
+        viewPager.setOnPageChangeListener(
+                new ViewPager.SimpleOnPageChangeListener() {
+                    @Override
+                    public void onPageSelected(int position) {
+                        getActionBar().setSelectedNavigationItem(position);
+                    }
+                });
         viewPager.setCurrentItem(1);
     }
     
