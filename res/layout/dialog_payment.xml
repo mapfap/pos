@@ -15,28 +15,28 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.8"
-                android:orientation="vertical" >
+                android:orientation="horizontal" >
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total"
+                    android:textSize="30sp" />
+
+                <TextView
+                    android:id="@+id/payment_total"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Total"
-                    android:textSize="20sp" />
-
-                <EditText
-                    android:id="@+id/payment_total"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:gravity="right"
                     android:ems="20"
-                    android:inputType="numberDecimal"
-                    android:textSize="18sp" />
+                    android:textSize="30sp" />
 
             </LinearLayout>
         </LinearLayout>
@@ -85,7 +85,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/btn_yellow"
-            android:text="CLEAR" />
+            android:text="CANCEL"
+            android:textSize="20sp" />
 
         <Button
             android:id="@+id/confirmButton"
@@ -94,6 +95,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/btn_green"
-            android:text="COMFIRM" />
+            android:text="COMFIRM"
+            android:textSize="20sp" />
     </LinearLayout>
 </LinearLayout>
