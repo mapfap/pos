@@ -21,7 +21,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-public class DummyDialogFragment extends DialogFragment {
+public class AddProductDialogFragment extends DialogFragment {
 
 	private EditText barcodeBox;
 	private ProductCatalog productCatalog;

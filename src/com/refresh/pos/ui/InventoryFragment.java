@@ -212,7 +212,7 @@ public class InventoryFragment extends Fragment {
 		}
 	}
 	public void showPopup(View anchorView) {
-		DummyDialogFragment newFragment = new DummyDialogFragment();
+		AddProductDialogFragment newFragment = new AddProductDialogFragment();
 	    newFragment.show(getFragmentManager(), "dialog");
 	}
 	

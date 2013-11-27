@@ -9,22 +9,24 @@
     <EditText
         android:id="@+id/searchBox"
         android:layout_width="match_parent"
-        android:layout_height="0dip"
-        android:layout_weight="0.2"
-        android:ems="10"
-        android:hint="Enter invoice ID here." />
+        android:layout_height="wrap_content"
+        android:hint="Enter invoice ID here." >
+
+        <requestFocus />
+    </EditText>
 
     <ListView
         android:id="@+id/saleListView"
         android:layout_width="match_parent"
-        android:layout_height="0dip"
-        android:layout_weight="0.4" >
+        android:layout_height="191dp"
+        android:layout_weight="0.14" >
+
     </ListView>
     
      <LinearLayout
          android:id="@+id/chart"
          android:layout_width="match_parent"
-         android:layout_height="0dip"
+         android:layout_height="wrap_content"
          android:layout_weight="0.4"
          android:background="#c4c4c4"
          android:orientation="vertical" >
