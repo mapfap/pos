@@ -42,7 +42,7 @@
                  />
 
             <TextView
-                android:id="@+id/quantityBox"
+                android:id="@+id/stockSumBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="right"

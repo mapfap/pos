@@ -26,7 +26,8 @@ public class AndroidDatabase extends SQLiteOpenHelper implements Database {
 				+ "_id INTEGER PRIMARY KEY,"
 				+ "name TEXT(100),"
 				+ "barcode TEXT(100),"
-				+ "unit_price DOUBLE"
+				+ "unit_price DOUBLE,"
+				+ "status TEXT(10)"
 				
 				+ ");");
 		Log.d("CREATE DATABASE", "Create " + DatabaseContents.TABLE_PRODUCT_CATALOG.toString() + " Successfully.");
@@ -47,9 +48,10 @@ public class AndroidDatabase extends SQLiteOpenHelper implements Database {
 				+ "_id INTEGER PRIMARY KEY,"
 				+ "status TEXT(40),"
 				+ "payment TEXT(50),"
-				+ "total_price DOUBLE,"
+				+ "total DOUBLE,"
 				+ "start_time DATETIME,"
-				+ "end_time DATETIME"
+				+ "end_time DATETIME,"
+				+ "orders INTEGER"
 				
 				+ ");");
 		Log.d("CREATE DATABASE", "Create " + DatabaseContents.TABLE_SALE.toString() + " Successfully.");

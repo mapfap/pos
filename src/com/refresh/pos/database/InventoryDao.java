@@ -27,5 +27,6 @@ public interface InventoryDao {
 	void updateStockSum(int productId, double quantity);
 	void clearProductCatalog();
 	void clearStock();
+	void suspendProduct(Product product);
 
 }

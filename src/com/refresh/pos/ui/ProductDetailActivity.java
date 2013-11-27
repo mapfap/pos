@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TabHost;
+import android.widget.TextView;
 
 import com.refresh.pos.R;
 import com.refresh.pos.database.NoDaoSetException;
@@ -32,12 +33,14 @@ public class ProductDetailActivity extends Activity {
 	private List<Map<String, String>> stockList;
 	private EditText nameBox;
 	private EditText barcodeBox;
+	private TextView stockSumBox;
 	private EditText priceBox;
 	private Button addProductLotButton;
 	private Button submitEditButton;
 	private TabHost mTabHost;
 	private ListView stockListView;
 	private String id;
+	
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -69,6 +72,7 @@ public class ProductDetailActivity extends Activity {
 		nameBox = (EditText) findViewById(R.id.nameBox);
 		priceBox = (EditText) findViewById(R.id.priceBox);
 		barcodeBox = (EditText) findViewById(R.id.barcodeBox);
+		stockSumBox = (TextView) findViewById(R.id.stockSumBox);
 		submitEditButton = (Button) findViewById(R.id.submitEditButton);
 		submitEditButton.setVisibility(View.INVISIBLE);
 		addProductLotButton = (Button) findViewById(R.id.addProductLotButton);
@@ -159,7 +163,9 @@ public class ProductDetailActivity extends Activity {
 	@Override
 	protected void onResume() {
 		super.onResume();
-		showList(stock.getProductLotByProductId(Integer.parseInt(id)));
+		int productId = Integer.parseInt(id);
+		stockSumBox.setText(stock.getStockSumById(productId)+"");
+		showList(stock.getProductLotByProductId(productId));
 	}
 
 }
