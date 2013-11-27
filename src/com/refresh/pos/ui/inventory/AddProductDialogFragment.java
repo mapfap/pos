@@ -1,13 +1,5 @@
 package com.refresh.pos.ui.inventory;
 
-import com.google.zxing.integration.android.IntentIntegrator;
-import com.google.zxing.integration.android.IntentResult;
-import com.refresh.pos.R;
-import com.refresh.pos.domain.inventory.Inventory;
-import com.refresh.pos.domain.inventory.ProductCatalog;
-import com.refresh.pos.techicalservices.NoDaoSetException;
-import com.refresh.pos.ui.Announcer;
-
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -20,8 +12,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.Toast;
+
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentIntegratorSupportV4;
+import com.google.zxing.integration.android.IntentResult;
+import com.refresh.pos.R;
+import com.refresh.pos.domain.inventory.Inventory;
+import com.refresh.pos.domain.inventory.ProductCatalog;
+import com.refresh.pos.techicalservices.NoDaoSetException;
+import com.refresh.pos.ui.Announcer;
 
 @SuppressLint("ValidFragment")
 public class AddProductDialogFragment extends DialogFragment {
@@ -70,7 +70,7 @@ public class AddProductDialogFragment extends DialogFragment {
 		scanButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				IntentIntegrator scanIntegrator = new IntentIntegrator(getActivity());
+				IntentIntegratorSupportV4 scanIntegrator = new IntentIntegratorSupportV4(AddProductDialogFragment.this);
 				scanIntegrator.initiateScan();
 			}
 		});
