@@ -48,7 +48,7 @@
                 android:paddingTop="1dip" >
 
                 <TextView
-                    android:id="@+id/nameTxt"
+                    android:id="@+id/name"
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
                     android:layout_weight="2"
@@ -103,6 +103,13 @@
                     android:text="Price" />
             </TableRow>
         </LinearLayout>
+
+        <ListView
+            android:id="@+id/sale_List"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+        </ListView>
+
     </LinearLayout>
 
     <LinearLayout
