@@ -34,9 +34,9 @@ import com.refresh.pos.domain.inventory.ProductCatalog;
 import com.refresh.pos.domain.sale.Register;
 import com.refresh.pos.domain.sale.SaleLedger;
 import com.refresh.pos.techicalservices.NoDaoSetException;
-import com.refresh.pos.ui.ButtonAdapter;
 import com.refresh.pos.ui.MainActivity;
-import com.refresh.pos.ui.UpdatableFragment;
+import com.refresh.pos.ui.component.ButtonAdapter;
+import com.refresh.pos.ui.component.UpdatableFragment;
 
 @SuppressLint("ValidFragment")
 public class InventoryFragment extends UpdatableFragment {

@@ -13,7 +13,7 @@ import com.refresh.pos.R;
 import com.refresh.pos.domain.DateTimeStrategy;
 import com.refresh.pos.domain.sale.Register;
 import com.refresh.pos.techicalservices.NoDaoSetException;
-import com.refresh.pos.ui.UpdatableFragment;
+import com.refresh.pos.ui.component.UpdatableFragment;
 
 @SuppressLint("ValidFragment")
 public class EndPaymentFragmentDialog extends DialogFragment  {

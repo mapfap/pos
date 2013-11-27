@@ -23,6 +23,7 @@ import com.refresh.pos.techicalservices.inventory.InventoryDao;
 import com.refresh.pos.techicalservices.inventory.InventoryDaoAndroid;
 import com.refresh.pos.techicalservices.sale.SaleDao;
 import com.refresh.pos.techicalservices.sale.SaleDaoAndroid;
+import com.refresh.pos.ui.component.UpdatableFragment;
 import com.refresh.pos.ui.inventory.InventoryFragment;
 import com.refresh.pos.ui.inventory.ProductDetailActivity;
 import com.refresh.pos.ui.sale.ReportFragment;

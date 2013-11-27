@@ -22,7 +22,7 @@ import com.refresh.pos.R;
 import com.refresh.pos.domain.sale.Sale;
 import com.refresh.pos.domain.sale.SaleLedger;
 import com.refresh.pos.techicalservices.NoDaoSetException;
-import com.refresh.pos.ui.UpdatableFragment;
+import com.refresh.pos.ui.component.UpdatableFragment;
 
 
 public class ReportFragment extends UpdatableFragment {

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.refresh.pos.ui;
+package com.refresh.pos.ui.component;
 
 import java.util.Date;
 import java.util.List;

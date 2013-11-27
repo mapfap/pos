@@ -1,4 +1,4 @@
-package com.refresh.pos.ui;
+package com.refresh.pos.ui.component;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -9,6 +9,7 @@ import org.achartengine.GraphicalView;
 import org.achartengine.chart.PointStyle;
 import org.achartengine.renderer.SimpleSeriesRenderer;
 import org.achartengine.renderer.XYMultipleSeriesRenderer;
+
 
 import android.content.Context;
 import android.graphics.Color;

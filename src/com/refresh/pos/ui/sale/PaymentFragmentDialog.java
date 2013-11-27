@@ -1,7 +1,7 @@
 package com.refresh.pos.ui.sale;
 
 import com.refresh.pos.R;
-import com.refresh.pos.ui.UpdatableFragment;
+import com.refresh.pos.ui.component.UpdatableFragment;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;

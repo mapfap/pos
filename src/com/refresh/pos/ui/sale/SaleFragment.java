@@ -24,7 +24,7 @@ import com.refresh.pos.domain.sale.Register;
 import com.refresh.pos.domain.sale.Sale;
 import com.refresh.pos.techicalservices.NoDaoSetException;
 import com.refresh.pos.ui.MainActivity;
-import com.refresh.pos.ui.UpdatableFragment;
+import com.refresh.pos.ui.component.UpdatableFragment;
 
 @SuppressLint("ValidFragment")
 public class SaleFragment extends UpdatableFragment {

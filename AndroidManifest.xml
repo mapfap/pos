@@ -16,13 +16,15 @@
             android:name="com.refresh.pos.ui.MainActivity"
             android:label="@string/app_name"
             android:launchMode="singleTop" >
+            
+        </activity><activity android:name="com.refresh.pos.ui.LoaderActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
-        <activity android:name="com.refresh.pos.ui.LoaderActivity" />
+
         <activity android:name="com.refresh.pos.ui.HomeActivity" />
         <activity android:name="com.refresh.pos.ui.InventoryActivity" />
         <activity android:name="com.refresh.pos.ui.AddProductActivity" />

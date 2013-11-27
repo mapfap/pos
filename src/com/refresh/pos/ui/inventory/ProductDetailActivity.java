@@ -4,9 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import android.annotation.SuppressLint;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -46,12 +49,14 @@ public class ProductDetailActivity extends Activity {
 	private int[] count;
 
 
+	@SuppressLint("NewApi")
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-//		ActionBar actionBar = getActionBar();
-//		actionBar.setDisplayHomeAsUpEnabled(true);
-//		actionBar.setTitle("Product's Detail");
-//		actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#33B5E5")));
+		ActionBar actionBar = getActionBar();
+		actionBar.setDisplayHomeAsUpEnabled(true);
+		actionBar.setTitle("Product's Detail");
+		actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#33B5E5")));
+		
 		try {
 			stock = Inventory.getInstance().getStock();
 			productCatalog = Inventory.getInstance().getProductCatalog();
