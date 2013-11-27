@@ -86,9 +86,6 @@ public class ReportFragment extends UpdatableFragment {
 			public void onTextChanged(CharSequence s, int start, int before,int count) {}
 		});
 		
-		
-		
-		
 	}
 	
 	private void showList(List<Sale> list) {
@@ -96,12 +93,11 @@ public class ReportFragment extends UpdatableFragment {
 		saleList = new ArrayList<Map<String, String>>();
 		for (Sale sale : list) {
 			saleList.add(sale.toMap());
-//			Log.d("ledger", sale.getStartTime());
+			Log.d("ledger", sale.getStartTime());
 //			Log.d("ledger", sale.getEndTime());
 		}
 		
-		SimpleAdapter sAdap;
-		sAdap = new SimpleAdapter(getActivity().getBaseContext() , saleList,
+		SimpleAdapter sAdap = new SimpleAdapter(getActivity().getBaseContext() , saleList,
 				R.layout.listview_saleledger2, new String[] { "id", "startTime", "total"},
 				new int[] { R.id.sid, R.id.startTime , R.id.total});
 		saleLedgerListView.setAdapter(sAdap);

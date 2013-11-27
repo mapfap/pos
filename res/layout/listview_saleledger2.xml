@@ -19,7 +19,7 @@
             android:paddingTop="1dip" >
 
             <TextView
-                android:id="@+id/id"
+                android:id="@+id/sid"
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
                 android:layout_weight="2"
@@ -39,7 +39,7 @@
             android:paddingTop="1dip" >
 
             <TextView
-                android:id="@+id/date"
+                android:id="@+id/startTime"
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
                 android:layout_weight="1.5"
