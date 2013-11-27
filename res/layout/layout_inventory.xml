@@ -1,10 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?><LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:focusable="true"
     android:focusableInTouchMode="true"
-    android:focusable="true" >
-        <LinearLayout
+    android:orientation="vertical" >
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10sp"
@@ -12,42 +14,41 @@
         android:layout_marginTop="10sp"
         android:layout_weight="1.53"
         android:orientation="vertical" >
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-        
-        <Button
-            android:id="@+id/scanButton"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            style="@style/ButtonText"
-            android:background="@drawable/btn_blue"
-            android:text="Scan" />
 
-        <EditText
-            android:id="@+id/searchBox"
-            android:hint="Enter name or barcode here."
-            android:layout_width="250dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1.5"
-            android:ems="10" />        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
 
+            <Button
+                android:id="@+id/scanButton"
+                style="@style/ButtonText"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@drawable/btn_blue"
+                android:text="Scan" />
+
+            <EditText
+                android:id="@+id/searchBox"
+                android:layout_width="250dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5"
+                android:ems="10"
+                android:hint="Enter name or barcode here." />
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/inventoryListView"
+            android:layout_width="match_parent"
+            android:layout_height="0dip"
+            android:layout_weight="0.8" >
+        </ListView>
     </LinearLayout>
-    
-    <ListView
-        android:id="@+id/inventoryListView"
-        android:layout_width="match_parent"
-        android:layout_height="0dip"
-        android:layout_weight="0.8" >
-
-    </ListView>
-     </LinearLayout>
 
     <Button
         android:id="@+id/addProductButton"
+        style="@style/ButtonText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/ButtonText"
         android:background="@drawable/btn_green"
         android:text="ADD NEW PRODUCT" />
 

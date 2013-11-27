@@ -93,8 +93,7 @@
             android:layout_height="match_parent"
             android:layout_weight="0.5"
             android:background="@drawable/btn_blue"
-            android:text="PAYMENT"
-            android:textSize="20sp" />
+            android:text="PAYMENT" />
     </LinearLayout>
 
 </LinearLayout>

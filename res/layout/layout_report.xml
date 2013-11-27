@@ -25,7 +25,7 @@
          android:id="@+id/chart"
          android:layout_width="match_parent"
          android:layout_height="wrap_content"
-         android:layout_weight="0.4"
+         android:layout_weight="0.20"
          android:background="#c4c4c4"
          android:orientation="vertical" >
 

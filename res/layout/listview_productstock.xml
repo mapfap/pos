@@ -49,6 +49,7 @@
         android:background="#000000"
         android:layout_weight="0.75"
         android:paddingBottom="1dip" 
+        android:paddingRight="1dip" 
         android:paddingLeft="1dip" >
 
         <TextView
