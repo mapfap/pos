@@ -13,7 +13,8 @@
         android:paddingTop="5dip"
         android:paddingBottom="5dip"
         android:paddingLeft="20dip"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:text="Product's name" />
 
      <View
         android:id="@+id/optionView"

@@ -35,41 +35,73 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dip"
-            android:layout_weight="0.6"
-            android:orientation="vertical" 
-            android:background="@drawable/ic_action_cart" >
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
 
             <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#CFCFCF"
-                android:padding="5dip" >
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="0.5"
+                android:background="#FFFFFF"
+                android:paddingBottom="1dip"
+                android:paddingLeft="1dip"
+                android:paddingTop="1dip" >
 
                 <TextView
+                    android:id="@+id/nameTxt"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.65"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="2"
+                    android:background="#33B5E5"
+                    android:textColor="#FFFFFF"
+                    android:gravity="center"
+                    android:paddingRight="3dp"
                     android:text="Name" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.15"
-                    android:text="Quantity" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.2"
-                    android:text="Price" />
             </TableRow>
 
-            <ListView
-                android:id="@+id/sale_List"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" >
-            </ListView>
+            <TableRow
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="0.2"
+                android:background="#FFFFFF"
+                android:paddingBottom="1dip"
+                android:paddingLeft="1dip"
+                android:paddingTop="1dip" >
+
+                <TextView
+                    android:id="@+id/quantity"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1.5"
+                    android:background="#33B5E5"
+                    android:textColor="#FFFFFF"
+                    android:gravity="center"
+                    android:paddingRight="3dp"
+                    android:text="Quantity" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="0.2"
+                android:background="#FFFFFF"
+                android:paddingBottom="1dip"
+                android:paddingLeft="1dip"
+                android:paddingRight="1dip"
+                android:paddingTop="1dip"
+                 >
+
+                <TextView
+                    android:id="@+id/totalPrice"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="0.75"
+                    android:background="#33B5E5"
+                    android:textColor="#FFFFFF"
+                    android:gravity="center"
+                    android:paddingRight="3dp"
+                    android:text="Price" />
+            </TableRow>
         </LinearLayout>
     </LinearLayout>
 
