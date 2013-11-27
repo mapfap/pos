@@ -220,6 +220,7 @@ public class InventoryFragment extends Fragment implements Observer{
 	public void update(Observable arg0, Object arg1) {
 		Log.d("inventoryFragment","update");
 //		search();
+		//
 		showList(productCatalog.getAllProduct());
 		
 	}
