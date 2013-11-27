@@ -12,6 +12,8 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 
 import com.refresh.pos.R;
 import com.refresh.pos.domain.DateTimeStrategy;
@@ -36,9 +38,11 @@ public class MainActivity extends FragmentActivity {
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        
         initiateCoreApp();
         
         announcers = new HashMap<String, Announcer>();

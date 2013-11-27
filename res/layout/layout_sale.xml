@@ -6,61 +6,70 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10sp"
+        android:layout_marginRight="10sp"
+        android:layout_marginTop="10sp"
+        android:layout_weight="1.53"
+        android:orientation="vertical" >
 
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Total:"
-            android:textSize="40sp" />
-
-        <TextView
-            android:id="@+id/totalPrice"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="right"
-            android:text="0.00"
-            android:textSize="40sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="0dip"
-        android:layout_weight="0.6" >
-   
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#CFCFCF"
-            android:padding="5dip" >
+            android:layout_height="wrap_content" >
 
             <TextView
-                android:layout_width="0dp"
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.65"
-                android:text="Name" />
+                android:text="Total:"
+                android:textSize="40sp" />
 
             <TextView
-                android:layout_width="0dp"
+                android:id="@+id/totalPrice"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.15"
-                android:text="Quantity" />
+                android:gravity="right"
+                android:text="0.00"
+                android:textSize="40sp" />
+        </LinearLayout>
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.2"
-                android:text="Price" />
-        </TableRow>
-
-        <ListView
-            android:id="@+id/sale_List"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
-        </ListView>
+            android:layout_height="0dip"
+            android:layout_weight="0.6"
+            android:orientation="vertical" >
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#CFCFCF"
+                android:padding="5dip" >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.65"
+                    android:text="Name" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.15"
+                    android:text="Quantity" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.2"
+                    android:text="Price" />
+            </TableRow>
+
+            <ListView
+                android:id="@+id/sale_List"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+            </ListView>
+        </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
@@ -70,22 +79,22 @@
 
         <Button
             android:id="@+id/clearButton"
+            style="@style/ButtonText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="0.5"
-            style="@style/ButtonText"
             android:background="@drawable/btn_yellow"
             android:text="CLEAR" />
 
         <Button
             android:id="@+id/endButton"
+            style="@style/ButtonText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="0.5"
-            style="@style/ButtonText"
             android:background="@drawable/btn_blue"
-            android:textSize="20sp"
-            android:text="PAYMENT" />
+            android:text="PAYMENT"
+            android:textSize="20sp" />
     </LinearLayout>
 
 </LinearLayout>

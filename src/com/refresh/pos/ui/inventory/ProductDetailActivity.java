@@ -4,12 +4,22 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import android.app.ActionBar;
+import android.app.ActionBar.OnMenuVisibilityListener;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.ColorFilter;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -40,11 +50,14 @@ public class ProductDetailActivity extends Activity {
 	private TabHost mTabHost;
 	private ListView stockListView;
 	private String id;
-	
+
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-
+		ActionBar actionBar = getActionBar();
+		actionBar.setDisplayHomeAsUpEnabled(true);
+		actionBar.setTitle("Product's Detail");
+		actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#33B5E5")));
 		try {
 			stock = Inventory.getInstance().getStock();
 			productCatalog = Inventory.getInstance().getProductCatalog();
@@ -155,8 +168,8 @@ public class ProductDetailActivity extends Activity {
 		SimpleAdapter sAdap;
 		sAdap = new SimpleAdapter(ProductDetailActivity.this, stockList,
 				R.layout.listview_productstock, new String[] { "dateAdded",
-						"cost", "quantity" }, new int[] {
-						R.id.dateAdded, R.id.cost, R.id.quantity, });
+				"cost", "quantity" }, new int[] {
+				R.id.dateAdded, R.id.cost, R.id.quantity, });
 		stockListView.setAdapter(sAdap);
 	}
 
@@ -168,4 +181,14 @@ public class ProductDetailActivity extends Activity {
 		showList(stock.getProductLotByProductId(productId));
 	}
 
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case android.R.id.home:
+			this.finish();
+			return true;
+		default:
+			return super.onOptionsItemSelected(item);
+		}
+	}
 }
