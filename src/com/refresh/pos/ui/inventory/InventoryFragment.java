@@ -104,6 +104,7 @@ public class InventoryFragment extends UpdatableFragment {
 		inventoryListView.setOnItemClickListener(new OnItemClickListener() {
 		      public void onItemClick(AdapterView<?> myAdapter, View myView, int position, long mylng) {
 		    	  int id = Integer.parseInt(inventoryList.get(position).get("id").toString());
+		    	  
 		    	  register.addItem(productCatalog.getProductById(id), 1);
 		    	  saleFragment.update();
 		    	  viewPager.setCurrentItem(1);

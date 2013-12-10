@@ -44,6 +44,7 @@ public class SaleFragment extends UpdatableFragment {
 	public SaleFragment(UpdatableFragment reportFragment) {
 		super();
 		this.reportFragment = reportFragment;
+//		currentSale = null;
 	}
 
 	@Override
@@ -56,7 +57,12 @@ public class SaleFragment extends UpdatableFragment {
 			e.printStackTrace();
 		}
 		
-		currentSale = register.initiateSale(DateTimeStrategy.getCurrentTime());
+		if(!register.hasSale()){
+//			currentSale = register.initiateSale(DateTimeStrategy.getCurrentTime());
+		}
+		else{
+			currentSale = register.getCurrentSale();
+		}
 
 		View view = inflater.inflate(R.layout.layout_sale, container, false);
 		
@@ -130,8 +136,14 @@ public class SaleFragment extends UpdatableFragment {
 
 	@Override
 	public void update() {
-		showList(register.getCurrentSale().getAllLineItem());
-		totalPrice.setText(register.getTotal() + "");
+		if(register.hasSale()){
+			showList(register.getCurrentSale().getAllLineItem());
+			totalPrice.setText(register.getTotal() + "");
+		}
+		else{
+			showList(new ArrayList<LineItem>());
+			totalPrice.setText("0.0");
+		}
 	}
 	
 	@Override

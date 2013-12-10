@@ -81,6 +81,10 @@ public class Register {
 		currentSale = saleDao.getSaleById(id);
 		return false;
 	}
+	public boolean hasSale(){
+		if(currentSale == null)return false;
+		return true;
+	}
 	
 	public void cancleSale(){
 		// TODO : delete line item that added in database
