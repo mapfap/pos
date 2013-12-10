@@ -2,7 +2,10 @@ package com.refresh.pos.ui;
 
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
+import android.app.AlertDialog;
 import android.app.FragmentTransaction;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -13,6 +16,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 
 import com.refresh.pos.R;
@@ -94,6 +98,38 @@ public class MainActivity extends FragmentActivity {
         viewPager.setCurrentItem(1);
     }
     
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if (keyCode == KeyEvent.KEYCODE_BACK) {
+			openQuitDialog();
+	        return true;
+	    }
+	    return super.onKeyDown(keyCode, event);
+	}
+	
+	private void openQuitDialog(){
+		  AlertDialog.Builder quitDialog 
+		   = new AlertDialog.Builder(MainActivity.this);
+		  quitDialog.setTitle("Confirm to Quit?");
+		  
+		  quitDialog.setPositiveButton("OK, Quit!", new OnClickListener(){
+
+		   @Override
+		   public void onClick(DialogInterface dialog, int which) {
+		    // TODO Auto-generated method stub
+		    finish();
+		   }});
+		  
+		  quitDialog.setNegativeButton("NO", new OnClickListener(){
+
+		   @Override
+		   public void onClick(DialogInterface dialog, int which) {
+		    // TODO Auto-generated method stub
+		    
+		   }});
+		  
+		  quitDialog.show();
+	}
     public void suspendSaleOnClickHandler(View view) {
             Log.d("main + ledger","remove button clicked!");
     }
