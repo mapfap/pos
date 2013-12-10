@@ -30,6 +30,7 @@
                 android:inputType="textNoSuggestions"
                 android:padding="10dip"
                 android:text="Name"
+                android:background="#87CEEB"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#000000"
                 android:textSize="26sp" />
@@ -141,9 +142,22 @@
                     android:textColor="#000000"
                     android:textSize="25sp" />
             </LinearLayout>
+            
         </LinearLayout>
+        
+       
     </LinearLayout>
-
+ <Button
+            android:id="@+id/openEditButton"
+            style="@style/ButtonText"
+            android:layout_width="match_parent"
+            android:layout_weight="0.5"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_green"
+            android:gravity="center"
+            android:padding="5dip"
+            android:text="EDIT MODE" />
+        
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -170,6 +184,8 @@
             android:gravity="center"
             android:padding="10dip"
             android:text="SUBMIT" />
+        
+        
     </LinearLayout>
 
 </LinearLayout>

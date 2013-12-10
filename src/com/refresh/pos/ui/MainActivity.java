@@ -22,6 +22,7 @@ import android.view.View;
 import com.refresh.pos.R;
 import com.refresh.pos.domain.DateTimeStrategy;
 import com.refresh.pos.domain.inventory.Inventory;
+import com.refresh.pos.domain.inventory.Product;
 import com.refresh.pos.domain.inventory.ProductCatalog;
 import com.refresh.pos.domain.sale.Register;
 import com.refresh.pos.domain.sale.SaleLedger;
@@ -40,25 +41,26 @@ import com.refresh.pos.ui.sale.SaleFragment;
 
 public class MainActivity extends FragmentActivity {
 
-    private ViewPager viewPager;
-    private ProductCatalog productCatalog;
-    private String idProduct;
-    private MyFragmentStatePagerAdapter myFragmentStatePagerAdapter; 
-    
+	private ViewPager viewPager;
+	private ProductCatalog productCatalog;
+	private Product product;
+	private String idProduct;
+	private MyFragmentStatePagerAdapter myFragmentStatePagerAdapter;
+
 	@Override
-    protected void onCreate(Bundle savedInstanceState) {
-    	setContentView(R.layout.activity_main);
-        viewPager= (ViewPager) findViewById(R.id.pager);
-        
-        ActionBar actionBar = getActionBar();
+	protected void onCreate(Bundle savedInstanceState) {
+		setContentView(R.layout.activity_main);
+		viewPager = (ViewPager) findViewById(R.id.pager);
+
+		ActionBar actionBar = getActionBar();
 		actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-        
-        ActionBar.TabListener tabListener = new ActionBar.TabListener() {
+		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+
+		ActionBar.TabListener tabListener = new ActionBar.TabListener() {
 
 			@Override
 			public void onTabReselected(Tab tab, FragmentTransaction ft) {
-		
+
 			}
 
 			@Override
@@ -68,197 +70,204 @@ public class MainActivity extends FragmentActivity {
 
 			@Override
 			public void onTabUnselected(Tab tab, FragmentTransaction ft) {
-				
+
 			}
 
-        };
-        
-        
-        actionBar.addTab(
-                actionBar.newTab()
-                        .setText("Inventory")
-                        .setTabListener(tabListener),0,false);
-        actionBar.addTab(
-                actionBar.newTab()
-                        .setText("Sale")
-                        .setTabListener(tabListener),1,true);
-        actionBar.addTab(
-                actionBar.newTab()
-                        .setText("Report")
-                        .setTabListener(tabListener),2,false);
-        
-        actionBar.setStackedBackgroundDrawable(new ColorDrawable(Color.parseColor("#73bde5")));
-        
-        super.onCreate(savedInstanceState);
-        initiateCoreApp();
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        myFragmentStatePagerAdapter = new MyFragmentStatePagerAdapter(fragmentManager);
-        viewPager.setAdapter(myFragmentStatePagerAdapter);
-        viewPager.setOnPageChangeListener(
-                new ViewPager.SimpleOnPageChangeListener() {
-                    @Override
-                    public void onPageSelected(int position) {
-                        getActionBar().setSelectedNavigationItem(position);
-                    }
-                });
-        viewPager.setCurrentItem(1);
-    }
-    
+		};
+
+		actionBar.addTab(actionBar.newTab().setText("Inventory")
+				.setTabListener(tabListener), 0, false);
+		actionBar.addTab(
+				actionBar.newTab().setText("Sale").setTabListener(tabListener),
+				1, true);
+		actionBar.addTab(
+				actionBar.newTab().setText("Report")
+						.setTabListener(tabListener), 2, false);
+
+		actionBar.setStackedBackgroundDrawable(new ColorDrawable(Color
+				.parseColor("#73bde5")));
+
+		super.onCreate(savedInstanceState);
+		initiateCoreApp();
+		FragmentManager fragmentManager = getSupportFragmentManager();
+		myFragmentStatePagerAdapter = new MyFragmentStatePagerAdapter(
+				fragmentManager);
+		viewPager.setAdapter(myFragmentStatePagerAdapter);
+		viewPager
+				.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+					@Override
+					public void onPageSelected(int position) {
+						getActionBar().setSelectedNavigationItem(position);
+					}
+				});
+		viewPager.setCurrentItem(1);
+	}
+
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		if (keyCode == KeyEvent.KEYCODE_BACK) {
 			openQuitDialog();
-	        return true;
-	    }
-	    return super.onKeyDown(keyCode, event);
+			return true;
+		}
+		return super.onKeyDown(keyCode, event);
 	}
-	
-	private void openQuitDialog(){
-		  AlertDialog.Builder quitDialog 
-		   = new AlertDialog.Builder(MainActivity.this);
-		  quitDialog.setTitle("Are you sure you want to quit?");
-		  
-		  quitDialog.setPositiveButton("QUIT", new OnClickListener(){
 
-		   @Override
-		   public void onClick(DialogInterface dialog, int which) {
-		    // TODO Auto-generated method stub
-		    finish();
-		   }});
-		  
-		  quitDialog.setNegativeButton("NO", new OnClickListener(){
+	private void openQuitDialog() {
+		AlertDialog.Builder quitDialog = new AlertDialog.Builder(
+				MainActivity.this);
+		quitDialog.setTitle("Are you sure you want to quit?");
 
-		   @Override
-		   public void onClick(DialogInterface dialog, int which) {
-		    // TODO Auto-generated method stub
-		    
-		   }});
-		  
-		  quitDialog.show();
+		quitDialog.setPositiveButton("QUIT", new OnClickListener() {
+
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				// TODO Auto-generated method stub
+				finish();
+			}
+		});
+
+		quitDialog.setNegativeButton("NO", new OnClickListener() {
+
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				// TODO Auto-generated method stub
+
+			}
+		});
+
+		quitDialog.show();
 	}
-    public void suspendSaleOnClickHandler(View view) {
-            Log.d("main + ledger","remove button clicked!");
-    }
 
-    public void optionOnClickHandler(View view) {
-    	viewPager.setCurrentItem(0);
-    	String id = view.getTag().toString();
-    	idProduct = id;
-    	openDetailDialog();
-    	
-    }
-
-    private void openDetailDialog(){
-		  AlertDialog.Builder quitDialog 
-		   = new AlertDialog.Builder(MainActivity.this);
-		  quitDialog.setTitle("Menu");
-		  
-		  quitDialog.setPositiveButton("Remove", new OnClickListener(){
-
-		   @Override
-		   public void onClick(DialogInterface dialog, int which) {
-			   openRemoveDialog();
-		   }});
-		  
-		  quitDialog.setNegativeButton("Detail", new OnClickListener(){
-
-		   @Override
-		   public void onClick(DialogInterface dialog, int which) {
-			   Intent newActivity = new Intent(MainActivity.this, ProductDetailActivity.class);
-		    	newActivity.putExtra("id", idProduct);
-		    	startActivity(newActivity);  
-		    
-		   }});
-		  
-		  quitDialog.show();
+	public void suspendSaleOnClickHandler(View view) {
+		Log.d("main + ledger", "remove button clicked!");
 	}
-    
-    private void openRemoveDialog(){
-		  AlertDialog.Builder quitDialog 
-		   = new AlertDialog.Builder(MainActivity.this);
-		  quitDialog.setTitle("Are you sure you want to remove this product?");
-		  
-		  quitDialog.setPositiveButton("Cancel", new OnClickListener(){
 
-		   @Override
-		   public void onClick(DialogInterface dialog, int which) {
+	public void optionOnClickHandler(View view) {
+		viewPager.setCurrentItem(0);
+		String id = view.getTag().toString();
+		idProduct = id;
+		try {
+			productCatalog = Inventory.getInstance().getProductCatalog();
+		} catch (NoDaoSetException e) {
+			e.printStackTrace();
+		}
+		product = productCatalog.getProductById(Integer.parseInt(idProduct));
+		openDetailDialog();
 
-		   }});
-		  
-		  quitDialog.setNegativeButton("Remove", new OnClickListener(){
-
-		   @Override
-		   public void onClick(DialogInterface dialog, int which) {
-			   try {
-					productCatalog = Inventory.getInstance().getProductCatalog();
-				} catch (NoDaoSetException e) {
-					e.printStackTrace();
-				}
-			   productCatalog.suspendProduct(productCatalog.getProductById(Integer.parseInt(idProduct)));
-			   myFragmentStatePagerAdapter.update(0);
-		   }});
-		  
-		  quitDialog.show();
 	}
-    
-    public ViewPager getViewPager() {
-    	return viewPager;
-    }
 
-    /**
-     * Loads database and DAO.
-     */
-    private void initiateCoreApp() {
-    	Database database = new AndroidDatabase(this);
-    	InventoryDao inventoryDao = new InventoryDaoAndroid(database);
-    	SaleDao saleDao = new SaleDaoAndroid(database);
+	private void openDetailDialog() {
+		AlertDialog.Builder quitDialog = new AlertDialog.Builder(
+				MainActivity.this);
+		quitDialog.setTitle(product.getName().toString());
 
-    	Inventory.setInventoryDao(inventoryDao);
-    	Register.setSaleDao(saleDao);
-    	SaleLedger.setSaleDao(saleDao);
+		quitDialog.setPositiveButton("Remove", new OnClickListener() {
 
-    	DateTimeStrategy.setLocale("th", "TH");
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				openRemoveDialog();
+			}
+		});
 
-    	Log.d("Core App", "INITIATE");
-    }
+		quitDialog.setNegativeButton("Detail", new OnClickListener() {
+
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				Intent newActivity = new Intent(MainActivity.this,
+						ProductDetailActivity.class);
+				newActivity.putExtra("id", idProduct);
+				startActivity(newActivity);
+
+			}
+		});
+
+		quitDialog.show();
+	}
+
+	private void openRemoveDialog() {
+		AlertDialog.Builder quitDialog = new AlertDialog.Builder(
+				MainActivity.this);
+		quitDialog.setTitle("Are you sure you want to remove this product?");
+
+		quitDialog.setPositiveButton("Cancel", new OnClickListener() {
+
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+
+			}
+		});
+
+		quitDialog.setNegativeButton("Remove", new OnClickListener() {
+
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				productCatalog.suspendProduct(product);
+				myFragmentStatePagerAdapter.update(0);
+			}
+		});
+
+		quitDialog.show();
+	}
+
+	public ViewPager getViewPager() {
+		return viewPager;
+	}
+
+	/**
+	 * Loads database and DAO.
+	 */
+	private void initiateCoreApp() {
+		Database database = new AndroidDatabase(this);
+		InventoryDao inventoryDao = new InventoryDaoAndroid(database);
+		SaleDao saleDao = new SaleDaoAndroid(database);
+
+		Inventory.setInventoryDao(inventoryDao);
+		Register.setSaleDao(saleDao);
+		SaleLedger.setSaleDao(saleDao);
+
+		DateTimeStrategy.setLocale("th", "TH");
+
+		Log.d("Core App", "INITIATE");
+	}
 
 }
 
-class MyFragmentStatePagerAdapter extends FragmentStatePagerAdapter
-{
-	
+class MyFragmentStatePagerAdapter extends FragmentStatePagerAdapter {
+
 	private UpdatableFragment[] fragments;
 	private String[] fragmentNames;
 
-    public MyFragmentStatePagerAdapter(FragmentManager fragmentManager) {
-        super(fragmentManager);
-        
-        UpdatableFragment reportFragment = new ReportFragment();
-        UpdatableFragment saleFragment = new SaleFragment(reportFragment);
-        UpdatableFragment inventoryFragment = new InventoryFragment(saleFragment);
-        
-        fragments = new UpdatableFragment[]{ inventoryFragment, saleFragment, reportFragment};
-        fragmentNames = new String[]{"Inventory", "Sale", "Report"};
-        
-    }
+	public MyFragmentStatePagerAdapter(FragmentManager fragmentManager) {
+		super(fragmentManager);
 
-    @Override
-    public Fragment getItem(int i) {
-    	return fragments[i];
-    }
+		UpdatableFragment reportFragment = new ReportFragment();
+		UpdatableFragment saleFragment = new SaleFragment(reportFragment);
+		UpdatableFragment inventoryFragment = new InventoryFragment(
+				saleFragment);
 
-    @Override
-    public int getCount() {
-        return fragments.length;
-    }
+		fragments = new UpdatableFragment[] { inventoryFragment, saleFragment,
+				reportFragment };
+		fragmentNames = new String[] { "Inventory", "Sale", "Report" };
 
-    @Override
-    public CharSequence getPageTitle(int i) {
-        return fragmentNames[i];
-    }
-    
-    public void update(int i){
-    	fragments[i].update();
-    }
-    
+	}
+
+	@Override
+	public Fragment getItem(int i) {
+		return fragments[i];
+	}
+
+	@Override
+	public int getCount() {
+		return fragments.length;
+	}
+
+	@Override
+	public CharSequence getPageTitle(int i) {
+		return fragmentNames[i];
+	}
+
+	public void update(int i) {
+		fragments[i].update();
+	}
+
 }
