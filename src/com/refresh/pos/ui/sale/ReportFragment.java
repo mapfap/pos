@@ -16,6 +16,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 
 import com.refresh.pos.R;
 import com.refresh.pos.domain.sale.Sale;
@@ -31,6 +32,7 @@ public class ReportFragment extends UpdatableFragment {
 	private ListView saleLedgerListView;
 	private EditText searchBox;
 //	private GraphicalView mChartView;
+	private TextView totalBox;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -45,6 +47,7 @@ public class ReportFragment extends UpdatableFragment {
 		
 		saleLedgerListView = (ListView) view.findViewById(R.id.saleListView);
 		searchBox = (EditText) view.findViewById(R.id.searchBox);
+		totalBox = (TextView) view.findViewById(R.id.totalBox);
 		
 		saleLedgerListView.setOnItemClickListener(new OnItemClickListener() {
 		      public void onItemClick(AdapterView<?> myAdapter, View myView, int position, long mylng) {
@@ -95,11 +98,12 @@ public class ReportFragment extends UpdatableFragment {
 
 	@Override
 	public void update() {
-		double total = 0;
 		List<Sale> list = saleLedger.getAllSale();
+		double total = 0;
 		for (Sale sale : list)
 			total += sale.getTotal();
 		
+		totalBox.setText(total + "");
 		showList(list);
 	}
 	
