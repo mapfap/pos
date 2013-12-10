@@ -40,9 +40,10 @@ public class InventoryDaoAndroid implements InventoryDao {
 	
 	
 	
-	private List<Product> toProductList(List<ContentValues> contents) {
+	private List<Product> toProductList(List<Object> objectList) {
 		List<Product> list = new ArrayList<Product>();
-        for (ContentValues content: contents) {
+        for (Object object: objectList) {
+        	ContentValues content = (ContentValues) object;
                 list.add(new Product(
                 		content.getAsInteger("_id"),
                         content.getAsString("name"),
@@ -61,8 +62,7 @@ public class InventoryDaoAndroid implements InventoryDao {
 	
 	private List<Product> getAllProduct(String condition) {
 		String queryString = "SELECT * FROM " + DatabaseContents.TABLE_PRODUCT_CATALOG.toString() + condition;
-        @SuppressWarnings("unchecked")
-        List<Product> list = toProductList((List) database.select(queryString));
+        List<Product> list = toProductList(database.select(queryString));
         return list;
 	}
 	
@@ -133,14 +133,14 @@ public class InventoryDaoAndroid implements InventoryDao {
 	
 	private List<ProductLot> getAllProductLot(String condition) {
 		String queryString = "SELECT * FROM " + DatabaseContents.TABLE_STOCK.toString() + condition;
-        @SuppressWarnings("unchecked")
-        List<ProductLot> list = toProductLotList((List) database.select(queryString));
+        List<ProductLot> list = toProductLotList(database.select(queryString));
         return list;
 	}
 
-	private List<ProductLot> toProductLotList(List<ContentValues> contents) {
+	private List<ProductLot> toProductLotList(List<Object> objectList) {
 		List<ProductLot> list = new ArrayList<ProductLot>();
-		for (ContentValues content: contents) {
+		for (Object object: objectList) {
+			ContentValues content = (ContentValues) object;
 			int productId = content.getAsInteger("product_id");
 			Product product = getProductById(productId);
 					list.add( 
@@ -171,11 +171,10 @@ public class InventoryDaoAndroid implements InventoryDao {
 
 	@Override
 	public int getStockSumById(int id) {
-//		return 11;
 		String queryString = "SELECT * FROM " + DatabaseContents.TABLE_STOCK_SUM.toString() + " WHERE _id = " + id;
-        @SuppressWarnings("unchecked")
-		List<ContentValues> contents = ((List) database.select(queryString));
-		int quantity = contents.get(0).getAsInteger("quantity");
+		List<Object> objectList = (database.select(queryString));
+		ContentValues content = (ContentValues) objectList.get(0);
+		int quantity = content.getAsInteger("quantity");
 		Log.d("inventoryDaoAndroid", "stock sum of "+ id + " is " + quantity);
 		return quantity;
 	}

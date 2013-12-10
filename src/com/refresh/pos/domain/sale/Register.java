@@ -59,7 +59,6 @@ public class Register {
 
 	public void endSale(String endTime) {
 		if (currentSale != null) {
-			double total = currentSale.getTotal();
 			saleDao.endSale(currentSale, endTime);
 			for(LineItem line : currentSale.getAllLineItem()){
 				stock.updateStockSum(line.getProduct().getId(), line.getQuantity());

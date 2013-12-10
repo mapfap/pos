@@ -6,8 +6,6 @@ import java.util.List;
 import java.util.Map;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
@@ -51,8 +49,6 @@ public class InventoryFragment extends UpdatableFragment {
 	
 	private ViewPager viewPager;
 	private Register register;
-	private AlertDialog.Builder popDialog;
-	private LayoutInflater inflaters;
 	private MainActivity main;
 	
 	private UpdatableFragment saleFragment;
@@ -74,8 +70,6 @@ public class InventoryFragment extends UpdatableFragment {
 		}
 		
 		View view = inflater.inflate(R.layout.layout_inventory, container, false);
-		popDialog = new AlertDialog.Builder(this.getActivity().getBaseContext());
-		inflaters = (LayoutInflater) this.getActivity().getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
 		
 		inventoryListView = (ListView) view.findViewById(R.id.inventoryListView);
 		addProductButton = (Button) view.findViewById(R.id.addProductButton);
