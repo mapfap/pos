@@ -50,6 +50,9 @@ public class PaymentFragmentDialog extends DialogFragment {
 			
 			@Override
 			public void onClick(View v) {
+				if(strtext.isEmpty()){
+					return;
+				}
 				double a = Double.parseDouble(strtext);
 				double b = Double.parseDouble(input.getText().toString());
 				if(b<a){

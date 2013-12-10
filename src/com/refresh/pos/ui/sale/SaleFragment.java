@@ -88,7 +88,12 @@ public class SaleFragment extends UpdatableFragment {
 		endButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				showPopup(v);
+				if(register.hasSale()){
+					showPopup(v);
+				}
+				else{
+					
+				}
 			}
 		});
 		
