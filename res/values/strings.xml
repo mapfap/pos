@@ -18,6 +18,12 @@
     <string name="content">Image</string>
     <string name="menu_settings">Settings</string>
     
+    <string-array name="period">
+        <item>Daily</item>
+        <item>Weekly</item>
+        <item>Monthly</item>
+        <item>Yearly</item>
+    </string-array>
 
     <style name="ButtonText">
         <item name="android:layout_width">fill_parent</item>

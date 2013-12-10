@@ -8,14 +8,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.refresh.pos.R;
@@ -33,6 +37,7 @@ public class ReportFragment extends UpdatableFragment {
 	private EditText searchBox;
 //	private GraphicalView mChartView;
 	private TextView totalBox;
+private Spinner spinner;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -48,6 +53,26 @@ public class ReportFragment extends UpdatableFragment {
 		saleLedgerListView = (ListView) view.findViewById(R.id.saleListView);
 		searchBox = (EditText) view.findViewById(R.id.searchBox);
 		totalBox = (TextView) view.findViewById(R.id.totalBox);
+		spinner = (Spinner) view.findViewById(R.id.spinner1);
+		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity().getBaseContext(),
+		        R.array.period, android.R.layout.simple_spinner_item);
+		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		spinner.setAdapter(adapter);
+		spinner.setSelection(0);
+		spinner.setOnItemSelectedListener(new OnItemSelectedListener(){
+	
+			@Override
+			public void onItemSelected(AdapterView<?> parent, View view,
+					int pos, long id) {
+				Log.d("Report fragment" , ""+parent.getItemAtPosition(pos));				
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> parent) {
+				
+			}
+			
+		});
 		
 		saleLedgerListView.setOnItemClickListener(new OnItemClickListener() {
 		      public void onItemClick(AdapterView<?> myAdapter, View myView, int position, long mylng) {
