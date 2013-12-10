@@ -22,10 +22,12 @@ import android.view.View;
 import com.refresh.pos.R;
 import com.refresh.pos.domain.DateTimeStrategy;
 import com.refresh.pos.domain.inventory.Inventory;
+import com.refresh.pos.domain.inventory.ProductCatalog;
 import com.refresh.pos.domain.sale.Register;
 import com.refresh.pos.domain.sale.SaleLedger;
 import com.refresh.pos.techicalservices.AndroidDatabase;
 import com.refresh.pos.techicalservices.Database;
+import com.refresh.pos.techicalservices.NoDaoSetException;
 import com.refresh.pos.techicalservices.inventory.InventoryDao;
 import com.refresh.pos.techicalservices.inventory.InventoryDaoAndroid;
 import com.refresh.pos.techicalservices.sale.SaleDao;
@@ -39,6 +41,9 @@ import com.refresh.pos.ui.sale.SaleFragment;
 public class MainActivity extends FragmentActivity {
 
     private ViewPager viewPager;
+    private ProductCatalog productCatalog;
+    private String idProduct;
+    private MyFragmentStatePagerAdapter myFragmentStatePagerAdapter; 
     
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,7 +92,8 @@ public class MainActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         initiateCoreApp();
         FragmentManager fragmentManager = getSupportFragmentManager();
-        viewPager.setAdapter(new MyFragmentStatePagerAdapter(fragmentManager));
+        myFragmentStatePagerAdapter = new MyFragmentStatePagerAdapter(fragmentManager);
+        viewPager.setAdapter(myFragmentStatePagerAdapter);
         viewPager.setOnPageChangeListener(
                 new ViewPager.SimpleOnPageChangeListener() {
                     @Override
@@ -137,11 +143,64 @@ public class MainActivity extends FragmentActivity {
     public void optionOnClickHandler(View view) {
     	viewPager.setCurrentItem(0);
     	String id = view.getTag().toString();
-    	Intent newActivity = new Intent(MainActivity.this, ProductDetailActivity.class);
-    	newActivity.putExtra("id", id);
-    	startActivity(newActivity);  
+    	idProduct = id;
+    	openDetailDialog();
+    	
     }
 
+    private void openDetailDialog(){
+		  AlertDialog.Builder quitDialog 
+		   = new AlertDialog.Builder(MainActivity.this);
+		  quitDialog.setTitle("Menu");
+		  
+		  quitDialog.setPositiveButton("Remove", new OnClickListener(){
+
+		   @Override
+		   public void onClick(DialogInterface dialog, int which) {
+			   openRemoveDialog();
+		   }});
+		  
+		  quitDialog.setNegativeButton("Detail", new OnClickListener(){
+
+		   @Override
+		   public void onClick(DialogInterface dialog, int which) {
+			   Intent newActivity = new Intent(MainActivity.this, ProductDetailActivity.class);
+		    	newActivity.putExtra("id", idProduct);
+		    	startActivity(newActivity);  
+		    
+		   }});
+		  
+		  quitDialog.show();
+	}
+    
+    private void openRemoveDialog(){
+		  AlertDialog.Builder quitDialog 
+		   = new AlertDialog.Builder(MainActivity.this);
+		  quitDialog.setTitle("Are you sure you want to remove this product?");
+		  
+		  quitDialog.setPositiveButton("Cancel", new OnClickListener(){
+
+		   @Override
+		   public void onClick(DialogInterface dialog, int which) {
+
+		   }});
+		  
+		  quitDialog.setNegativeButton("Remove", new OnClickListener(){
+
+		   @Override
+		   public void onClick(DialogInterface dialog, int which) {
+			   try {
+					productCatalog = Inventory.getInstance().getProductCatalog();
+				} catch (NoDaoSetException e) {
+					e.printStackTrace();
+				}
+			   productCatalog.suspendProduct(productCatalog.getProductById(Integer.parseInt(idProduct)));
+			   myFragmentStatePagerAdapter.update(0);
+		   }});
+		  
+		  quitDialog.show();
+	}
+    
     public ViewPager getViewPager() {
     	return viewPager;
     }
@@ -196,6 +255,10 @@ class MyFragmentStatePagerAdapter extends FragmentStatePagerAdapter
     @Override
     public CharSequence getPageTitle(int i) {
         return fragmentNames[i];
+    }
+    
+    public void update(int i){
+    	fragments[i].update();
     }
     
 }

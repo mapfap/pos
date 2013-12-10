@@ -56,8 +56,7 @@ public class InventoryDaoAndroid implements InventoryDao {
 
 	@Override
 	public List<Product> getAllProduct() {
-        return getAllProduct("");
-//        return getAllProduct(" WHERE status = 'ACTIVE'");
+        return getAllProduct(" WHERE status = 'ACTIVE'");
 	}
 	
 	private List<Product> getAllProduct(String condition) {
