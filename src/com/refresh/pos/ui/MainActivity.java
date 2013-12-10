@@ -110,9 +110,9 @@ public class MainActivity extends FragmentActivity {
 	private void openQuitDialog(){
 		  AlertDialog.Builder quitDialog 
 		   = new AlertDialog.Builder(MainActivity.this);
-		  quitDialog.setTitle("Confirm to Quit?");
+		  quitDialog.setTitle("Are you sure you want to quit?");
 		  
-		  quitDialog.setPositiveButton("OK, Quit!", new OnClickListener(){
+		  quitDialog.setPositiveButton("QUIT", new OnClickListener(){
 
 		   @Override
 		   public void onClick(DialogInterface dialog, int which) {
