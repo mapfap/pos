@@ -45,6 +45,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1.03"
                     android:ems="20"
+                    android:inputType="number"
                     android:textSize="18sp" />
 
                 <requestFocus />
