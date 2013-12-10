@@ -4,38 +4,63 @@
     android:versionCode="1"
     android:versionName="1.0" >
 
-    <uses-sdk android:minSdkVersion="8" android:targetSdkVersion="18" />
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="18" />
 
     <application
         android:allowBackup="true"
         android:debuggable="true"
         android:icon="@drawable/ic_launcher"
         android:theme="@style/AppTheme" >
-
         <activity
             android:name="com.refresh.pos.ui.MainActivity"
             android:label="@string/app_name"
-            android:launchMode="singleTop" >
-            
-        </activity><activity android:name="com.refresh.pos.ui.LoaderActivity" >
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.refresh.pos.ui.LoaderActivity"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name="com.refresh.pos.ui.HomeActivity" />
-        <activity android:name="com.refresh.pos.ui.InventoryActivity" />
-        <activity android:name="com.refresh.pos.ui.AddProductActivity" />
-        <activity android:name="com.refresh.pos.ui.inventory.AddProductLotActivity" />
-        <activity android:name="com.refresh.pos.ui.inventory.ProductDetailActivity" />
-        <activity android:name="com.refresh.pos.ui.SaleActivity" />
-        <activity android:name="com.refresh.pos.ui.StockActivity" />
-        <activity android:name="com.refresh.pos.ui.SaleProductCatalog" />
-        <activity android:name="com.refresh.pos.ui.sale.SaleLedgerActivity" />
-        <activity android:name="org.achartengine.GraphicalActivity" />
-        <activity android:name="com.refresh.pos.ui.sale.SaleDetailActivity" />
+        <activity
+            android:name="com.refresh.pos.ui.HomeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.refresh.pos.ui.InventoryActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.refresh.pos.ui.AddProductActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.refresh.pos.ui.inventory.AddProductLotActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.refresh.pos.ui.inventory.ProductDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.refresh.pos.ui.SaleActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.refresh.pos.ui.StockActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.refresh.pos.ui.SaleProductCatalog"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.refresh.pos.ui.sale.SaleLedgerActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="org.achartengine.GraphicalActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.refresh.pos.ui.sale.SaleDetailActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
