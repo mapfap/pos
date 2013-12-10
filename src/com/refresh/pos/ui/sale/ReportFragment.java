@@ -1,6 +1,7 @@
 package com.refresh.pos.ui.sale;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
 
@@ -12,10 +13,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -23,6 +26,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.refresh.pos.R;
+import com.refresh.pos.domain.DateTimeStrategy;
 import com.refresh.pos.domain.sale.Sale;
 import com.refresh.pos.domain.sale.SaleLedger;
 import com.refresh.pos.techicalservices.NoDaoSetException;
@@ -37,7 +41,11 @@ public class ReportFragment extends UpdatableFragment {
 	private EditText searchBox;
 //	private GraphicalView mChartView;
 	private TextView totalBox;
-private Spinner spinner;
+	private Spinner spinner;
+	private Button previousButton;
+	private Button nextButton;
+	private TextView currentBox;
+	private Calendar currentTime;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -72,6 +80,29 @@ private Spinner spinner;
 				
 			}
 			
+		});
+		
+		previousButton = (Button) view.findViewById(R.id.previousButton);
+		nextButton = (Button) view.findViewById(R.id.nextButton);
+		currentBox = (TextView) view.findViewById(R.id.currentBox);
+		
+		currentTime = Calendar.getInstance();
+		
+		previousButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				currentTime.add(Calendar.DATE, -1); 
+				currentBox.setText(" [" + DateTimeStrategy.getSQLDateFormat(currentTime) +  "] ");		
+			}
+		});
+		
+		nextButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				currentTime.add(Calendar.DATE, 1);
+				currentBox.setText(" [" + DateTimeStrategy.getSQLDateFormat(currentTime) +  "] ");	
+				Log.d("ReportFragment", "nextButton");
+			}
 		});
 		
 		saleLedgerListView.setOnItemClickListener(new OnItemClickListener() {
@@ -129,6 +160,7 @@ private Spinner spinner;
 			total += sale.getTotal();
 		
 		totalBox.setText(total + "");
+		currentBox.setText(" [" + DateTimeStrategy.getSQLDateFormat(currentTime) +  "] ");
 		showList(list);
 	}
 	
