@@ -92,7 +92,7 @@ public class ReportFragment extends UpdatableFragment {
 			@Override
 			public void onClick(View v) {
 				currentTime.add(Calendar.DATE, -1); 
-				currentBox.setText(" [" + DateTimeStrategy.getSQLDateFormat(currentTime) +  "] ");		
+				update();
 			}
 		});
 		
@@ -100,8 +100,8 @@ public class ReportFragment extends UpdatableFragment {
 			@Override
 			public void onClick(View v) {
 				currentTime.add(Calendar.DATE, 1);
-				currentBox.setText(" [" + DateTimeStrategy.getSQLDateFormat(currentTime) +  "] ");	
-				Log.d("ReportFragment", "nextButton");
+				update();
+//				Log.d("ReportFragment", "nextButton");
 			}
 		});
 		
@@ -154,13 +154,13 @@ public class ReportFragment extends UpdatableFragment {
 
 	@Override
 	public void update() {
-		List<Sale> list = saleLedger.getAllSale();
+		currentBox.setText(" [" + DateTimeStrategy.getSQLDateFormat(currentTime) +  "] ");
+		List<Sale> list = saleLedger.getAllSaleDuring(currentTime, currentTime);
 		double total = 0;
 		for (Sale sale : list)
 			total += sale.getTotal();
 		
 		totalBox.setText(total + "");
-		currentBox.setText(" [" + DateTimeStrategy.getSQLDateFormat(currentTime) +  "] ");
 		showList(list);
 	}
 	

@@ -1,5 +1,6 @@
 package com.refresh.pos.domain.sale;
 
+import java.util.Calendar;
 import java.util.List;
 
 import com.refresh.pos.techicalservices.NoDaoSetException;
@@ -40,5 +41,10 @@ public class SaleLedger {
 	public void clearSaleLedger() {
 		saleDao.clearSaleLedger();
 		
+	}
+
+	public List<Sale> getAllSaleDuring(Calendar start,
+			Calendar end) {
+		return saleDao.getAllSaleDuring(start, end);
 	}
 }
