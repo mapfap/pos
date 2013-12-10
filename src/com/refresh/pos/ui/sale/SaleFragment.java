@@ -133,5 +133,11 @@ public class SaleFragment extends UpdatableFragment {
 		showList(register.getCurrentSale().getAllLineItem());
 		totalPrice.setText(register.getTotal() + "");
 	}
+	
+	@Override
+	public void onResume() {
+		super.onResume();
+		update();
+	}
 
 }

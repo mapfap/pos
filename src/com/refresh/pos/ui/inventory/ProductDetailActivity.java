@@ -64,8 +64,8 @@ public class ProductDetailActivity extends Activity {
 			e.printStackTrace();
 		}
 
-		Log.d("Product Detail", "id = "
-				+ getIntent().getStringExtra("id").toString());
+//		Log.d("Product Detail", "id = "
+//				+ getIntent().getStringExtra("id").toString());
 		id = getIntent().getStringExtra("id");
 		product = productCatalog.getProductById(Integer.parseInt(id));
 

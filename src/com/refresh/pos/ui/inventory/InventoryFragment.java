@@ -199,7 +199,7 @@ public class InventoryFragment extends UpdatableFragment {
 			Inventory.getInstance().getProductCatalog().addProduct("Tomato", "422337", 142.50);
 			Inventory.getInstance().getProductCatalog().addProduct("Ketchup", "941223", 3.50);
 			
-			update();
+			showList(productCatalog.getAllProduct());
 			
 			Toast.makeText(getActivity().getBaseContext(), "products added.", Toast.LENGTH_SHORT).show();
 			

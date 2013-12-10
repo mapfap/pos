@@ -50,7 +50,7 @@ public class ReportFragment extends UpdatableFragment {
 		saleLedgerListView.setOnItemClickListener(new OnItemClickListener() {
 		      public void onItemClick(AdapterView<?> myAdapter, View myView, int position, long mylng) {
 		    	  String id = saleList.get(position).get("id").toString();
-		    	  Intent newActivity = new Intent(ReportFragment.this.getActivity().getBaseContext(), SaleDetailActivity.class);
+		    	  Intent newActivity = new Intent(getActivity().getBaseContext(), SaleDetailActivity.class);
 		          newActivity.putExtra("id", id);
 		          startActivity(newActivity);  
 		      }     
@@ -96,7 +96,18 @@ public class ReportFragment extends UpdatableFragment {
 
 	@Override
 	public void update() {
-		showList(saleLedger.getAllSale());
+		double total = 0;
+		List<Sale> list = saleLedger.getAllSale();
+		for (Sale sale : list)
+			total += sale.getTotal();
+		
+		showList(list);
+	}
+	
+	@Override
+	public void onResume() {
+		super.onResume();
+		update();
 	}
 
 }

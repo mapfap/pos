@@ -39,7 +39,6 @@ public class MainActivity extends FragmentActivity {
 
     private ViewPager viewPager;
     
-    @SuppressLint("NewApi")
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
     	setContentView(R.layout.activity_main);

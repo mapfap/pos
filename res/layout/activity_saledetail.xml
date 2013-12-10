@@ -24,7 +24,7 @@
                 android:textSize="40sp" />
 
             <TextView
-                android:id="@+id/totalPrice"
+                android:id="@+id/totalBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="right"
@@ -43,7 +43,7 @@
                 android:textSize="40sp" />
 
             <TextView
-                android:id="@+id/date"
+                android:id="@+id/dateBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="right"
@@ -126,6 +126,7 @@
         </LinearLayout>
 
             <ListView
+                android:id="@+id/lineitemList"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" >
             </ListView>
