@@ -64,10 +64,9 @@ public class SaleDaoAndroid implements SaleDao {
 	
 	@Override
 	public List<Sale> getAllSaleDuring(String start, String end) {
-		// TODO : not yet implemented.
-		return getAllSale("");
+//		start = "2013-12-30"; end = "2013-12-30"; // example for 1 day
+		return getAllSale(" WHERE end_time BETWEEN '" + start + " 00:00:00' AND '" + end + " 23:59:59'");
 	}
-	
 	
 	/**
 	 * This method get all Sale *BUT* no LineItem will be loaded.
