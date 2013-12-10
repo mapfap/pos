@@ -27,7 +27,7 @@ public class DateTimeStrategy {
 	
 	public static String getSQLDateFormat(Calendar instance) {
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", locale);
-		return formatter.format(Calendar.getInstance(locale).getTime()).toString();
+		return formatter.format(instance.getTime()).toString();
 	}
 
 }

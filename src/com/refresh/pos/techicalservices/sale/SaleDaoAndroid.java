@@ -5,6 +5,7 @@ import java.util.Calendar;
 import java.util.List;
 
 import android.content.ContentValues;
+import android.util.Log;
 
 import com.refresh.pos.domain.DateTimeStrategy;
 import com.refresh.pos.domain.inventory.LineItem;
@@ -66,10 +67,14 @@ public class SaleDaoAndroid implements SaleDao {
 	
 	@Override
 	public List<Sale> getAllSaleDuring(Calendar start, Calendar end) {
-//		start = "2013-12-30"; end = "2013-12-30"; // example for 1 day
-		String startBound = DateTimeStrategy.getSQLDateFormat(start);
-		String endBound = DateTimeStrategy.getSQLDateFormat(end);
-		return getAllSale(" WHERE end_time BETWEEN '" + startBound + " 00:00:00' AND '" + endBound + " 23:59:59'");
+//		String startBound = "2010-01-10"; String endBound = "2014-12-30";
+//		String startBound = DateTimeStrategy.getSQLDateFormat(start);
+//		String endBound = DateTimeStrategy.getSQLDateFormat(end);
+//		Log.d("SaleDaoAndroid", " WHERE end_time BETWEEN '" + startBound + " 00:00:00' AND '" + endBound + " 00:00:00'");
+//		List<Sale> list = getAllSale(" WHERE end_time BETWEEN '" + startBound + " 00:00:00' AND '" + endBound + " 00:00:00'");
+		List<Sale> list = getAllSale(" WHERE '1' = '1'");
+//		Log.d("SaleDaoAndroid", "size = " + list.size());
+		return list;
 	}
 	
 	/**
