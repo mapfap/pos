@@ -7,20 +7,26 @@ import java.util.Map;
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TabHost;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.refresh.pos.R;
+import com.refresh.pos.domain.DateTimeStrategy;
 import com.refresh.pos.domain.inventory.Inventory;
 import com.refresh.pos.domain.inventory.Product;
 import com.refresh.pos.domain.inventory.ProductCatalog;
@@ -46,6 +52,8 @@ public class ProductDetailActivity extends Activity {
 	private String id;
 	private String[] remember;
 	private int[] count;
+	private AlertDialog.Builder popDialog;
+	private LayoutInflater inflater ;
 
 
 	@SuppressLint("NewApi")
@@ -97,13 +105,11 @@ public class ProductDetailActivity extends Activity {
 		mTabHost.addTab(mTabHost.newTabSpec("tab_test2").setIndicator("Stock")
 				.setContent(R.id.tab2));
 		mTabHost.setCurrentTab(0);
-
+		popDialog = new AlertDialog.Builder(this);
+		inflater = (LayoutInflater) this.getSystemService(LAYOUT_INFLATER_SERVICE);
 		addProductLotButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				Intent newActivity = new Intent(ProductDetailActivity.this,
-						AddProductLotActivity.class);
-				newActivity.putExtra("id", product.getId() + "");
-				startActivity(newActivity);
+				showAddlot();
 			}
 		});
 
@@ -250,5 +256,76 @@ public class ProductDetailActivity extends Activity {
 		default:
 			return super.onOptionsItemSelected(item);
 		}
+	}
+	
+	private EditText costBox;
+	private EditText quantityBox;
+	private Button confirmButton;
+	private Button clearButton;
+	private View Viewlayout;
+	private AlertDialog alert;
+	private void showAddlot(){
+		Viewlayout = inflater.inflate(R.layout.activity_addproductlot,
+				(ViewGroup) findViewById(R.id.addProdutlot_dialog));
+		popDialog.setTitle("Add Product Lot");
+		popDialog.setView(Viewlayout);
+		
+		costBox = (EditText) Viewlayout.findViewById(R.id.costBox);
+		quantityBox = (EditText) Viewlayout.findViewById(R.id.quantityBox);
+		confirmButton = (Button) Viewlayout.findViewById(R.id.confirmButton);
+		clearButton = (Button) Viewlayout.findViewById(R.id.clearButton); 
+		confirmButton.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				if (costBox.getText().toString().equals("")) {
+					Toast.makeText(ProductDetailActivity.this,
+							"Please input product's cost.", Toast.LENGTH_SHORT)
+							.show();
+				} 
+				else if (quantityBox.getText().toString().equals("")) {
+					Toast.makeText(ProductDetailActivity.this,
+							"Please input product's quantity.", Toast.LENGTH_SHORT)
+							.show();
+				} 
+				else {
+					boolean success = stock.addProductLot(
+							DateTimeStrategy.getCurrentTime(), 
+							Integer.parseInt(quantityBox.getText().toString()), 
+							product, 
+							Double.parseDouble(costBox.getText().toString()));
+
+					if (success) {
+						Toast.makeText(ProductDetailActivity.this,"Successfully Add Stock: ",Toast.LENGTH_SHORT).show();
+						costBox.setText("");
+						quantityBox.setText("");
+						onResume();
+						alert.dismiss();
+						
+						
+					} else {
+						Toast.makeText(ProductDetailActivity.this,"Failed to Add Stock" ,Toast.LENGTH_SHORT).show();
+					}
+				}
+				
+			}
+		});
+		clearButton.setOnClickListener(new View.OnClickListener(){
+
+			@Override
+			public void onClick(View v) {
+				if(quantityBox.getText().toString().equals("") && costBox.getText().toString().equals("")){
+					alert.dismiss();
+					onResume();
+				}
+				else{
+					costBox.setText("");
+					quantityBox.setText("");
+				}	
+			}
+		});
+		
+		alert = popDialog.create();
+		alert.show();
 	}
 }
