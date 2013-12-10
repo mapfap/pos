@@ -1,5 +1,6 @@
 package com.refresh.pos.techicalservices.sale;
 
+import java.util.Calendar;
 import java.util.List;
 
 import com.refresh.pos.domain.inventory.LineItem;
@@ -21,6 +22,6 @@ public interface SaleDao {
 
 	List<LineItem> getLineItem(int saleId);
 
-	List<Sale> getAllSaleDuring(String start, String end);
+	List<Sale> getAllSaleDuring(Calendar start, Calendar end);
 
 }
