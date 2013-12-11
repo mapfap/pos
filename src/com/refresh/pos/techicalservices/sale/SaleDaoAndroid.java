@@ -62,7 +62,7 @@ public class SaleDaoAndroid implements SaleDao {
 
 	@Override
 	public List<Sale> getAllSale() {
-		return getAllSale("");
+		return getAllSale("WHERE status = 'ENDED'");
 	}
 	
 	@Override
@@ -150,6 +150,20 @@ public class SaleDaoAndroid implements SaleDao {
 	public void clearSaleLedger() {
 		// TODO: don't forget to DELETE in line item 
 //		database.delete(DatabaseContents.TABLE_SALE.toString(), "");
+	}
+
+	@Override
+	public void cancelSale(Sale sale,String endTime) {
+		ContentValues content = new ContentValues();
+        content.put("_id", sale.getId());
+        content.put("status", "CANCELED");
+        content.put("payment", "n/a");
+        content.put("total", sale.getTotal());
+        content.put("orders", sale.getOrders());
+        content.put("start_time", sale.getStartTime());
+        content.put("end_time", endTime);
+		database.update(DatabaseContents.TABLE_SALE.toString(), content);
+		
 	}
 
 }
