@@ -10,10 +10,15 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.ColorFilter;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,16 +60,22 @@ public class ProductDetailActivity extends Activity {
 	private int[] count;
 	private AlertDialog.Builder popDialog;
 	private LayoutInflater inflater ;
-
-
-	@SuppressLint("NewApi")
+	
+	public boolean onCreateOptionsMenu(Menu menu) {
+	    MenuInflater inflater = getMenuInflater();
+	    inflater.inflate(R.menu.detail_menu, menu);
+	    return true;
+	  } 
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		ActionBar actionBar = getActionBar();
 		actionBar.setDisplayHomeAsUpEnabled(true);
 		actionBar.setTitle("Product's Detail");
+//		actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_HOME
+//		        | ActionBar.DISPLAY_SHOW_TITLE | ActionBar.DISPLAY_SHOW_CUSTOM);
+
 		actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#33B5E5")));
-		
 		try {
 			stock = Inventory.getInstance().getStock();
 			productCatalog = Inventory.getInstance().getProductCatalog();
@@ -118,21 +129,7 @@ public class ProductDetailActivity extends Activity {
 
 		openEditButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				nameBox.setFocusable(true);
-				nameBox.setFocusableInTouchMode(true);
-				nameBox.setBackgroundColor(Color.parseColor("#FFBB33"));
-				priceBox.setFocusable(true);
-				priceBox.setFocusableInTouchMode(true);
-				priceBox.setBackgroundColor(Color.parseColor("#FFBB33"));
-				barcodeBox.setFocusable(true);
-				barcodeBox.setFocusableInTouchMode(true);
-				barcodeBox.setBackgroundColor(Color.parseColor("#FFBB33"));	
-				remember[0] = nameBox.getText().toString();
-				remember[1] = priceBox.getText().toString();
-				remember[2] = barcodeBox.getText().toString();
-				submitEditButton.setVisibility(View.VISIBLE);
-				cancelEditButton.setVisibility(View.VISIBLE);
-				openEditButton.setVisibility(View.INVISIBLE);
+				edit();
 			}
 		});
 		
@@ -201,44 +198,13 @@ public class ProductDetailActivity extends Activity {
 
 		submitEditButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				nameBox.setFocusable(false);
-				nameBox.setFocusableInTouchMode(false);
-				nameBox.setBackgroundColor(Color.parseColor("#87CEEB"));
-				priceBox.setFocusable(false);
-				priceBox.setFocusableInTouchMode(false);
-				priceBox.setBackgroundColor(Color.parseColor("#87CEEB"));
-				barcodeBox.setFocusable(false);
-				barcodeBox.setFocusableInTouchMode(false);
-				barcodeBox.setBackgroundColor(Color.parseColor("#87CEEB"));
-				product.setName(nameBox.getText().toString());
-				if(priceBox.getText().toString().equals(""))
-					priceBox.setText("0.0");
-				product.setUnitPrice(Double.parseDouble(priceBox.getText().toString()));
-				product.setBarcode(barcodeBox.getText().toString());
-				productCatalog.editProduct(product);
-				submitEditButton.setVisibility(View.INVISIBLE);
-				cancelEditButton.setVisibility(View.INVISIBLE);
-				openEditButton.setVisibility(View.VISIBLE);
+				submitEdit();
 			}
 		});
 		
 		cancelEditButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				nameBox.setFocusable(false);
-				nameBox.setFocusableInTouchMode(false);
-				nameBox.setBackgroundColor(Color.parseColor("#87CEEB"));
-				priceBox.setFocusable(false);
-				priceBox.setFocusableInTouchMode(false);
-				priceBox.setBackgroundColor(Color.parseColor("#87CEEB"));
-				barcodeBox.setFocusable(false);
-				barcodeBox.setFocusableInTouchMode(false);
-				barcodeBox.setBackgroundColor(Color.parseColor("#87CEEB"));
-				submitEditButton.setVisibility(View.INVISIBLE);
-				cancelEditButton.setVisibility(View.INVISIBLE);
-				nameBox.setText(remember[0]);
-				priceBox.setText(remember[1]);
-				barcodeBox.setText(remember[2]);
-				openEditButton.setVisibility(View.VISIBLE);
+				cancelEdit();
 			}
 		});
 	}
@@ -250,8 +216,7 @@ public class ProductDetailActivity extends Activity {
 			stockList.add(productLot.toMap());
 		}
 
-		SimpleAdapter sAdap;
-		sAdap = new SimpleAdapter(ProductDetailActivity.this, stockList,
+		SimpleAdapter sAdap = new SimpleAdapter(ProductDetailActivity.this, stockList,
 				R.layout.listview_productstock, new String[] { "dateAdded",
 				"cost", "quantity" }, new int[] {
 				R.id.dateAdded, R.id.cost, R.id.quantity, });
@@ -268,13 +233,73 @@ public class ProductDetailActivity extends Activity {
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-		case android.R.id.home:
-			this.finish();
-			return true;
-		default:
+//		switch (item.getItemId()) {
+//		case android.R.id.home:
+//			this.finish();
+//			return true;
+//		case android.R.id.action_edit:
+//			edit();
+//			return true;
+//		default:
 			return super.onOptionsItemSelected(item);
-		}
+//		}
+	}
+	
+	private void submitEdit() {
+		nameBox.setFocusable(false);
+		nameBox.setFocusableInTouchMode(false);
+		nameBox.setBackgroundColor(Color.parseColor("#87CEEB"));
+		priceBox.setFocusable(false);
+		priceBox.setFocusableInTouchMode(false);
+		priceBox.setBackgroundColor(Color.parseColor("#87CEEB"));
+		barcodeBox.setFocusable(false);
+		barcodeBox.setFocusableInTouchMode(false);
+		barcodeBox.setBackgroundColor(Color.parseColor("#87CEEB"));
+		product.setName(nameBox.getText().toString());
+		if(priceBox.getText().toString().equals(""))
+			priceBox.setText("0.0");
+		product.setUnitPrice(Double.parseDouble(priceBox.getText().toString()));
+		product.setBarcode(barcodeBox.getText().toString());
+		productCatalog.editProduct(product);
+		submitEditButton.setVisibility(View.INVISIBLE);
+		cancelEditButton.setVisibility(View.INVISIBLE);
+		openEditButton.setVisibility(View.VISIBLE);
+	}
+	
+	private void cancelEdit() {
+		nameBox.setFocusable(false);
+		nameBox.setFocusableInTouchMode(false);
+		nameBox.setBackgroundColor(Color.parseColor("#87CEEB"));
+		priceBox.setFocusable(false);
+		priceBox.setFocusableInTouchMode(false);
+		priceBox.setBackgroundColor(Color.parseColor("#87CEEB"));
+		barcodeBox.setFocusable(false);
+		barcodeBox.setFocusableInTouchMode(false);
+		barcodeBox.setBackgroundColor(Color.parseColor("#87CEEB"));
+		submitEditButton.setVisibility(View.INVISIBLE);
+		cancelEditButton.setVisibility(View.INVISIBLE);
+		nameBox.setText(remember[0]);
+		priceBox.setText(remember[1]);
+		barcodeBox.setText(remember[2]);
+		openEditButton.setVisibility(View.VISIBLE);
+	}
+	
+	private void edit() {
+		nameBox.setFocusable(true);
+		nameBox.setFocusableInTouchMode(true);
+		nameBox.setBackgroundColor(Color.parseColor("#FFBB33"));
+		priceBox.setFocusable(true);
+		priceBox.setFocusableInTouchMode(true);
+		priceBox.setBackgroundColor(Color.parseColor("#FFBB33"));
+		barcodeBox.setFocusable(true);
+		barcodeBox.setFocusableInTouchMode(true);
+		barcodeBox.setBackgroundColor(Color.parseColor("#FFBB33"));	
+		remember[0] = nameBox.getText().toString();
+		remember[1] = priceBox.getText().toString();
+		remember[2] = barcodeBox.getText().toString();
+		submitEditButton.setVisibility(View.VISIBLE);
+		cancelEditButton.setVisibility(View.VISIBLE);
+		openEditButton.setVisibility(View.INVISIBLE);
 	}
 	
 	private EditText costBox;

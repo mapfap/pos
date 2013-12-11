@@ -31,7 +31,8 @@
             android:layout_weight="0.5"
             android:gravity="center"
             android:text="DAY"
-            android:textSize="18sp" />
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/nextButton"
@@ -72,7 +73,8 @@
                 android:gravity="center"
                 android:paddingRight="3dp"
                 android:text="ID"
-                android:textColor="#FFFFFF" />
+                android:textColor="#FFFFFF"
+                android:textStyle="bold" />
         </TableRow>
 
         <TableRow
@@ -92,7 +94,8 @@
                 android:gravity="center"
                 android:paddingRight="3dp"
                 android:text="Date"
-                android:textColor="#FFFFFF" />
+                android:textColor="#FFFFFF"
+                android:textStyle="bold" />
         </TableRow>
 
         <TableRow
@@ -113,7 +116,8 @@
                 android:gravity="center"
                 android:paddingRight="3dp"
                 android:text="Total"
-                android:textColor="#FFFFFF" />
+                android:textColor="#FFFFFF"
+                android:textStyle="bold" />
         </TableRow>
     </LinearLayout>
 
@@ -152,7 +156,8 @@
                 android:gravity="center"
                 android:paddingRight="3dp"
                 android:text="Total"
-                android:textColor="#FFFFFF" />
+                android:textColor="#FFFFFF"
+                android:textStyle="bold" />
         </TableRow>
 
         <TableRow
@@ -171,10 +176,11 @@
                 android:layout_height="30dp"
                 android:layout_weight="0.75"
                 android:background="#33B5E5"
-                android:gravity="center"
-                android:paddingRight="3dp"
+                android:gravity="right|center_vertical"
+                android:paddingRight="10dp"
                 android:text="0"
-                android:textColor="#FFFFFF" />
+                android:textColor="#FFFFFF"
+                android:textStyle="bold" />
         </TableRow>
     </LinearLayout>
 

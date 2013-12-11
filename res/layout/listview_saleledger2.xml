@@ -24,7 +24,7 @@
                 android:layout_height="fill_parent"
                 android:layout_weight="2"
                 android:background="#80DDDDFF"
-                android:gravity="center_vertical"
+                android:gravity="center"
                 android:paddingLeft="10dp"
                 android:text="ID" />
         </TableRow>
@@ -44,7 +44,7 @@
                 android:layout_height="fill_parent"
                 android:layout_weight="1.5"
                 android:background="#80DDDDFF"
-                android:gravity="center_vertical"
+                android:gravity="center"
                 android:paddingLeft="10dp"
                 android:text="Date" />
         </TableRow>
@@ -66,7 +66,7 @@
                 android:layout_weight="0.75"
                 android:background="#80DDDDFF"
 				android:gravity="right|center_vertical"
-                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
                 android:text="Total" />
         </TableRow>
     </LinearLayout>

@@ -2,8 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@drawable/cart" >
+    android:background="@drawable/cart"
+    android:orientation="vertical" >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -54,10 +54,11 @@
                     android:layout_height="fill_parent"
                     android:layout_weight="2"
                     android:background="#33B5E5"
-                    android:textColor="#FFFFFF"
                     android:gravity="center"
                     android:paddingRight="3dp"
-                    android:text="Name" />
+                    android:text="Name"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold" />
             </TableRow>
 
             <TableRow
@@ -75,10 +76,11 @@
                     android:layout_height="fill_parent"
                     android:layout_weight="1.5"
                     android:background="#33B5E5"
-                    android:textColor="#FFFFFF"
                     android:gravity="center"
                     android:paddingRight="3dp"
-                    android:text="Quantity" />
+                    android:text="Quantity"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold" />
             </TableRow>
 
             <TableRow
@@ -89,8 +91,7 @@
                 android:paddingBottom="1dip"
                 android:paddingLeft="1dip"
                 android:paddingRight="1dip"
-                android:paddingTop="1dip"
-                 >
+                android:paddingTop="1dip" >
 
                 <TextView
                     android:id="@+id/totalPrice"
@@ -98,10 +99,11 @@
                     android:layout_height="30dp"
                     android:layout_weight="0.75"
                     android:background="#33B5E5"
-                    android:textColor="#FFFFFF"
                     android:gravity="center"
                     android:paddingRight="3dp"
-                    android:text="Price" />
+                    android:text="Price"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold" />
             </TableRow>
         </LinearLayout>
 
@@ -110,7 +112,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
         </ListView>
-
     </LinearLayout>
 
     <LinearLayout
