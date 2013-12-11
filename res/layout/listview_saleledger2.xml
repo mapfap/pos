@@ -65,7 +65,7 @@
                 android:layout_height="30dp"
                 android:layout_weight="0.75"
                 android:background="#80DDDDFF"
-                android:gravity="center_vertical"
+				android:gravity="right|center_vertical"
                 android:paddingLeft="10dp"
                 android:text="Total" />
         </TableRow>

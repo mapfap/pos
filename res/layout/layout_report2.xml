@@ -14,31 +14,33 @@
             android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_weight="0.3" />
+
         <Button
             android:id="@+id/previousButton"
+            style="@style/ButtonText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/ButtonText"
             android:background="@drawable/btn_yellow"
-            android:text="&lt;" />
+            android:text="&lt;"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/currentBox"
             android:layout_width="0dip"
-            android:layout_weight="0.5"
             android:layout_height="wrap_content"
+            android:layout_weight="0.5"
             android:gravity="center"
-            android:textSize="18sp"
-            android:text="DAY" />
+            android:text="DAY"
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/nextButton"
+            style="@style/ButtonText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/ButtonText"
             android:background="@drawable/btn_yellow"
-            android:text=">" />
-        
+            android:text=">"
+            android:textSize="16sp" />
     </LinearLayout>
 
     <EditText
