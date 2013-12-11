@@ -165,4 +165,11 @@ public class SaleDaoAndroid implements SaleDao {
 		
 	}
 
+	@Override
+	public void updateQP(int id,int productID, int quantity, double price) {
+		String queryString = "UPDATE "+DatabaseContents.TABLE_SALE_LINEITEM.toString()+" SET quantity='"+quantity+"' , unit_price='"+price+"' WHERE sale_id='"+id+"' AND product_id='"+productID+"'";
+		Log.v("queryString",queryString);
+		database.rapeQuery(queryString);
+	}
+
 }

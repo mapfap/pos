@@ -159,6 +159,18 @@ public class AndroidDatabase extends SQLiteOpenHelper implements Database {
                     return false;
             }
     }
+
+	@Override
+	public boolean rapeQuery(String query) {
+		try{
+			SQLiteDatabase database = this.getWritableDatabase();
+			database.execSQL(query);
+			return true;
+		}catch(Exception e){
+			e.printStackTrace();
+			return false;
+		}
+	}
 	
 //	public void destroy() {
 //		database.execSQL("DROP DATABASE " + DatabaseContents.DATABASE.toString());

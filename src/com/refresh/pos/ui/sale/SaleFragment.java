@@ -10,6 +10,8 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -76,6 +78,17 @@ public class SaleFragment extends UpdatableFragment {
 	}
 
 	private void initUI() {
+		
+		saleListView.setOnItemClickListener(new OnItemClickListener(){
+
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+					long arg3) {
+				showEditPopup(arg1,arg2);
+				
+			}
+			
+		});
 
 		clearButton.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -129,6 +142,17 @@ public class SaleFragment extends UpdatableFragment {
 		} catch(NumberFormatException e) {  
 			return false;  
 		}  
+	}
+	public void showEditPopup(View anchorView,int position){
+		Bundle bundle = new Bundle();
+		bundle.putString("position",position+"");
+		bundle.putString("sale_id",register.getCurrentSale().getId()+"");
+		bundle.putString("product_id",register.getCurrentSale().getLineItem(position).getProduct().getId()+"");
+		
+		EditFragmentDialog newFragment = new EditFragmentDialog(SaleFragment.this, reportFragment);
+		newFragment.setArguments(bundle);
+		newFragment.show(getFragmentManager(), "dialog");
+		
 	}
 
 	public void showPopup(View anchorView) {

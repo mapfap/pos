@@ -92,5 +92,8 @@ public class Register {
 			currentSale = null;
 		}
 	}
+	public void edit(int sale_id,int product_id,int quantity,double price){
+		saleDao.updateQP(sale_id, product_id, quantity, price);
+	}
 	
 }
