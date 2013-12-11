@@ -62,7 +62,7 @@ public class SaleDaoAndroid implements SaleDao {
 
 	@Override
 	public List<Sale> getAllSale() {
-		return getAllSale("WHERE status = 'ENDED'");
+		return getAllSale(" WHERE status = 'ENDED'");
 	}
 	
 	@Override
@@ -71,7 +71,7 @@ public class SaleDaoAndroid implements SaleDao {
 		String startBound = DateTimeStrategy.getSQLDateFormat(start);
 		String endBound = DateTimeStrategy.getSQLDateFormat(end);
 		Log.d("SaleDaoAndroid", " WHERE end_time BETWEEN '" + startBound + " 00:00:00' AND '" + endBound + " 23:59:59'");
-		List<Sale> list = getAllSale(" WHERE end_time BETWEEN '" + startBound + " 00:00:00' AND '" + endBound + " 23:59:59'");
+		List<Sale> list = getAllSale(" WHERE end_time BETWEEN '" + startBound + " 00:00:00' AND '" + endBound + " 23:59:59' AND status = 'ENDED'");
 		Log.d("SaleDaoAndroid", "size = " + list.size());
 		return list;
 	}
