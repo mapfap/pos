@@ -13,25 +13,31 @@
             android:id="@+id/spinner1"
             android:layout_width="0dip"
             android:layout_height="match_parent"
-            android:layout_weight="0.2" />
+            android:layout_weight="0.3" />
         <Button
             android:id="@+id/previousButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="prev" />
+            style="@style/ButtonText"
+            android:background="@drawable/btn_yellow"
+            android:text="&lt;" />
 
         <TextView
             android:id="@+id/currentBox"
             android:layout_width="0dip"
             android:layout_weight="0.5"
             android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="18sp"
             android:text="DAY" />
 
         <Button
             android:id="@+id/nextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="next" />
+            style="@style/ButtonText"
+            android:background="@drawable/btn_yellow"
+            android:text=">" />
         
     </LinearLayout>
 

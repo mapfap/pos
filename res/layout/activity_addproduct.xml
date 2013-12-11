@@ -17,6 +17,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
 
+            <Button
+                android:id="@+id/scanButton"
+                style="@style/ButtonText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_blue"
+                android:textSize="20sp"
+                android:text="SCAN" />
+
             <LinearLayout
                 android:layout_width="0dip"
                 android:layout_height="wrap_content"
@@ -39,19 +48,7 @@
                     android:ems="20"
                     android:inputType="number"
                     android:textSize="18sp" />
-
-                <requestFocus />
             </LinearLayout>
-
-            <Button
-                android:id="@+id/scanButton"
-                style="@style/ButtonText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/btn_blue"
-                android:text="SCAN"
-                android:textSize="20sp" />
-
         </LinearLayout>
 
         <LinearLayout
@@ -130,8 +127,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/btn_yellow"
-            android:text="CLEAR"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:text="CLEAR" />
 
         <Button
             android:id="@+id/confirmButton"
@@ -140,8 +137,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/btn_green"
-            android:text="COMFIRM"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:text="COMFIRM" />
     </LinearLayout>
 
 </LinearLayout>
