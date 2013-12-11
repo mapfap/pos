@@ -31,7 +31,7 @@
         <item name="android:textColor">#ffffff</item>
         <item name="android:gravity">center</item>
         <item name="android:layout_margin">3dp</item>
-        <item name="android:textSize">30dp</item>
+        <item name="android:textSize">20dp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:shadowColor">#000000</item>
         <item name="android:shadowDx">1</item>
