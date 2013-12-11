@@ -72,7 +72,8 @@ public class ReportFragment extends UpdatableFragment {
 			@Override
 			public void onItemSelected(AdapterView<?> parent, View view,
 					int pos, long id) {
-				Log.d("Report fragment" , ""+parent.getItemAtPosition(pos));				
+				Log.d("Report fragment" , ""+parent.getItemAtPosition(pos));		
+				update();
 			}
 
 			@Override
@@ -91,7 +92,16 @@ public class ReportFragment extends UpdatableFragment {
 		previousButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				currentTime.add(Calendar.DATE, -1); 
+				String period = spinner.getSelectedItem().toString();
+				if (period.equals("Daily")){
+					currentTime.add(Calendar.DATE, -1);
+				} else if (period.equals("Weekly")){
+					currentTime.add(Calendar.DATE, -7);
+				} else if (period.equals("Monthly")){
+					currentTime.add(Calendar.MONTH, -1);
+				} else if (period.equals("Yearly")){
+					currentTime.add(Calendar.YEAR, -1);
+				}
 				update();
 			}
 		});
@@ -99,7 +109,16 @@ public class ReportFragment extends UpdatableFragment {
 		nextButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				currentTime.add(Calendar.DATE, 1);
+				String period = spinner.getSelectedItem().toString();
+				if (period.equals("Daily")){
+					currentTime.add(Calendar.DATE, 1);
+				} else if (period.equals("Weekly")){
+					currentTime.add(Calendar.DATE, 7);
+				} else if (period.equals("Monthly")){
+					currentTime.add(Calendar.MONTH, 1);
+				} else if (period.equals("Yearly")){
+					currentTime.add(Calendar.YEAR, 1);
+				} 
 				update();
 //				Log.d("ReportFragment", "nextButton");
 			}
@@ -155,8 +174,42 @@ public class ReportFragment extends UpdatableFragment {
 	@Override
 	public void update() {
 		Log.d("ReportFragment", spinner.getSelectedItem().toString());
-		currentBox.setText(" [" + DateTimeStrategy.getSQLDateFormat(currentTime) +  "] ");
-		List<Sale> list = saleLedger.getAllSaleDuring(currentTime, currentTime);
+		String period = spinner.getSelectedItem().toString();
+		List<Sale> list = null;
+		Calendar cTime = (Calendar) currentTime.clone();
+		Calendar eTime = (Calendar) currentTime.clone();
+		if(period.equals("Daily")){
+			currentBox.setText(" [" + DateTimeStrategy.getSQLDateFormat(currentTime) +  "] ");
+			currentBox.setTextSize(16);
+		} else if (period.equals("Weekly")){
+			while(cTime.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY){
+				cTime.add(Calendar.DATE, -1);
+			}
+			
+			String toShow = " [" + DateTimeStrategy.getSQLDateFormat(cTime) +  "] ~ [";
+			eTime = (Calendar) cTime.clone();
+			eTime.add(Calendar.DATE, 7);
+			toShow += DateTimeStrategy.getSQLDateFormat(eTime) +  "] ";
+			currentBox.setTextSize(16);
+			currentBox.setText(toShow);
+		} else if (period.equals("Monthly")){
+			cTime.set(Calendar.DATE, 1);
+			eTime = (Calendar) cTime.clone();
+			eTime.add(Calendar.MONTH, 1);
+			eTime.add(Calendar.DATE, -1);
+			currentBox.setTextSize(18);
+			currentBox.setText(" [" + currentTime.get(Calendar.YEAR) + "-" + (currentTime.get(Calendar.MONTH)+1) + "] ");
+		} else if (period.equals("Yearly")){
+			cTime.set(Calendar.DATE, 1);
+			cTime.set(Calendar.MONTH, 0);
+			eTime = (Calendar) cTime.clone();
+			eTime.add(Calendar.YEAR, 1);
+			eTime.add(Calendar.DATE, -1);
+			currentBox.setTextSize(20);
+			currentBox.setText(" [" + currentTime.get(Calendar.YEAR) +  "] ");
+		}
+		currentTime = cTime;
+		list = saleLedger.getAllSaleDuring(cTime, eTime);
 		double total = 0;
 		for (Sale sale : list)
 			total += sale.getTotal();
