@@ -154,6 +154,7 @@ public class ReportFragment extends UpdatableFragment {
 
 	@Override
 	public void update() {
+		Log.d("ReportFragment", spinner.getSelectedItem().toString());
 		currentBox.setText(" [" + DateTimeStrategy.getSQLDateFormat(currentTime) +  "] ");
 		List<Sale> list = saleLedger.getAllSaleDuring(currentTime, currentTime);
 		double total = 0;

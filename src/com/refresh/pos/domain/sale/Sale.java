@@ -118,8 +118,8 @@ public class Sale {
 	public Map<String, String> toMap() {	
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("id",id+"");
-		map.put("startTime", DateTimeStrategy.format(startTime));
-		map.put("endTime", DateTimeStrategy.format(endTime));
+		map.put("startTime", startTime);
+		map.put("endTime", endTime);
 		map.put("status", getStatus());
 		map.put("total", getTotal() + "");
 		map.put("orders", getOrders() + "");
