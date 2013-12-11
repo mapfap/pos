@@ -87,9 +87,10 @@ public class Register {
 	}
 	
 	public void cancleSale(){
-		// TODO : delete line item that added in database
-		if (currentSale != null)
-			endSale(DateTimeStrategy.getCurrentTime());
+		if (currentSale != null){
+			saleDao.cancelSale(currentSale,DateTimeStrategy.getCurrentTime());
+			currentSale = null;
+		}
 	}
 	
 }

@@ -23,5 +23,7 @@ public interface SaleDao {
 	List<LineItem> getLineItem(int saleId);
 
 	List<Sale> getAllSaleDuring(Calendar start, Calendar end);
+	
+	void cancelSale(Sale sale,String endTime);
 
 }
