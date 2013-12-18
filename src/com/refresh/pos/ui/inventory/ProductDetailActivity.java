@@ -227,16 +227,16 @@ public class ProductDetailActivity extends Activity {
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-//		switch (item.getItemId()) {
-//		case android.R.id.home:
-//			this.finish();
-//			return true;
-//		case android.R.id.action_edit:
-//			edit();
-//			return true;
-//		default:
+		switch (item.getItemId()) {
+		case android.R.id.home:
+			this.finish();
+			return true;
+		case R.id.action_edit:
+			edit();
+			return true;
+		default:
 			return super.onOptionsItemSelected(item);
-//		}
+		}
 	}
 	
 	private void submitEdit() {
