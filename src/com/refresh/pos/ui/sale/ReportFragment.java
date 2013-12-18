@@ -7,6 +7,7 @@ import java.util.Map;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -46,6 +47,7 @@ public class ReportFragment extends UpdatableFragment {
 	private Button nextButton;
 	private TextView currentBox;
 	private Calendar currentTime;
+	private DatePickerFragment datePicker;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -58,10 +60,14 @@ public class ReportFragment extends UpdatableFragment {
 		}
 		View view = inflater.inflate(R.layout.layout_report2, container, false);
 		
+		previousButton = (Button) view.findViewById(R.id.previousButton);
+		nextButton = (Button) view.findViewById(R.id.nextButton);
+		currentBox = (TextView) view.findViewById(R.id.currentBox);
 		saleLedgerListView = (ListView) view.findViewById(R.id.saleListView);
 		searchBox = (EditText) view.findViewById(R.id.searchBox);
 		totalBox = (TextView) view.findViewById(R.id.totalBox);
 		spinner = (Spinner) view.findViewById(R.id.spinner1);
+		
 		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity().getBaseContext(),
 		        R.array.period, android.R.layout.simple_spinner_item);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -83,11 +89,19 @@ public class ReportFragment extends UpdatableFragment {
 			
 		});
 		
-		previousButton = (Button) view.findViewById(R.id.previousButton);
-		nextButton = (Button) view.findViewById(R.id.nextButton);
-		currentBox = (TextView) view.findViewById(R.id.currentBox);
+		currentBox.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				
+				datePicker.show(getActivity().getSupportFragmentManager(), "Select Date");
+				
+			}
+		});
+		
 		
 		currentTime = Calendar.getInstance();
+		datePicker = new DatePickerFragment(currentTime, ReportFragment.this);
 		
 		previousButton.setOnClickListener(new OnClickListener() {
 			@Override
