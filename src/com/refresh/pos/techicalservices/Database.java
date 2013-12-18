@@ -7,5 +7,5 @@ public interface Database {
 	public int insert(String tableName, Object content);
 	boolean update(String tableName, Object content);
 	boolean delete(String tableName, int id);
-	boolean rapeQuery(String query);
+	boolean execute(String queryString);
 }

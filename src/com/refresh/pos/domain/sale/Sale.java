@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.refresh.pos.domain.DateTimeStrategy;
 import com.refresh.pos.domain.inventory.LineItem;
 import com.refresh.pos.domain.inventory.Product;
 

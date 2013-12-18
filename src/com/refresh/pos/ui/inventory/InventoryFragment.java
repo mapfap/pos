@@ -31,6 +31,8 @@ import com.refresh.pos.domain.inventory.Product;
 import com.refresh.pos.domain.inventory.ProductCatalog;
 import com.refresh.pos.domain.sale.Register;
 import com.refresh.pos.domain.sale.SaleLedger;
+import com.refresh.pos.techicalservices.DatabaseExecutor;
+import com.refresh.pos.techicalservices.Demo;
 import com.refresh.pos.techicalservices.NoDaoSetException;
 import com.refresh.pos.ui.MainActivity;
 import com.refresh.pos.ui.component.ButtonAdapter;
@@ -137,27 +139,19 @@ public class InventoryFragment extends UpdatableFragment {
 		String search = searchBox.getText().toString();
 		
 		//TODO: DELTE THIS
-		if (search.equals("motherlode")) {
-			searchBox.setText("");
+		if (search.equals("/demo")) {
 			testAddProduct();
-		} else if (search.equals("clear")) {
-			
-			try {
-				Inventory.getInstance().getProductCatalog().clearProductCatalog();
-				Inventory.getInstance().getStock().clearStock();
-				SaleLedger.getInstance().clearSaleLedger();
-			} catch (NoDaoSetException e) {
-				e.printStackTrace();
-			}
-		}
-		
-		if (search.equals("")) {
+			searchBox.setText("");
+		} else if (search.equals("/clear")) {
+			DatabaseExecutor.getInstance().dropAllData();
+			searchBox.setText("");
+		} else if (search.equals("")) {
 			showList(productCatalog.getAllProduct());
 		} else {
 			List<Product> result = productCatalog.searchProduct(search);
 			showList(result);
 			if (result.isEmpty()) {
-				Toast.makeText(getActivity().getBaseContext() , "No results matched.", Toast.LENGTH_SHORT).show();
+//				Toast.makeText(getActivity().getBaseContext() , "No results matched.", Toast.LENGTH_SHORT).show();
 			}
 		}
 	}
@@ -179,29 +173,10 @@ public class InventoryFragment extends UpdatableFragment {
 	}
 	
 	protected void testAddProduct() {
-		try {
-			
-			Inventory.getInstance().getProductCatalog().addProduct("Apple iPhone 4s", "65005", 400 );
-			Inventory.getInstance().getProductCatalog().addProduct("Apple Macbook Air (mid-2012)", "68701", 329 );
-			Inventory.getInstance().getProductCatalog().addProduct("Television ", "20004", 200);
-			Inventory.getInstance().getProductCatalog().addProduct("Lettuce" , "80775", 10.75);
-			Inventory.getInstance().getProductCatalog().addProduct("Carrot", "10089", 28.50);
-			Inventory.getInstance().getProductCatalog().addProduct("Sumsung Television", "899089", 48.50);
-			Inventory.getInstance().getProductCatalog().addProduct("Applying UML and Pattern", "05667", 1.50);
-			Inventory.getInstance().getProductCatalog().addProduct("Code Complete 2nd Edition", "99887", 2.50);
-			Inventory.getInstance().getProductCatalog().addProduct("Banana", "9822337", 32.50);
-			Inventory.getInstance().getProductCatalog().addProduct("Egg", "03011", 0.50);
-			Inventory.getInstance().getProductCatalog().addProduct("Tomato", "422337", 142.50);
-			Inventory.getInstance().getProductCatalog().addProduct("Ketchup", "941223", 3.50);
-			
-			showList(productCatalog.getAllProduct());
-			
-			Toast.makeText(getActivity().getBaseContext(), "products added.", Toast.LENGTH_SHORT).show();
-			
-		} catch (NoDaoSetException e) {
-			e.printStackTrace();
-		}
+		Demo.testProduct(getActivity());
+		Toast.makeText(getActivity().getBaseContext(), "products added.", Toast.LENGTH_SHORT).show();
 	}
+	
 	public void showPopup(View anchorView) {
 		AddProductDialogFragment newFragment = new AddProductDialogFragment(InventoryFragment.this);
 	    newFragment.show(getFragmentManager(), "dialog");

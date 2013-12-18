@@ -28,6 +28,7 @@ import com.refresh.pos.domain.sale.Register;
 import com.refresh.pos.domain.sale.SaleLedger;
 import com.refresh.pos.techicalservices.AndroidDatabase;
 import com.refresh.pos.techicalservices.Database;
+import com.refresh.pos.techicalservices.DatabaseExecutor;
 import com.refresh.pos.techicalservices.NoDaoSetException;
 import com.refresh.pos.techicalservices.inventory.InventoryDao;
 import com.refresh.pos.techicalservices.inventory.InventoryDaoAndroid;
@@ -220,6 +221,7 @@ public class MainActivity extends FragmentActivity {
 		Database database = new AndroidDatabase(this);
 		InventoryDao inventoryDao = new InventoryDaoAndroid(database);
 		SaleDao saleDao = new SaleDaoAndroid(database);
+		DatabaseExecutor.setDatabase(database);
 
 		Inventory.setInventoryDao(inventoryDao);
 		Register.setSaleDao(saleDao);

@@ -161,7 +161,7 @@ public class AndroidDatabase extends SQLiteOpenHelper implements Database {
     }
 
 	@Override
-	public boolean rapeQuery(String query) {
+	public boolean execute(String query) {
 		try{
 			SQLiteDatabase database = this.getWritableDatabase();
 			database.execSQL(query);
@@ -171,11 +171,5 @@ public class AndroidDatabase extends SQLiteOpenHelper implements Database {
 			return false;
 		}
 	}
-	
-//	public void destroy() {
-//		database.execSQL("DROP DATABASE " + DatabaseContents.DATABASE.toString());
-//	}
-	
-	
 
 }
