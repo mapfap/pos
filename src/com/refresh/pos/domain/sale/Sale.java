@@ -66,7 +66,7 @@ public class Sale {
 		return items.size();
 	}
 	
-	public LineItem getLineItem(int index) {
+	public LineItem getLineItemAt(int index) {
 		if (index >= 0 && index < items.size())
 			return items.get(index);
 		return null;
@@ -80,7 +80,7 @@ public class Sale {
 		
 		double amount = 0;
 		for(LineItem lineItem : items) {
-			amount += lineItem.getTotal();
+			amount += lineItem.getTotalPriceAtSale();
 		}
 		return amount;
 	}

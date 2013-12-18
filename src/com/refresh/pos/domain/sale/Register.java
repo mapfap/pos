@@ -44,12 +44,22 @@ public class Register {
 		return currentSale;
 	}
 	
-	public int addItem(Product product, int quantity) {
+	public LineItem addItem(Product product, int quantity) {
 //		if (quantity <= 0 || currentSale == null)
 //			return -1;
-		if (currentSale == null) initiateSale(DateTimeStrategy.getCurrentTime());
+		if (currentSale == null)
+			initiateSale(DateTimeStrategy.getCurrentTime());
+		
 		LineItem lineItem = currentSale.addLineItem(product, quantity);
-		return saleDao.addLineItem(currentSale.getId(), lineItem);
+		
+		if (lineItem.getId() == lineItem.UNDEFINED) {
+			int lineId = saleDao.addLineItem(currentSale.getId(), lineItem);
+			lineItem.setId(lineId);
+		} else {
+			saleDao.updateLineItem(currentSale.getId(), lineItem);
+		}
+		
+		return lineItem;
 	}
 	
 	public double getTotal() {
@@ -92,8 +102,10 @@ public class Register {
 			currentSale = null;
 		}
 	}
-	public void edit(int sale_id,int product_id,int quantity,double price){
-		saleDao.updateQP(sale_id, product_id, quantity, price);
+	public void updateItem(int saleId, LineItem lineItem, int quantity, double priceAtSale) {
+		lineItem.setUnitPriceAtSale(priceAtSale);
+		lineItem.setQuantity(quantity);
+		saleDao.updateLineItem(saleId, lineItem);
 	}
 	
 }

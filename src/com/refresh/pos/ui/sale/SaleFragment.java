@@ -18,7 +18,6 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import com.refresh.pos.R;
-import com.refresh.pos.domain.DateTimeStrategy;
 import com.refresh.pos.domain.inventory.Inventory;
 import com.refresh.pos.domain.inventory.LineItem;
 import com.refresh.pos.domain.inventory.ProductCatalog;
@@ -147,7 +146,7 @@ public class SaleFragment extends UpdatableFragment {
 		Bundle bundle = new Bundle();
 		bundle.putString("position",position+"");
 		bundle.putString("sale_id",register.getCurrentSale().getId()+"");
-		bundle.putString("product_id",register.getCurrentSale().getLineItem(position).getProduct().getId()+"");
+		bundle.putString("product_id",register.getCurrentSale().getLineItemAt(position).getProduct().getId()+"");
 		
 		EditFragmentDialog newFragment = new EditFragmentDialog(SaleFragment.this, reportFragment);
 		newFragment.setArguments(bundle);

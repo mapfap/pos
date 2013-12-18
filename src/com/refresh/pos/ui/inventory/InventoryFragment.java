@@ -30,7 +30,6 @@ import com.refresh.pos.domain.inventory.Inventory;
 import com.refresh.pos.domain.inventory.Product;
 import com.refresh.pos.domain.inventory.ProductCatalog;
 import com.refresh.pos.domain.sale.Register;
-import com.refresh.pos.domain.sale.SaleLedger;
 import com.refresh.pos.techicalservices.DatabaseExecutor;
 import com.refresh.pos.techicalservices.Demo;
 import com.refresh.pos.techicalservices.NoDaoSetException;

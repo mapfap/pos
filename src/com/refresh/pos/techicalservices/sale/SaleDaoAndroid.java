@@ -55,9 +55,20 @@ public class SaleDaoAndroid implements SaleDao {
         content.put("sale_id", saleId);
         content.put("product_id", lineItem.getProduct().getId());
         content.put("quantity", lineItem.getQuantity());
-        content.put("unit_price", lineItem.getTotal());
+        content.put("unit_price", lineItem.getPriceAtSale());
         int id = database.insert(DatabaseContents.TABLE_SALE_LINEITEM.toString(), content);
         return id;
+	}
+
+	@Override
+	public void updateLineItem(int saleId, LineItem lineItem) {
+		ContentValues content = new ContentValues();		
+		content.put("_id", lineItem.getId());
+		content.put("sale_id", saleId);
+		content.put("product_id", lineItem.getProduct().getId());
+		content.put("quantity", lineItem.getQuantity());
+		content.put("unit_price", lineItem.getPriceAtSale());
+		database.update(DatabaseContents.TABLE_SALE_LINEITEM.toString(), content);
 	}
 
 	@Override
@@ -140,7 +151,7 @@ public class SaleDaoAndroid implements SaleDao {
 				ContentValues content2 = (ContentValues) object2;
 				productList.add(new Product(productId, content2.getAsString("name"), content2.getAsString("barcode"), content2.getAsDouble("unit_price")));
 			}
-			list.add(new LineItem(productList.get(0), content.getAsInteger("quantity")));
+			list.add(new LineItem(content.getAsInteger("_id") , productList.get(0), content.getAsInteger("quantity"), content.getAsDouble("unit_price")));
 		}
 		return list;
 	}
@@ -165,11 +176,6 @@ public class SaleDaoAndroid implements SaleDao {
 		
 	}
 
-	@Override
-	public void updateQP(int id,int productID, int quantity, double price) {
-		String queryString = "UPDATE "+DatabaseContents.TABLE_SALE_LINEITEM.toString()+" SET quantity='"+quantity+"' , unit_price='"+price+"' WHERE sale_id='"+id+"' AND product_id='"+productID+"'";
-		Log.v("queryString",queryString);
-		database.execute(queryString);
-	}
+
 
 }

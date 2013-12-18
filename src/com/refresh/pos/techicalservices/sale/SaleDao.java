@@ -22,10 +22,11 @@ public interface SaleDao {
 
 	List<LineItem> getLineItem(int saleId);
 
+	void updateLineItem(int saleId, LineItem lineItem);
+
 	List<Sale> getAllSaleDuring(Calendar start, Calendar end);
 	
 	void cancelSale(Sale sale,String endTime);
-	
-	void updateQP(int id,int productID,int quantity,double price);
+
 
 }
