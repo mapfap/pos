@@ -10,6 +10,7 @@ import android.util.Log;
 import com.refresh.pos.domain.DateTimeStrategy;
 import com.refresh.pos.domain.inventory.LineItem;
 import com.refresh.pos.domain.inventory.Product;
+import com.refresh.pos.domain.sale.QuickLoadSale;
 import com.refresh.pos.domain.sale.Sale;
 import com.refresh.pos.techicalservices.Database;
 import com.refresh.pos.techicalservices.DatabaseContents;
@@ -98,7 +99,7 @@ public class SaleDaoAndroid implements SaleDao {
         List<Sale> list = new ArrayList<Sale>();
         for (Object object: objectList) {
         	ContentValues content = (ContentValues) object;
-                list.add(new Sale(
+                list.add(new QuickLoadSale(
                 		content.getAsInteger("_id"),
                         content.getAsString("start_time"),
                         content.getAsString("end_time"),

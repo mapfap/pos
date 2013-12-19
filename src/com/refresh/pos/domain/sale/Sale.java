@@ -17,31 +17,17 @@ public class Sale {
 	private String status;
 	private List<LineItem> items;
 	
-	// this total and orders will be used only when the Sale is loaded without lineitem.
-	private Double total;
-	private Integer orders;
-	
 
 	public Sale(int id, String startTime) {
-		this(id, startTime, startTime, "???", new ArrayList<LineItem>(), null, null);
+		this(id, startTime, startTime, "", new ArrayList<LineItem>());
 	}
 	
-	public Sale(int id, String startTime, String endTime, String status, List<LineItem> items, Double total, Integer orders) {
+	public Sale(int id, String startTime, String endTime, String status, List<LineItem> items) {
 		this.id = id;
 		this.startTime = startTime;
 		this.status = status;
 		this.endTime = endTime;
 		this.items = items;
-		this.total = total;
-		this.orders = orders;
-	}
-	
-	public Sale(int id, String startTime, String endTime, String status, Double total, Integer orders) {
-		this(id, startTime, endTime, status, null, total, orders);
-	}
-	
-	public Sale(int id, String startTime, String endTime, String status, List<LineItem> items) {
-		this(id, startTime, endTime, status, items, null, null);
 	}
 	
 	public List<LineItem> getAllLineItem(){
@@ -74,10 +60,6 @@ public class Sale {
 
 
 	public double getTotal() {
-		
-		// in case that sale didn't load items.
-		if (items == null) return this.total;
-		
 		double amount = 0;
 		for(LineItem lineItem : items) {
 			amount += lineItem.getTotalPriceAtSale();
@@ -105,8 +87,6 @@ public class Sale {
 		return status;
 	}
 	public int getOrders() {
-		if (items == null) return this.orders;
-		
 		int orderCount = 0;
 		for (LineItem lineItem : items) {
 			orderCount += lineItem.getQuantity();
