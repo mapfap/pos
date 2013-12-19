@@ -137,14 +137,14 @@ public class InventoryFragment extends UpdatableFragment {
 	private void search() {
 		String search = searchBox.getText().toString();
 		
-		//TODO: DELTE THIS
 		if (search.equals("/demo")) {
 			testAddProduct();
 			searchBox.setText("");
 		} else if (search.equals("/clear")) {
 			DatabaseExecutor.getInstance().dropAllData();
 			searchBox.setText("");
-		} else if (search.equals("")) {
+		}
+		else if (search.equals("")) {
 			showList(productCatalog.getAllProduct());
 		} else {
 			List<Product> result = productCatalog.searchProduct(search);

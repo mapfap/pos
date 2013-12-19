@@ -1,8 +1,7 @@
-package com.refresh.pos.ui.sale;
+package com.refresh.pos.ui.component;
 
 import java.util.Calendar;
 
-import com.refresh.pos.ui.component.UpdatableFragment;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;

@@ -60,7 +60,7 @@ public class InventoryDaoAndroid implements InventoryDao {
 	}
 	
 	private List<Product> getAllProduct(String condition) {
-		String queryString = "SELECT * FROM " + DatabaseContents.TABLE_PRODUCT_CATALOG.toString() + condition;
+		String queryString = "SELECT * FROM " + DatabaseContents.TABLE_PRODUCT_CATALOG.toString() + condition + " ORDER BY name";
         List<Product> list = toProductList(database.select(queryString));
         return list;
 	}
@@ -183,20 +183,18 @@ public class InventoryDaoAndroid implements InventoryDao {
 		 ContentValues content = new ContentValues();
          content.put("_id", productId);
          content.put("quantity", getStockSumById(productId) - quantity);
-//         Log.d("fff","" + getStockSumById(id) + " " + id + " " +productLot.getQuantity() );
          database.update(DatabaseContents.TABLE_STOCK_SUM.toString(), content);   
 	}
 
 	@Override
-	public void clearProductCatalog() {
-		// TODO Auto-generated method stub
-		
+	public void clearProductCatalog() {		
+		database.execute("DELETE FROM " + DatabaseContents.TABLE_PRODUCT_CATALOG);
 	}
 
 	@Override
 	public void clearStock() {
-		// TODO Auto-generated method stub
-		
+		database.execute("DELETE FROM " + DatabaseContents.TABLE_STOCK);
+		database.execute("DELETE FROM " + DatabaseContents.TABLE_STOCK_SUM);
 	}
 
 	@Override

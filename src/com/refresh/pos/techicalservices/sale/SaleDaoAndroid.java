@@ -82,9 +82,8 @@ public class SaleDaoAndroid implements SaleDao {
 //		String startBound = "2010-01-10"; String endBound = "2014-12-30";
 		String startBound = DateTimeStrategy.getSQLDateFormat(start);
 		String endBound = DateTimeStrategy.getSQLDateFormat(end);
-		Log.d("SaleDaoAndroid", " WHERE end_time BETWEEN '" + startBound + " 00:00:00' AND '" + endBound + " 23:59:59'");
 		List<Sale> list = getAllSale(" WHERE end_time BETWEEN '" + startBound + " 00:00:00' AND '" + endBound + " 23:59:59' AND status = 'ENDED'");
-		Log.d("SaleDaoAndroid", "size = " + list.size());
+		Log.d("SaleDaoAndroid", "report size = " + list.size());
 		return list;
 	}
 	
@@ -159,8 +158,8 @@ public class SaleDaoAndroid implements SaleDao {
 
 	@Override
 	public void clearSaleLedger() {
-		// TODO: don't forget to DELETE in line item 
-//		database.delete(DatabaseContents.TABLE_SALE.toString(), "");
+		database.execute("DELETE FROM " + DatabaseContents.TABLE_SALE);
+		database.execute("DELETE FROM " + DatabaseContents.TABLE_SALE_LINEITEM);
 	}
 
 	@Override

@@ -4,8 +4,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
-import android.util.Log;
-
 public class DateTimeStrategy {
 	
 	private static Locale locale;
@@ -25,9 +23,7 @@ public class DateTimeStrategy {
 	}
 	
 	public static String getCurrentTime() {
-		String x = dateFormat.format(Calendar.getInstance().getTime()).toString();
-		Log.d("datetime", x);
-		return x;
+		return dateFormat.format(Calendar.getInstance().getTime()).toString();
 	}
 	
 	public static String getSQLDateFormat(Calendar instance) {

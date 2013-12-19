@@ -8,7 +8,6 @@ public class LineItem {
 	private final Product product;
 	private int quantity;
 	private int id;
-	private int saleId;
 	private double unitPriceAtSale;
 	public static final int UNDEFINED = -1;
 

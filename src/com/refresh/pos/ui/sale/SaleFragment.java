@@ -30,22 +30,18 @@ import com.refresh.pos.ui.component.UpdatableFragment;
 @SuppressLint("ValidFragment")
 public class SaleFragment extends UpdatableFragment {
     
-	private ListView lineItemListView;
-	private Sale currentSale;
 	private Register register;
 	private ArrayList<Map<String, String>> saleList;
 	private ListView saleListView;
 	private Button clearButton;
 	private TextView totalPrice;
 	private Button endButton;
-	@SuppressLint("ValidFragment")
 	private ProductCatalog productCatalog;
 	private UpdatableFragment reportFragment;
 
 	public SaleFragment(UpdatableFragment reportFragment) {
 		super();
 		this.reportFragment = reportFragment;
-//		currentSale = null;
 	}
 
 	@Override
@@ -56,13 +52,6 @@ public class SaleFragment extends UpdatableFragment {
 			productCatalog = Inventory.getInstance().getProductCatalog();
 		} catch (NoDaoSetException e) {
 			e.printStackTrace();
-		}
-		
-		if(!register.hasSale()){
-//			currentSale = register.initiateSale(DateTimeStrategy.getCurrentTime());
-		}
-		else{
-			currentSale = register.getCurrentSale();
 		}
 
 		View view = inflater.inflate(R.layout.layout_sale, container, false);
@@ -79,14 +68,10 @@ public class SaleFragment extends UpdatableFragment {
 	private void initUI() {
 		
 		saleListView.setOnItemClickListener(new OnItemClickListener(){
-
 			@Override
-			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
-					long arg3) {
+			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 				showEditPopup(arg1,arg2);
-				
 			}
-			
 		});
 
 		clearButton.setOnClickListener(new View.OnClickListener() {
@@ -103,14 +88,10 @@ public class SaleFragment extends UpdatableFragment {
 				if(register.hasSale()){
 					showPopup(v);
 				}
-				else{
-					
-				}
 			}
 		});
 		
 		clearButton.setOnClickListener(new View.OnClickListener() {
-			
 			@Override
 			public void onClick(View v) {
 				register.cancleSale();
@@ -118,7 +99,6 @@ public class SaleFragment extends UpdatableFragment {
 			}
 		});
 	}
-
 	
 	private void showList(List<LineItem> list) {
 		

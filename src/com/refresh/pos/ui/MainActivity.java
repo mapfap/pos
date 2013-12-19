@@ -21,20 +21,10 @@ import android.view.KeyEvent;
 import android.view.View;
 
 import com.refresh.pos.R;
-import com.refresh.pos.domain.DateTimeStrategy;
 import com.refresh.pos.domain.inventory.Inventory;
 import com.refresh.pos.domain.inventory.Product;
 import com.refresh.pos.domain.inventory.ProductCatalog;
-import com.refresh.pos.domain.sale.Register;
-import com.refresh.pos.domain.sale.SaleLedger;
-import com.refresh.pos.techicalservices.AndroidDatabase;
-import com.refresh.pos.techicalservices.Database;
-import com.refresh.pos.techicalservices.DatabaseExecutor;
 import com.refresh.pos.techicalservices.NoDaoSetException;
-import com.refresh.pos.techicalservices.inventory.InventoryDao;
-import com.refresh.pos.techicalservices.inventory.InventoryDaoAndroid;
-import com.refresh.pos.techicalservices.sale.SaleDao;
-import com.refresh.pos.techicalservices.sale.SaleDaoAndroid;
 import com.refresh.pos.ui.component.UpdatableFragment;
 import com.refresh.pos.ui.inventory.InventoryFragment;
 import com.refresh.pos.ui.inventory.ProductDetailActivity;
@@ -46,10 +36,10 @@ public class MainActivity extends FragmentActivity {
 
 	private ViewPager viewPager;
 	private ProductCatalog productCatalog;
+	private String productId;
 	private Product product;
-	private String idProduct;
 	private static boolean SDK_SUPPORTED;
-	private MyFragmentStatePagerAdapter myFragmentStatePagerAdapter;
+	private PagerAdapter pagerAdapter;
 
 	@SuppressLint("NewApi")
 	private void initiateActionBar() {
@@ -88,18 +78,15 @@ public class MainActivity extends FragmentActivity {
 		super.onCreate(savedInstanceState);
 		SDK_SUPPORTED = android.os.Build.VERSION.SDK_INT >= 11;
 		initiateActionBar();
-		initiateCoreApp();
 		FragmentManager fragmentManager = getSupportFragmentManager();
-		myFragmentStatePagerAdapter = new MyFragmentStatePagerAdapter(
-				fragmentManager);
-		viewPager.setAdapter(myFragmentStatePagerAdapter);
-		viewPager
-				.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
-					@Override
-					public void onPageSelected(int position) {
-						if (SDK_SUPPORTED) getActionBar().setSelectedNavigationItem(position);
-					}
-				});
+		pagerAdapter = new PagerAdapter(fragmentManager);
+		viewPager.setAdapter(pagerAdapter);
+		viewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+			@Override
+			public void onPageSelected(int position) {
+				if (SDK_SUPPORTED) getActionBar().setSelectedNavigationItem(position);
+			}
+		});
 		viewPager.setCurrentItem(1);
 	}
 
@@ -116,9 +103,7 @@ public class MainActivity extends FragmentActivity {
 		AlertDialog.Builder quitDialog = new AlertDialog.Builder(
 				MainActivity.this);
 		quitDialog.setTitle("Are you sure you want to quit?");
-
 		quitDialog.setPositiveButton("QUIT", new OnClickListener() {
-
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
 				finish();
@@ -126,13 +111,9 @@ public class MainActivity extends FragmentActivity {
 		});
 
 		quitDialog.setNegativeButton("NO", new OnClickListener() {
-
 			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				
-			}
+			public void onClick(DialogInterface dialog, int which) { }
 		});
-
 		quitDialog.show();
 	}
 
@@ -143,13 +124,13 @@ public class MainActivity extends FragmentActivity {
 	public void optionOnClickHandler(View view) {
 		viewPager.setCurrentItem(0);
 		String id = view.getTag().toString();
-		idProduct = id;
+		productId = id;
 		try {
 			productCatalog = Inventory.getInstance().getProductCatalog();
 		} catch (NoDaoSetException e) {
 			e.printStackTrace();
 		}
-		product = productCatalog.getProductById(Integer.parseInt(idProduct));
+		product = productCatalog.getProductById(Integer.parseInt(productId));
 		openDetailDialog();
 
 	}
@@ -158,7 +139,6 @@ public class MainActivity extends FragmentActivity {
 		AlertDialog.Builder quitDialog = new AlertDialog.Builder(
 				MainActivity.this);
 		quitDialog.setTitle(product.getName().toString());
-
 		quitDialog.setPositiveButton("Remove", new OnClickListener() {
 
 			@Override
@@ -173,9 +153,8 @@ public class MainActivity extends FragmentActivity {
 			public void onClick(DialogInterface dialog, int which) {
 				Intent newActivity = new Intent(MainActivity.this,
 						ProductDetailActivity.class);
-				newActivity.putExtra("id", idProduct);
+				newActivity.putExtra("id", productId);
 				startActivity(newActivity);
-
 			}
 		});
 
@@ -186,9 +165,7 @@ public class MainActivity extends FragmentActivity {
 		AlertDialog.Builder quitDialog = new AlertDialog.Builder(
 				MainActivity.this);
 		quitDialog.setTitle("Are you sure you want to remove this product?");
-
 		quitDialog.setPositiveButton("Cancel", new OnClickListener() {
-
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
 
@@ -200,7 +177,7 @@ public class MainActivity extends FragmentActivity {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
 				productCatalog.suspendProduct(product);
-				myFragmentStatePagerAdapter.update(0);
+				pagerAdapter.update(0);
 			}
 		});
 
@@ -211,41 +188,21 @@ public class MainActivity extends FragmentActivity {
 		return viewPager;
 	}
 
-	/**
-	 * Loads database and DAO.
-	 */
-	private void initiateCoreApp() {
-		Database database = new AndroidDatabase(this);
-		InventoryDao inventoryDao = new InventoryDaoAndroid(database);
-		SaleDao saleDao = new SaleDaoAndroid(database);
-		DatabaseExecutor.setDatabase(database);
-
-		Inventory.setInventoryDao(inventoryDao);
-		Register.setSaleDao(saleDao);
-		SaleLedger.setSaleDao(saleDao);
-
-		DateTimeStrategy.setLocale("th", "TH");
-
-		Log.d("Core App", "INITIATE");
-	}
-
 }
 
-class MyFragmentStatePagerAdapter extends FragmentStatePagerAdapter {
+class PagerAdapter extends FragmentStatePagerAdapter {
 
 	private UpdatableFragment[] fragments;
 	private String[] fragmentNames;
 
-	public MyFragmentStatePagerAdapter(FragmentManager fragmentManager) {
+	public PagerAdapter(FragmentManager fragmentManager) {
 		super(fragmentManager);
 
 		UpdatableFragment reportFragment = new ReportFragment();
 		UpdatableFragment saleFragment = new SaleFragment(reportFragment);
-		UpdatableFragment inventoryFragment = new InventoryFragment(
-				saleFragment);
+		UpdatableFragment inventoryFragment = new InventoryFragment(saleFragment);
 
-		fragments = new UpdatableFragment[] { inventoryFragment, saleFragment,
-				reportFragment };
+		fragments = new UpdatableFragment[] { inventoryFragment, saleFragment, reportFragment };
 		fragmentNames = new String[] { "Inventory", "Sale", "Report" };
 
 	}

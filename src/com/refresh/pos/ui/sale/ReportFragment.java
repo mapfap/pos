@@ -7,14 +7,12 @@ import java.util.Map;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
@@ -31,6 +29,7 @@ import com.refresh.pos.domain.DateTimeStrategy;
 import com.refresh.pos.domain.sale.Sale;
 import com.refresh.pos.domain.sale.SaleLedger;
 import com.refresh.pos.techicalservices.NoDaoSetException;
+import com.refresh.pos.ui.component.DatePickerFragment;
 import com.refresh.pos.ui.component.UpdatableFragment;
 
 
@@ -40,7 +39,6 @@ public class ReportFragment extends UpdatableFragment {
 	List<Map<String, String>> saleList;
 	private ListView saleLedgerListView;
 	private EditText searchBox;
-//	private GraphicalView mChartView;
 	private TextView totalBox;
 	private Spinner spinner;
 	private Button previousButton;
@@ -50,14 +48,14 @@ public class ReportFragment extends UpdatableFragment {
 	private DatePickerFragment datePicker;
 	
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		
 		try {
 			saleLedger = SaleLedger.getInstance();
 		} catch (NoDaoSetException e) {
 			e.printStackTrace();
 		}
+		
 		View view = inflater.inflate(R.layout.layout_report2, container, false);
 		
 		previousButton = (Button) view.findViewById(R.id.previousButton);
@@ -67,35 +65,43 @@ public class ReportFragment extends UpdatableFragment {
 		searchBox = (EditText) view.findViewById(R.id.searchBox);
 		totalBox = (TextView) view.findViewById(R.id.totalBox);
 		spinner = (Spinner) view.findViewById(R.id.spinner1);
+			
+//		// Analyse Sale Report, Show as graph. 
+//		if (mChartView == null) {
+//			LinearLayout layout = (LinearLayout) view.findViewById(R.id.chart);
+//			mChartView = (new Chart()).execute(getActivity().getBaseContext());
+//			layout.addView(mChartView, new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
+//		} else {
+//			mChartView.repaint();
+//		}
 		
+		initUI();
+		return view;
+	}
+
+	private void initUI() {
 		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity().getBaseContext(),
 		        R.array.period, android.R.layout.simple_spinner_item);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		
 		spinner.setAdapter(adapter);
 		spinner.setSelection(0);
 		spinner.setOnItemSelectedListener(new OnItemSelectedListener(){
-	
+			
 			@Override
-			public void onItemSelected(AdapterView<?> parent, View view,
-					int pos, long id) {
-				Log.d("Report fragment" , ""+parent.getItemAtPosition(pos));		
+			public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {	
 				update();
 			}
 
 			@Override
-			public void onNothingSelected(AdapterView<?> parent) {
-				
-			}
+			public void onNothingSelected(AdapterView<?> parent) { }
 			
 		});
 		
 		currentBox.setOnClickListener(new View.OnClickListener() {
-			
 			@Override
 			public void onClick(View v) {
-				
 				datePicker.show(getActivity().getSupportFragmentManager(), "Select Date");
-				
 			}
 		});
 		
@@ -106,35 +112,14 @@ public class ReportFragment extends UpdatableFragment {
 		previousButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				String period = spinner.getSelectedItem().toString();
-				if (period.equals("Daily")){
-					currentTime.add(Calendar.DATE, -1);
-				} else if (period.equals("Weekly")){
-					currentTime.add(Calendar.DATE, -7);
-				} else if (period.equals("Monthly")){
-					currentTime.add(Calendar.MONTH, -1);
-				} else if (period.equals("Yearly")){
-					currentTime.add(Calendar.YEAR, -1);
-				}
-				update();
+				addDate(-1);
 			}
 		});
 		
 		nextButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				String period = spinner.getSelectedItem().toString();
-				if (period.equals("Daily")){
-					currentTime.add(Calendar.DATE, 1);
-				} else if (period.equals("Weekly")){
-					currentTime.add(Calendar.DATE, 7);
-				} else if (period.equals("Monthly")){
-					currentTime.add(Calendar.MONTH, 1);
-				} else if (period.equals("Yearly")){
-					currentTime.add(Calendar.YEAR, 1);
-				} 
-				update();
-//				Log.d("ReportFragment", "nextButton");
+				addDate(1);
 			}
 		});
 		
@@ -147,19 +132,6 @@ public class ReportFragment extends UpdatableFragment {
 		      }     
 		});
 		
-//		if (mChartView == null) {
-//			LinearLayout layout = (LinearLayout) view.findViewById(R.id.chart);
-//			mChartView = (new Chart()).execute(getActivity().getBaseContext());
-//			layout.addView(mChartView, new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
-//		} else {
-//			mChartView.repaint();
-//		}
-		initUI();
-		update();
-		return view;
-	}
-
-	private void initUI() {
 		searchBox.addTextChangedListener(new TextWatcher() {
 			public void afterTextChanged(Editable s) {
 //				if (s.length() >= SEARCH_LIMIT) {
@@ -169,7 +141,6 @@ public class ReportFragment extends UpdatableFragment {
 			public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 			public void onTextChanged(CharSequence s, int start, int before,int count) {}
 		});
-		
 	}
 	
 	private void showList(List<Sale> list) {
@@ -187,7 +158,6 @@ public class ReportFragment extends UpdatableFragment {
 
 	@Override
 	public void update() {
-		Log.d("ReportFragment", spinner.getSelectedItem().toString());
 		String period = spinner.getSelectedItem().toString();
 		List<Sale> list = null;
 		Calendar cTime = (Calendar) currentTime.clone();
@@ -235,6 +205,20 @@ public class ReportFragment extends UpdatableFragment {
 	@Override
 	public void onResume() {
 		super.onResume();
+		update();
+	}
+	
+	private void addDate(int increment) {
+		String period = spinner.getSelectedItem().toString();
+		if (period.equals("Daily")){
+			currentTime.add(Calendar.DATE, 1 * increment);
+		} else if (period.equals("Weekly")){
+			currentTime.add(Calendar.DATE, 7 * increment);
+		} else if (period.equals("Monthly")){
+			currentTime.add(Calendar.MONTH, 1 * increment);
+		} else if (period.equals("Yearly")){
+			currentTime.add(Calendar.YEAR, 1 * increment);
+		}
 		update();
 	}
 
