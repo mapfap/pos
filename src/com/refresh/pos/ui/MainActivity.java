@@ -1,5 +1,6 @@
 package com.refresh.pos.ui;
 
+import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
 import android.app.AlertDialog;
@@ -40,55 +41,53 @@ import com.refresh.pos.ui.inventory.ProductDetailActivity;
 import com.refresh.pos.ui.sale.ReportFragment;
 import com.refresh.pos.ui.sale.SaleFragment;
 
+@SuppressLint("NewApi")
 public class MainActivity extends FragmentActivity {
 
 	private ViewPager viewPager;
 	private ProductCatalog productCatalog;
 	private Product product;
 	private String idProduct;
+	private static boolean SDK_SUPPORTED;
 	private MyFragmentStatePagerAdapter myFragmentStatePagerAdapter;
 
+	@SuppressLint("NewApi")
+	private void initiateActionBar() {
+		if (SDK_SUPPORTED) {
+			ActionBar actionBar = getActionBar();
+			actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+			actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+
+			ActionBar.TabListener tabListener = new ActionBar.TabListener() {
+				@Override
+				public void onTabReselected(Tab tab, FragmentTransaction ft) { }
+
+				@Override
+				public void onTabSelected(Tab tab, FragmentTransaction ft) {
+					viewPager.setCurrentItem(tab.getPosition());
+				}
+
+				@Override
+				public void onTabUnselected(Tab tab, FragmentTransaction ft) { }
+			};
+			actionBar.addTab(actionBar.newTab().setText("Inventory").setTabListener(tabListener), 0, false);
+			actionBar.addTab(actionBar.newTab().setText("Sale").setTabListener(tabListener), 1, true);
+			actionBar.addTab(actionBar.newTab().setText("Report").setTabListener(tabListener), 2, false);
+			
+			if (android.os.Build.VERSION.SDK_INT >= 14) {
+				actionBar.setStackedBackgroundDrawable(new ColorDrawable(Color.parseColor("#73bde5")));
+			}
+		
+		}
+	}
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		setContentView(R.layout.activity_main);
 		viewPager = (ViewPager) findViewById(R.id.pager);
-
-		ActionBar actionBar = getActionBar();
-		actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-
-		ActionBar.TabListener tabListener = new ActionBar.TabListener() {
-
-			@Override
-			public void onTabReselected(Tab tab, FragmentTransaction ft) {
-
-			}
-
-			@Override
-			public void onTabSelected(Tab tab, FragmentTransaction ft) {
-				viewPager.setCurrentItem(tab.getPosition());
-			}
-
-			@Override
-			public void onTabUnselected(Tab tab, FragmentTransaction ft) {
-
-			}
-
-		};
-
-		actionBar.addTab(actionBar.newTab().setText("Inventory")
-				.setTabListener(tabListener), 0, false);
-		actionBar.addTab(
-				actionBar.newTab().setText("Sale").setTabListener(tabListener),
-				1, true);
-		actionBar.addTab(
-				actionBar.newTab().setText("Report")
-						.setTabListener(tabListener), 2, false);
-
-		actionBar.setStackedBackgroundDrawable(new ColorDrawable(Color
-				.parseColor("#73bde5")));
-
 		super.onCreate(savedInstanceState);
+		SDK_SUPPORTED = android.os.Build.VERSION.SDK_INT >= 11;
+		initiateActionBar();
 		initiateCoreApp();
 		FragmentManager fragmentManager = getSupportFragmentManager();
 		myFragmentStatePagerAdapter = new MyFragmentStatePagerAdapter(
@@ -98,7 +97,7 @@ public class MainActivity extends FragmentActivity {
 				.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
 					@Override
 					public void onPageSelected(int position) {
-						getActionBar().setSelectedNavigationItem(position);
+						if (SDK_SUPPORTED) getActionBar().setSelectedNavigationItem(position);
 					}
 				});
 		viewPager.setCurrentItem(1);
@@ -122,7 +121,6 @@ public class MainActivity extends FragmentActivity {
 
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
-				// TODO Auto-generated method stub
 				finish();
 			}
 		});
@@ -131,8 +129,7 @@ public class MainActivity extends FragmentActivity {
 
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
-				// TODO Auto-generated method stub
-
+				
 			}
 		});
 

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -33,6 +34,7 @@ import com.refresh.pos.domain.inventory.ProductLot;
 import com.refresh.pos.domain.inventory.Stock;
 import com.refresh.pos.techicalservices.NoDaoSetException;
 
+@SuppressLint("NewApi")
 public class ProductDetailActivity extends Activity {
 
 	private ProductCatalog productCatalog;
@@ -61,15 +63,21 @@ public class ProductDetailActivity extends Activity {
 	    return true;
 	  } 
 	
+	@SuppressLint("NewApi")
+	private void initiateActionBar() {
+		if (android.os.Build.VERSION.SDK_INT >= 11) {
+			ActionBar actionBar = getActionBar();
+			actionBar.setDisplayHomeAsUpEnabled(true);
+			actionBar.setTitle("Product's Detail");
+			actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#33B5E5")));
+		}
+	}
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		ActionBar actionBar = getActionBar();
-		actionBar.setDisplayHomeAsUpEnabled(true);
-		actionBar.setTitle("Product's Detail");
-//		actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_HOME
-//		        | ActionBar.DISPLAY_SHOW_TITLE | ActionBar.DISPLAY_SHOW_CUSTOM);
-
-		actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#33B5E5")));
+		
+		initiateActionBar();
+		
 		try {
 			stock = Inventory.getInstance().getStock();
 			productCatalog = Inventory.getInstance().getProductCatalog();

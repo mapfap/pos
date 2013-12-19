@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.ListView;
@@ -43,14 +45,23 @@ public class SaleDetailActivity extends Activity{
 		
 		initUI(savedInstanceState);
 	}
+	
+	@SuppressLint("NewApi")
+	private void initiateActionBar() {
+		if (android.os.Build.VERSION.SDK_INT >= 11) {
+			ActionBar actionBar = getActionBar();
+			actionBar.setDisplayHomeAsUpEnabled(true);
+			actionBar.setTitle("Sale's Detail");
+			actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#33B5E5")));
+		}
+	}
+	
 
 	private void initUI(Bundle savedInstanceState) {
-		ActionBar actionBar = getActionBar();
-		actionBar.setDisplayHomeAsUpEnabled(true);
-		actionBar.setTitle("Sale's Detail");
-		actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#33B5E5")));
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_saledetail);
+		
+		initiateActionBar();
 		
 		totalBox = (TextView) findViewById(R.id.totalBox);
 		dateBox = (TextView) findViewById(R.id.dateBox);
