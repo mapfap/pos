@@ -52,7 +52,7 @@ public class Register {
 		
 		LineItem lineItem = currentSale.addLineItem(product, quantity);
 		
-		if (lineItem.getId() == lineItem.UNDEFINED) {
+		if (lineItem.getId() == LineItem.UNDEFINED) {
 			int lineId = saleDao.addLineItem(currentSale.getId(), lineItem);
 			lineItem.setId(lineId);
 		} else {

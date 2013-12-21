@@ -67,7 +67,7 @@
                 android:background="#80DDDDFF"
 				android:gravity="right|center_vertical"
                 android:paddingRight="10dp"
-                android:text="Total" />
+                android:text="@string/total" />
         </TableRow>
     </LinearLayout>
 

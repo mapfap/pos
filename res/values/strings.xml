@@ -3,20 +3,7 @@
 
     <string name="app_name">Mobile POS</string>
     <string name="action_settings">Settings</string>
-    <string name="select">Select</string>
-    <string name="delete">Delete</string>
-    <string name="update">Update</string>
-    <string name="scan">Scan</string>
-    <string name="insert">Insert</string>
-    <string name="selectAll">Select All</string>
-    <string name="zero">0</string>
-    <string name="addProduct">New Product</string>
-    <string name="title_activity_showlist">MainActivity</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="productCatalog">Product Catalog</string>
-    <string name="addNewProduct">Add New Product</string>
-    <string name="content">Image</string>
-    <string name="menu_settings">Settings</string>
+    <string name="total">Total</string>
     
     <string-array name="period">
         <item>Daily</item>
@@ -31,16 +18,12 @@
         <item name="android:textColor">#ffffff</item>
         <item name="android:gravity">center</item>
         <item name="android:layout_margin">3dp</item>
-        <item name="android:textSize">20dp</item>
+        <item name="android:textSize">20sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:shadowColor">#000000</item>
         <item name="android:shadowDx">1</item>
         <item name="android:shadowDy">1</item>
         <item name="android:shadowRadius">2</item>
     </style>
-
-    <string name="title_activity_show_stock">ShowStockActivity</string>
-    <string name="stock">Stock</string>
-    <string name="sale">Sale</string>
 
 </resources>

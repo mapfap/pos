@@ -53,7 +53,6 @@ public class ProductDetailActivity extends Activity {
 	private ListView stockListView;
 	private String id;
 	private String[] remember;
-	private int[] count;
 	private AlertDialog.Builder popDialog;
 	private LayoutInflater inflater ;
 	
@@ -92,7 +91,6 @@ public class ProductDetailActivity extends Activity {
 
 		initUI(savedInstanceState);
 		remember = new String[3];
-		count = new int[3];
 		nameBox.setText(product.getName());
 		priceBox.setText(product.getUnitPrice() + "");
 		barcodeBox.setText(product.getBarcode());

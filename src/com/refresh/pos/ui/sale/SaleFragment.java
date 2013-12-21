@@ -22,11 +22,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.refresh.pos.R;
-import com.refresh.pos.domain.inventory.Inventory;
 import com.refresh.pos.domain.inventory.LineItem;
-import com.refresh.pos.domain.inventory.ProductCatalog;
 import com.refresh.pos.domain.sale.Register;
-import com.refresh.pos.domain.sale.Sale;
 import com.refresh.pos.techicalservices.NoDaoSetException;
 import com.refresh.pos.ui.MainActivity;
 import com.refresh.pos.ui.component.UpdatableFragment;
