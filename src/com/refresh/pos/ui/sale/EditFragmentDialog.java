@@ -3,6 +3,7 @@ package com.refresh.pos.ui.sale;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -27,6 +28,7 @@ public class EditFragmentDialog extends DialogFragment {
 	private String saleId;
 	private String position;
 	private LineItem lineItem;
+	private Button removeButton;
 	
 	public EditFragmentDialog(UpdatableFragment saleFragment, UpdatableFragment reportFragment) {
 		super();
@@ -46,6 +48,7 @@ public class EditFragmentDialog extends DialogFragment {
 		quantityBox = (EditText) v.findViewById(R.id.quantityBox);
 		priceBox = (EditText) v.findViewById(R.id.priceBox);
 		comfirmButton = (Button) v.findViewById(R.id.confirmButton);
+		removeButton = (Button) v.findViewById(R.id.removeButton);
 		
 		saleId = getArguments().getString("sale_id");
 		position = getArguments().getString("position");
@@ -53,6 +56,14 @@ public class EditFragmentDialog extends DialogFragment {
 		lineItem = register.getCurrentSale().getLineItemAt(Integer.parseInt(position));
 		quantityBox.setText(lineItem.getQuantity()+"");
 		priceBox.setText(lineItem.getProduct().getUnitPrice()+"");
+		removeButton.setOnClickListener(new OnClickListener(){
+			@Override
+			public void onClick(View arg0) {
+				Log.d("remove", "id=" + lineItem.getId());
+				register.removeItem(lineItem);
+				end();
+			}
+		});
 
 		comfirmButton.setOnClickListener(new OnClickListener(){
 			@Override

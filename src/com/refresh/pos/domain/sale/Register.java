@@ -107,5 +107,10 @@ public class Register {
 		lineItem.setQuantity(quantity);
 		saleDao.updateLineItem(saleId, lineItem);
 	}
+
+	public void removeItem(LineItem lineItem) {
+		saleDao.removeLineItem(lineItem.getId());
+		currentSale.removeItem(lineItem);
+	}
 	
 }

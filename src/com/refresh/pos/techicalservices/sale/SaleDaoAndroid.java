@@ -176,6 +176,11 @@ public class SaleDaoAndroid implements SaleDao {
 		
 	}
 
+	@Override
+	public void removeLineItem(int id) {
+		database.delete(DatabaseContents.TABLE_SALE_LINEITEM.toString(), id);
+	}
+
 
 
 }

@@ -28,5 +28,7 @@ public interface SaleDao {
 	
 	void cancelSale(Sale sale,String endTime);
 
+	void removeLineItem(int id);
+
 
 }

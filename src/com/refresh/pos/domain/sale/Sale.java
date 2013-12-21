@@ -106,4 +106,8 @@ public class Sale {
 		return map;
 	}
 
+	public void removeItem(LineItem lineItem) {
+		items.remove(lineItem);
+	}
+
 }

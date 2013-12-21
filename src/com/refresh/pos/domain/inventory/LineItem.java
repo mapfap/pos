@@ -66,4 +66,12 @@ public class LineItem {
 	public Double getPriceAtSale() {
 		return unitPriceAtSale;
 	}
+	
+	@Override
+	public boolean equals(Object object) {
+		if (object == null) return false;
+		if (!(object instanceof LineItem)) return false;
+		LineItem lineItem = (LineItem) object;
+		return lineItem.getId() == this.getId();
+	}
 }
