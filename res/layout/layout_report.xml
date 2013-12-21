@@ -180,7 +180,6 @@
                 android:background="#0099CC"
                 android:gravity="right|center_vertical"
                 android:paddingRight="10dp"
-                android:text="0"
                 android:textColor="#FFFFFF"
                 android:textStyle="bold" />
         </TableRow>

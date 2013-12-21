@@ -23,10 +23,10 @@
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
                 android:layout_weight="2"
-                android:background="#80DDDDFF"
+                android:background="#eeeeee"
                 android:gravity="center"
                 android:paddingLeft="10dp"
-                android:text="ID" />
+                />
         </TableRow>
 
         <TableRow
@@ -43,10 +43,10 @@
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
                 android:layout_weight="1.5"
-                android:background="#80DDDDFF"
+                android:background="#eeeeee"
                 android:gravity="center"
                 android:paddingLeft="10dp"
-                android:text="Date" />
+                 />
         </TableRow>
 
         <TableRow
@@ -64,10 +64,10 @@
                 android:layout_width="0dp"
                 android:layout_height="30dp"
                 android:layout_weight="0.75"
-                android:background="#80DDDDFF"
+                android:background="#eeeeee"
 				android:gravity="right|center_vertical"
                 android:paddingRight="10dp"
-                android:text="@string/total" />
+                />
         </TableRow>
     </LinearLayout>
 

@@ -74,7 +74,7 @@ public class SaleDetailActivity extends Activity{
 		}
 
 		SimpleAdapter sAdap = new SimpleAdapter(SaleDetailActivity.this, lineitemList,
-				R.layout.listview_sale, new String[]{"name","quantity","price"}, new int[] {R.id.name,R.id.quantity,R.id.price});
+				R.layout.listview_lineitem, new String[]{"name","quantity","price"}, new int[] {R.id.name,R.id.quantity,R.id.price});
 		lineitemListView.setAdapter(sAdap);
 	}
 

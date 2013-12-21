@@ -1,42 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-   android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:gravity="center_vertical" >
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal" >
 
     <TableRow
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_weight="2"
         android:background="#FFFFFF"
-        android:padding="5dip" >
+        android:paddingBottom="1dip"
+        android:paddingLeft="1dip" >
 
         <TextView
-            android:id="@+id/name"
+            android:id="@+id/dateAdded"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:text="Name" />
+            android:background="#eeeeee"
+            android:textColor="#000000"
+            android:gravity="right"
+            android:paddingRight="3dp"
+             />
+    </TableRow>
 
-        <TextView
-            android:id="@+id/date"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1.5"
-            android:text="Date" />
-        
+    <TableRow
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.5"
+        android:background="#FFFFFF"
+        android:paddingBottom="1dip"
+        android:paddingLeft="1dip" >
+
         <TextView
             android:id="@+id/cost"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1.5"
-            android:text="Cost" />
+            android:background="#eeeeee"
+            android:textColor="#000000"
+            android:gravity="right"
+            android:paddingRight="3dp"
+             />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.75"
+        android:background="#FFFFFF"
+        android:paddingBottom="1dip"
+        android:paddingLeft="1dip"
+        android:paddingRight="1dip" >
 
         <TextView
-            android:id="@+id/total"
+            android:id="@+id/quantity"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1.5"
-            android:text="@string/total" />
+            android:layout_weight="0.75"
+            android:background="#eeeeee"
+            android:textColor="#000000"
+            android:gravity="right"
+            android:paddingRight="3dp"
+             />
     </TableRow>
 
 </LinearLayout>

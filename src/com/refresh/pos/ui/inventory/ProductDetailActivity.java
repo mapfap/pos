@@ -84,8 +84,6 @@ public class ProductDetailActivity extends Activity {
 			e.printStackTrace();
 		}
 
-//		Log.d("Product Detail", "id = "
-//				+ getIntent().getStringExtra("id").toString());
 		id = getIntent().getStringExtra("id");
 		product = productCatalog.getProductById(Integer.parseInt(id));
 
@@ -217,7 +215,7 @@ public class ProductDetailActivity extends Activity {
 		}
 
 		SimpleAdapter sAdap = new SimpleAdapter(ProductDetailActivity.this, stockList,
-				R.layout.listview_productstock, new String[] { "dateAdded",
+				R.layout.listview_stock, new String[] { "dateAdded",
 				"cost", "quantity" }, new int[] {
 				R.id.dateAdded, R.id.cost, R.id.quantity, });
 		stockListView.setAdapter(sAdap);

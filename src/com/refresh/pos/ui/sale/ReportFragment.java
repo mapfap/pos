@@ -139,7 +139,7 @@ public class ReportFragment extends UpdatableFragment {
 		}
 		
 		SimpleAdapter sAdap = new SimpleAdapter(getActivity().getBaseContext() , saleList,
-				R.layout.listview_saleledger, new String[] { "id", "startTime", "total"},
+				R.layout.listview_report, new String[] { "id", "startTime", "total"},
 				new int[] { R.id.sid, R.id.startTime , R.id.total});
 		saleLedgerListView.setAdapter(sAdap);
 	}

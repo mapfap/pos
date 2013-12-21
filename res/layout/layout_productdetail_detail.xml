@@ -61,7 +61,6 @@
                     android:background="#DDEEFF"
                     android:gravity="right"
                     android:padding="2dip"
-                    android:text="0"
                     android:textSize="25sp" />
             </LinearLayout>
 
@@ -71,7 +70,7 @@
                 android:orientation="vertical"
                 android:padding="2dip" >
 
-                <TextView
+             <!--   <TextView
                     android:id="@+id/profitLabel"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -86,8 +85,8 @@
                     android:background="#DDEEFF"
                     android:gravity="right"
                     android:padding="2dip"
-                    android:text="0"
                     android:textSize="25sp" />
+             -->
             </LinearLayout>
 
             <LinearLayout
@@ -114,8 +113,6 @@
                     android:gravity="right"
                     android:inputType="number"
                     android:padding="2dip"
-                    android:text="0"
-                    android:textColor="#000000"
                     android:textSize="25sp" />
             </LinearLayout>
 
@@ -143,7 +140,6 @@
                     android:gravity="right"
                     android:inputType="number"
                     android:padding="2dip"
-                    android:text="00000000"
                     android:textColor="#000000"
                     android:textSize="25sp" />
             </LinearLayout>

@@ -109,7 +109,7 @@ public class SaleFragment extends UpdatableFragment {
 		
 		SimpleAdapter sAdap;
 		sAdap = new SimpleAdapter(getActivity().getBaseContext(), saleList,
-				R.layout.listview_sale, new String[]{"name","quantity","price"}, new int[] {R.id.name,R.id.quantity,R.id.price});
+				R.layout.listview_lineitem, new String[]{"name","quantity","price"}, new int[] {R.id.name,R.id.quantity,R.id.price});
 		saleListView.setAdapter(sAdap);
 	}
 
