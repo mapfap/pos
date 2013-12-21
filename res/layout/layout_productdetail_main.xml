@@ -28,22 +28,14 @@
 
                 <include
                     android:id="@+id/tab1"
-                    layout="@layout/tab_detail" />
+                    layout="@layout/layout_productdetail_detail" />
 
                 <include
                     android:id="@+id/tab2"
-                    layout="@layout/tab_stock" />
+                    layout="@layout/layout_productdetail_stock" />
             </FrameLayout>
         </LinearLayout>
     </TabHost>
-
-    <!-- <Button
-        android:id="@+id/addProductLotButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/ButtonText"
-        android:background="@drawable/btn_green"
-        android:text="Add PRODUCT'S STOCK"/> -->
 
     <Button
         android:id="@+id/addProductLotButton"
@@ -51,6 +43,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/btn_green"
-        android:text="ADD PRODUCT&apos;S STOCK" />
+        android:text="ADD PRODUCT TO STOCK" />
 
 </LinearLayout>

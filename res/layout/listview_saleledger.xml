@@ -4,59 +4,71 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <TableRow
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#FFFFFF"
-        android:padding="5dip" >
+        android:orientation="horizontal" >
 
-        <TextView
-            android:id="@+id/sid"
-            android:layout_width="0dip"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.1"
-            android:text="id" />
+        <TableRow
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_weight="1.5"
+            android:background="#FFFFFF"
+            android:paddingBottom="1dip"
+            android:paddingLeft="1dip"
+            android:paddingTop="1dip" >
 
-        <TextView
-            android:id="@+id/startTime"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.1"
-            android:text="start" />
+            <TextView
+                android:id="@+id/sid"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="2"
+                android:background="#80DDDDFF"
+                android:gravity="center"
+                android:paddingLeft="10dp"
+                android:text="ID" />
+        </TableRow>
 
-     <!--    <TextView
-            android:id="@+id/endTime"
+        <TableRow
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.1"
-            android:text="end" /> -->
+            android:layout_height="30dp"
+            android:layout_weight="3"
+            android:background="#FFFFFF"
+            android:paddingBottom="1dip"
+            android:paddingLeft="1dip"
+            android:paddingTop="1dip" >
 
-        <TextView
-            android:id="@+id/status"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.1"
-            android:text="status" />
-        <TextView
-            android:id="@+id/total"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.1"
-            android:text="total" />
-        <TextView
-            android:id="@+id/orders"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.1"
-            android:text="orders" />
+            <TextView
+                android:id="@+id/startTime"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1.5"
+                android:background="#80DDDDFF"
+                android:gravity="center"
+                android:paddingLeft="10dp"
+                android:text="Date" />
+        </TableRow>
 
-        <View
-            android:id="@+id/optionView"
-            android:layout_width="0dip"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.1"
-            android:background="@drawable/ic_action_overflow"
-            android:onClick="suspendSaleOnClickHandler" />
-    </TableRow>
+        <TableRow
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="3"
+            android:background="#FFFFFF"
+            android:paddingBottom="1dip"
+            android:paddingLeft="1dip"
+            android:paddingRight="1dip"
+            android:paddingTop="1dip" >
+
+            <TextView
+                android:id="@+id/total"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="0.75"
+                android:background="#80DDDDFF"
+				android:gravity="right|center_vertical"
+                android:paddingRight="10dp"
+                android:text="Total" />
+        </TableRow>
+    </LinearLayout>
 
 </LinearLayout>

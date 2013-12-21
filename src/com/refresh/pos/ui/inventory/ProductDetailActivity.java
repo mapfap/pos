@@ -101,7 +101,7 @@ public class ProductDetailActivity extends Activity {
 
 	private void initUI(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.layout_productdetail);
+		setContentView(R.layout.layout_productdetail_main);
 		stockListView = (ListView) findViewById(R.id.stockListView);
 		nameBox = (EditText) findViewById(R.id.nameBox);
 		priceBox = (EditText) findViewById(R.id.priceBox);

@@ -7,8 +7,6 @@ import java.util.Map;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -18,7 +16,6 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
@@ -56,7 +53,7 @@ public class ReportFragment extends UpdatableFragment {
 			e.printStackTrace();
 		}
 		
-		View view = inflater.inflate(R.layout.layout_report2, container, false);
+		View view = inflater.inflate(R.layout.layout_report, container, false);
 		
 		previousButton = (Button) view.findViewById(R.id.previousButton);
 		nextButton = (Button) view.findViewById(R.id.nextButton);
@@ -65,15 +62,6 @@ public class ReportFragment extends UpdatableFragment {
 //		searchBox = (EditText) view.findViewById(R.id.searchBox);
 		totalBox = (TextView) view.findViewById(R.id.totalBox);
 		spinner = (Spinner) view.findViewById(R.id.spinner1);
-			
-//		// Analyse Sale Report, Show as graph. 
-//		if (mChartView == null) {
-//			LinearLayout layout = (LinearLayout) view.findViewById(R.id.chart);
-//			mChartView = (new Chart()).execute(getActivity().getBaseContext());
-//			layout.addView(mChartView, new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
-//		} else {
-//			mChartView.repaint();
-//		}
 		
 		initUI();
 		return view;
@@ -151,7 +139,7 @@ public class ReportFragment extends UpdatableFragment {
 		}
 		
 		SimpleAdapter sAdap = new SimpleAdapter(getActivity().getBaseContext() , saleList,
-				R.layout.listview_saleledger2, new String[] { "id", "startTime", "total"},
+				R.layout.listview_saleledger, new String[] { "id", "startTime", "total"},
 				new int[] { R.id.sid, R.id.startTime , R.id.total});
 		saleLedgerListView.setAdapter(sAdap);
 	}
