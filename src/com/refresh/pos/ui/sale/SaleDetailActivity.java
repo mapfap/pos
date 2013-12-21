@@ -58,7 +58,7 @@ public class SaleDetailActivity extends Activity{
 
 	private void initUI(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_saledetail);
+		setContentView(R.layout.layout_saledetail);
 		
 		initiateActionBar();
 		

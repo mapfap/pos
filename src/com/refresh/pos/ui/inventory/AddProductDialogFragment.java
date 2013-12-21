@@ -49,7 +49,7 @@ public class AddProductDialogFragment extends DialogFragment {
 			e.printStackTrace();
 		}
 		
-		View v = inflater.inflate(R.layout.activity_addproduct, container,
+		View v = inflater.inflate(R.layout.layout_addproduct, container,
 				false);
 		
 		

@@ -73,7 +73,7 @@ public class MainActivity extends FragmentActivity {
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		setContentView(R.layout.activity_main);
+		setContentView(R.layout.layout_main);
 		viewPager = (ViewPager) findViewById(R.id.pager);
 		super.onCreate(savedInstanceState);
 		SDK_SUPPORTED = android.os.Build.VERSION.SDK_INT >= 11;

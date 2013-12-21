@@ -150,7 +150,7 @@ public class InventoryFragment extends UpdatableFragment {
 			List<Product> result = productCatalog.searchProduct(search);
 			showList(result);
 			if (result.isEmpty()) {
-//				Toast.makeText(getActivity().getBaseContext() , "No results matched.", Toast.LENGTH_SHORT).show();
+				Toast.makeText(getActivity().getBaseContext() , "No results matched.", Toast.LENGTH_SHORT).show();
 			}
 		}
 	}

@@ -96,7 +96,7 @@ public class Sale {
 
 	public Map<String, String> toMap() {	
 		Map<String, String> map = new HashMap<String, String>();
-		map.put("id",id+"");
+		map.put("id",id + "");
 		map.put("startTime", startTime);
 		map.put("endTime", endTime);
 		map.put("status", getStatus());

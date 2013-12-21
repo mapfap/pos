@@ -96,7 +96,7 @@ public class Register {
 		return true;
 	}
 	
-	public void cancleSale(){
+	public void cancleSale() {
 		if (currentSale != null){
 			saleDao.cancelSale(currentSale,DateTimeStrategy.getCurrentTime());
 			currentSale = null;
@@ -111,6 +111,9 @@ public class Register {
 	public void removeItem(LineItem lineItem) {
 		saleDao.removeLineItem(lineItem.getId());
 		currentSale.removeItem(lineItem);
+		if (currentSale.getAllLineItem().isEmpty()) {
+			cancleSale();
+		}
 	}
 	
 }

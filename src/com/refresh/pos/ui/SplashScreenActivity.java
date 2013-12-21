@@ -74,7 +74,7 @@ public class SplashScreenActivity extends Activity {
 
 	private void initiateUI(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_loader);
+		setContentView(R.layout.layout_splashscreen);
 		goButton = (Button) findViewById(R.id.goButton);
 		goButton.setOnClickListener(new View.OnClickListener() {
 

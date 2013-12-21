@@ -5,6 +5,9 @@ import java.util.List;
 import java.util.Map;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
@@ -16,6 +19,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.refresh.pos.R;
 import com.refresh.pos.domain.inventory.Inventory;
@@ -36,7 +40,6 @@ public class SaleFragment extends UpdatableFragment {
 	private Button clearButton;
 	private TextView totalPrice;
 	private Button endButton;
-	private ProductCatalog productCatalog;
 	private UpdatableFragment reportFragment;
 
 	public SaleFragment(UpdatableFragment reportFragment) {
@@ -49,7 +52,6 @@ public class SaleFragment extends UpdatableFragment {
 		
 		try {
 			register = Register.getInstance();
-			productCatalog = Inventory.getInstance().getProductCatalog();
 		} catch (NoDaoSetException e) {
 			e.printStackTrace();
 		}
@@ -87,6 +89,8 @@ public class SaleFragment extends UpdatableFragment {
 			public void onClick(View v) {
 				if(register.hasSale()){
 					showPopup(v);
+				} else {
+					Toast.makeText(getActivity().getBaseContext() , "Sale is empty.", Toast.LENGTH_SHORT).show();
 				}
 			}
 		});
@@ -94,9 +98,8 @@ public class SaleFragment extends UpdatableFragment {
 		clearButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				register.cancleSale();
-				update();
-			}
+				showConfirmClearDialog();
+			} 
 		});
 	}
 	
@@ -158,6 +161,28 @@ public class SaleFragment extends UpdatableFragment {
 	public void onResume() {
 		super.onResume();
 		update();
+	}
+	
+	private void showConfirmClearDialog() {
+		AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
+		dialog.setTitle("Are you sure you want to CLEAR this sale.");
+		dialog.setPositiveButton("No, Keep it.", new OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+
+			}
+		});
+
+		dialog.setNegativeButton("CLEAR", new OnClickListener() {
+
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				register.cancleSale();
+				update();
+			}
+		});
+
+		dialog.show();
 	}
 
 }

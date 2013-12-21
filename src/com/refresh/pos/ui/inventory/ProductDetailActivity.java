@@ -311,7 +311,7 @@ public class ProductDetailActivity extends Activity {
 	private View Viewlayout;
 	private AlertDialog alert;
 	private void showAddlot(){
-		Viewlayout = inflater.inflate(R.layout.activity_addproductlot,
+		Viewlayout = inflater.inflate(R.layout.layout_addproductlot,
 				(ViewGroup) findViewById(R.id.addProdutlot_dialog));
 		popDialog.setTitle("Add Product Lot");
 		popDialog.setView(Viewlayout);

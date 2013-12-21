@@ -125,7 +125,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="0.5"
-            android:background="@drawable/btn_yellow"
+            android:background="@drawable/btn_red"
             android:text="CLEAR" />
 
         <Button
@@ -134,7 +134,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="0.5"
-            android:background="@drawable/btn_blue"
+            android:background="@drawable/btn_green"
             android:text="PAYMENT" />
     </LinearLayout>
 

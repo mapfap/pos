@@ -22,6 +22,6 @@
         android:layout_width="0dip"
         android:layout_weight="0.1"
         android:onClick="optionOnClickHandler"
-        android:background="@drawable/ic_action_overflow" />
+        android:background="@drawable/edit" />
 
 </LinearLayout>

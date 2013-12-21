@@ -38,7 +38,7 @@ public class ReportFragment extends UpdatableFragment {
 	private SaleLedger saleLedger;
 	List<Map<String, String>> saleList;
 	private ListView saleLedgerListView;
-	private EditText searchBox;
+//	private EditText searchBox;
 	private TextView totalBox;
 	private Spinner spinner;
 	private Button previousButton;
@@ -62,7 +62,7 @@ public class ReportFragment extends UpdatableFragment {
 		nextButton = (Button) view.findViewById(R.id.nextButton);
 		currentBox = (TextView) view.findViewById(R.id.currentBox);
 		saleLedgerListView = (ListView) view.findViewById(R.id.saleListView);
-		searchBox = (EditText) view.findViewById(R.id.searchBox);
+//		searchBox = (EditText) view.findViewById(R.id.searchBox);
 		totalBox = (TextView) view.findViewById(R.id.totalBox);
 		spinner = (Spinner) view.findViewById(R.id.spinner1);
 			
@@ -132,15 +132,15 @@ public class ReportFragment extends UpdatableFragment {
 		      }     
 		});
 		
-		searchBox.addTextChangedListener(new TextWatcher() {
-			public void afterTextChanged(Editable s) {
+//		searchBox.addTextChangedListener(new TextWatcher() {
+//			public void afterTextChanged(Editable s) {
 //				if (s.length() >= SEARCH_LIMIT) {
 //					search();
 //				}
-			}
-			public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-			public void onTextChanged(CharSequence s, int start, int before,int count) {}
-		});
+//			}
+//			public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+//			public void onTextChanged(CharSequence s, int start, int before,int count) {}
+//		});
 	}
 	
 	private void showList(List<Sale> list) {
