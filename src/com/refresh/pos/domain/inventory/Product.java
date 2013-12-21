@@ -3,7 +3,11 @@ package com.refresh.pos.domain.inventory;
 import java.util.HashMap;
 import java.util.Map;
 
-
+/**
+ * Product or item represents the real product in store.
+ * @author Refresh Team
+ *
+ */
 public class Product {
 
 	private int id;
@@ -11,11 +15,18 @@ public class Product {
 	private String barcode;
 	private double unitPrice;
 	
-//	public static final String UNDEFINED = "UNDEFINED";
+	/**
+	 * Static value for UNDEFINED ID.
+	 */
 	public static final int UNDEFINED_ID = -1;
-//	public static final int UNDEFINED_PRICE = 0;
-//	public static final Product UNDEFINED_PRODUCT = new Product(UNDEFINED_ID, UNDEFINED, UNDEFINED, UNDEFINED_PRICE);
-	
+
+	/**
+	 * Constructs a new Product.
+	 * @param id ID of the product, This value should be assigned from database.
+	 * @param name name of this product.
+	 * @param barcode barcode (any standard format) of this product.
+	 * @param salePrice price for using when doing sale.
+	 */
 	public Product(int id, String name, String barcode, double salePrice) {
 		this.id = id;
 		this.name = name;
@@ -55,12 +66,16 @@ public class Product {
 		return unitPrice;
 	}
 
+	/**
+	 * Returns the description of this Product in Map format. 
+	 * @return the description of this Product in Map format.
+	 */
 	public Map<String, String> toMap() {
 		Map<String, String> map = new HashMap<String, String>();
-		map.put("id",id+"");
+		map.put("id", id + "");
 		map.put("name", name);
 		map.put("barcode", barcode);
-		map.put("unitPrice", unitPrice+"");
+		map.put("unitPrice", unitPrice + "");
 		return map;
 		
 	}

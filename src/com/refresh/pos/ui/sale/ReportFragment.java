@@ -193,7 +193,9 @@ public class ReportFragment extends UpdatableFragment {
 	@Override
 	public void onResume() {
 		super.onResume();
-		update();
+		// update();
+		// it shouldn't call update() anymore. Because super.onResume() 
+		// already fired the action of spinner.onItemSelected()
 	}
 	
 	private void addDate(int increment) {

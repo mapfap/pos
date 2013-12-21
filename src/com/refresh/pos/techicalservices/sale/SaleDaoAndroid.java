@@ -5,7 +5,6 @@ import java.util.Calendar;
 import java.util.List;
 
 import android.content.ContentValues;
-import android.util.Log;
 
 import com.refresh.pos.domain.DateTimeStrategy;
 import com.refresh.pos.domain.inventory.LineItem;
@@ -79,11 +78,9 @@ public class SaleDaoAndroid implements SaleDao {
 	
 	@Override
 	public List<Sale> getAllSaleDuring(Calendar start, Calendar end) {
-//		String startBound = "2010-01-10"; String endBound = "2014-12-30";
 		String startBound = DateTimeStrategy.getSQLDateFormat(start);
 		String endBound = DateTimeStrategy.getSQLDateFormat(end);
-		List<Sale> list = getAllSale(" WHERE end_time BETWEEN '" + startBound + " 00:00:00' AND '" + endBound + " 23:59:59' AND status = 'ENDED'");
-		Log.d("SaleDaoAndroid", "report size = " + list.size());
+		List<Sale> list = getAllSale(" WHERE end_time BETWEEN '" + startBound + " 00:00:00' AND '" + endBound + " 23:59:59' AND status = 'ENDED'"); 
 		return list;
 	}
 	
@@ -98,16 +95,15 @@ public class SaleDaoAndroid implements SaleDao {
         List<Sale> list = new ArrayList<Sale>();
         for (Object object: objectList) {
         	ContentValues content = (ContentValues) object;
-                list.add(new QuickLoadSale(
-                		content.getAsInteger("_id"),
-                        content.getAsString("start_time"),
-                        content.getAsString("end_time"),
-                        content.getAsString("status"),
-                        content.getAsDouble("total"),
-                        content.getAsInteger("orders")
-                        
-                		)
-                );
+        	list.add(new QuickLoadSale(
+        			content.getAsInteger("_id"),
+        			content.getAsString("start_time"),
+        			content.getAsString("end_time"),
+        			content.getAsString("status"),
+        			content.getAsDouble("total"),
+        			content.getAsInteger("orders")      
+        			)
+        	);
         }
         return list;
 	}

@@ -42,8 +42,7 @@ public class SaleLedger {
 		saleDao.clearSaleLedger();
 	}
 
-	public List<Sale> getAllSaleDuring(Calendar start,
-			Calendar end) {
+	public List<Sale> getAllSaleDuring(Calendar start, Calendar end) {
 		return saleDao.getAllSaleDuring(start, end);
 	}
 }

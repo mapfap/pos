@@ -105,7 +105,7 @@ public class InventoryDaoAndroid implements InventoryDao {
          content.put("date_added", productLot.getDateAdded());
          content.put("quantity",  productLot.getQuantity());
          content.put("product_id",  productLot.getProduct().getId());
-         content.put("cost",  productLot.getCost());
+         content.put("cost",  productLot.unitCost());
          int id = database.insert(DatabaseContents.TABLE_STOCK.toString(), content);
          
          int productId = productLot.getProduct().getId();
