@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 @SuppressLint("ValidFragment")
 public class PaymentFragmentDialog extends DialogFragment {
@@ -47,31 +48,36 @@ public class PaymentFragmentDialog extends DialogFragment {
 		
 		confirmButton = (Button) v.findViewById(R.id.confirmButton);
 		confirmButton.setOnClickListener(new View.OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
-				if(input.getText().toString().isEmpty()){
+				
+				String inputString = input.getText().toString();
+				
+				if (inputString.equals("")) {
+					Toast.makeText(getActivity().getBaseContext(), "Please input money.", Toast.LENGTH_SHORT).show();
 					return;
 				}
 				double a = Double.parseDouble(strtext);
-				double b = Double.parseDouble(input.getText().toString());
-				if(b<a){
-					
-				}
-				else{
-					Bundle bundle=new Bundle();
-					bundle.putString("edttext",b-a+"");
-					EndPaymentFragmentDialog newFragment = new EndPaymentFragmentDialog(saleFragment, reportFragment);
+				double b = Double.parseDouble(inputString);
+				if (b < a) {
+					Toast.makeText(getActivity().getBaseContext(), "Not enough money.", Toast.LENGTH_SHORT).show();
+				} else {
+					Bundle bundle = new Bundle();
+					bundle.putString("edttext", b - a + "");
+					EndPaymentFragmentDialog newFragment = new EndPaymentFragmentDialog(
+							saleFragment, reportFragment);
 					newFragment.setArguments(bundle);
-				    newFragment.show(getFragmentManager(), "dialog");
-				    end();
+					newFragment.show(getFragmentManager(), "dialog");
+					end();
 				}
-				
+
 			}
 		});
 		return v;
 	}
-	private void end(){
+
+	private void end() {
 		this.dismiss();
 		
 	}

@@ -13,7 +13,7 @@ public class ProductCatalog {
 	}
 
 	public boolean addProduct(String name, String barcode, double salePrice) {
-		Product product = new Product(Product.UNDEFINED_ID, name, barcode, salePrice);		
+		Product product = new Product(name, barcode, salePrice);		
 		int id = inventoryDao.addProduct(product);
 		return id != -1;
 	}

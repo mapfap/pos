@@ -11,10 +11,10 @@ public class Product {
 	private String barcode;
 	private double unitPrice;
 	
-	public static final String UNDEFINED = "UNDEFINED";
+//	public static final String UNDEFINED = "UNDEFINED";
 	public static final int UNDEFINED_ID = -1;
-	public static final int UNDEFINED_PRICE = 0;
-	public static final Product UNDEFINED_PRODUCT = new Product(UNDEFINED_ID, UNDEFINED, UNDEFINED, UNDEFINED_PRICE);
+//	public static final int UNDEFINED_PRICE = 0;
+//	public static final Product UNDEFINED_PRODUCT = new Product(UNDEFINED_ID, UNDEFINED, UNDEFINED, UNDEFINED_PRICE);
 	
 	public Product(int id, String name, String barcode, double salePrice) {
 		this.id = id;
@@ -23,6 +23,10 @@ public class Product {
 		this.unitPrice = salePrice;
 	}
 	
+	public Product(String name, String barcode, double salePrice) {
+		this(UNDEFINED_ID, name, barcode, salePrice);
+	}
+
 	public String getName() {
 		return name;
 	}

@@ -78,7 +78,7 @@ public class InventoryDaoAndroid implements InventoryDao {
 	@Override
 	public Product getProductByBarcode(String barcode) {
 		List<Product> list = getProductBy("barcode", barcode);
-        if (list.isEmpty()) return Product.UNDEFINED_PRODUCT;
+        if (list.isEmpty()) return null;
         return list.get(0);
 	}
 
