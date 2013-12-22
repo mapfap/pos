@@ -2,12 +2,13 @@ package com.refresh.pos.techicalservices;
 
 public enum DatabaseContents {
 	
-	DATABASE("pos_database15"),
+	DATABASE("com.refresh.db1"),
 	TABLE_PRODUCT_CATALOG("product_catalog"),
 	TABLE_STOCK("stock"),
 	TABLE_SALE("sale"),
 	TABLE_SALE_LINEITEM("sale_lineitem"),
-	TABLE_STOCK_SUM("stock_sum");
+	TABLE_STOCK_SUM("stock_sum"),
+	LANGUAGE("language");
 	
 	private String name;
 	private DatabaseContents(String name) {

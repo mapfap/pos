@@ -21,7 +21,7 @@ public class AndroidDatabase extends SQLiteOpenHelper implements Database {
 	@Override
 	public void onCreate(SQLiteDatabase database) {
 		
-		database.execSQL("CREATE TABLE " + DatabaseContents.TABLE_PRODUCT_CATALOG.toString() + "("
+		database.execSQL("CREATE TABLE " + DatabaseContents.TABLE_PRODUCT_CATALOG + "("
 				
 				+ "_id INTEGER PRIMARY KEY,"
 				+ "name TEXT(100),"
@@ -30,9 +30,9 @@ public class AndroidDatabase extends SQLiteOpenHelper implements Database {
 				+ "status TEXT(10)"
 				
 				+ ");");
-		Log.d("CREATE DATABASE", "Create " + DatabaseContents.TABLE_PRODUCT_CATALOG.toString() + " Successfully.");
+		Log.d("CREATE DATABASE", "Create " + DatabaseContents.TABLE_PRODUCT_CATALOG + " Successfully.");
 		
-		database.execSQL("CREATE TABLE "+ DatabaseContents.TABLE_STOCK.toString() + "(" 
+		database.execSQL("CREATE TABLE "+ DatabaseContents.TABLE_STOCK + "(" 
 				
 				+ "_id INTEGER PRIMARY KEY,"
 				+ "product_id INTEGER,"
@@ -41,9 +41,9 @@ public class AndroidDatabase extends SQLiteOpenHelper implements Database {
 				+ "date_added DATETIME"
 				
 				+ ");");
-		Log.d("CREATE DATABASE", "Create " + DatabaseContents.TABLE_STOCK.toString() + " Successfully.");
+		Log.d("CREATE DATABASE", "Create " + DatabaseContents.TABLE_STOCK + " Successfully.");
 		
-		database.execSQL("CREATE TABLE "+ DatabaseContents.TABLE_SALE.toString() + "("
+		database.execSQL("CREATE TABLE "+ DatabaseContents.TABLE_SALE + "("
 				
 				+ "_id INTEGER PRIMARY KEY,"
 				+ "status TEXT(40),"
@@ -54,9 +54,9 @@ public class AndroidDatabase extends SQLiteOpenHelper implements Database {
 				+ "orders INTEGER"
 				
 				+ ");");
-		Log.d("CREATE DATABASE", "Create " + DatabaseContents.TABLE_SALE.toString() + " Successfully.");
+		Log.d("CREATE DATABASE", "Create " + DatabaseContents.TABLE_SALE + " Successfully.");
 		
-		database.execSQL("CREATE TABLE "+ DatabaseContents.TABLE_SALE_LINEITEM.toString() + "("
+		database.execSQL("CREATE TABLE "+ DatabaseContents.TABLE_SALE_LINEITEM + "("
 				
 				+ "_id INTEGER PRIMARY KEY,"
 				+ "sale_id INTEGER,"
@@ -65,17 +65,25 @@ public class AndroidDatabase extends SQLiteOpenHelper implements Database {
 				+ "unit_price DOUBLE"
 				
 				+ ");");
-		Log.d("CREATE DATABASE", "Create " + DatabaseContents.TABLE_SALE_LINEITEM.toString() + " Successfully.");
+		Log.d("CREATE DATABASE", "Create " + DatabaseContents.TABLE_SALE_LINEITEM + " Successfully.");
 
 
 		// this _id is product_id but for update method, it is easier to use name _id
-		database.execSQL("CREATE TABLE " + DatabaseContents.TABLE_STOCK_SUM.toString() + "("
+		database.execSQL("CREATE TABLE " + DatabaseContents.TABLE_STOCK_SUM + "("
 				
 				+ "_id INTEGER PRIMARY KEY,"
 				+ "quantity INTEGER"
 				
 				+ ");");
-		Log.d("CREATE DATABASE", "Create " + DatabaseContents.TABLE_STOCK_SUM.toString() + " Successfully.");
+		Log.d("CREATE DATABASE", "Create " + DatabaseContents.TABLE_STOCK_SUM + " Successfully.");
+		
+		database.execSQL("CREATE TABLE " + DatabaseContents.LANGUAGE + "("
+				
+				+ "_id INTEGER PRIMARY KEY,"
+				+ "language TEXT(5)"
+				
+				+ ");");
+		Log.d("CREATE DATABASE", "Create " + DatabaseContents.LANGUAGE + " Successfully.");
 		
 		Log.d("CREATE DATABASE", "Create Database Successfully.");
 

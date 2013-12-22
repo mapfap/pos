@@ -28,6 +28,11 @@
     <string name="inventory">Inventory</string>
     <string name="sale">Sale</string>
     <string name="report">Report</string>
+        
+    <string name="lang_en">English</string>
+    <string name="lang_th">ภาษาไทย (th)</string>
+    <string name="lang_jp">日本語 (jp)</string>
+    <string name="hint_lang">Please restart the application to apply this language settings.</string>
     
     
     <string-array name="period">

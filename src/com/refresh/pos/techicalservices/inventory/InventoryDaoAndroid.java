@@ -170,7 +170,7 @@ public class InventoryDaoAndroid implements InventoryDao {
 
 	@Override
 	public int getStockSumById(int id) {
-		String queryString = "SELECT * FROM " + DatabaseContents.TABLE_STOCK_SUM.toString() + " WHERE _id = " + id;
+		String queryString = "SELECT * FROM " + DatabaseContents.TABLE_STOCK_SUM + " WHERE _id = " + id;
 		List<Object> objectList = (database.select(queryString));
 		ContentValues content = (ContentValues) objectList.get(0);
 		int quantity = content.getAsInteger("quantity");

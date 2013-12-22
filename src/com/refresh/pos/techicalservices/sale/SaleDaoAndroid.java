@@ -90,7 +90,7 @@ public class SaleDaoAndroid implements SaleDao {
 	 * @return
 	 */
 	public List<Sale> getAllSale(String condition) {
-		String queryString = "SELECT * FROM " + DatabaseContents.TABLE_SALE.toString() + condition;
+		String queryString = "SELECT * FROM " + DatabaseContents.TABLE_SALE + condition;
         List<Object> objectList = database.select(queryString);
         List<Sale> list = new ArrayList<Sale>();
         for (Object object: objectList) {
@@ -115,7 +115,7 @@ public class SaleDaoAndroid implements SaleDao {
 	 */
 	@Override
 	public Sale getSaleById(int id) {
-		String queryString = "SELECT * FROM " + DatabaseContents.TABLE_SALE.toString() + " WHERE _id = " + id;
+		String queryString = "SELECT * FROM " + DatabaseContents.TABLE_SALE + " WHERE _id = " + id;
         List<Object> objectList = database.select(queryString);
         List<Sale> list = new ArrayList<Sale>();
         for (Object object: objectList) {
@@ -133,13 +133,13 @@ public class SaleDaoAndroid implements SaleDao {
 
 	@Override
 	public List<LineItem> getLineItem(int saleId) {
-		String queryString = "SELECT * FROM " + DatabaseContents.TABLE_SALE_LINEITEM.toString() + " WHERE sale_id = " + saleId;
+		String queryString = "SELECT * FROM " + DatabaseContents.TABLE_SALE_LINEITEM + " WHERE sale_id = " + saleId;
 		List<Object> objectList = database.select(queryString);
 		List<LineItem> list = new ArrayList<LineItem>();
 		for (Object object: objectList) {
 			ContentValues content = (ContentValues) object;
 			int productId = content.getAsInteger("product_id");
-			String queryString2 = "SELECT * FROM " + DatabaseContents.TABLE_PRODUCT_CATALOG.toString() + " WHERE _id = " + productId;
+			String queryString2 = "SELECT * FROM " + DatabaseContents.TABLE_PRODUCT_CATALOG + " WHERE _id = " + productId;
 			List<Object> objectList2 = database.select(queryString2);
 			
 			List<Product> productList = new ArrayList<Product>();

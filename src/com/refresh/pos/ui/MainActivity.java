@@ -23,12 +23,18 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.refresh.pos.R;
+import com.refresh.pos.domain.LanguageController;
 import com.refresh.pos.domain.inventory.Inventory;
 import com.refresh.pos.domain.inventory.Product;
 import com.refresh.pos.domain.inventory.ProductCatalog;
+import com.refresh.pos.techicalservices.DatabaseExecutor;
 import com.refresh.pos.techicalservices.NoDaoSetException;
 import com.refresh.pos.ui.component.UpdatableFragment;
 import com.refresh.pos.ui.inventory.InventoryFragment;
@@ -86,13 +92,6 @@ public class MainActivity extends FragmentActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		Locale locale = new Locale("th");
-		Locale.setDefault(locale);
-		Configuration config = new Configuration();
-		config.locale = locale;
-		getBaseContext().getResources().updateConfiguration(config,
-				getBaseContext().getResources().getDisplayMetrics());
-
 		res = getResources();
 		setContentView(R.layout.layout_main);
 		viewPager = (ViewPager) findViewById(R.id.pager);
@@ -210,6 +209,42 @@ public class MainActivity extends FragmentActivity {
 
 	public ViewPager getViewPager() {
 		return viewPager;
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu){
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.main, menu);
+		return true;
+	}
+	
+	
+	@Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.lang_en:
+            	setLanguage("en");
+                return true;
+            case R.id.lang_th:
+            	setLanguage("th");
+                return true;
+            case R.id.lang_jp:
+            	setLanguage("jp");
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+	
+	private void setLanguage(String localeString) {
+		Locale locale = new Locale(localeString);
+		Locale.setDefault(locale);
+		Configuration config = new Configuration();
+		config.locale = locale;
+		LanguageController.getInstance().setLanguage(localeString);
+		getBaseContext().getResources().updateConfiguration(config,
+				getBaseContext().getResources().getDisplayMetrics());
+		Toast.makeText(getBaseContext(), res.getString(R.string.hint_lang), Toast.LENGTH_LONG).show();
 	}
 
 }

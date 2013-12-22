@@ -29,6 +29,7 @@
     <string name="sale">売却</string>
     <string name="report">報告</string>
     
+    <string name="hint_lang">この言語設定を適用するには、アプリケーションを再起動してください</string>
     
     <string-array name="period">
         <item>日々</item>

@@ -29,6 +29,8 @@
     <string name="sale">การขาย</string>
     <string name="report">รายงานการขาย</string>
     
+    <string name="hint_lang">กรุณา ปิดและเปิดแอพลิเคชันใหม่ เพื่อการเปลี่ยนภาษาที่สมบูรณ์</string>
+    
     
     <string-array name="period">
         <item>รายวัน</item>

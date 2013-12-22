@@ -1,7 +1,10 @@
 package com.refresh.pos.ui;
 
+import java.util.Locale;
+
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -12,6 +15,7 @@ import android.widget.Button;
 
 import com.refresh.pos.R;
 import com.refresh.pos.domain.DateTimeStrategy;
+import com.refresh.pos.domain.LanguageController;
 import com.refresh.pos.domain.inventory.Inventory;
 import com.refresh.pos.domain.sale.Register;
 import com.refresh.pos.domain.sale.SaleLedger;
@@ -45,14 +49,25 @@ public class SplashScreenActivity extends Activity {
 		InventoryDao inventoryDao = new InventoryDaoAndroid(database);
 		SaleDao saleDao = new SaleDaoAndroid(database);
 		DatabaseExecutor.setDatabase(database);
+		LanguageController.setDatabase(database);
 
 		Inventory.setInventoryDao(inventoryDao);
 		Register.setSaleDao(saleDao);
 		SaleLedger.setSaleDao(saleDao);
 		
 		DateTimeStrategy.setLocale("th", "TH");
-		
+		setLanguage(LanguageController.getInstance().getLanguage());
+
 		Log.d("Core App", "INITIATE");
+	}
+	
+	private void setLanguage(String localeString) {
+		Locale locale = new Locale(localeString);
+		Locale.setDefault(locale);
+		Configuration config = new Configuration();
+		config.locale = locale;
+		getBaseContext().getResources().updateConfiguration(config,
+				getBaseContext().getResources().getDisplayMetrics());
 	}
 
 	@Override
