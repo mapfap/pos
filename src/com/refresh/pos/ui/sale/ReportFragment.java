@@ -36,7 +36,6 @@ public class ReportFragment extends UpdatableFragment {
 	private SaleLedger saleLedger;
 	List<Map<String, String>> saleList;
 	private ListView saleLedgerListView;
-//	private EditText searchBox;
 	private TextView totalBox;
 	private Spinner spinner;
 	private Button previousButton;
@@ -44,6 +43,11 @@ public class ReportFragment extends UpdatableFragment {
 	private TextView currentBox;
 	private Calendar currentTime;
 	private DatePickerDialog datePicker;
+	
+	public static final int DAILY = 0;
+	public static final int WEEKLY = 1;
+	public static final int MONTHLY = 2;
+	public static final int YEARLY = 3;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -60,7 +64,6 @@ public class ReportFragment extends UpdatableFragment {
 		nextButton = (Button) view.findViewById(R.id.nextButton);
 		currentBox = (TextView) view.findViewById(R.id.currentBox);
 		saleLedgerListView = (ListView) view.findViewById(R.id.saleListView);
-//		searchBox = (EditText) view.findViewById(R.id.searchBox);
 		totalBox = (TextView) view.findViewById(R.id.totalBox);
 		spinner = (Spinner) view.findViewById(R.id.spinner1);
 		
@@ -130,15 +133,6 @@ public class ReportFragment extends UpdatableFragment {
 		      }     
 		});
 		
-//		searchBox.addTextChangedListener(new TextWatcher() {
-//			public void afterTextChanged(Editable s) {
-//				if (s.length() >= SEARCH_LIMIT) {
-//					search();
-//				}
-//			}
-//			public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-//			public void onTextChanged(CharSequence s, int start, int before,int count) {}
-//		});
 	}
 	
 	private void showList(List<Sale> list) {
@@ -156,14 +150,15 @@ public class ReportFragment extends UpdatableFragment {
 
 	@Override
 	public void update() {
-		String period = spinner.getSelectedItem().toString();
+		int period = spinner.getSelectedItemPosition();
 		List<Sale> list = null;
 		Calendar cTime = (Calendar) currentTime.clone();
 		Calendar eTime = (Calendar) currentTime.clone();
-		if(period.equals("Daily")){
+		
+		if(period == DAILY){
 			currentBox.setText(" [" + DateTimeStrategy.getSQLDateFormat(currentTime) +  "] ");
 			currentBox.setTextSize(16);
-		} else if (period.equals("Weekly")){
+		} else if (period == WEEKLY){
 			while(cTime.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY){
 				cTime.add(Calendar.DATE, -1);
 			}
@@ -174,14 +169,14 @@ public class ReportFragment extends UpdatableFragment {
 			toShow += DateTimeStrategy.getSQLDateFormat(eTime) +  "] ";
 			currentBox.setTextSize(16);
 			currentBox.setText(toShow);
-		} else if (period.equals("Monthly")){
+		} else if (period == MONTHLY){
 			cTime.set(Calendar.DATE, 1);
 			eTime = (Calendar) cTime.clone();
 			eTime.add(Calendar.MONTH, 1);
 			eTime.add(Calendar.DATE, -1);
 			currentBox.setTextSize(18);
 			currentBox.setText(" [" + currentTime.get(Calendar.YEAR) + "-" + (currentTime.get(Calendar.MONTH)+1) + "] ");
-		} else if (period.equals("Yearly")){
+		} else if (period == YEARLY){
 			cTime.set(Calendar.DATE, 1);
 			cTime.set(Calendar.MONTH, 0);
 			eTime = (Calendar) cTime.clone();
@@ -209,14 +204,14 @@ public class ReportFragment extends UpdatableFragment {
 	}
 	
 	private void addDate(int increment) {
-		String period = spinner.getSelectedItem().toString();
-		if (period.equals("Daily")){
+		int period = spinner.getSelectedItemPosition();
+		if (period == DAILY){
 			currentTime.add(Calendar.DATE, 1 * increment);
-		} else if (period.equals("Weekly")){
+		} else if (period == WEEKLY){
 			currentTime.add(Calendar.DATE, 7 * increment);
-		} else if (period.equals("Monthly")){
+		} else if (period == MONTHLY){
 			currentTime.add(Calendar.MONTH, 1 * increment);
-		} else if (period.equals("Yearly")){
+		} else if (period == YEARLY){
 			currentTime.add(Calendar.YEAR, 1 * increment);
 		}
 		update();
