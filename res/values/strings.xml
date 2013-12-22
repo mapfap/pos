@@ -18,7 +18,7 @@
     <string name="id">ID</string>
     <string name="cash">Cash</string>
     <string name="change">Change</string>
-    <string name="hint_search">Enter name or barcode here</string>
+    <string name="hint_search">Enter name or barcode</string>
     <string name="hint_cash">Enter cash here</string>
     <string name="add_new_product">Add New Product</string>
     <string name="previous">&lt;</string>

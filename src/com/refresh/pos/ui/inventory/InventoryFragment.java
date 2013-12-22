@@ -72,7 +72,7 @@ public class InventoryFragment extends UpdatableFragment {
 		
 		View view = inflater.inflate(R.layout.layout_inventory, container, false);
 		
-		inventoryListView = (ListView) view.findViewById(R.id.inventoryListView);
+		inventoryListView = (ListView) view.findViewById(R.id.productListView);
 		addProductButton = (Button) view.findViewById(R.id.addProductButton);
 		scanButton = (Button) view.findViewById(R.id.scanButton);
 		searchBox = (EditText) view.findViewById(R.id.searchBox);

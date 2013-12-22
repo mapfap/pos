@@ -3,138 +3,99 @@
     android:id="@+id/layout_popupAddProduct"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:padding="5dip" >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp"
-        android:orientation="vertical" >
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/scanButton"
+            style="@style/ButtonText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_blue"
+            android:text="@string/scan"
+            android:textSize="20sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
 
-            <Button
-                android:id="@+id/scanButton"
-                style="@style/ButtonText"
+            <TextView
+                android:id="@+id/barcode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/btn_blue"
-                android:textSize="20sp"
-                android:text="@string/scan" />
+                android:text="@string/barcode"
+                android:textSize="20sp" />
 
-            <LinearLayout
-                android:layout_width="0dip"
+            <EditText
+                android:id="@+id/barcodeBox"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.67"
-                android:orientation="vertical" >
-
-                <TextView
-                    android:id="@+id/barcode"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.03"
-                    android:text="@string/barcode"
-                    android:textSize="20sp" />
-
-                <EditText
-                    android:id="@+id/barcodeBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.03"
-                    android:ems="20"
-                    android:inputType="number"
-                    android:textSize="18sp" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:baselineAligned="false"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
-
-            <LinearLayout
-                android:layout_width="0dip"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.8"
-                android:orientation="vertical" >
-
-                <TextView
-                    android:id="@+id/TextView01"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.03"
-                    android:text="@string/name"
-                    android:textSize="20sp" />
-
-                <EditText
-                    android:id="@+id/nameBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.03"
-                    android:ems="20"
-                    android:inputType="text"
-                    android:textSize="18sp" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:baselineAligned="false"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
-
-            <LinearLayout
-                android:layout_width="0dip"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.8"
-                android:orientation="vertical" >
-
-                <TextView
-                    android:id="@+id/productPrice"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.03"
-                    android:text="@string/unit_price"
-                    android:textSize="20sp" />
-
-                <EditText
-                    android:id="@+id/priceBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.03"
-                    android:ems="20"
-                    android:inputType="numberDecimal"
-                    android:textSize="18sp" />
-            </LinearLayout>
+                android:ems="20"
+                android:inputType="number"
+                android:textSize="18sp" />
         </LinearLayout>
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/TextView01"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/name"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/nameBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="20"
+        android:inputType="text"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/productPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/unit_price"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/priceBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="20"
+        android:inputType="numberDecimal"
+        android:textSize="18sp" />
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
 
         <Button
             android:id="@+id/clearButton"
             style="@style/ButtonText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="0.5"
             android:background="@drawable/btn_yellow"
-            android:textSize="20sp"
-            android:text="@string/clear" />
+            android:text="@string/cancel"
+            android:textSize="20sp" />
 
         <Button
             android:id="@+id/confirmButton"
             style="@style/ButtonText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="0.5"
             android:background="@drawable/btn_green"
-            android:textSize="20sp"
-            android:text="@string/confirm" />
+            android:text="@string/confirm"
+            android:textSize="20sp" />
     </LinearLayout>
 
 </LinearLayout>

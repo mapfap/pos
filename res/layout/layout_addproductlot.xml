@@ -3,97 +3,64 @@
     android:id="@+id/addProdutlot_dialog"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="5dp"
     android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/unit_price"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/costBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="20"
+        android:inputType="numberDecimal"
+        android:textSize="18sp" />
+
+    <requestFocus />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/quantity"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/quantityBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="20"
+        android:inputType="number"
+        android:textSize="18sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp"  >
-
-        <LinearLayout
-            android:baselineAligned="false"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
-
-            <LinearLayout
-                android:layout_width="0dip"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.8"
-                android:orientation="vertical" >
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="0dip"
-                    android:layout_weight="1"
-                    android:text="@string/unit_price"
-                    android:textSize="20sp" />
-
-                <EditText
-                    android:id="@+id/costBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="20"
-                    android:inputType="numberDecimal"
-                    android:textSize="18sp" />
-
-                <requestFocus />
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:baselineAligned="false"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
-
-            <LinearLayout
-                android:layout_width="0dip"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.8"
-                android:orientation="vertical" >
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/quantity"
-                    android:textSize="20sp" />
-
-                <EditText
-                    android:id="@+id/quantityBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="20"
-                    android:inputType="number"
-                    android:textSize="18sp" />
-            </LinearLayout>
-        </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" >
+        android:orientation="horizontal" >
 
         <Button
             android:id="@+id/clearButton"
             style="@style/ButtonText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="0.5"
             android:background="@drawable/btn_yellow"
-            android:textSize="20sp"
-            android:text="@string/cancel" />
+            android:text="@string/cancel"
+            android:textSize="20sp" />
 
         <Button
             android:id="@+id/confirmButton"
             style="@style/ButtonText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="0.5"
             android:background="@drawable/btn_green"
-            android:textSize="20sp"
-            android:text="@string/confirm" />
+            android:text="@string/confirm"
+            android:textSize="20sp" />
+        
     </LinearLayout>
-
+    
 </LinearLayout>
