@@ -47,8 +47,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:background="@drawable/btn_yellow"
-            android:text="@string/cancel"
+            android:background="@drawable/btn_red"
+            android:text="@string/clear"
             android:textSize="20sp" />
 
         <Button

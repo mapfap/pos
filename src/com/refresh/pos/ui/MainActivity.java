@@ -21,7 +21,6 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -34,7 +33,6 @@ import com.refresh.pos.domain.LanguageController;
 import com.refresh.pos.domain.inventory.Inventory;
 import com.refresh.pos.domain.inventory.Product;
 import com.refresh.pos.domain.inventory.ProductCatalog;
-import com.refresh.pos.techicalservices.DatabaseExecutor;
 import com.refresh.pos.techicalservices.NoDaoSetException;
 import com.refresh.pos.ui.component.UpdatableFragment;
 import com.refresh.pos.ui.inventory.InventoryFragment;
@@ -124,24 +122,21 @@ public class MainActivity extends FragmentActivity {
 	private void openQuitDialog() {
 		AlertDialog.Builder quitDialog = new AlertDialog.Builder(
 				MainActivity.this);
-		quitDialog.setTitle("Are you sure you want to quit?");
-		quitDialog.setPositiveButton("QUIT", new OnClickListener() {
+		quitDialog.setTitle(res.getString(R.string.dialog_quit));
+		quitDialog.setPositiveButton(res.getString(R.string.quit), new OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
 				finish();
 			}
 		});
 
-		quitDialog.setNegativeButton("NO", new OnClickListener() {
+		quitDialog.setNegativeButton(res.getString(R.string.no), new OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
+				
 			}
 		});
 		quitDialog.show();
-	}
-
-	public void suspendSaleOnClickHandler(View view) {
-		Log.d("main + ledger", "remove button clicked!");
 	}
 
 	public void optionOnClickHandler(View view) {
@@ -159,10 +154,9 @@ public class MainActivity extends FragmentActivity {
 	}
 
 	private void openDetailDialog() {
-		AlertDialog.Builder quitDialog = new AlertDialog.Builder(
-				MainActivity.this);
-		quitDialog.setTitle(product.getName().toString());
-		quitDialog.setPositiveButton("Remove", new OnClickListener() {
+		AlertDialog.Builder quitDialog = new AlertDialog.Builder(MainActivity.this);
+		quitDialog.setTitle(product.getName());
+		quitDialog.setPositiveButton(res.getString(R.string.remove), new OnClickListener() {
 
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
@@ -170,7 +164,7 @@ public class MainActivity extends FragmentActivity {
 			}
 		});
 
-		quitDialog.setNegativeButton("Detail", new OnClickListener() {
+		quitDialog.setNegativeButton(res.getString(R.string.product_detail), new OnClickListener() {
 
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
@@ -187,15 +181,15 @@ public class MainActivity extends FragmentActivity {
 	private void openRemoveDialog() {
 		AlertDialog.Builder quitDialog = new AlertDialog.Builder(
 				MainActivity.this);
-		quitDialog.setTitle("Are you sure you want to remove this product?");
-		quitDialog.setPositiveButton("Cancel", new OnClickListener() {
+		quitDialog.setTitle(res.getString(R.string.dialog_remove_product));
+		quitDialog.setPositiveButton(res.getString(R.string.no), new OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
 
 			}
 		});
 
-		quitDialog.setNegativeButton("Remove", new OnClickListener() {
+		quitDialog.setNegativeButton(res.getString(R.string.remove), new OnClickListener() {
 
 			@Override
 			public void onClick(DialogInterface dialog, int which) {

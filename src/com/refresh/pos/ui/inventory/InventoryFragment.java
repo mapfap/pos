@@ -7,11 +7,11 @@ import java.util.Map;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,6 +53,7 @@ public class InventoryFragment extends UpdatableFragment {
 	private MainActivity main;
 	
 	private UpdatableFragment saleFragment;
+	private Resources res;
 	
 	public InventoryFragment(UpdatableFragment saleFragment) {
 		super();
@@ -72,6 +73,7 @@ public class InventoryFragment extends UpdatableFragment {
 		
 		View view = inflater.inflate(R.layout.layout_inventory, container, false);
 		
+		res = getResources();
 		inventoryListView = (ListView) view.findViewById(R.id.productListView);
 		addProductButton = (Button) view.findViewById(R.id.addProductButton);
 		scanButton = (Button) view.findViewById(R.id.scanButton);
@@ -150,14 +152,12 @@ public class InventoryFragment extends UpdatableFragment {
 			List<Product> result = productCatalog.searchProduct(search);
 			showList(result);
 			if (result.isEmpty()) {
-//				Toast.makeText(getActivity().getBaseContext() , "No results matched.", Toast.LENGTH_SHORT).show();
+				
 			}
 		}
 	}
 	
 	public void onActivityResult(int requestCode, int resultCode, Intent intent) {
-		Log.d("BARCODE", "retrive the result.");
-
 		IntentResult scanningResult = IntentIntegrator.parseActivityResult(
 				requestCode, resultCode, intent);
 
@@ -165,20 +165,20 @@ public class InventoryFragment extends UpdatableFragment {
 			String scanContent = scanningResult.getContents();
 			searchBox.setText(scanContent);
 		} else {
-			Toast.makeText(getActivity().getBaseContext() ,
-					"Failed to retrieve barcode." + resultCode,
+			Toast.makeText(getActivity().getBaseContext(), res.getString(R.string.fail),
 					Toast.LENGTH_SHORT).show();
 		}
 	}
 	
 	protected void testAddProduct() {
 		Demo.testProduct(getActivity());
-		Toast.makeText(getActivity().getBaseContext(), "products added.", Toast.LENGTH_SHORT).show();
+		Toast.makeText(getActivity().getBaseContext(), res.getString(R.string.success),
+				Toast.LENGTH_SHORT).show();
 	}
 	
 	public void showPopup(View anchorView) {
 		AddProductDialogFragment newFragment = new AddProductDialogFragment(InventoryFragment.this);
-	    newFragment.show(getFragmentManager(), "dialog");
+	    newFragment.show(getFragmentManager(), "");
 	}
 	
 	@Override

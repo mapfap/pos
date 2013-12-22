@@ -29,6 +29,20 @@
     <string name="sale">売却</string>
     <string name="report">報告</string>
     
+    <string name="dialog_quit">本当に終了してもよろしいですか？</string>
+    <string name="dialog_remove_product">あなたはこの製品を削除してもよろしいですか？</string>
+    <string name="dialog_clear_sale">あなたは、この売却をクリアしてもよろしいですか？</string>
+    <string name="hint_empty_sale">販売は空です。</string>
+    <string name="quit">出口</string>
+    <string name="no">ザ</string>
+    <string name="product_detail">製品の詳細</string>
+    <string name="stock">株式</string>
+    <string name="success">成功</string>
+    <string name="fail">失敗する</string>
+    <string name="please_input_all">すべてのデータを果たすください。</string>
+    <string name="need_money">必要</string>
+    
+    
     <string name="hint_lang">この言語設定を適用するには、アプリケーションを再起動してください</string>
     
     <string-array name="period">

@@ -2,9 +2,9 @@ package com.refresh.pos.ui.inventory;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,6 +32,7 @@ public class AddProductDialogFragment extends DialogFragment {
 	private Button confirmButton;
 	private Button clearButton;
 	private UpdatableFragment fragment;
+	private Resources res;
 
 	public AddProductDialogFragment(UpdatableFragment fragment) {
 		
@@ -51,6 +52,7 @@ public class AddProductDialogFragment extends DialogFragment {
 		View v = inflater.inflate(R.layout.layout_addproduct, container,
 				false);
 		
+		res = getResources();
 		
 		barcodeBox = (EditText) v.findViewById(R.id.barcodeBox);
 		scanButton = (Button) v.findViewById(R.id.scanButton);
@@ -74,18 +76,14 @@ public class AddProductDialogFragment extends DialogFragment {
 
 		confirmButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				if (nameBox.getText().toString().equals("")) {
+				if (nameBox.getText().toString().equals("")
+					|| barcodeBox.getText().toString().equals("")
+					|| priceBox.getText().toString().equals("")) {
+					
 					Toast.makeText(getActivity().getBaseContext(),
-							"Please input product's name.", Toast.LENGTH_SHORT)
+							res.getString(R.string.please_input_all), Toast.LENGTH_SHORT)
 							.show();
-				} else if (barcodeBox.getText().toString().equals("")) {
-					Toast.makeText(getActivity().getBaseContext(),
-							"Please input product's barcode.", Toast.LENGTH_SHORT)
-							.show();
-				} else if (priceBox.getText().toString().equals("")) {
-					Toast.makeText(getActivity().getBaseContext(),
-							"Please input product's price.", Toast.LENGTH_SHORT)
-							.show();
+					
 				} else {
 					boolean success = productCatalog.addProduct(nameBox
 							.getText().toString(), barcodeBox.getText()
@@ -94,10 +92,9 @@ public class AddProductDialogFragment extends DialogFragment {
 
 					if (success) {
 						Toast.makeText(getActivity().getBaseContext(),
-								"Successfully Add : "
-										+ nameBox.getText().toString(),
+								res.getString(R.string.success) + ", "
+										+ nameBox.getText().toString(), 
 								Toast.LENGTH_SHORT).show();
-						
 						
 						fragment.update();
 						clearAllBox();
@@ -105,7 +102,7 @@ public class AddProductDialogFragment extends DialogFragment {
 						
 					} else {
 						Toast.makeText(getActivity().getBaseContext(),
-								"Failed to Add " + nameBox.getText().toString(),
+								res.getString(R.string.fail),
 								Toast.LENGTH_SHORT).show();
 					}
 				}
@@ -115,7 +112,11 @@ public class AddProductDialogFragment extends DialogFragment {
 		clearButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
+				if(barcodeBox.getText().toString().equals("") && nameBox.getText().toString().equals("") && priceBox.getText().toString().equals("")){
+					AddProductDialogFragment.this.dismiss();
+				} else {
 					clearAllBox();
+				}
 			}
 		});
 	}
@@ -127,8 +128,6 @@ public class AddProductDialogFragment extends DialogFragment {
 	}
 	
 	public void onActivityResult(int requestCode, int resultCode, Intent intent) {
-		Log.d("BARCODE", "retrive the result.");
-
 		IntentResult scanningResult = IntentIntegrator.parseActivityResult(
 				requestCode, resultCode, intent);
 
@@ -137,7 +136,7 @@ public class AddProductDialogFragment extends DialogFragment {
 			barcodeBox.setText(scanContent);
 		} else {
 			Toast.makeText(getActivity().getBaseContext(),
-					"Failed to retrieve barcode." + resultCode,
+					res.getString(R.string.fail),
 					Toast.LENGTH_SHORT).show();
 		}
 	}

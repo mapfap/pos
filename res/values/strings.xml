@@ -28,6 +28,21 @@
     <string name="inventory">Inventory</string>
     <string name="sale">Sale</string>
     <string name="report">Report</string>
+    
+    <string name="dialog_quit">Are you sure you want to QUIT?</string>
+    <string name="dialog_remove_product">Are you sure you want to REMOVE this product?</string>
+    <string name="dialog_clear_sale">Are you sure you want to CLEAR this sale?</string>
+    <string name="hint_empty_sale">Sale is empty.</string>
+    <string name="quit">Quit</string>
+    <string name="no">No</string>
+    <string name="product_detail">Product Detail</string>
+    <string name="stock">Stock</string>
+    <string name="success">Success</string>
+    <string name="fail">Fail</string>
+    <string name="please_input_all">Please fulfill all data.</string>
+    <string name="need_money">Need</string>
+    
+    
         
     <string name="lang_en">English</string>
     <string name="lang_th">ภาษาไทย (th)</string>

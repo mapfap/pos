@@ -55,20 +55,20 @@ public class PaymentFragmentDialog extends DialogFragment {
 				String inputString = input.getText().toString();
 				
 				if (inputString.equals("")) {
-					Toast.makeText(getActivity().getBaseContext(), "Please input money.", Toast.LENGTH_SHORT).show();
+					Toast.makeText(getActivity().getBaseContext(), getResources().getString(R.string.please_input_all), Toast.LENGTH_SHORT).show();
 					return;
 				}
 				double a = Double.parseDouble(strtext);
 				double b = Double.parseDouble(inputString);
 				if (b < a) {
-					Toast.makeText(getActivity().getBaseContext(), "Not enough money.", Toast.LENGTH_SHORT).show();
+					Toast.makeText(getActivity().getBaseContext(), getResources().getString(R.string.need_money) + " " + (b - a), Toast.LENGTH_SHORT).show();
 				} else {
 					Bundle bundle = new Bundle();
 					bundle.putString("edttext", b - a + "");
 					EndPaymentFragmentDialog newFragment = new EndPaymentFragmentDialog(
 							saleFragment, reportFragment);
 					newFragment.setArguments(bundle);
-					newFragment.show(getFragmentManager(), "dialog");
+					newFragment.show(getFragmentManager(), "");
 					end();
 				}
 

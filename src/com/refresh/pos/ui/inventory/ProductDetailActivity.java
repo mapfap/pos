@@ -8,6 +8,7 @@ import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
@@ -56,6 +57,7 @@ public class ProductDetailActivity extends Activity {
 	private String[] remember;
 	private AlertDialog.Builder popDialog;
 	private LayoutInflater inflater ;
+	private Resources res;
 	
 	public boolean onCreateOptionsMenu(Menu menu) {
 	    MenuInflater inflater = getMenuInflater();
@@ -68,7 +70,7 @@ public class ProductDetailActivity extends Activity {
 		if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
 			ActionBar actionBar = getActionBar();
 			actionBar.setDisplayHomeAsUpEnabled(true);
-			actionBar.setTitle("Product's Detail");
+			actionBar.setTitle(res.getString(R.string.product_detail));
 			actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#33B5E5")));
 		}
 	}
@@ -98,6 +100,7 @@ public class ProductDetailActivity extends Activity {
 
 	private void initUI(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		res = getResources();
 		setContentView(R.layout.layout_productdetail_main);
 		stockListView = (ListView) findViewById(R.id.stockListView);
 		nameBox = (EditText) findViewById(R.id.nameBox);
@@ -113,16 +116,16 @@ public class ProductDetailActivity extends Activity {
 		addProductLotButton = (Button) findViewById(R.id.addProductLotButton);
 		mTabHost = (TabHost) findViewById(android.R.id.tabhost);
 		mTabHost.setup();
-		mTabHost.addTab(mTabHost.newTabSpec("tab_test1").setIndicator("Detail")
+		mTabHost.addTab(mTabHost.newTabSpec("tab_test1").setIndicator(res.getString(R.string.product_detail))
 				.setContent(R.id.tab1));
-		mTabHost.addTab(mTabHost.newTabSpec("tab_test2").setIndicator("Stock")
+		mTabHost.addTab(mTabHost.newTabSpec("tab_test2").setIndicator(res.getString(R.string.stock))
 				.setContent(R.id.tab2));
 		mTabHost.setCurrentTab(0);
 		popDialog = new AlertDialog.Builder(this);
 		inflater = (LayoutInflater) this.getSystemService(LAYOUT_INFLATER_SERVICE);
 		addProductLotButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				showAddlot();
+				showAddProductLot();
 			}
 		});
 
@@ -307,10 +310,10 @@ public class ProductDetailActivity extends Activity {
 	private Button clearButton;
 	private View Viewlayout;
 	private AlertDialog alert;
-	private void showAddlot(){
+	
+	private void showAddProductLot(){
 		Viewlayout = inflater.inflate(R.layout.layout_addproductlot,
 				(ViewGroup) findViewById(R.id.addProdutlot_dialog));
-		popDialog.setTitle("Add Product Lot");
 		popDialog.setView(Viewlayout);
 		
 		costBox = (EditText) Viewlayout.findViewById(R.id.costBox);
@@ -321,17 +324,11 @@ public class ProductDetailActivity extends Activity {
 
 			@Override
 			public void onClick(View arg0) {
-				if (costBox.getText().toString().equals("")) {
+				if (quantityBox.getText().toString().equals("") || costBox.getText().toString().equals("")) {
 					Toast.makeText(ProductDetailActivity.this,
-							"Please input product's cost.", Toast.LENGTH_SHORT)
+							res.getString(R.string.please_input_all), Toast.LENGTH_SHORT)
 							.show();
-				} 
-				else if (quantityBox.getText().toString().equals("")) {
-					Toast.makeText(ProductDetailActivity.this,
-							"Please input product's quantity.", Toast.LENGTH_SHORT)
-							.show();
-				} 
-				else {
+				} else {
 					boolean success = stock.addProductLot(
 							DateTimeStrategy.getCurrentTime(), 
 							Integer.parseInt(quantityBox.getText().toString()), 
@@ -339,7 +336,7 @@ public class ProductDetailActivity extends Activity {
 							Double.parseDouble(costBox.getText().toString()));
 
 					if (success) {
-						Toast.makeText(ProductDetailActivity.this,"Successfully Add Stock: ",Toast.LENGTH_SHORT).show();
+						Toast.makeText(ProductDetailActivity.this, res.getString(R.string.success), Toast.LENGTH_SHORT).show();
 						costBox.setText("");
 						quantityBox.setText("");
 						onResume();
@@ -347,7 +344,7 @@ public class ProductDetailActivity extends Activity {
 						
 						
 					} else {
-						Toast.makeText(ProductDetailActivity.this,"Failed to Add Stock" ,Toast.LENGTH_SHORT).show();
+						Toast.makeText(ProductDetailActivity.this, res.getString(R.string.fail) ,Toast.LENGTH_SHORT).show();
 					}
 				}
 				

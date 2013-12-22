@@ -29,6 +29,20 @@
     <string name="sale">การขาย</string>
     <string name="report">รายงานการขาย</string>
     
+    <string name="dialog_quit">คุณต้องการออกหรือไม่?</string>
+    <string name="dialog_remove_product">คุณต้องการลบสินค้าชิ้นนี้หรือไม่?</string>
+    <string name="dialog_clear_sale">ต้องการล้างการขายนี้หรือไม่?</string>
+    <string name="hint_empty_sale">ไม่มีการขาย</string>
+    <string name="quit">ออก</string>
+    <string name="no">ไม่</string>
+    <string name="product_detail">รายละเอียดสินค้า</string>
+    <string name="stock">คลัง</string>
+    <string name="success">สำเร็จ</string>
+    <string name="fail">ล้มเหลว</string>
+    <string name="please_input_all">กรุณากรอกข้อมูลให้ครบถ้วน</string>
+    <string name="need_money">ขาดเงินอีก</string>
+    
+    
     <string name="hint_lang">กรุณา ปิดและเปิดแอพลิเคชันใหม่ เพื่อการเปลี่ยนภาษาที่สมบูรณ์</string>
     
     

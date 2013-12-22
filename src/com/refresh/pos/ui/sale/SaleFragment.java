@@ -8,6 +8,7 @@ import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
@@ -38,6 +39,7 @@ public class SaleFragment extends UpdatableFragment {
 	private TextView totalPrice;
 	private Button endButton;
 	private UpdatableFragment reportFragment;
+	private Resources res;
 
 	public SaleFragment(UpdatableFragment reportFragment) {
 		super();
@@ -55,6 +57,7 @@ public class SaleFragment extends UpdatableFragment {
 
 		View view = inflater.inflate(R.layout.layout_sale, container, false);
 		
+		res = getResources();
 		saleListView = (ListView) view.findViewById(R.id.sale_List);
 		totalPrice = (TextView) view.findViewById(R.id.totalPrice);
 		clearButton = (Button) view.findViewById(R.id.clearButton);
@@ -87,7 +90,7 @@ public class SaleFragment extends UpdatableFragment {
 				if(register.hasSale()){
 					showPopup(v);
 				} else {
-					Toast.makeText(getActivity().getBaseContext() , "Sale is empty.", Toast.LENGTH_SHORT).show();
+					Toast.makeText(getActivity().getBaseContext() , res.getString(R.string.hint_empty_sale), Toast.LENGTH_SHORT).show();
 				}
 			}
 		});
@@ -95,7 +98,11 @@ public class SaleFragment extends UpdatableFragment {
 		clearButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				showConfirmClearDialog();
+				if (!register.hasSale() || register.getCurrentSale().getAllLineItem().isEmpty()) {
+					Toast.makeText(getActivity().getBaseContext() , res.getString(R.string.hint_empty_sale), Toast.LENGTH_SHORT).show();
+				} else {
+					showConfirmClearDialog();
+				}
 			} 
 		});
 	}
@@ -130,7 +137,7 @@ public class SaleFragment extends UpdatableFragment {
 		
 		EditFragmentDialog newFragment = new EditFragmentDialog(SaleFragment.this, reportFragment);
 		newFragment.setArguments(bundle);
-		newFragment.show(getFragmentManager(), "dialog");
+		newFragment.show(getFragmentManager(), "");
 		
 	}
 
@@ -139,7 +146,7 @@ public class SaleFragment extends UpdatableFragment {
 		bundle.putString("edttext", totalPrice.getText().toString());
 		PaymentFragmentDialog newFragment = new PaymentFragmentDialog(SaleFragment.this, reportFragment);
 		newFragment.setArguments(bundle);
-		newFragment.show(getFragmentManager(), "dialog");
+		newFragment.show(getFragmentManager(), "");
 	}
 
 	@Override
@@ -150,7 +157,7 @@ public class SaleFragment extends UpdatableFragment {
 		}
 		else{
 			showList(new ArrayList<LineItem>());
-			totalPrice.setText("0.0");
+			totalPrice.setText("0.00");
 		}
 	}
 	
@@ -162,15 +169,15 @@ public class SaleFragment extends UpdatableFragment {
 	
 	private void showConfirmClearDialog() {
 		AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
-		dialog.setTitle("Are you sure you want to CLEAR this sale.");
-		dialog.setPositiveButton("No, Keep it.", new OnClickListener() {
+		dialog.setTitle(res.getString(R.string.dialog_clear_sale));
+		dialog.setPositiveButton(res.getString(R.string.no), new OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
 
 			}
 		});
 
-		dialog.setNegativeButton("CLEAR", new OnClickListener() {
+		dialog.setNegativeButton(res.getString(R.string.clear), new OnClickListener() {
 
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
