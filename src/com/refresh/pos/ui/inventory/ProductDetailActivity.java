@@ -10,6 +10,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -64,7 +65,7 @@ public class ProductDetailActivity extends Activity {
 	
 	@SuppressLint("NewApi")
 	private void initiateActionBar() {
-		if (android.os.Build.VERSION.SDK_INT >= 11) {
+		if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
 			ActionBar actionBar = getActionBar();
 			actionBar.setDisplayHomeAsUpEnabled(true);
 			actionBar.setTitle("Product's Detail");

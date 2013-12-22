@@ -1,5 +1,7 @@
 package com.refresh.pos.ui;
 
+import java.util.Locale;
+
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
@@ -8,8 +10,11 @@ import android.app.FragmentTransaction;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -40,6 +45,7 @@ public class MainActivity extends FragmentActivity {
 	private Product product;
 	private static boolean SDK_SUPPORTED;
 	private PagerAdapter pagerAdapter;
+	private Resources res;
 
 	@SuppressLint("NewApi")
 	private void initiateActionBar() {
@@ -50,7 +56,8 @@ public class MainActivity extends FragmentActivity {
 
 			ActionBar.TabListener tabListener = new ActionBar.TabListener() {
 				@Override
-				public void onTabReselected(Tab tab, FragmentTransaction ft) { }
+				public void onTabReselected(Tab tab, FragmentTransaction ft) {
+				}
 
 				@Override
 				public void onTabSelected(Tab tab, FragmentTransaction ft) {
@@ -58,35 +65,51 @@ public class MainActivity extends FragmentActivity {
 				}
 
 				@Override
-				public void onTabUnselected(Tab tab, FragmentTransaction ft) { }
+				public void onTabUnselected(Tab tab, FragmentTransaction ft) {
+				}
 			};
-			actionBar.addTab(actionBar.newTab().setText("Inventory").setTabListener(tabListener), 0, false);
-			actionBar.addTab(actionBar.newTab().setText("Sale").setTabListener(tabListener), 1, true);
-			actionBar.addTab(actionBar.newTab().setText("Report").setTabListener(tabListener), 2, false);
-			
-			if (android.os.Build.VERSION.SDK_INT >= 14) {
-				actionBar.setStackedBackgroundDrawable(new ColorDrawable(Color.parseColor("#73bde5")));
+			actionBar.addTab(actionBar.newTab().setText(res.getString(R.string.inventory))
+					.setTabListener(tabListener), 0, false);
+			actionBar.addTab(
+					actionBar.newTab().setText(res.getString(R.string.sale))
+							.setTabListener(tabListener), 1, true);
+			actionBar.addTab(actionBar.newTab().setText(res.getString(R.string.report))
+					.setTabListener(tabListener), 2, false);
+
+			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+				actionBar.setStackedBackgroundDrawable(new ColorDrawable(Color
+						.parseColor("#73bde5")));
 			}
-		
+
 		}
 	}
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		Locale locale = new Locale("th");
+		Locale.setDefault(locale);
+		Configuration config = new Configuration();
+		config.locale = locale;
+		getBaseContext().getResources().updateConfiguration(config,
+				getBaseContext().getResources().getDisplayMetrics());
+
+		res = getResources();
 		setContentView(R.layout.layout_main);
 		viewPager = (ViewPager) findViewById(R.id.pager);
 		super.onCreate(savedInstanceState);
-		SDK_SUPPORTED = android.os.Build.VERSION.SDK_INT >= 11;
+		SDK_SUPPORTED = Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB;
 		initiateActionBar();
 		FragmentManager fragmentManager = getSupportFragmentManager();
-		pagerAdapter = new PagerAdapter(fragmentManager);
+		pagerAdapter = new PagerAdapter(fragmentManager, res);
 		viewPager.setAdapter(pagerAdapter);
-		viewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
-			@Override
-			public void onPageSelected(int position) {
-				if (SDK_SUPPORTED) getActionBar().setSelectedNavigationItem(position);
-			}
-		});
+		viewPager
+				.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+					@Override
+					public void onPageSelected(int position) {
+						if (SDK_SUPPORTED)
+							getActionBar().setSelectedNavigationItem(position);
+					}
+				});
 		viewPager.setCurrentItem(1);
 	}
 
@@ -112,7 +135,8 @@ public class MainActivity extends FragmentActivity {
 
 		quitDialog.setNegativeButton("NO", new OnClickListener() {
 			@Override
-			public void onClick(DialogInterface dialog, int which) { }
+			public void onClick(DialogInterface dialog, int which) {
+			}
 		});
 		quitDialog.show();
 	}
@@ -195,15 +219,20 @@ class PagerAdapter extends FragmentStatePagerAdapter {
 	private UpdatableFragment[] fragments;
 	private String[] fragmentNames;
 
-	public PagerAdapter(FragmentManager fragmentManager) {
+	public PagerAdapter(FragmentManager fragmentManager, Resources res) {
+		
 		super(fragmentManager);
-
+		
 		UpdatableFragment reportFragment = new ReportFragment();
 		UpdatableFragment saleFragment = new SaleFragment(reportFragment);
-		UpdatableFragment inventoryFragment = new InventoryFragment(saleFragment);
+		UpdatableFragment inventoryFragment = new InventoryFragment(
+				saleFragment);
 
-		fragments = new UpdatableFragment[] { inventoryFragment, saleFragment, reportFragment };
-		fragmentNames = new String[] { "Inventory", "Sale", "Report" };
+		fragments = new UpdatableFragment[] { inventoryFragment, saleFragment,
+				reportFragment };
+		fragmentNames = new String[] { res.getString(R.string.inventory),
+				res.getString(R.string.sale),
+				res.getString(R.string.report) };
 
 	}
 

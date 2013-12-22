@@ -25,6 +25,9 @@
     <string name="add_stock">Add A Product Lot</string>
     <string name="previous">&lt;</string>
     <string name="next">></string>
+    <string name="inventory">Inventory</string>
+    <string name="sale">Sale</string>
+    <string name="report">Report</string>
     
     
     <string-array name="period">

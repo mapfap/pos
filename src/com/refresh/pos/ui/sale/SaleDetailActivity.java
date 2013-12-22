@@ -9,6 +9,7 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.ListView;
@@ -47,7 +48,7 @@ public class SaleDetailActivity extends Activity{
 	
 	@SuppressLint("NewApi")
 	private void initiateActionBar() {
-		if (android.os.Build.VERSION.SDK_INT >= 11) {
+		if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
 			ActionBar actionBar = getActionBar();
 			actionBar.setDisplayHomeAsUpEnabled(true);
 			actionBar.setTitle("Sale's Detail");
