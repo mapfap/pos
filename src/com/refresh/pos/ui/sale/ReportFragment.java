@@ -5,6 +5,7 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -16,6 +17,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
@@ -26,7 +28,6 @@ import com.refresh.pos.domain.DateTimeStrategy;
 import com.refresh.pos.domain.sale.Sale;
 import com.refresh.pos.domain.sale.SaleLedger;
 import com.refresh.pos.techicalservices.NoDaoSetException;
-import com.refresh.pos.ui.component.DatePickerFragment;
 import com.refresh.pos.ui.component.UpdatableFragment;
 
 
@@ -42,7 +43,7 @@ public class ReportFragment extends UpdatableFragment {
 	private Button nextButton;
 	private TextView currentBox;
 	private Calendar currentTime;
-	private DatePickerFragment datePicker;
+	private DatePickerDialog datePicker;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -68,6 +69,17 @@ public class ReportFragment extends UpdatableFragment {
 	}
 
 	private void initUI() {
+		currentTime = Calendar.getInstance();
+		datePicker = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
+			@Override
+			public void onDateSet(DatePicker view, int y, int m, int d) {
+				currentTime.set(Calendar.YEAR, y);
+				currentTime.set(Calendar.MONTH, m);
+				currentTime.set(Calendar.DAY_OF_MONTH, d);
+				update();
+			}
+		}, currentTime.get(Calendar.YEAR), currentTime.get(Calendar.MONTH), currentTime.get(Calendar.DAY_OF_MONTH));
+		
 		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity().getBaseContext(),
 		        R.array.period, android.R.layout.simple_spinner_item);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -89,13 +101,11 @@ public class ReportFragment extends UpdatableFragment {
 		currentBox.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				datePicker.show(getActivity().getSupportFragmentManager(), "Select Date");
+				datePicker.show();
 			}
 		});
 		
 		
-		currentTime = Calendar.getInstance();
-		datePicker = new DatePickerFragment(currentTime, ReportFragment.this);
 		
 		previousButton.setOnClickListener(new OnClickListener() {
 			@Override

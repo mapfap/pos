@@ -16,25 +16,24 @@
             android:id="@+id/scanButton"
             style="@style/ButtonText"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:background="@drawable/btn_blue"
-            android:ems="5"
             android:text="@string/scan" />
 
         <EditText
             android:id="@+id/searchBox"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="5"
+            android:layout_height="match_parent"
+            android:ems="10"
             android:hint="@string/hint_search" />
     </LinearLayout>
 
     <ListView
         android:id="@+id/productListView"
-        android:layout_marginLeft="2dp"
-        android:layout_marginRight="2dp"
         android:layout_width="match_parent"
         android:layout_height="0dip"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
         android:layout_weight="1" >
     </ListView>
 

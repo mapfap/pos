@@ -2,13 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:baselineAligned="false"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="horizontal" >
 
     <TableRow
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="2"
+        android:layout_weight="0.5"
         android:background="#FFFFFF"
         android:paddingBottom="1dip"
         android:paddingLeft="1dip" >
@@ -18,7 +18,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:background="#eeeeee"
             android:textColor="#000000"
             android:gravity="right"
             android:paddingRight="3dp"
@@ -28,7 +27,7 @@
     <TableRow
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1.5"
+        android:layout_weight="0.25"
         android:background="#FFFFFF"
         android:paddingBottom="1dip"
         android:paddingLeft="1dip" >
@@ -38,7 +37,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1.5"
-            android:background="#eeeeee"
             android:textColor="#000000"
             android:gravity="right"
             android:paddingRight="3dp"
@@ -48,7 +46,7 @@
     <TableRow
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="0.75"
+        android:layout_weight="0.25"
         android:background="#FFFFFF"
         android:paddingBottom="1dip"
         android:paddingLeft="1dip"
@@ -59,7 +57,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.75"
-            android:background="#eeeeee"
             android:textColor="#000000"
             android:gravity="right"
             android:paddingRight="3dp"

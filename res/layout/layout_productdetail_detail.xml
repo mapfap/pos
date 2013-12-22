@@ -8,69 +8,42 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="5dp"
         android:orientation="vertical" >
 
-        <LinearLayout
+        <EditText
+            android:id="@+id/nameBox"
             android:layout_width="match_parent"
-            android:layout_height="0dip"
-            android:layout_marginLeft="10sp"
-            android:layout_marginRight="10sp"
-            android:layout_marginTop="10sp"
-            android:layout_weight="1.53"
-            android:orientation="vertical" >
+            android:layout_height="wrap_content"
+            android:background="#87CEEB"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:gravity="center"
+            android:inputType="textNoSuggestions"
+            android:padding="10dip"
+            android:text="@string/name"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#000000"
+            android:textSize="26sp" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dip"
-                android:layout_weight="0.79"
-                android:orientation="vertical" >
+        <TextView
+            android:id="@+id/quantityLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="2dip"
+            android:text="@string/quantity"
+            android:textSize="20sp" />
 
-                <EditText
-                    android:id="@+id/nameBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#87CEEB"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false"
-                    android:gravity="center"
-                    android:inputType="textNoSuggestions"
-                    android:padding="10dip"
-                    android:text="@string/name"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="#000000"
-                    android:textSize="26sp" />
+        <TextView
+            android:id="@+id/stockSumBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#DDEEFF"
+            android:gravity="right"
+            android:padding="2dip"
+            android:textSize="25sp" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="2dip" >
-
-                    <TextView
-                        android:id="@+id/quantityLabel"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="2dip"
-                        android:text="@string/quantity"
-                        android:textSize="20sp" />
-
-                    <TextView
-                        android:id="@+id/stockSumBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="#DDEEFF"
-                        android:gravity="right"
-                        android:padding="2dip"
-                        android:textSize="25sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="2dip" >
-
-                    <!--
+    <!--
                 <TextView
                     android:id="@+id/profitLabel"
                     android:layout_width="match_parent"
@@ -87,97 +60,81 @@
                     android:gravity="right"
                     android:padding="2dip"
                     android:textSize="25sp" />
-                    -->
-                </LinearLayout>
+    -->
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="2dip" >
+    <TextView
+        android:id="@+id/priceLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="2dip"
+        android:text="@string/unit_price"
+        android:textSize="20sp" />
 
-                    <TextView
-                        android:id="@+id/priceLabel"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="2dip"
-                        android:text="@string/unit_price"
-                        android:textSize="20sp" />
+    <EditText
+        android:id="@+id/priceBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#87CEEB"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:gravity="right"
+        android:inputType="number"
+        android:padding="2dip"
+        android:textSize="25sp" />
 
-                    <EditText
-                        android:id="@+id/priceBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="#87CEEB"
-                        android:focusable="false"
-                        android:focusableInTouchMode="false"
-                        android:gravity="right"
-                        android:inputType="number"
-                        android:padding="2dip"
-                        android:textSize="25sp" />
-                </LinearLayout>
+    <TextView
+        android:id="@+id/barcodeLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="2dip"
+        android:text="@string/barcode"
+        android:textSize="20sp" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="2dip" >
+    <EditText
+        android:id="@+id/barcodeBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#87CEEB"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:gravity="right"
+        android:inputType="number"
+        android:padding="2dip"
+        android:textColor="#000000"
+        android:textSize="25sp" />
 
-                    <TextView
-                        android:id="@+id/barcodeLabel"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="2dip"
-                        android:text="@string/barcode"
-                        android:textSize="20sp" />
+    <Button
+        android:id="@+id/openEditButton"
+        style="@style/ButtonText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_purple"
+        android:text="@string/edit" />
 
-                    <EditText
-                        android:id="@+id/barcodeBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="#87CEEB"
-                        android:focusable="false"
-                        android:focusableInTouchMode="false"
-                        android:gravity="right"
-                        android:inputType="number"
-                        android:padding="2dip"
-                        android:textColor="#000000"
-                        android:textSize="25sp" />
-                </LinearLayout>
-            </LinearLayout>
-        </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
 
         <Button
-            android:id="@+id/openEditButton"
+            android:id="@+id/cancelEditButton"
             style="@style/ButtonText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/btn_green"
-            android:text="@string/edit" />
+            android:layout_weight="0.5"
+            android:background="@drawable/btn_red"
+            android:text="@string/cancel" />
 
-        <LinearLayout
+        <Button
+            android:id="@+id/submitEditButton"
+            style="@style/ButtonText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal" >
+            android:layout_weight="0.5"
+            android:background="@drawable/btn_purple"
+            android:text="@string/confirm" />
+    </LinearLayout>
 
-            <Button
-                android:id="@+id/cancelEditButton"
-                style="@style/ButtonText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:background="@drawable/btn_yellow"
-                android:text="@string/cancel" />
-
-            <Button
-                android:id="@+id/submitEditButton"
-                style="@style/ButtonText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:background="@drawable/btn_blue"
-                android:text="@string/confirm" />
-        </LinearLayout>
     </LinearLayout>
 
 </ScrollView>

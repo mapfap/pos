@@ -10,6 +10,7 @@
     <string name="edit">Edit</string>
     <string name="confirm">Done</string>
     <string name="date">Date</string>
+    <string name="date_added">Date Added</string>
     <string name="quantity">Quantity</string>
     <string name="remove">Remove</string>
     <string name="scan">Scan</string>
@@ -21,6 +22,7 @@
     <string name="hint_search">Enter name or barcode</string>
     <string name="hint_cash">Enter cash here</string>
     <string name="add_new_product">Add New Product</string>
+    <string name="add_stock">Add A Product Lot</string>
     <string name="previous">&lt;</string>
     <string name="next">></string>
     

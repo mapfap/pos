@@ -1,75 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:layout_height="wrap_content"
+    android:background="#fefefe"
+    android:baselineAligned="false"
+    android:orientation="horizontal" >
 
-    <LinearLayout
-        android:baselineAligned="false"
-        android:layout_width="match_parent"
+    <TableRow
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+        android:layout_weight="0.2" >
 
-        <TableRow
-            android:layout_width="0dp"
-            android:layout_height="30dp"
-            android:layout_weight="1.5"
-            android:background="#FFFFFF"
-            android:paddingBottom="1dip"
-            android:paddingLeft="1dip"
-            android:paddingTop="1dip" >
+        <TextView
+            android:id="@+id/sid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center" />
+    </TableRow>
 
-            <TextView
-                android:id="@+id/sid"
-                android:layout_width="0dp"
-                android:layout_height="fill_parent"
-                android:layout_weight="2"
-                android:background="#eeeeee"
-                android:gravity="center"
-                android:paddingLeft="10dp"
-                />
-        </TableRow>
+    <TableRow
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.4" >
 
-        <TableRow
-            android:layout_width="0dp"
-            android:layout_height="30dp"
-            android:layout_weight="3"
-            android:background="#FFFFFF"
-            android:paddingBottom="1dip"
-            android:paddingLeft="1dip"
-            android:paddingTop="1dip" >
+        <TextView
+            android:id="@+id/startTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center" />
+    </TableRow>
 
-            <TextView
-                android:id="@+id/startTime"
-                android:layout_width="0dp"
-                android:layout_height="fill_parent"
-                android:layout_weight="1.5"
-                android:background="#eeeeee"
-                android:gravity="center"
-                android:paddingLeft="10dp"
-                 />
-        </TableRow>
+    <TableRow
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.4" >
 
-        <TableRow
-            android:layout_width="0dp"
-            android:layout_height="fill_parent"
-            android:layout_weight="3"
-            android:background="#FFFFFF"
-            android:paddingBottom="1dip"
-            android:paddingLeft="1dip"
-            android:paddingRight="1dip"
-            android:paddingTop="1dip" >
-
-            <TextView
-                android:id="@+id/total"
-                android:layout_width="0dp"
-                android:layout_height="30dp"
-                android:layout_weight="0.75"
-                android:background="#eeeeee"
-				android:gravity="right|center_vertical"
-                android:paddingRight="10dp"
-                />
-        </TableRow>
-    </LinearLayout>
+        <TextView
+            android:id="@+id/total"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center" />
+    </TableRow>
 
 </LinearLayout>

@@ -31,7 +31,6 @@ public class AddProductDialogFragment extends DialogFragment {
 	private EditText nameBox;
 	private Button confirmButton;
 	private Button clearButton;
-//	private ImageButton backButton;
 	private UpdatableFragment fragment;
 
 	public AddProductDialogFragment(UpdatableFragment fragment) {
@@ -102,8 +101,7 @@ public class AddProductDialogFragment extends DialogFragment {
 						
 						fragment.update();
 						clearAllBox();
-//						AddProductActivity.this.finish();
-						
+						AddProductDialogFragment.this.dismiss();
 						
 					} else {
 						Toast.makeText(getActivity().getBaseContext(),
@@ -115,30 +113,9 @@ public class AddProductDialogFragment extends DialogFragment {
 		});
 		
 		clearButton.setOnClickListener(new View.OnClickListener() {
-
 			@Override
 			public void onClick(View v) {
-//				if(barcodeBox.getText().toString().equals("") && nameBox.getText().toString().equals("") && priceBox.getText().toString().equals("")){
-//
-//					final AlertDialog.Builder adb = new AlertDialog.Builder(
-//							getActivity().getBaseContext());
-//					adb.setTitle("Back to inventory?");
-//					adb.setMessage("Are you sure to go back?");
-//					adb.setNegativeButton("Stay here.", null);
-//					adb.setPositiveButton("Back to inventory.", new DialogInterface.OnClickListener() {
-//						
-//			            @Override
-//			            public void onClick(DialogInterface dialog, int which) {
-////			            	getActivity().getBaseContext().finish();  
-//			            }
-//
-//			        });
-//					adb.show();
-//
-//				}
-//				else {
 					clearAllBox();
-//				}
 			}
 		});
 	}
