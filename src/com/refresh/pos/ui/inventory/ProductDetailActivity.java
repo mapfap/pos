@@ -78,6 +78,7 @@ public class ProductDetailActivity extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		
+		res = getResources();
 		initiateActionBar();
 		
 		try {
@@ -100,7 +101,6 @@ public class ProductDetailActivity extends Activity {
 
 	private void initUI(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		res = getResources();
 		setContentView(R.layout.layout_productdetail_main);
 		stockListView = (ListView) findViewById(R.id.stockListView);
 		nameBox = (EditText) findViewById(R.id.nameBox);

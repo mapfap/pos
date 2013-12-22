@@ -55,7 +55,7 @@ public class MainActivity extends FragmentActivity {
 	private void initiateActionBar() {
 		if (SDK_SUPPORTED) {
 			ActionBar actionBar = getActionBar();
-			actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+			
 			actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
 			ActionBar.TabListener tabListener = new ActionBar.TabListener() {
@@ -74,12 +74,11 @@ public class MainActivity extends FragmentActivity {
 			};
 			actionBar.addTab(actionBar.newTab().setText(res.getString(R.string.inventory))
 					.setTabListener(tabListener), 0, false);
-			actionBar.addTab(
-					actionBar.newTab().setText(res.getString(R.string.sale))
-							.setTabListener(tabListener), 1, true);
+			actionBar.addTab(actionBar.newTab().setText(res.getString(R.string.sale))
+					.setTabListener(tabListener), 1, true);
 			actionBar.addTab(actionBar.newTab().setText(res.getString(R.string.report))
 					.setTabListener(tabListener), 2, false);
-
+	
 			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
 				actionBar.setStackedBackgroundDrawable(new ColorDrawable(Color
 						.parseColor("#73bde5")));
