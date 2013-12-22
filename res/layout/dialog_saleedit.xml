@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/btn_red"
             android:textSize="20sp"
-            android:text="REMOVE" />
+            android:text="@string/remove" />
     </LinearLayout>
 
     <LinearLayout
@@ -29,11 +29,12 @@
         android:orientation="vertical" >
 
         <LinearLayout
+            android:baselineAligned="false"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="0dip"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.8"
                 android:orientation="vertical" >
@@ -42,7 +43,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.03"
-                    android:text="Quantity"
+                    android:text="@string/quantity"
                     android:textSize="20sp" />
 
                 <EditText
@@ -57,11 +58,12 @@
         </LinearLayout>
 
         <LinearLayout
+            android:baselineAligned="false"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="0dip"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.8"
                 android:orientation="vertical" >
@@ -70,7 +72,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.03"
-                    android:text="Price per unit"
+                    android:text="@string/unit_price"
                     android:textSize="20sp" />
 
                 <EditText
@@ -84,11 +86,6 @@
             </LinearLayout>
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" >
-        </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
@@ -99,12 +96,12 @@
         <Button
             android:id="@+id/confirmButton"
             style="@style/ButtonText"
-            android:layout_width="match_parent"
+            android:layout_width="0dip"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/btn_green"
             android:textSize="20sp"
-            android:text="COMFIRM" />
+            android:text="@string/confirm" />
     </LinearLayout>
 
 </LinearLayout>
