@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.refresh.pos"
     android:versionCode="1"
+    android:debuggable="true"
     android:versionName="1.0" >
 
     <uses-sdk

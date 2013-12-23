@@ -26,7 +26,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import com.refresh.pos.R;
 import com.refresh.pos.domain.LanguageController;
@@ -237,7 +236,9 @@ public class MainActivity extends FragmentActivity {
 		LanguageController.getInstance().setLanguage(localeString);
 		getBaseContext().getResources().updateConfiguration(config,
 				getBaseContext().getResources().getDisplayMetrics());
-		Toast.makeText(getBaseContext(), res.getString(R.string.hint_lang), Toast.LENGTH_LONG).show();
+		Intent intent = getIntent();
+		finish();
+		startActivity(intent);
 	}
 
 }
