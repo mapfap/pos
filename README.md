@@ -27,7 +27,6 @@ How To Install
 2. It will automatically download to your device.
 3. Slide down your notification tab, It appears on downloaded.
 4. Click to install. (You may need to allow unknown source application in Settings)
-
 5. For a Barcode Scanner Application that may required
   - You can download from Google Play store
   - (or) from this link http://mapfap.in.th/bc.apk
