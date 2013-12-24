@@ -5,6 +5,7 @@ import com.refresh.pos.techicalservices.inventory.InventoryDao;
 
 /**
  * This class is service locater for Product Catalog and Stock.
+ * 
  * @author Refresh Team
  *
  */

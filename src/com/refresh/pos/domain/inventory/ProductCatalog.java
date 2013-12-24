@@ -4,6 +4,12 @@ import java.util.List;
 
 import com.refresh.pos.techicalservices.inventory.InventoryDao;
 
+/**
+ * Book that keeps list of Product.
+ * 
+ * @author Refresh Team
+ *
+ */
 public class ProductCatalog {
 
 	private InventoryDao inventoryDao;

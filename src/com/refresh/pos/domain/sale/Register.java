@@ -8,6 +8,12 @@ import com.refresh.pos.domain.inventory.Stock;
 import com.refresh.pos.techicalservices.NoDaoSetException;
 import com.refresh.pos.techicalservices.sale.SaleDao;
 
+/**
+ * Handles all Sale processes.
+ * 
+ * @author Refresh Team
+ *
+ */
 public class Register {
 	private static Register instance = null;
 	private static SaleDao saleDao = null;

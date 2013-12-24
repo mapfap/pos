@@ -21,6 +21,12 @@ import com.refresh.pos.domain.inventory.ProductCatalog;
 import com.refresh.pos.techicalservices.NoDaoSetException;
 import com.refresh.pos.ui.component.UpdatableFragment;
 
+/**
+ * A dialog of adding a Product.
+ * 
+ * @author Refresh Team
+ *
+ */
 @SuppressLint("ValidFragment")
 public class AddProductDialogFragment extends DialogFragment {
 

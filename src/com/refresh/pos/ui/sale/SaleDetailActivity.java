@@ -22,6 +22,11 @@ import com.refresh.pos.domain.sale.Sale;
 import com.refresh.pos.domain.sale.SaleLedger;
 import com.refresh.pos.techicalservices.NoDaoSetException;
 
+/**
+ * UI for showing the detail of Sale in the record.
+ * @author Refresh Team
+ *
+ */
 public class SaleDetailActivity extends Activity{
 	
 	private TextView totalBox;

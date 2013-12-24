@@ -6,6 +6,12 @@ import java.util.List;
 import com.refresh.pos.techicalservices.NoDaoSetException;
 import com.refresh.pos.techicalservices.sale.SaleDao;
 
+/**
+ * Book that keeps sale record.
+ * 
+ * @author Refresh Team
+ *
+ */
 public class SaleLedger {
 	
 	private static SaleLedger instance = null;

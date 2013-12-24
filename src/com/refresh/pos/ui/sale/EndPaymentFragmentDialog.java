@@ -15,6 +15,11 @@ import com.refresh.pos.domain.sale.Register;
 import com.refresh.pos.techicalservices.NoDaoSetException;
 import com.refresh.pos.ui.component.UpdatableFragment;
 
+/**
+ * A dialog shows the total change and confirmation for Sale.
+ * @author Refresh Team
+ *
+ */
 @SuppressLint("ValidFragment")
 public class EndPaymentFragmentDialog extends DialogFragment  {
 

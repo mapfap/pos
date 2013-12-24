@@ -30,7 +30,11 @@ import com.refresh.pos.domain.sale.SaleLedger;
 import com.refresh.pos.techicalservices.NoDaoSetException;
 import com.refresh.pos.ui.component.UpdatableFragment;
 
-
+/**
+ * UI for showing sale's record.
+ * @author Refresh Team
+ *
+ */
 public class ReportFragment extends UpdatableFragment {
 	
 	private SaleLedger saleLedger;

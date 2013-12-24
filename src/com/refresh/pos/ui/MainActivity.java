@@ -39,6 +39,13 @@ import com.refresh.pos.ui.inventory.ProductDetailActivity;
 import com.refresh.pos.ui.sale.ReportFragment;
 import com.refresh.pos.ui.sale.SaleFragment;
 
+/**
+ * This UI loads 3 main pages (Inventory, Sale, Report)
+ * Makes the UI flow by slide through pages using ViewPager.
+ * 
+ * @author Refresh Team
+ *
+ */
 @SuppressLint("NewApi")
 public class MainActivity extends FragmentActivity {
 

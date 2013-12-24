@@ -7,6 +7,12 @@ import android.content.ContentValues;
 import com.refresh.pos.techicalservices.Database;
 import com.refresh.pos.techicalservices.DatabaseContents;
 
+/**
+ * Saves and loads language preference from database.
+ * 
+ * @author Refresh Team
+ *
+ */
 public class LanguageController {
 	
 	private static final String DEFAULT_LANGUAGE = "en";

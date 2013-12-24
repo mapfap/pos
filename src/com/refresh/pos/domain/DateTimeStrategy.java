@@ -4,6 +4,12 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
+/**
+ * A static class, global access for how to handle with date format.
+ * 
+ * @author Refresh Team
+ *
+ */
 public class DateTimeStrategy {
 	
 	private static Locale locale;

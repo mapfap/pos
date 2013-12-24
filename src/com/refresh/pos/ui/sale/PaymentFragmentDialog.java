@@ -14,6 +14,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+/**
+ * A dialog for input a money for sale.
+ * @author Refresh Team
+ *
+ */
 @SuppressLint("ValidFragment")
 public class PaymentFragmentDialog extends DialogFragment {
 	

@@ -11,6 +11,12 @@ import com.refresh.pos.domain.inventory.ProductLot;
 import com.refresh.pos.techicalservices.Database;
 import com.refresh.pos.techicalservices.DatabaseContents;
 
+/**
+ * DAO used by android for Inventory.
+ * 
+ * @author Refresh Team
+ *
+ */
 public class InventoryDaoAndroid implements InventoryDao {
 
 	private Database database;

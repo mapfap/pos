@@ -5,6 +5,7 @@ import java.util.Map;
 
 /**
  * LineItem of Sale.
+ * 
  * @author Refresh Team
  *
  */

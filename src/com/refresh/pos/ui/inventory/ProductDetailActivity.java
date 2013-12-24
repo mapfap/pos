@@ -36,6 +36,11 @@ import com.refresh.pos.domain.inventory.ProductLot;
 import com.refresh.pos.domain.inventory.Stock;
 import com.refresh.pos.techicalservices.NoDaoSetException;
 
+/**
+ * UI for shows the datails of each Product.
+ * @author Refresh Team
+ *
+ */
 @SuppressLint("NewApi")
 public class ProductDetailActivity extends Activity {
 

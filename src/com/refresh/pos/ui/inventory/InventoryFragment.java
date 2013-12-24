@@ -37,6 +37,13 @@ import com.refresh.pos.ui.MainActivity;
 import com.refresh.pos.ui.component.ButtonAdapter;
 import com.refresh.pos.ui.component.UpdatableFragment;
 
+/**
+ * UI for Inventory, shows list of Product in the ProductCatalog.
+ * Also use for a sale process of adding Product into sale.
+ * 
+ * @author Refresh Team
+ *
+ */
 @SuppressLint("ValidFragment")
 public class InventoryFragment extends UpdatableFragment {
 

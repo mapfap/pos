@@ -1,5 +1,11 @@
 package com.refresh.pos.techicalservices;
 
+/**
+ * Uses to directly access to database.
+ * 
+ * @author Refresh Team
+ *
+ */
 public class DatabaseExecutor {
 
 	private static Database database;

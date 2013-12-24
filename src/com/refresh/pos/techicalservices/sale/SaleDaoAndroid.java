@@ -15,7 +15,12 @@ import com.refresh.pos.techicalservices.Database;
 import com.refresh.pos.techicalservices.DatabaseContents;
 
 
-
+/**
+ * DAO used by android for Sale process.
+ * 
+ * @author Refresh Team
+ *
+ */
 public class SaleDaoAndroid implements SaleDao {
 
 	Database database;

@@ -6,6 +6,12 @@ import java.util.List;
 import com.refresh.pos.domain.inventory.LineItem;
 import com.refresh.pos.domain.sale.Sale;
 
+/**
+ * DAO for Sale process.
+ * 
+ * @author Refresh Team
+ *
+ */
 public interface SaleDao {
 
 	Sale initiateSale(String startTime);

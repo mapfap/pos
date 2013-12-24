@@ -1,5 +1,11 @@
 package com.refresh.pos.techicalservices;
 
+/**
+ * Enum for name of tables in database.
+ * 
+ * @author Refresh Team
+ *
+ */
 public enum DatabaseContents {
 	
 	DATABASE("com.refresh.db1"),

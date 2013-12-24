@@ -10,6 +10,13 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+/**
+ * Real database connector, provides all CRUD operation.
+ * database tables are created here.
+ * 
+ * @author Refresh Team
+ *
+ */
 public class AndroidDatabase extends SQLiteOpenHelper implements Database {
 
 	private static final int DATABASE_VERSION = 1;

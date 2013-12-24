@@ -4,6 +4,12 @@ import java.util.List;
 
 import com.refresh.pos.techicalservices.inventory.InventoryDao;
 
+/**
+ * Import log of ProductLot come in to store.
+ * 
+ * @author Refresh Team
+ *
+ */
 public class Stock {
 
 	private InventoryDao inventoryDao;

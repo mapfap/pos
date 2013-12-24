@@ -5,6 +5,7 @@ import java.util.Map;
 
 /**
  * Product or item represents the real product in store.
+ * 
  * @author Refresh Team
  *
  */

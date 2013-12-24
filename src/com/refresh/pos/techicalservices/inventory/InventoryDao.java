@@ -5,6 +5,12 @@ import java.util.List;
 import com.refresh.pos.domain.inventory.Product;
 import com.refresh.pos.domain.inventory.ProductLot;
 
+/**
+ * DAO for Inventory.
+ * 
+ * @author Refresh Team
+ *
+ */
 public interface InventoryDao {
 
 	int addProduct(Product product);

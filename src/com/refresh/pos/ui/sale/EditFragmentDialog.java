@@ -17,6 +17,12 @@ import com.refresh.pos.domain.sale.Register;
 import com.refresh.pos.techicalservices.NoDaoSetException;
 import com.refresh.pos.ui.component.UpdatableFragment;
 
+/**
+ * A dialog for edit a LineItem of sale,
+ * overriding price or set the quantity.
+ * @author Refresh Team
+ *
+ */
 @SuppressLint("ValidFragment")
 public class EditFragmentDialog extends DialogFragment {
 	private Register register;

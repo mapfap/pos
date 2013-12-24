@@ -8,7 +8,12 @@ import java.util.Map;
 import com.refresh.pos.domain.inventory.LineItem;
 import com.refresh.pos.domain.inventory.Product;
 
-
+/**
+ * Sale represents sale operation.
+ * 
+ * @author Refresh Team
+ *
+ */
 public class Sale {
 	
 	private final int id;
