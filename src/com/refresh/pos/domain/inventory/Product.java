@@ -35,34 +35,68 @@ public class Product {
 		this.unitPrice = salePrice;
 	}
 	
+	/**
+	 * Constructs a new Product.
+	 * @param name name of this product.
+	 * @param barcode barcode (any standard format) of this product.
+	 * @param salePrice price for using when doing sale.
+	 */
 	public Product(String name, String barcode, double salePrice) {
 		this(UNDEFINED_ID, name, barcode, salePrice);
 	}
 
+	/**
+	 * Returns name of this product.
+	 * @return name of this product.
+	 */
 	public String getName() {
 		return name;
 	}
 	
+	/**
+	 * Sets name of this product.
+	 * @param name name of this product.
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
+	/**
+	 * Sets barcode of this product.
+	 * @param barcode barcode of this product.
+	 */
 	public void setBarcode(String barcode) {
 		this.barcode = barcode;
 	}
 
+	/**
+	 * Sets price of this product.
+	 * @param unitPrice price of this product.
+	 */
 	public void setUnitPrice(double unitPrice) {
 		this.unitPrice = unitPrice;
 	}
 
+	/**
+	 * Returns id of this product.
+	 * @return id of this product.
+	 */
 	public int getId() {
 		return id;
 	}
 	
+	/**
+	 * Returns barcode of this product.
+	 * @return barcode of this product.
+	 */
 	public String getBarcode() {
 		return barcode;
 	}
 	
+	/**
+	 * Returns price of this product.
+	 * @return price of this product.
+	 */
 	public double getUnitPrice() {
 		return unitPrice;
 	}

@@ -40,22 +40,42 @@ public class ProductLot {
 		this.unitCost = unitCost;
 	}
 	
+	/**
+	 * Returns date added of this ProductLot.
+	 * @return date added of this ProductLot.
+	 */
 	public String getDateAdded() {
 		return dateAdded;
 	}
 	
+	/**
+	 * Returns quantity of this ProductLot.
+	 * @return quantity of this ProductLot.
+	 */
 	public int getQuantity() {
 		return quantity;
 	}
 	
+	/**
+	 * Returns cost of this ProductLot.
+	 * @return cost of this ProductLot.
+	 */
 	public double unitCost() {
 		return unitCost;
 	}
 
+	/**
+	 * Returns id of this ProductLot.
+	 * @return id of this ProductLot.
+	 */
 	public int getId() {
 		return id;
 	}
 
+	/**
+	 * Returns product in this ProductLot.
+	 * @return product in this ProductLot.
+	 */
 	public Product getProduct() {
 		return product;
 	}

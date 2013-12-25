@@ -29,14 +29,26 @@ public class LanguageController {
 		return instance;
 	}
 	
+	/**
+	 * Sets database for use in this class.
+	 * @param db database. 
+	 */
 	public static void setDatabase(Database db) {
 		database = db;
 	}
 	
+	/**
+	 * Sets language for use in application.
+	 * @param localeString local string of country.
+	 */
 	public void setLanguage(String localeString) {
 		database.execute("UPDATE " + DatabaseContents.LANGUAGE + " SET language = '" + localeString + "'");
 	}
 	
+	/**
+	 * Returns current language. 
+	 * @return current language.
+	 */
 	public String getLanguage() {
 		List<Object> contents = database.select("SELECT * FROM " + DatabaseContents.LANGUAGE);
 
