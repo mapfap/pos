@@ -21,6 +21,10 @@ public class InventoryDaoAndroid implements InventoryDao {
 
 	private Database database;
 	
+	/**
+	 * Constructs InventoryDaoAndroid.
+	 * @param database database for use in InventoryDaoAndroid.
+	 */
 	public InventoryDaoAndroid(Database database) {
 		this.database = database;
 	}
@@ -44,8 +48,11 @@ public class InventoryDaoAndroid implements InventoryDao {
         return id;
 	}
 	
-	
-	
+	/**
+	 * Converts list of object to list of product.
+	 * @param objectList list of object.
+	 * @return list of product.
+	 */
 	private List<Product> toProductList(List<Object> objectList) {
 		List<Product> list = new ArrayList<Product>();
         for (Object object: objectList) {
@@ -65,17 +72,34 @@ public class InventoryDaoAndroid implements InventoryDao {
         return getAllProduct(" WHERE status = 'ACTIVE'");
 	}
 	
+	/**
+	 * Returns list of all products in inventory.
+	 * @param condition specific condition for getAllProduct.
+	 * @return list of all products in inventory.
+	 */
 	private List<Product> getAllProduct(String condition) {
 		String queryString = "SELECT * FROM " + DatabaseContents.TABLE_PRODUCT_CATALOG.toString() + condition + " ORDER BY name";
         List<Product> list = toProductList(database.select(queryString));
         return list;
 	}
 	
+	/**
+	 * Returns product from inventory finds by specific reference. 
+	 * @param reference reference value.
+	 * @param value value for search.
+	 * @return list of product.
+	 */
 	private List<Product> getProductBy(String reference, String value) {
         String condition = " WHERE " + reference + " = " + value + " ;";
         return getAllProduct(condition);
 	}
 	
+	/**
+	 * Returns product from inventory finds by similar name.
+	 * @param reference reference value.
+	 * @param value value for search.
+	 * @return list of product.
+	 */
 	private List<Product> getSimilarProductBy(String reference, String value) {
         String condition = " WHERE " + reference + " LIKE '%" + value + "%' ;";
         return getAllProduct(condition);
@@ -136,12 +160,22 @@ public class InventoryDaoAndroid implements InventoryDao {
         return getAllProduct(condition);
 	}
 	
+	/**
+	 * Returns list of all ProductLot in inventory.
+	 * @param condition specific condition for get ProductLot.
+	 * @return list of all ProductLot in inventory.
+	 */
 	private List<ProductLot> getAllProductLot(String condition) {
 		String queryString = "SELECT * FROM " + DatabaseContents.TABLE_STOCK.toString() + condition;
         List<ProductLot> list = toProductLotList(database.select(queryString));
         return list;
 	}
 
+	/**
+	 * Converts list of object to list of ProductLot.
+	 * @param objectList list of object.
+	 * @return list of ProductLot.
+	 */
 	private List<ProductLot> toProductLotList(List<Object> objectList) {
 		List<ProductLot> list = new ArrayList<ProductLot>();
 		for (Object object: objectList) {
