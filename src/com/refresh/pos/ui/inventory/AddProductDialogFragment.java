@@ -40,12 +40,17 @@ public class AddProductDialogFragment extends DialogFragment {
 	private UpdatableFragment fragment;
 	private Resources res;
 
+	/**
+	 * Construct a new AddProductDialogFragment
+	 * @param fragment
+	 */
 	public AddProductDialogFragment(UpdatableFragment fragment) {
 		
 		super();
 		this.fragment = fragment;
 	}
 
+	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		
@@ -71,6 +76,9 @@ public class AddProductDialogFragment extends DialogFragment {
 		return v;
 	}
 
+	/**
+	 * Construct a new 
+	 */
 	private void initUI() {
 		scanButton.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -127,12 +135,16 @@ public class AddProductDialogFragment extends DialogFragment {
 		});
 	}
 
+	/**
+	 * Clear all box
+	 */
 	private void clearAllBox() {
 		barcodeBox.setText("");
 		nameBox.setText("");
 		priceBox.setText("");
 	}
 	
+	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent intent) {
 		IntentResult scanningResult = IntentIntegrator.parseActivityResult(
 				requestCode, resultCode, intent);

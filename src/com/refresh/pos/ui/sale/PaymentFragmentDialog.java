@@ -30,11 +30,17 @@ public class PaymentFragmentDialog extends DialogFragment {
 	private UpdatableFragment saleFragment;
 	private UpdatableFragment reportFragment;
 	
+	/**
+	 * Construct a new PaymentFragmentDialog.
+	 * @param saleFragment
+	 * @param reportFragment
+	 */
 	public PaymentFragmentDialog(UpdatableFragment saleFragment, UpdatableFragment reportFragment) {
 		super();
 		this.saleFragment = saleFragment;
 		this.reportFragment = reportFragment;
 	}
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -82,6 +88,9 @@ public class PaymentFragmentDialog extends DialogFragment {
 		return v;
 	}
 
+	/**
+	 * End.
+	 */
 	private void end() {
 		this.dismiss();
 		

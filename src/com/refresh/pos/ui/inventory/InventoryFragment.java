@@ -50,18 +50,22 @@ public class InventoryFragment extends UpdatableFragment {
 	protected static final int SEARCH_LIMIT = 0;
 	private ListView inventoryListView;
 	private ProductCatalog productCatalog;
-	List<Map<String, String>> inventoryList;
+	private List<Map<String, String>> inventoryList;
 	private Button addProductButton;
 	private EditText searchBox;
 	private Button scanButton;
-	
+
 	private ViewPager viewPager;
 	private Register register;
 	private MainActivity main;
-	
+
 	private UpdatableFragment saleFragment;
 	private Resources res;
-	
+
+	/**
+	 * Construct a new InventoryFragment.
+	 * @param saleFragment
+	 */
 	public InventoryFragment(UpdatableFragment saleFragment) {
 		super();
 		this.saleFragment = saleFragment;
@@ -70,55 +74,58 @@ public class InventoryFragment extends UpdatableFragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		
+
 		try {
 			productCatalog = Inventory.getInstance().getProductCatalog();
 			register = Register.getInstance();
 		} catch (NoDaoSetException e) {
 			e.printStackTrace();
 		}
-		
+
 		View view = inflater.inflate(R.layout.layout_inventory, container, false);
-		
+
 		res = getResources();
 		inventoryListView = (ListView) view.findViewById(R.id.productListView);
 		addProductButton = (Button) view.findViewById(R.id.addProductButton);
 		scanButton = (Button) view.findViewById(R.id.scanButton);
 		searchBox = (EditText) view.findViewById(R.id.searchBox);
-		
+
 		main = (MainActivity) getActivity();
 		viewPager = main.getViewPager();
-		
+
 		initUI();
 		return view;
 	}
-	
+
+	/**
+	 * Initiate this UI.
+	 */
 	private void initUI() {
-		
+
 		addProductButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				showPopup(v);
 			}
 		});
-		
+
 		searchBox.addTextChangedListener(new TextWatcher(){
-	        public void afterTextChanged(Editable s) {
-	        	if (s.length() >= SEARCH_LIMIT) {
-	        		search();
-	        	}
-	        }
-	        public void beforeTextChanged(CharSequence s, int start, int count, int after){}
-	        public void onTextChanged(CharSequence s, int start, int before, int count){}
-	    });
-		
+			public void afterTextChanged(Editable s) {
+				if (s.length() >= SEARCH_LIMIT) {
+					search();
+				}
+			}
+			public void beforeTextChanged(CharSequence s, int start, int count, int after){}
+			public void onTextChanged(CharSequence s, int start, int before, int count){}
+		});
+
 		inventoryListView.setOnItemClickListener(new OnItemClickListener() {
-		      public void onItemClick(AdapterView<?> myAdapter, View myView, int position, long mylng) {
-		    	  int id = Integer.parseInt(inventoryList.get(position).get("id").toString());
-		    	  
-		    	  register.addItem(productCatalog.getProductById(id), 1);
-		    	  saleFragment.update();
-		    	  viewPager.setCurrentItem(1);
-		      }     
+			public void onItemClick(AdapterView<?> myAdapter, View myView, int position, long mylng) {
+				int id = Integer.parseInt(inventoryList.get(position).get("id").toString());
+
+				register.addItem(productCatalog.getProductById(id), 1);
+				saleFragment.update();
+				viewPager.setCurrentItem(1);
+			}     
 		});
 
 		scanButton.setOnClickListener(new View.OnClickListener() {
@@ -128,24 +135,31 @@ public class InventoryFragment extends UpdatableFragment {
 				scanIntegrator.initiateScan();
 			}
 		});
-		
+
 	}
 
+	/**
+	 * Show list.
+	 * @param list
+	 */
 	private void showList(List<Product> list) {
-		
+
 		inventoryList = new ArrayList<Map<String, String>>();
 		for(Product product : list) {
 			inventoryList.add(product.toMap());
 		}
-		
+
 		ButtonAdapter sAdap = new ButtonAdapter(getActivity().getBaseContext(), inventoryList,
 				R.layout.listview_inventory, new String[]{"name"}, new int[] {R.id.name}, R.id.optionView, "id");
 		inventoryListView.setAdapter(sAdap);
 	}
-	
+
+	/**
+	 * Search.
+	 */
 	private void search() {
 		String search = searchBox.getText().toString();
-		
+
 		if (search.equals("/demo")) {
 			testAddProduct();
 			searchBox.setText("");
@@ -159,11 +173,12 @@ public class InventoryFragment extends UpdatableFragment {
 			List<Product> result = productCatalog.searchProduct(search);
 			showList(result);
 			if (result.isEmpty()) {
-				
+
 			}
 		}
 	}
-	
+
+	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent intent) {
 		IntentResult scanningResult = IntentIntegrator.parseActivityResult(
 				requestCode, resultCode, intent);
@@ -176,27 +191,34 @@ public class InventoryFragment extends UpdatableFragment {
 					Toast.LENGTH_SHORT).show();
 		}
 	}
-	
+
+	/**
+	 * Test adding product
+	 */
 	protected void testAddProduct() {
 		Demo.testProduct(getActivity());
 		Toast.makeText(getActivity().getBaseContext(), res.getString(R.string.success),
 				Toast.LENGTH_SHORT).show();
 	}
-	
+
+	/**
+	 * Show popup.
+	 * @param anchorView
+	 */
 	public void showPopup(View anchorView) {
 		AddProductDialogFragment newFragment = new AddProductDialogFragment(InventoryFragment.this);
-	    newFragment.show(getFragmentManager(), "");
+		newFragment.show(getFragmentManager(), "");
 	}
-	
+
 	@Override
 	public void update() {
 		search();
 	}
-	
+
 	@Override
 	public void onResume() {
 		super.onResume();
 		update();
 	}
-	
+
 }

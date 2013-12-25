@@ -36,6 +36,11 @@ public class EditFragmentDialog extends DialogFragment {
 	private LineItem lineItem;
 	private Button removeButton;
 	
+	/**
+	 * Construct a new  EditFragmentDialog.
+	 * @param saleFragment
+	 * @param reportFragment
+	 */
 	public EditFragmentDialog(UpdatableFragment saleFragment, UpdatableFragment reportFragment) {
 		super();
 		this.saleFragment = saleFragment;
@@ -87,6 +92,10 @@ public class EditFragmentDialog extends DialogFragment {
 		});
 		return v;
 	}
+	
+	/**
+	 * End.
+	 */
 	private void end(){
 		saleFragment.update();
 		reportFragment.update();

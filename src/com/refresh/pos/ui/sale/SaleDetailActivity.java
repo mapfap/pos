@@ -37,6 +37,7 @@ public class SaleDetailActivity extends Activity{
 	private int saleId;
 	private SaleLedger saleLedger;
 
+	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		
 		try {
@@ -50,7 +51,11 @@ public class SaleDetailActivity extends Activity{
 		
 		initUI(savedInstanceState);
 	}
-	
+
+
+	/**
+	 * Initiate actionbar.
+	 */
 	@SuppressLint("NewApi")
 	private void initiateActionBar() {
 		if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
@@ -62,6 +67,10 @@ public class SaleDetailActivity extends Activity{
 	}
 	
 
+	/**
+	 * Initiate this UI.
+	 * @param savedInstanceState
+	 */
 	private void initUI(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.layout_saledetail);
@@ -73,6 +82,10 @@ public class SaleDetailActivity extends Activity{
 		lineitemListView = (ListView) findViewById(R.id.lineitemList);
 	}
 
+	/**
+	 * Show list.
+	 * @param list
+	 */
 	private void showList(List<LineItem> list) {
 		lineitemList = new ArrayList<Map<String, String>>();
 		for(LineItem line : list) {
@@ -95,6 +108,9 @@ public class SaleDetailActivity extends Activity{
 		}
 	}
 	
+	/**
+	 * Update UI.
+	 */
 	public void update() {
 		totalBox.setText(sale.getTotal() + "");
 		dateBox.setText(sale.getEndTime() + "");

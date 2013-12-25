@@ -61,6 +61,10 @@ public class SplashScreenActivity extends Activity {
 		Log.d("Core App", "INITIATE");
 	}
 	
+	/**
+	 * Set language.
+	 * @param localeString
+	 */
 	private void setLanguage(String localeString) {
 		Locale locale = new Locale(localeString);
 		Locale.setDefault(locale);
@@ -79,6 +83,9 @@ public class SplashScreenActivity extends Activity {
 		initiateCoreApp();
 	}
 	
+	/**
+	 * Go.
+	 */
 	private void go() {
 		gone = true;
 		Intent newActivity = new Intent(SplashScreenActivity.this,
@@ -87,6 +94,10 @@ public class SplashScreenActivity extends Activity {
 		SplashScreenActivity.this.finish();	
 	}
 
+	/**
+	 * Initiate this UI.
+	 * @param savedInstanceState
+	 */
 	private void initiateUI(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.layout_splashscreen);

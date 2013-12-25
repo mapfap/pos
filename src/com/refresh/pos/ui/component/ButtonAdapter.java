@@ -19,6 +19,17 @@ public class ButtonAdapter extends SimpleAdapter {
 	private List<? extends Map<String, ?>> data;
 	private int buttonId;
 	private String tag;
+	
+	/**
+	 * Construct a new ButtonAdapter
+	 * @param context
+	 * @param data
+	 * @param resource
+	 * @param from
+	 * @param to
+	 * @param buttonId
+	 * @param tag
+	 */
 	public ButtonAdapter(Context context, List<? extends Map<String, ?>> data,
 			int resource, String[] from, int[] to, int buttonId, String tag) {
 		super(context, data, resource, from, to);

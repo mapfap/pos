@@ -63,7 +63,14 @@ public class ProductDetailActivity extends Activity {
 	private AlertDialog.Builder popDialog;
 	private LayoutInflater inflater ;
 	private Resources res;
+	private EditText costBox;
+	private EditText quantityBox;
+	private Button confirmButton;
+	private Button clearButton;
+	private View Viewlayout;
+	private AlertDialog alert;
 	
+	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 	    MenuInflater inflater = getMenuInflater();
 	    inflater.inflate(R.menu.detail_menu, menu);
@@ -104,6 +111,10 @@ public class ProductDetailActivity extends Activity {
 
 	}
 
+	/**
+	 * Initiate this UI.
+	 * @param savedInstanceState
+	 */
 	private void initUI(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.layout_productdetail_main);
@@ -139,69 +150,6 @@ public class ProductDetailActivity extends Activity {
 				edit();
 			}
 		});
-		
-//		nameBox.setOnClickListener(new View.OnClickListener() {
-//			@Override
-//			public void onClick(View v) {
-//				nameBox.setFocusable(true);
-//				nameBox.setFocusableInTouchMode(true);
-//				nameBox.setBackgroundColor(Color.parseColor("#C0FF3E"));
-//				submitEditButton.setVisibility(View.VISIBLE);
-//				cancelEditButton.setVisibility(View.VISIBLE);
-//				if(count[0] == 0){
-//					remember[0] = nameBox.getText().toString();
-//					if(count[1] == 0){
-//						remember[1] = priceBox.getText().toString();
-//					}
-//					if(count[2] == 0){
-//						remember[2] = barcodeBox.getText().toString();
-//					}
-//					count[0]++;
-//				}
-//			}
-//		});
-//
-//		priceBox.setOnClickListener(new View.OnClickListener() {
-//			@Override
-//			public void onClick(View v) {
-//				priceBox.setFocusable(true);
-//				priceBox.setFocusableInTouchMode(true);
-//				priceBox.setBackgroundColor(Color.parseColor("#C0FF3E"));
-//				submitEditButton.setVisibility(View.VISIBLE);
-//				cancelEditButton.setVisibility(View.VISIBLE);
-//				if(count[1] == 0){
-//					remember[1] = priceBox.getText().toString();
-//					if(count[0] == 0){
-//						remember[0] = nameBox.getText().toString();
-//					}
-//					if(count[2] == 0){
-//						remember[2] = barcodeBox.getText().toString();
-//					}
-//					count[1]++;
-//				}
-//			}
-//		});
-//
-//		barcodeBox.setOnClickListener(new View.OnClickListener() {
-//			@Override
-//			public void onClick(View v) {
-//				barcodeBox.setFocusable(true);
-//				barcodeBox.setFocusableInTouchMode(true);
-//				barcodeBox.setBackgroundColor(Color.parseColor("#C0FF3E"));
-//				submitEditButton.setVisibility(View.VISIBLE);
-//				cancelEditButton.setVisibility(View.VISIBLE);
-//				if(count[2] == 0){
-//					remember[2] = barcodeBox.getText().toString();
-//					if(count[0] == 0){
-//						remember[0] = nameBox.getText().toString();
-//					}
-//					if(count[1] == 0){
-//						remember[1] = priceBox.getText().toString();
-//					}
-//					count[2]++;
-//				}
-//			}
-//		});
 
 		submitEditButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
@@ -216,6 +164,10 @@ public class ProductDetailActivity extends Activity {
 		});
 	}
 
+	/**
+	 * Show list.
+	 * @param list
+	 */
 	private void showList(List<ProductLot> list) {
 
 		stockList = new ArrayList<Map<String, String>>();
@@ -252,6 +204,9 @@ public class ProductDetailActivity extends Activity {
 		}
 	}
 	
+	/**
+	 * Submit editing.
+	 */
 	private void submitEdit() {
 		nameBox.setFocusable(false);
 		nameBox.setFocusableInTouchMode(false);
@@ -273,6 +228,9 @@ public class ProductDetailActivity extends Activity {
 		openEditButton.setVisibility(View.VISIBLE);
 	}
 	
+	/**
+	 * Cancel editing.
+	 */
 	private void cancelEdit() {
 		nameBox.setFocusable(false);
 		nameBox.setFocusableInTouchMode(false);
@@ -291,6 +249,9 @@ public class ProductDetailActivity extends Activity {
 		openEditButton.setVisibility(View.VISIBLE);
 	}
 	
+	/**
+	 * Edit
+	 */
 	private void edit() {
 		nameBox.setFocusable(true);
 		nameBox.setFocusableInTouchMode(true);
@@ -309,13 +270,9 @@ public class ProductDetailActivity extends Activity {
 		openEditButton.setVisibility(View.INVISIBLE);
 	}
 	
-	private EditText costBox;
-	private EditText quantityBox;
-	private Button confirmButton;
-	private Button clearButton;
-	private View Viewlayout;
-	private AlertDialog alert;
-	
+	/**
+	 * Show adding product lot.
+	 */
 	private void showAddProductLot(){
 		Viewlayout = inflater.inflate(R.layout.layout_addproductlot,
 				(ViewGroup) findViewById(R.id.addProdutlot_dialog));

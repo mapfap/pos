@@ -29,11 +29,17 @@ public class EndPaymentFragmentDialog extends DialogFragment  {
 	private UpdatableFragment saleFragment;
 	private UpdatableFragment reportFragment;
 	
+	/**
+	 * End this UI.
+	 * @param saleFragment
+	 * @param reportFragment
+	 */
 	public EndPaymentFragmentDialog(UpdatableFragment saleFragment, UpdatableFragment reportFragment) {
 		super();
 		this.saleFragment = saleFragment;
 		this.reportFragment = reportFragment;
 	}
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -59,6 +65,9 @@ public class EndPaymentFragmentDialog extends DialogFragment  {
 		return v;
 	}
 	
+	/**
+	 * End
+	 */
 	private void end(){
 		regis.endSale(DateTimeStrategy.getCurrentTime());
 		saleFragment.update();

@@ -75,6 +75,9 @@ public class ReportFragment extends UpdatableFragment {
 		return view;
 	}
 
+	/**
+	 * Initiate this UI.
+	 */
 	private void initUI() {
 		currentTime = Calendar.getInstance();
 		datePicker = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
@@ -139,6 +142,10 @@ public class ReportFragment extends UpdatableFragment {
 		
 	}
 	
+	/**
+	 * Show list.
+	 * @param list
+	 */
 	private void showList(List<Sale> list) {
 
 		saleList = new ArrayList<Map<String, String>>();
@@ -207,6 +214,10 @@ public class ReportFragment extends UpdatableFragment {
 		// already fired the action of spinner.onItemSelected()
 	}
 	
+	/**
+	 * Add date.
+	 * @param increment
+	 */
 	private void addDate(int increment) {
 		int period = spinner.getSelectedItemPosition();
 		if (period == DAILY){

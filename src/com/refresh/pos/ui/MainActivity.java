@@ -58,6 +58,9 @@ public class MainActivity extends FragmentActivity {
 	private Resources res;
 
 	@SuppressLint("NewApi")
+	/**
+	 * Initiate this UI.
+	 */
 	private void initiateActionBar() {
 		if (SDK_SUPPORTED) {
 			ActionBar actionBar = getActionBar();
@@ -124,6 +127,9 @@ public class MainActivity extends FragmentActivity {
 		return super.onKeyDown(keyCode, event);
 	}
 
+	/**
+	 * Open quit dialog.
+	 */
 	private void openQuitDialog() {
 		AlertDialog.Builder quitDialog = new AlertDialog.Builder(
 				MainActivity.this);
@@ -144,6 +150,10 @@ public class MainActivity extends FragmentActivity {
 		quitDialog.show();
 	}
 
+	/**
+	 * Option on-click handler.
+	 * @param view
+	 */
 	public void optionOnClickHandler(View view) {
 		viewPager.setCurrentItem(0);
 		String id = view.getTag().toString();
@@ -158,6 +168,9 @@ public class MainActivity extends FragmentActivity {
 
 	}
 
+	/**
+	 * Open detail dialog.
+	 */
 	private void openDetailDialog() {
 		AlertDialog.Builder quitDialog = new AlertDialog.Builder(MainActivity.this);
 		quitDialog.setTitle(product.getName());
@@ -183,6 +196,9 @@ public class MainActivity extends FragmentActivity {
 		quitDialog.show();
 	}
 
+	/**
+	 * Open remove dialog.
+	 */
 	private void openRemoveDialog() {
 		AlertDialog.Builder quitDialog = new AlertDialog.Builder(
 				MainActivity.this);
@@ -206,6 +222,10 @@ public class MainActivity extends FragmentActivity {
 		quitDialog.show();
 	}
 
+	/**
+	 * Get view-pager
+	 * @return
+	 */
 	public ViewPager getViewPager() {
 		return viewPager;
 	}
@@ -235,6 +255,10 @@ public class MainActivity extends FragmentActivity {
         }
     }
 	
+	/**
+	 * Set language
+	 * @param localeString
+	 */
 	private void setLanguage(String localeString) {
 		Locale locale = new Locale(localeString);
 		Locale.setDefault(locale);
@@ -250,11 +274,21 @@ public class MainActivity extends FragmentActivity {
 
 }
 
+/**
+ * 
+ * @author Refresh team
+ *
+ */
 class PagerAdapter extends FragmentStatePagerAdapter {
 
 	private UpdatableFragment[] fragments;
 	private String[] fragmentNames;
 
+	/**
+	 * Construct a new PagerAdapter.
+	 * @param fragmentManager
+	 * @param res
+	 */
 	public PagerAdapter(FragmentManager fragmentManager, Resources res) {
 		
 		super(fragmentManager);
@@ -287,8 +321,12 @@ class PagerAdapter extends FragmentStatePagerAdapter {
 		return fragmentNames[i];
 	}
 
-	public void update(int i) {
-		fragments[i].update();
+	/**
+	 * Update
+	 * @param index
+	 */
+	public void update(int index) {
+		fragments[index].update();
 	}
 
 }

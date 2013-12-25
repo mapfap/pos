@@ -46,6 +46,10 @@ public class SaleFragment extends UpdatableFragment {
 	private UpdatableFragment reportFragment;
 	private Resources res;
 
+	/**
+	 * Construct a new SaleFragment.
+	 * @param
+	 */
 	public SaleFragment(UpdatableFragment reportFragment) {
 		super();
 		this.reportFragment = reportFragment;
@@ -72,6 +76,9 @@ public class SaleFragment extends UpdatableFragment {
 		return view;
 	}
 
+	/**
+	 * Initiate this UI.
+	 */
 	private void initUI() {
 		
 		saleListView.setOnItemClickListener(new OnItemClickListener(){
@@ -112,6 +119,10 @@ public class SaleFragment extends UpdatableFragment {
 		});
 	}
 	
+	/**
+	 * Show list
+	 * @param list
+	 */
 	private void showList(List<LineItem> list) {
 		
 		saleList = new ArrayList<Map<String, String>>();
@@ -125,6 +136,11 @@ public class SaleFragment extends UpdatableFragment {
 		saleListView.setAdapter(sAdap);
 	}
 
+	/**
+	 * Try parsing String to double.
+	 * @param value
+	 * @return true if can parse to double.
+	 */
 	public boolean tryParseDouble(String value)  
 	{  
 		try  {  
@@ -134,6 +150,12 @@ public class SaleFragment extends UpdatableFragment {
 			return false;  
 		}  
 	}
+	
+	/**
+	 * Show edit popup.
+	 * @param anchorView
+	 * @param position
+	 */
 	public void showEditPopup(View anchorView,int position){
 		Bundle bundle = new Bundle();
 		bundle.putString("position",position+"");
@@ -146,6 +168,10 @@ public class SaleFragment extends UpdatableFragment {
 		
 	}
 
+	/**
+	 * Show popup
+	 * @param anchorView
+	 */
 	public void showPopup(View anchorView) {
 		Bundle bundle = new Bundle();
 		bundle.putString("edttext", totalPrice.getText().toString());
@@ -172,6 +198,9 @@ public class SaleFragment extends UpdatableFragment {
 		update();
 	}
 	
+	/**
+	 * Show confirm or clear dialog.
+	 */
 	private void showConfirmClearDialog() {
 		AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
 		dialog.setTitle(res.getString(R.string.dialog_clear_sale));
