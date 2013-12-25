@@ -32,22 +32,37 @@ public class SaleLedger {
 		return instance;
 	}
 
+	/*
+	 *SET SALE DAO
+	 */
 	public static void setSaleDao(SaleDao dao) {
 		saleDao = dao;	
 	}
 	
+	/*
+	 *GET ALL SALE
+	 */
 	public List<Sale> getAllSale() {
 		return saleDao.getAllSale();
 	}
 	
+	/*
+	 *GET SALE BY SLAE ID
+	 */
 	public Sale getSaleById(int id) {
 		return saleDao.getSaleById(id);
 	}
 
+	/*
+	 *CLEAR SALE LEDGER
+	 */
 	public void clearSaleLedger() {
 		saleDao.clearSaleLedger();
 	}
 
+	/*
+	 *GET SALE BY TIME
+	 */
 	public List<Sale> getAllSaleDuring(Calendar start, Calendar end) {
 		return saleDao.getAllSaleDuring(start, end);
 	}

@@ -35,10 +35,19 @@ public class Sale {
 		this.items = items;
 	}
 	
+	/**
+	 *Get ALL Line Item in this sale
+	 *@return item
+	 */
 	public List<LineItem> getAllLineItem(){
 		return items;
 	}
 	
+	/**
+	 *Add LineLine into this sale
+	 *@param product
+	 *@param qantity
+	 */
 	public LineItem addLineItem(Product product, int quantity) {
 		
 		for (LineItem lineItem : items) {
@@ -53,10 +62,16 @@ public class Sale {
 		return lineItem;
 	}
 	
+	/**
+	 *Get total amount of line item in this sale
+	 */
 	public int size() {
 		return items.size();
 	}
 	
+	/**
+	 *GET LINE ITEM BY ORDER
+	 */
 	public LineItem getLineItemAt(int index) {
 		if (index >= 0 && index < items.size())
 			return items.get(index);
@@ -64,6 +79,9 @@ public class Sale {
 	}
 
 
+	/**
+	 *GET TOTAL PRICE OF ALL LINE ITEM IN THIS SALE
+	 */
 	public double getTotal() {
 		double amount = 0;
 		for(LineItem lineItem : items) {
@@ -72,14 +90,23 @@ public class Sale {
 		return amount;
 	}
 
+	/*
+	 *GET SALE ID
+	 */
 	public int getId() {
 		return id;
 	}
 
+	/*
+	 *GET START TIME OF THIS SALE
+	 */
 	public String getStartTime() {
 		return startTime;
 	}
 	
+	/*
+	 *GET END TIME OF THIS SALE
+	 */
 	public String getEndTime() {
 		return endTime;
 	}
@@ -111,6 +138,9 @@ public class Sale {
 		return map;
 	}
 
+	/*
+	 *REMOVE ITME FROM THE SALE
+	 */
 	public void removeItem(LineItem lineItem) {
 		items.remove(lineItem);
 	}

@@ -38,10 +38,15 @@ public class Register {
 		return instance;
 	}
 
+	/*
+	 *SET SALE DAO
+	 */
 	public static void setSaleDao(SaleDao dao) {
 		saleDao = dao;	
 	}
-	
+	/*
+	 *CRATE A NEW SALE
+	 */	
 	public Sale initiateSale(String startTime) {
 		if (currentSale != null) {
 			return currentSale;
@@ -50,6 +55,9 @@ public class Register {
 		return currentSale;
 	}
 	
+	/*
+	 *ADD NEW ITEM INTO SALE
+	 */
 	public LineItem addItem(Product product, int quantity) {
 //		if (quantity <= 0 || currentSale == null)
 //			return -1;
@@ -68,11 +76,17 @@ public class Register {
 		return lineItem;
 	}
 	
+	/*
+	 *GET TOTAL PRICE OF THE SALE
+	 */	
 	public double getTotal() {
 		if (currentSale == null) return 0;
 		return currentSale.getTotal();
 	}
 
+	/*
+	 *END THE SALE
+	 */
 	public void endSale(String endTime) {
 		if (currentSale != null) {
 			saleDao.endSale(currentSale, endTime);
@@ -83,12 +97,18 @@ public class Register {
 		}
 	}
 	
+	/*
+	 *GET CURRENT SALE
+	 */
 	public Sale getCurrentSale() {
 		if (currentSale == null)
 			initiateSale(DateTimeStrategy.getCurrentTime());
 		return currentSale;
 	}
-	
+
+	/*
+	 *SET CURRENT SALE
+	 */	
 	public boolean setCurrentSale(int id) {
 //		if (currentSale == null)
 //			initiateSale(DateTimeStrategy.getCurrentTime());
@@ -97,23 +117,37 @@ public class Register {
 		currentSale = saleDao.getSaleById(id);
 		return false;
 	}
+
+	/*
+	 *Now OnSale or not
+	 */	
 	public boolean hasSale(){
 		if(currentSale == null)return false;
 		return true;
 	}
 	
+	/*
+	 *CANCLE THE CURRENT SALE
+	 */	
 	public void cancleSale() {
 		if (currentSale != null){
 			saleDao.cancelSale(currentSale,DateTimeStrategy.getCurrentTime());
 			currentSale = null;
 		}
 	}
+
+	/*
+	 *UPDATE LINE ITEM 
+	 */	
 	public void updateItem(int saleId, LineItem lineItem, int quantity, double priceAtSale) {
 		lineItem.setUnitPriceAtSale(priceAtSale);
 		lineItem.setQuantity(quantity);
 		saleDao.updateLineItem(saleId, lineItem);
 	}
 
+	/*
+	 *REMOVE LINE ITEM
+	 */	
 	public void removeItem(LineItem lineItem) {
 		saleDao.removeLineItem(lineItem.getId());
 		currentSale.removeItem(lineItem);
