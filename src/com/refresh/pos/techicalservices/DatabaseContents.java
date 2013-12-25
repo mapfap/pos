@@ -17,6 +17,11 @@ public enum DatabaseContents {
 	LANGUAGE("language");
 	
 	private String name;
+	
+	/**
+	 * Constructs DatabaseContents.
+	 * @param name name of this content for using in database.
+	 */
 	private DatabaseContents(String name) {
 		this.name = name;
 	}

@@ -19,6 +19,10 @@ import com.refresh.pos.domain.inventory.ProductCatalog;
  */
 public class Demo {
 
+	/**
+	 * Adds the demo product to inventory.
+	 * @param context The current stage of the application.
+	 */
 	public static void testProduct(Context context) {
         InputStream instream = context.getResources().openRawResource(R.raw.products);
 		BufferedReader reader = new BufferedReader(new InputStreamReader(instream));

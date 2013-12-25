@@ -15,6 +15,10 @@ public class DatabaseExecutor {
 		
 	}
 	
+	/**
+	 * Sets database for use in DatabaseExecutor.
+	 * @param db database.
+	 */
 	public static void setDatabase(Database db) {
 		database = db;
 	}
@@ -25,6 +29,9 @@ public class DatabaseExecutor {
 		return instance;
 	}
 	
+	/**
+	 * Drops all data in database.
+	 */
 	public void dropAllData() {
 		execute("DELETE FROM " + DatabaseContents.TABLE_PRODUCT_CATALOG + ";");
 		execute("DELETE FROM " + DatabaseContents.TABLE_SALE + ";");
@@ -34,6 +41,10 @@ public class DatabaseExecutor {
 		execute("VACUUM;");
 	}
 	
+	/**
+	 * Directly execute to database.
+	 * @param queryString query string for execute.
+	 */
 	private void execute(String queryString) {
 		database.execute(queryString);
 	}

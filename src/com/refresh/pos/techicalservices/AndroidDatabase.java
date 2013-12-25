@@ -21,6 +21,10 @@ public class AndroidDatabase extends SQLiteOpenHelper implements Database {
 
 	private static final int DATABASE_VERSION = 1;
 
+	/**
+	 * Constructs a new AndroidDatabase.
+	 * @param context The current stage of the application.
+	 */
 	public AndroidDatabase(Context context) {
 		super(context, DatabaseContents.DATABASE.toString(), null, DATABASE_VERSION);
 	}
