@@ -14,58 +14,78 @@ import com.refresh.pos.domain.sale.Sale;
  */
 public interface SaleDao {
 
-	/*
-	 * CREATE A NEW SALE
+	/**
+	 * Initiates a new Sale.
+	 * @param startTime time that Sale initiated.
+	 * @return Sale that initiated
 	 */
 	Sale initiateSale(String startTime);
 
-	/*
-	 * END THE CURRENT SALE
+	/**
+	 * End Sale
+	 * @param sale Sale to be ended.
+	 * @param endTime time that Sale ended.
 	 */
 	void endSale(Sale sale, String endTime);
 
-	/*
-	 * ADD NEW LINE ITEM
+	/**
+	 * Add LineItem to Sale.
+	 * @param saleId ID of the Sale to add LineItem.
+	 * @param lineItem LineItem to be added.
+	 * @return ID of LineItem that just added.
 	 */
 	int addLineItem(int saleId, LineItem lineItem);
 	
-	/*
-	 * GET ALL SALE IN DATABASE
+	/**
+	 * Returns all sale in the records.
+	 * @return all sale in the records.
 	 */
 	List<Sale> getAllSale();
 
-	/*
-	 *GET SALE BY ID
+	/**
+	 * Returns the Sale with specific ID.
+	 * @param id ID of specific Sale.
+	 * @return the Sale with specific ID.
 	 */
 	Sale getSaleById(int id);
 
-	/*
-	 *CLEAR SALE HISTORY
+	/**
+	 * Clear all records in SaleLedger.	
 	 */
 	void clearSaleLedger();
 
-	/*
-	 *GET LINE ITEM BY ID
+	/**
+	 * Returns list of LineItem that belong to Sale with specific Sale ID.
+	 * @param saleId ID of sale.
+	 * @return list of LineItem that belong to Sale with specific Sale ID.
 	 */
 	List<LineItem> getLineItem(int saleId);
 
-	/*
-	 * UPDATE LINE ITEM
+	/**
+	 * Updates the data of specific LineItem.
+	 * @param saleId ID of Sale that this LineItem belong to.
+	 * @param lineItem to be updated.
 	 */
 	void updateLineItem(int saleId, LineItem lineItem);
 
-	/*
-	 * GET SALE BY TIME
+	/**
+	 * Returns list of Sale with scope of time. 
+	 * @param start start bound of scope.
+	 * @param end end bound of scope.
+	 * @return list of Sale with scope of time.
 	 */
 	List<Sale> getAllSaleDuring(Calendar start, Calendar end);
 	
-	/*
-	 * CANCEL THE CURRENT SALE
+	/**
+	 * Cancel the Sale.
+	 * @param sale Sale to be cancel.
+	 * @param endTime time that cancelled.
 	 */
 	void cancelSale(Sale sale,String endTime);
 
-	/*
-	 * REMOVE LINE ITEM BY ID
+	/**
+	 * Removes LineItem.
+	 * @param id of LineItem to be removed.
 	 */
 	void removeLineItem(int id);
 

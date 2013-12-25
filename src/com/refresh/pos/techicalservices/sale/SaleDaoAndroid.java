@@ -27,7 +27,8 @@ public class SaleDaoAndroid implements SaleDao {
 	public SaleDaoAndroid(Database database) {
 		this.database = database;
 	}
-	
+
+	@Override
 	public Sale initiateSale(String startTime) {
 		ContentValues content = new ContentValues();
         content.put("start_time", startTime.toString());

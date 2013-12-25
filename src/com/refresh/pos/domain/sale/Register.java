@@ -29,6 +29,10 @@ public class Register {
 		
 	}
 	
+	/**
+	 * Determines whether the DAO already set or not.
+	 * @return true if the DAO already set; otherwise false.
+	 */
 	public static boolean isDaoSet() {
 		return saleDao != null;
 	}
@@ -38,15 +42,19 @@ public class Register {
 		return instance;
 	}
 
-	/*
-	 *SET SALE DAO
+	/**
+	 * Injects its sale DAO
+	 * @param dao DAO of sale
 	 */
 	public static void setSaleDao(SaleDao dao) {
 		saleDao = dao;	
 	}
-	/*
-	 *CRATE A NEW SALE
-	 */	
+	
+	/**
+	 * Initiates a new Sale.
+	 * @param startTime time that sale created.
+	 * @return Sale that created.
+	 */
 	public Sale initiateSale(String startTime) {
 		if (currentSale != null) {
 			return currentSale;
@@ -55,12 +63,13 @@ public class Register {
 		return currentSale;
 	}
 	
-	/*
-	 *ADD NEW ITEM INTO SALE
+	/**
+	 * Add Product to Sale.
+	 * @param product product to be added.
+	 * @param quantity quantity of product that added.
+	 * @return LineItem of Sale that just added.
 	 */
 	public LineItem addItem(Product product, int quantity) {
-//		if (quantity <= 0 || currentSale == null)
-//			return -1;
 		if (currentSale == null)
 			initiateSale(DateTimeStrategy.getCurrentTime());
 		
@@ -76,16 +85,18 @@ public class Register {
 		return lineItem;
 	}
 	
-	/*
-	 *GET TOTAL PRICE OF THE SALE
-	 */	
+	/**
+	 * Returns total price of Sale.
+	 * @return total price of Sale.
+	 */
 	public double getTotal() {
 		if (currentSale == null) return 0;
 		return currentSale.getTotal();
 	}
 
-	/*
-	 *END THE SALE
+	/**
+	 * End the Sale.
+	 * @param endTime time that Sale ended.
 	 */
 	public void endSale(String endTime) {
 		if (currentSale != null) {
@@ -97,8 +108,9 @@ public class Register {
 		}
 	}
 	
-	/*
-	 *GET CURRENT SALE
+	/**
+	 * Returns the current Sale of this Register.
+	 * @return the current Sale of this Register.
 	 */
 	public Sale getCurrentSale() {
 		if (currentSale == null)
@@ -106,29 +118,28 @@ public class Register {
 		return currentSale;
 	}
 
-	/*
-	 *SET CURRENT SALE
-	 */	
+	/**
+	 * Sets the current Sale of this Register.
+	 * @param id of Sale to retrieve.
+	 * @return true if success to load Sale from ID; otherwise false.
+	 */
 	public boolean setCurrentSale(int id) {
-//		if (currentSale == null)
-//			initiateSale(DateTimeStrategy.getCurrentTime());
-//		return currentSale;
-		
 		currentSale = saleDao.getSaleById(id);
 		return false;
 	}
 
-	/*
-	 *Now OnSale or not
-	 */	
+	/**
+	 * Determines that if there is a Sale handling or not.
+	 * @return true if there is a current Sale; otherwise false.
+	 */
 	public boolean hasSale(){
 		if(currentSale == null)return false;
 		return true;
 	}
 	
-	/*
-	 *CANCLE THE CURRENT SALE
-	 */	
+	/**
+	 * Cancels the current Sale.
+	 */
 	public void cancleSale() {
 		if (currentSale != null){
 			saleDao.cancelSale(currentSale,DateTimeStrategy.getCurrentTime());
@@ -136,18 +147,23 @@ public class Register {
 		}
 	}
 
-	/*
-	 *UPDATE LINE ITEM 
-	 */	
+	/**
+	 * Edit the specific LineItem 
+	 * @param saleId ID of LineItem to be edited. 
+	 * @param lineItem LineItem to be edited.
+	 * @param quantity a new quantity to set.
+	 * @param priceAtSale a new priceAtSale to set.
+	 */
 	public void updateItem(int saleId, LineItem lineItem, int quantity, double priceAtSale) {
 		lineItem.setUnitPriceAtSale(priceAtSale);
 		lineItem.setQuantity(quantity);
 		saleDao.updateLineItem(saleId, lineItem);
 	}
 
-	/*
-	 *REMOVE LINE ITEM
-	 */	
+	/**
+	 * Removes LineItem from the current Sale.
+	 * @param lineItem lineItem to be removed.
+	 */
 	public void removeItem(LineItem lineItem) {
 		saleDao.removeLineItem(lineItem.getId());
 		currentSale.removeItem(lineItem);

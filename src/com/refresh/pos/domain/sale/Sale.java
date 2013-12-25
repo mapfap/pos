@@ -27,6 +27,14 @@ public class Sale {
 		this(id, startTime, startTime, "", new ArrayList<LineItem>());
 	}
 	
+	/**
+	 * Constructs a new Sale.
+	 * @param id ID of this Sale.
+	 * @param startTime start time of this Sale.
+	 * @param endTime end time of this Sale.
+	 * @param status status of this Sale.
+	 * @param items list of LineItem in this Sale.
+	 */
 	public Sale(int id, String startTime, String endTime, String status, List<LineItem> items) {
 		this.id = id;
 		this.startTime = startTime;
@@ -36,17 +44,18 @@ public class Sale {
 	}
 	
 	/**
-	 *Get ALL Line Item in this sale
-	 *@return item
+	 * Returns list of LineItem in this Sale.
+	 * @return list of LineItem in this Sale.
 	 */
 	public List<LineItem> getAllLineItem(){
 		return items;
 	}
 	
 	/**
-	 *Add LineLine into this sale
-	 *@param product
-	 *@param qantity
+	 * Add Product to Sale.
+	 * @param product product to be added.
+	 * @param quantity quantity of product that added.
+	 * @return LineItem of Sale that just added.
 	 */
 	public LineItem addLineItem(Product product, int quantity) {
 		
@@ -62,15 +71,14 @@ public class Sale {
 		return lineItem;
 	}
 	
-	/**
-	 *Get total amount of line item in this sale
-	 */
 	public int size() {
 		return items.size();
 	}
 	
 	/**
-	 *GET LINE ITEM BY ORDER
+	 * Returns a LineItem with specific index.
+	 * @param index of specific LineItem.
+	 * @return a LineItem with specific index.
 	 */
 	public LineItem getLineItemAt(int index) {
 		if (index >= 0 && index < items.size())
@@ -78,9 +86,9 @@ public class Sale {
 		return null;
 	}
 
-
 	/**
-	 *GET TOTAL PRICE OF ALL LINE ITEM IN THIS SALE
+	 * Returns the total price of this Sale.
+	 * @return the total price of this Sale.
 	 */
 	public double getTotal() {
 		double amount = 0;
@@ -90,34 +98,26 @@ public class Sale {
 		return amount;
 	}
 
-	/*
-	 *GET SALE ID
-	 */
 	public int getId() {
 		return id;
 	}
 
-	/*
-	 *GET START TIME OF THIS SALE
-	 */
 	public String getStartTime() {
 		return startTime;
 	}
-	
-	/*
-	 *GET END TIME OF THIS SALE
-	 */
+
 	public String getEndTime() {
 		return endTime;
-	}
-
-	public String getPayment() {
-		return "CASH";
 	}
 
 	public String getStatus() {
 		return status;
 	}
+	
+	/**
+	 * Returns the total quantity of this Sale.
+	 * @return the total quantity of this Sale.
+	 */
 	public int getOrders() {
 		int orderCount = 0;
 		for (LineItem lineItem : items) {
@@ -126,6 +126,10 @@ public class Sale {
 		return orderCount;
 	}
 
+	/**
+	 * Returns the description of this Sale in Map format. 
+	 * @return the description of this Sale in Map format.
+	 */
 	public Map<String, String> toMap() {	
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("id",id + "");
@@ -138,8 +142,9 @@ public class Sale {
 		return map;
 	}
 
-	/*
-	 *REMOVE ITME FROM THE SALE
+	/**
+	 * Removes LineItem from Sale.
+	 * @param lineItem lineItem to be removed.
 	 */
 	public void removeItem(LineItem lineItem) {
 		items.remove(lineItem);

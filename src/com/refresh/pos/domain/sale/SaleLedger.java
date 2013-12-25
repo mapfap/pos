@@ -23,6 +23,10 @@ public class SaleLedger {
 		}
 	}
 	
+	/**
+	 * Determines whether the DAO already set or not.
+	 * @return true if the DAO already set; otherwise false.
+	 */
 	public static boolean isDaoSet() {
 		return saleDao != null;
 	}
@@ -32,36 +36,43 @@ public class SaleLedger {
 		return instance;
 	}
 
-	/*
-	 *SET SALE DAO
+	/**
+	 * Sets the database connector.
+	 * @param dao Data Access Object of Sale.
 	 */
 	public static void setSaleDao(SaleDao dao) {
 		saleDao = dao;	
 	}
 	
-	/*
-	 *GET ALL SALE
+	/**
+	 * Returns all sale in the records.
+	 * @return all sale in the records.
 	 */
 	public List<Sale> getAllSale() {
 		return saleDao.getAllSale();
 	}
 	
-	/*
-	 *GET SALE BY SLAE ID
+	/**
+	 * Returns the Sale with specific ID.
+	 * @param id ID of specific Sale.
+	 * @return the Sale with specific ID.
 	 */
 	public Sale getSaleById(int id) {
 		return saleDao.getSaleById(id);
 	}
 
-	/*
-	 *CLEAR SALE LEDGER
+	/**
+	 * Clear all records in SaleLedger.	
 	 */
 	public void clearSaleLedger() {
 		saleDao.clearSaleLedger();
 	}
 
-	/*
-	 *GET SALE BY TIME
+	/**
+	 * Returns list of Sale with scope of time. 
+	 * @param start start bound of scope.
+	 * @param end end bound of scope.
+	 * @return list of Sale with scope of time.
 	 */
 	public List<Sale> getAllSaleDuring(Calendar start, Calendar end) {
 		return saleDao.getAllSaleDuring(start, end);
