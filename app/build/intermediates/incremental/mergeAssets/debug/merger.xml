@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="18.0.0"><source path="/Users/mapfap/AndroidStudioProjects/pos/app/build/intermediates/exploded-aar/com.android.support/gridlayout-v7/18.0.0/assets"/></dataSet><dataSet config="main"><source path="/Users/mapfap/AndroidStudioProjects/pos/app/src/main/assets"/></dataSet><dataSet config="debug"><source path="/Users/mapfap/AndroidStudioProjects/pos/app/src/debug/assets"/></dataSet></merger>

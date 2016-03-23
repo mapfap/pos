@@ -1,0 +1,129 @@
+-- Merging decision tree log ---
+manifest
+ADDED from AndroidManifest.xml:2:1
+	package
+		ADDED from AndroidManifest.xml:3:5
+		INJECTED from AndroidManifest.xml:0:0
+		INJECTED from AndroidManifest.xml:0:0
+	android:versionName
+		ADDED from AndroidManifest.xml:5:5
+	android:versionCode
+		ADDED from AndroidManifest.xml:4:5
+		INJECTED from AndroidManifest.xml:0:0
+		INJECTED from AndroidManifest.xml:0:0
+	xmlns:android
+		ADDED from AndroidManifest.xml:2:11
+uses-sdk
+ADDED from AndroidManifest.xml:7:5
+MERGED from com.android.support:gridlayout-v7:18.0.0:18:5
+	android:targetSdkVersion
+		ADDED from AndroidManifest.xml:9:9
+		INJECTED from AndroidManifest.xml:0:0
+		INJECTED from AndroidManifest.xml:0:0
+	android:minSdkVersion
+		ADDED from AndroidManifest.xml:8:9
+		INJECTED from AndroidManifest.xml:0:0
+		INJECTED from AndroidManifest.xml:0:0
+application
+ADDED from AndroidManifest.xml:11:5
+MERGED from com.android.support:gridlayout-v7:18.0.0:19:5
+	android:label
+		ADDED from AndroidManifest.xml:13:9
+	android:allowBackup
+		ADDED from AndroidManifest.xml:12:9
+	android:icon
+		ADDED from AndroidManifest.xml:14:9
+	android:theme
+		ADDED from AndroidManifest.xml:15:9
+activity#com.refresh.pos.ui.MainActivity
+ADDED from AndroidManifest.xml:16:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:19:13
+	android:label
+		ADDED from AndroidManifest.xml:18:13
+	android:name
+		ADDED from AndroidManifest.xml:17:13
+activity#com.refresh.pos.ui.SplashScreenActivity
+ADDED from AndroidManifest.xml:21:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:24:13
+	android:launchMode
+		ADDED from AndroidManifest.xml:23:13
+	android:name
+		ADDED from AndroidManifest.xml:22:13
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from AndroidManifest.xml:25:13
+action#android.intent.action.MAIN
+ADDED from AndroidManifest.xml:26:17
+	android:name
+		ADDED from AndroidManifest.xml:26:25
+category#android.intent.category.LAUNCHER
+ADDED from AndroidManifest.xml:28:17
+	android:name
+		ADDED from AndroidManifest.xml:28:27
+activity#com.refresh.pos.ui.HomeActivity
+ADDED from AndroidManifest.xml:31:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:33:13
+	android:name
+		ADDED from AndroidManifest.xml:32:13
+activity#com.refresh.pos.ui.InventoryActivity
+ADDED from AndroidManifest.xml:34:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:36:13
+	android:name
+		ADDED from AndroidManifest.xml:35:13
+activity#com.refresh.pos.ui.AddProductActivity
+ADDED from AndroidManifest.xml:37:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:39:13
+	android:name
+		ADDED from AndroidManifest.xml:38:13
+activity#com.refresh.pos.ui.inventory.AddProductLotActivity
+ADDED from AndroidManifest.xml:40:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:42:13
+	android:name
+		ADDED from AndroidManifest.xml:41:13
+activity#com.refresh.pos.ui.inventory.ProductDetailActivity
+ADDED from AndroidManifest.xml:43:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:45:13
+	android:name
+		ADDED from AndroidManifest.xml:44:13
+activity#com.refresh.pos.ui.SaleActivity
+ADDED from AndroidManifest.xml:46:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:48:13
+	android:name
+		ADDED from AndroidManifest.xml:47:13
+activity#com.refresh.pos.ui.StockActivity
+ADDED from AndroidManifest.xml:49:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:51:13
+	android:name
+		ADDED from AndroidManifest.xml:50:13
+activity#com.refresh.pos.ui.SaleProductCatalog
+ADDED from AndroidManifest.xml:52:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:54:13
+	android:name
+		ADDED from AndroidManifest.xml:53:13
+activity#com.refresh.pos.ui.sale.SaleLedgerActivity
+ADDED from AndroidManifest.xml:55:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:57:13
+	android:name
+		ADDED from AndroidManifest.xml:56:13
+activity#org.achartengine.GraphicalActivity
+ADDED from AndroidManifest.xml:58:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:60:13
+	android:name
+		ADDED from AndroidManifest.xml:59:13
+activity#com.refresh.pos.ui.sale.SaleDetailActivity
+ADDED from AndroidManifest.xml:61:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:63:13
+	android:name
+		ADDED from AndroidManifest.xml:62:13

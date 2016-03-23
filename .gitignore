@@ -34,3 +34,11 @@ Thumbs.db
 # Others #
 bin/
 
+# Android Studio
+
+.gradle
+/local.properties
+/.idea/workspace.xml
+/.idea/libraries
+/build
+

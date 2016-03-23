@@ -1,0 +1,209 @@
+ECLIPSE ANDROID PROJECT IMPORT SUMMARY
+======================================
+
+Ignored Files:
+--------------
+The following files were *not* copied into the new Gradle project; you
+should evaluate whether these are still needed in your project and if
+so manually move them:
+
+* .gitignore
+* .idea/
+* .idea/.name
+* .idea/compiler.xml
+* .idea/copyright/
+* .idea/copyright/profiles_settings.xml
+* .idea/misc.xml
+* .idea/modules.xml
+* .idea/vcs.xml
+* .idea/workspace.xml
+* LICENSE
+* README.md
+* app/
+* app/build.gradle
+* app/libs/
+* app/libs/achartengine-1.1.0.jar
+* app/libs/android-integration-2.0-supportv4.jar
+* app/src/
+* app/src/main/
+* app/src/main/AndroidManifest.xml
+* app/src/main/java/
+* app/src/main/java/com/
+* app/src/main/java/com/refresh/
+* app/src/main/java/com/refresh/pos/
+* app/src/main/java/com/refresh/pos/domain/
+* app/src/main/java/com/refresh/pos/domain/DateTimeStrategy.java
+* app/src/main/java/com/refresh/pos/domain/LanguageController.java
+* app/src/main/java/com/refresh/pos/domain/inventory/
+* app/src/main/java/com/refresh/pos/domain/inventory/Inventory.java
+* app/src/main/java/com/refresh/pos/domain/inventory/LineItem.java
+* app/src/main/java/com/refresh/pos/domain/inventory/Product.java
+* app/src/main/java/com/refresh/pos/domain/inventory/ProductCatalog.java
+* app/src/main/java/com/refresh/pos/domain/inventory/ProductLot.java
+* app/src/main/java/com/refresh/pos/domain/inventory/Stock.java
+* app/src/main/java/com/refresh/pos/domain/sale/
+* app/src/main/java/com/refresh/pos/domain/sale/QuickLoadSale.java
+* app/src/main/java/com/refresh/pos/domain/sale/Register.java
+* app/src/main/java/com/refresh/pos/domain/sale/Sale.java
+* app/src/main/java/com/refresh/pos/domain/sale/SaleLedger.java
+* app/src/main/java/com/refresh/pos/techicalservices/
+* app/src/main/java/com/refresh/pos/techicalservices/AndroidDatabase.java
+* app/src/main/java/com/refresh/pos/techicalservices/Database.java
+* app/src/main/java/com/refresh/pos/techicalservices/DatabaseContents.java
+* app/src/main/java/com/refresh/pos/techicalservices/DatabaseExecutor.java
+* app/src/main/java/com/refresh/pos/techicalservices/Demo.java
+* app/src/main/java/com/refresh/pos/techicalservices/NoDaoSetException.java
+* app/src/main/java/com/refresh/pos/techicalservices/inventory/
+* app/src/main/java/com/refresh/pos/techicalservices/inventory/InventoryDao.java
+* app/src/main/java/com/refresh/pos/techicalservices/inventory/InventoryDaoAndroid.java
+* app/src/main/java/com/refresh/pos/techicalservices/sale/
+* app/src/main/java/com/refresh/pos/techicalservices/sale/SaleDao.java
+* app/src/main/java/com/refresh/pos/techicalservices/sale/SaleDaoAndroid.java
+* app/src/main/java/com/refresh/pos/ui/
+* app/src/main/java/com/refresh/pos/ui/MainActivity.java
+* app/src/main/java/com/refresh/pos/ui/SplashScreenActivity.java
+* app/src/main/java/com/refresh/pos/ui/component/
+* app/src/main/java/com/refresh/pos/ui/component/ButtonAdapter.java
+* app/src/main/java/com/refresh/pos/ui/component/UpdatableFragment.java
+* app/src/main/java/com/refresh/pos/ui/inventory/
+* app/src/main/java/com/refresh/pos/ui/inventory/AddProductDialogFragment.java
+* app/src/main/java/com/refresh/pos/ui/inventory/InventoryFragment.java
+* app/src/main/java/com/refresh/pos/ui/inventory/ProductDetailActivity.java
+* app/src/main/java/com/refresh/pos/ui/sale/
+* app/src/main/java/com/refresh/pos/ui/sale/EditFragmentDialog.java
+* app/src/main/java/com/refresh/pos/ui/sale/EndPaymentFragmentDialog.java
+* app/src/main/java/com/refresh/pos/ui/sale/PaymentFragmentDialog.java
+* app/src/main/java/com/refresh/pos/ui/sale/ReportFragment.java
+* app/src/main/java/com/refresh/pos/ui/sale/SaleDetailActivity.java
+* app/src/main/java/com/refresh/pos/ui/sale/SaleFragment.java
+* app/src/main/res/
+* app/src/main/res/anim/
+* app/src/main/res/anim/slide_in_left.xml
+* app/src/main/res/anim/slide_out_right.xml
+* app/src/main/res/drawable-hdpi/
+* app/src/main/res/drawable-hdpi/ic_action_overflow.png
+* app/src/main/res/drawable-hdpi/ic_launcher.png
+* app/src/main/res/drawable-mdpi/
+* app/src/main/res/drawable-mdpi/ic_action_overflow.png
+* app/src/main/res/drawable-mdpi/ic_launcher.png
+* app/src/main/res/drawable-xhdpi/
+* app/src/main/res/drawable-xhdpi/ic_action_overflow.png
+* app/src/main/res/drawable-xhdpi/ic_launcher.png
+* app/src/main/res/drawable-xxhdpi/
+* app/src/main/res/drawable-xxhdpi/ic_launcher.png
+* app/src/main/res/drawable/
+* app/src/main/res/drawable/btn_black.xml
+* app/src/main/res/drawable/btn_blue.xml
+* app/src/main/res/drawable/btn_green.xml
+* app/src/main/res/drawable/btn_purple.xml
+* app/src/main/res/drawable/btn_red.xml
+* app/src/main/res/drawable/btn_white.xml
+* app/src/main/res/drawable/btn_yellow.xml
+* app/src/main/res/drawable/cart.png
+* app/src/main/res/drawable/edit.png
+* app/src/main/res/drawable/refresh_logo.png
+* app/src/main/res/drawable/refresh_logo_low.png
+* app/src/main/res/layout/
+* app/src/main/res/layout/dialog_payment.xml
+* app/src/main/res/layout/dialog_paymentsuccession.xml
+* app/src/main/res/layout/dialog_saleedit.xml
+* app/src/main/res/layout/layout_addproduct.xml
+* app/src/main/res/layout/layout_addproductlot.xml
+* app/src/main/res/layout/layout_inventory.xml
+* app/src/main/res/layout/layout_main.xml
+* app/src/main/res/layout/layout_productdetail_detail.xml
+* app/src/main/res/layout/layout_productdetail_main.xml
+* app/src/main/res/layout/layout_productdetail_stock.xml
+* app/src/main/res/layout/layout_report.xml
+* app/src/main/res/layout/layout_sale.xml
+* app/src/main/res/layout/layout_saledetail.xml
+* app/src/main/res/layout/layout_splashscreen.xml
+* app/src/main/res/layout/listview_inventory.xml
+* app/src/main/res/layout/listview_lineitem.xml
+* app/src/main/res/layout/listview_report.xml
+* app/src/main/res/layout/listview_stock.xml
+* app/src/main/res/menu/
+* app/src/main/res/menu/detail_menu.xml
+* app/src/main/res/menu/main.xml
+* app/src/main/res/raw/
+* app/src/main/res/raw/products.csv
+* app/src/main/res/values-jp/
+* app/src/main/res/values-jp/strings.xml
+* app/src/main/res/values-sw600dp/
+* app/src/main/res/values-sw600dp/dimens.xml
+* app/src/main/res/values-sw720dp-land/
+* app/src/main/res/values-sw720dp-land/dimens.xml
+* app/src/main/res/values-th/
+* app/src/main/res/values-th/strings.xml
+* app/src/main/res/values-v11/
+* app/src/main/res/values-v11/styles.xml
+* app/src/main/res/values-v14/
+* app/src/main/res/values-v14/styles.xml
+* app/src/main/res/values/
+* app/src/main/res/values/dimens.xml
+* app/src/main/res/values/strings.xml
+* app/src/main/res/values/styles.xml
+* build.gradle
+* dist/
+* dist/keystore
+* dist/pos.apk
+* gradle/
+* gradle/wrapper/
+* gradle/wrapper/gradle-wrapper.jar
+* gradle/wrapper/gradle-wrapper.properties
+* gradlew
+* gradlew.bat
+* ic_launcher-web.png
+* proguard-project.txt
+* settings.gradle
+
+Replaced Jars with Dependencies:
+--------------------------------
+The importer recognized the following .jar files as third party
+libraries and replaced them with Gradle dependencies instead. This has
+the advantage that more explicit version information is known, and the
+libraries can be updated automatically. However, it is possible that
+the .jar file in your project was of an older version than the
+dependency we picked, which could render the project not compileable.
+You can disable the jar replacement in the import wizard and try again:
+
+android-support-v4.jar => com.android.support:support-v4:18.0.0
+
+Replaced Libraries with Dependencies:
+-------------------------------------
+The importer recognized the following library projects as third party
+libraries and replaced them with Gradle dependencies instead. This has
+the advantage that more explicit version information is known, and the
+libraries can be updated automatically. However, it is possible that
+the source files in your project were of an older version than the
+dependency we picked, which could render the project not compileable.
+You can disable the library replacement in the import wizard and try
+again:
+
+gridlayout-v7 => [com.android.support:gridlayout-v7:18.0.0]
+
+Moved Files:
+------------
+Android Gradle projects use a different directory structure than ADT
+Eclipse projects. Here's how the projects were restructured:
+
+* AndroidManifest.xml => app/src/main/AndroidManifest.xml
+* libs/achartengine-1.1.0.jar => app/libs/achartengine-1.1.0.jar
+* libs/android-integration-2.0-supportv4.jar => app/libs/android-integration-2.0-supportv4.jar
+* res/ => app/src/main/res/
+* src/ => app/src/main/java/
+
+Next Steps:
+-----------
+You can now build the project. The Gradle project needs network
+connectivity to download dependencies.
+
+Bugs:
+-----
+If for some reason your project does not build, and you determine that
+it is due to a bug or limitation of the Eclipse to Gradle importer,
+please file a bug at http://b.android.com with category
+Component-Tools.
+
+(This import summary is for your information only, and can be deleted
+after import once you are satisfied with the results.)

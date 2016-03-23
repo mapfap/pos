@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">携帯電話 売却</string>
+    <string name="action_settings">設定</string>
+    <string name="total">合計</string>
+    <string name="barcode">バーコード</string>
+    <string name="cancel">キャンセル</string>
+    <string name="clear">クリア</string>
+    <string name="edit">編集</string>
+    <string name="confirm">完了</string>
+    <string name="date">日</string>
+    <string name="date_added">登録日</string>
+    <string name="quantity">数量を</string>
+    <string name="remove">削除する</string>
+    <string name="scan">スキャン</string>
+    <string name="unit_price">単価</string>
+    <string name="name">名</string>
+    <string name="id">番号</string>
+    <string name="cash">現金</string>
+    <string name="change">変更</string>
+    <string name="hint_search">見つける</string>
+    <string name="hint_cash">入力お金</string>
+    <string name="add_new_product">新しい製品を追加する</string>
+    <string name="add_stock">ストックに追加</string>
+    <string name="previous">&lt;</string>
+    <string name="next">></string>
+    <string name="inventory">在荷</string>
+    <string name="sale">売却</string>
+    <string name="report">報告</string>
+    
+    <string name="dialog_quit">本当に終了してもよろしいですか？</string>
+    <string name="dialog_remove_product">あなたはこの製品を削除してもよろしいですか？</string>
+    <string name="dialog_clear_sale">あなたは、この売却をクリアしてもよろしいですか？</string>
+    <string name="hint_empty_sale">販売は空です。</string>
+    <string name="quit">出口</string>
+    <string name="no">ザ</string>
+    <string name="product_detail">製品の詳細</string>
+    <string name="stock">株式</string>
+    <string name="success">成功</string>
+    <string name="fail">失敗する</string>
+    <string name="please_input_all">すべてのデータを果たすください。</string>
+    <string name="need_money">必要</string>
+    
+    
+    <string name="hint_lang">この言語設定を適用するには、アプリケーションを再起動してください</string>
+    
+    <string-array name="period">
+        <item>日々</item>
+        <item>毎週</item>
+        <item>毎月</item>
+        <item>毎年</item>
+    </string-array>
+
+    <style name="ButtonText">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_margin">3dp</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:shadowColor">#000000</item>
+        <item name="android:shadowDx">1</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowRadius">2</item>
+    </style>
+
+</resources>

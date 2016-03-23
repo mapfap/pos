@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="18.0.0"><source path="/Users/mapfap/AndroidStudioProjects/pos/app/build/intermediates/exploded-aar/com.android.support/gridlayout-v7/18.0.0/res"><file path="/Users/mapfap/AndroidStudioProjects/pos/app/build/intermediates/exploded-aar/com.android.support/gridlayout-v7/18.0.0/res/values/values.xml" qualifiers=""><dimen name="default_gap">16dip</dimen><declare-styleable name="GridLayout">
+
+        <!--
+              support versions. All attributes not present in ViewGroup/View are
+              redefined in the support library namespace.
+        -->
+
+
+        <!--
+        The orientation property is not used during layout. It is only used to
+        allocate row and column parameters when they are not specified by its children's
+        layout parameters. GridLayout works like LinearLayout in this case;
+        putting all the components either in a single row or in a single column -
+        depending on the value of this flag. In the horizontal case, a columnCount
+        property may be additionally supplied to force new rows to be created when a
+        row is full. The rowCount attribute may be used similarly in the vertical case.
+        The default is horizontal.
+        -->
+        <attr name="orientation">
+
+            <!-- Defines an horizontal widget. -->
+            <enum name="horizontal" value="0"/>
+            <!-- Defines a vertical widget. -->
+            <enum name="vertical" value="1"/>
+        </attr>
+        <!-- The maximum number of rows to create when automatically positioning children. -->
+        <attr format="integer" name="rowCount"/>
+        <!-- The maximum number of columns to create when automatically positioning children. -->
+        <attr format="integer" name="columnCount"/>
+        <!--
+        When set to true, tells GridLayout to use default margins when none are specified
+        in a view's layout parameters.
+        The default value is false.
+        See {@link android.widget.GridLayout#setUseDefaultMargins(boolean)}.
+        -->
+        <attr format="boolean" name="useDefaultMargins"/>
+        <!--
+        When set to alignMargins, causes alignment to take place between the outer
+        boundary of a view, as defined by its margins. When set to alignBounds,
+        causes alignment to take place between the edges of the view.
+        The default is alignMargins.
+        See {@link android.widget.GridLayout#setAlignmentMode(int)}.
+        -->
+        <attr name="alignmentMode">
+
+            <!--
+            Align the bounds of the children.
+            See {@link android.widget.GridLayout#ALIGN_BOUNDS}.
+            -->
+            <enum name="alignBounds" value="0"/>
+            <!--
+            Align the margins of the children.
+            See {@link android.widget.GridLayout#ALIGN_MARGINS}.
+            -->
+            <enum name="alignMargins" value="1"/>
+        </attr>
+        <!--
+        When set to true, forces row boundaries to appear in the same order
+        as row indices.
+        The default is true.
+        See {@link android.widget.GridLayout#setRowOrderPreserved(boolean)}.
+        -->
+        <attr format="boolean" name="rowOrderPreserved"/>
+        <!--
+        When set to true, forces column boundaries to appear in the same order
+        as column indices.
+        The default is true.
+        See {@link android.widget.GridLayout#setColumnOrderPreserved(boolean)}.
+        -->
+        <attr format="boolean" name="columnOrderPreserved"/>
+    </declare-styleable><declare-styleable name="GridLayout_Layout">
+
+        <!--
+              support versions. All attributes not present in MarginLayout are
+              redefined in the support library name space.
+        -->
+
+
+        <!-- START MarginLayout layoutparams -->
+
+        <attr name="android:layout_width"/>
+        <attr name="android:layout_height"/>
+        <!--
+              Specifies extra space on the left, top, right and bottom
+              sides of this view. This space is outside this view's bounds.
+        -->
+        <attr name="android:layout_margin"/>
+        <!--
+              Specifies extra space on the left side of this view.
+              This space is outside this view's bounds.
+        -->
+        <attr name="android:layout_marginLeft"/>
+        <!--
+              Specifies extra space on the top side of this view.
+              This space is outside this view's bounds.
+        -->
+        <attr name="android:layout_marginTop"/>
+        <!--
+              Specifies extra space on the right side of this view.
+              This space is outside this view's bounds.
+        -->
+        <attr name="android:layout_marginRight"/>
+        <!--
+              Specifies extra space on the bottom side of this view.
+              This space is outside this view's bounds.
+        -->
+        <attr name="android:layout_marginBottom"/>
+
+        <!-- END MarginLayout layoutparams -->
+
+
+        <!--
+        The row boundary delimiting the top of the group of cells
+        occupied by this view.
+        -->
+        <attr format="integer" name="layout_row"/>
+        <!--
+        The row span: the difference between the bottom and top
+        boundaries delimiting the group of cells occupied by this view.
+        The default is one.
+        See {@link android.widget.GridLayout.Spec}.
+        -->
+        <attr format="integer" min="1" name="layout_rowSpan"/>
+        <!--
+        The column boundary delimiting the left of the group of cells
+        occupied by this view.
+        -->
+        <attr format="integer" name="layout_column"/>
+        <!--
+        The column span: the difference between the right and left
+        boundaries delimiting the group of cells occupied by this view.
+        The default is one.
+        See {@link android.widget.GridLayout.Spec}.
+        -->
+        <attr format="integer" min="1" name="layout_columnSpan"/>
+        <!--
+        Gravity specifies how a component should be placed in its group of cells.
+        The default is LEFT | BASELINE.
+        See {@link android.widget.GridLayout.LayoutParams#setGravity(int)}.
+        -->
+        <attr name="layout_gravity">
+
+            <!-- Push object to the top of its container, not changing its size. -->
+            <flag name="top" value="0x30"/>
+            <!-- Push object to the bottom of its container, not changing its size. -->
+            <flag name="bottom" value="0x50"/>
+            <!-- Push object to the left of its container, not changing its size. -->
+            <flag name="left" value="0x03"/>
+            <!-- Push object to the right of its container, not changing its size. -->
+            <flag name="right" value="0x05"/>
+            <!-- Place object in the vertical center of its container, not changing its size. -->
+            <flag name="center_vertical" value="0x10"/>
+            <!-- Grow the vertical size of the object if needed so it completely fills its container. -->
+            <flag name="fill_vertical" value="0x70"/>
+            <!-- Place object in the horizontal center of its container, not changing its size. -->
+            <flag name="center_horizontal" value="0x01"/>
+            <!-- Grow the horizontal size of the object if needed so it completely fills its container. -->
+            <flag name="fill_horizontal" value="0x07"/>
+            <!-- Place the object in the center of its container in both the vertical and horizontal axis, not changing its size. -->
+            <flag name="center" value="0x11"/>
+            <!-- Grow the horizontal and vertical size of the object if needed so it completely fills its container. -->
+            <flag name="fill" value="0x77"/>
+            <!--
+             Additional option that can be set to have the top and/or bottom edges of
+             the child clipped to its container's bounds.
+             The clip will be based on the vertical gravity: a top gravity will clip the bottom
+             edge, a bottom gravity will clip the top edge, and neither will clip both edges.
+            -->
+            <flag name="clip_vertical" value="0x80"/>
+            <!--
+             Additional option that can be set to have the left and/or right edges of
+             the child clipped to its container's bounds.
+             The clip will be based on the horizontal gravity: a left gravity will clip the right
+             edge, a right gravity will clip the left edge, and neither will clip both edges.
+            -->
+            <flag name="clip_horizontal" value="0x08"/>
+            <!-- Push object to the beginning of its container, not changing its size. -->
+            <flag name="start" value="0x00800003"/>
+            <!-- Push object to the end of its container, not changing its size. -->
+            <flag name="end" value="0x00800005"/>
+        </attr>
+    </declare-styleable></file></source></dataSet><dataSet config="main"><source path="/Users/mapfap/AndroidStudioProjects/pos/app/src/main/res"><file name="slide_in_left" path="/Users/mapfap/AndroidStudioProjects/pos/app/src/main/res/anim/slide_in_left.xml" qualifiers="" type="anim"/><file name="slide_out_right" path="/Users/mapfap/AndroidStudioProjects/pos/app/src/main/res/anim/slide_out_right.xml" qualifiers="" type="anim"/><file name="btn_black" path="/Users/mapfap/AndroidStudioProjects/pos/app/src/main/res/drawable/btn_black.xml" qualifiers="" type="drawable"/><file name="btn_blue" path="/Users/mapfap/AndroidStudioProjects/pos/app/src/main/res/drawable/btn_blue.xml" qualifiers="" type="drawable"/><file name="btn_green" path="/Users/mapfap/AndroidStudioProjects/pos/app/src/main/res/drawable/btn_green.xml" qualifiers="" type="drawable"/><file name="btn_purple" path="/Users/mapfap/AndroidStudioProjects/pos/app/src/main/res/drawable/btn_purple.xml" qualifiers="" type="drawable"/><file name="btn_red" path="/Users/mapfap/AndroidStudioProjects/pos/app/src/main/res/drawable/btn_red.xml" qualifiers="" type="drawable"/><file name="btn_white" path="/Users/mapfap/AndroidStudioProjects/pos/app/src/main/res/drawable/btn_white.xml" qualifiers="" type="drawable"/><file name="btn_yellow" path="/Users/mapfap/AndroidStudioProjects/pos/app/src/main/res/drawable/btn_yellow.xml" qualifiers="" type="drawable"/><file name="cart" path="/Users/mapfap/AndroidStudioProjects/pos/app/src/main/res/drawable/cart.png" qualifiers="" type="drawable"/><file name="edit" path="/Users/mapfap/AndroidStudioProjects/pos/app/src/main/res/drawable/edit.png" qualifiers="" type="drawable"/><file name="refresh_logo" path="/Users/mapfap/AndroidStudioProjects/pos/app/src/main/res/drawable/refresh_logo.png" qualifiers="" type="drawable"/><file name="refresh_logo_low" path="/Users/mapfap/AndroidStudioProjects/pos/app/src/main/res/drawable/refresh_logo_low.png" qualifiers="" type="drawable"/><file name="ic_action_overflow" path="/Users/mapfap/AndroidStudioProjects/pos/app/src/main/res/drawable-hdpi/ic_action_overflow.png" qualifiers="hdpi" type="drawable"/><file name="ic_launcher" path="/Users/mapfap/AndroidStudioProjects/pos/app/src/main/res/drawable-hdpi/ic_launcher.png" qualifiers="hdpi" type="drawable"/><file name="ic_action_overflow" path="/Users/mapfap/AndroidStudioProjects/pos/app/src/main/res/drawable-mdpi/ic_action_overflow.png" qualifiers="mdpi" type="drawable"/><file name="ic_launcher" path="/Users/mapfap/AndroidStudioProjects/pos/app/src/main/res/drawable-mdpi/ic_launcher.png" qualifiers="mdpi" type="drawable"/><file name="ic_action_overflow" path="/Users/mapfap/AndroidStudioProjects/pos/app/src/main/res/drawable-xhdpi/ic_action_overflow.png" qualifiers="xhdpi" type="drawable"/><file name="ic_launcher" path="/Users/mapfap/AndroidStudioProjects/pos/app/src/main/res/drawable-xhdpi/ic_launcher.png" qualifiers="xhdpi" type="drawable"/><file name="ic_launcher" path="/Users/mapfap/AndroidStudioProjects/pos/app/src/main/res/drawable-xxhdpi/ic_launcher.png" qualifiers="xxhdpi" type="drawable"/><file name="dialog_payment" path="/Users/mapfap/AndroidStudioProjects/pos/app/src/main/res/layout/dialog_payment.xml" qualifiers="" type="layout"/><file name="dialog_paymentsuccession" path="/Users/mapfap/AndroidStudioProjects/pos/app/src/main/res/layout/dialog_paymentsuccession.xml" qualifiers="" type="layout"/><file name="dialog_saleedit" path="/Users/mapfap/AndroidStudioProjects/pos/app/src/main/res/layout/dialog_saleedit.xml" qualifiers="" type="layout"/><file name="layout_addproduct" path="/Users/mapfap/AndroidStudioProjects/pos/app/src/main/res/layout/layout_addproduct.xml" qualifiers="" type="layout"/><file name="layout_addproductlot" path="/Users/mapfap/AndroidStudioProjects/pos/app/src/main/res/layout/layout_addproductlot.xml" qualifiers="" type="layout"/><file name="layout_inventory" path="/Users/mapfap/AndroidStudioProjects/pos/app/src/main/res/layout/layout_inventory.xml" qualifiers="" type="layout"/><file name="layout_main" path="/Users/mapfap/AndroidStudioProjects/pos/app/src/main/res/layout/layout_main.xml" qualifiers="" type="layout"/><file name="layout_productdetail_detail" path="/Users/mapfap/AndroidStudioProjects/pos/app/src/main/res/layout/layout_productdetail_detail.xml" qualifiers="" type="layout"/><file name="layout_productdetail_main" path="/Users/mapfap/AndroidStudioProjects/pos/app/src/main/res/layout/layout_productdetail_main.xml" qualifiers="" type="layout"/><file name="layout_productdetail_stock" path="/Users/mapfap/AndroidStudioProjects/pos/app/src/main/res/layout/layout_productdetail_stock.xml" qualifiers="" type="layout"/><file name="layout_report" path="/Users/mapfap/AndroidStudioProjects/pos/app/src/main/res/layout/layout_report.xml" qualifiers="" type="layout"/><file name="layout_sale" path="/Users/mapfap/AndroidStudioProjects/pos/app/src/main/res/layout/layout_sale.xml" qualifiers="" type="layout"/><file name="layout_saledetail" path="/Users/mapfap/AndroidStudioProjects/pos/app/src/main/res/layout/layout_saledetail.xml" qualifiers="" type="layout"/><file name="layout_splashscreen" path="/Users/mapfap/AndroidStudioProjects/pos/app/src/main/res/layout/layout_splashscreen.xml" qualifiers="" type="layout"/><file name="listview_inventory" path="/Users/mapfap/AndroidStudioProjects/pos/app/src/main/res/layout/listview_inventory.xml" qualifiers="" type="layout"/><file name="listview_lineitem" path="/Users/mapfap/AndroidStudioProjects/pos/app/src/main/res/layout/listview_lineitem.xml" qualifiers="" type="layout"/><file name="listview_report" path="/Users/mapfap/AndroidStudioProjects/pos/app/src/main/res/layout/listview_report.xml" qualifiers="" type="layout"/><file name="listview_stock" path="/Users/mapfap/AndroidStudioProjects/pos/app/src/main/res/layout/listview_stock.xml" qualifiers="" type="layout"/><file name="detail_menu" path="/Users/mapfap/AndroidStudioProjects/pos/app/src/main/res/menu/detail_menu.xml" qualifiers="" type="menu"/><file name="main" path="/Users/mapfap/AndroidStudioProjects/pos/app/src/main/res/menu/main.xml" qualifiers="" type="menu"/><file name="products" path="/Users/mapfap/AndroidStudioProjects/pos/app/src/main/res/raw/products.csv" qualifiers="" type="raw"/><file path="/Users/mapfap/AndroidStudioProjects/pos/app/src/main/res/values/dimens.xml" qualifiers=""><dimen name="activity_vertical_margin">16dp</dimen><dimen name="activity_horizontal_margin">16dp</dimen></file><file path="/Users/mapfap/AndroidStudioProjects/pos/app/src/main/res/values/strings.xml" qualifiers=""><string name="change">Change</string><string name="product_detail">Product Detail</string><string name="lang_jp">日本語 (jp)</string><string name="add_new_product">Add New Product</string><string name="edit">Edit</string><string name="quantity">Quantity</string><string name="inventory">Inventory</string><string name="no">No</string><string name="success">Success</string><string name="confirm">Done</string><string name="previous">&lt;</string><string name="stock">Stock</string><string name="sale">Sale</string><string name="report">Report</string><string name="dialog_remove_product">Are you sure you want to REMOVE this product?</string><string name="fail">Fail</string><string name="hint_lang">Please restart the application to apply this language settings.</string><string name="hint_cash">Enter cash here</string><string name="dialog_quit">Are you sure you want to QUIT?</string><string-array name="period">
+        <item>Daily</item>
+        <item>Weekly</item>
+        <item>Monthly</item>
+        <item>Yearly</item>
+    </string-array><string name="date_added">Date Added</string><string name="quit">Quit</string><string name="hint_search">Enter name or barcode</string><string name="lang_th">ภาษาไทย (th)</string><string name="name">Name</string><string name="please_input_all">Please fulfill all data.</string><string name="remove">Remove</string><string name="dialog_clear_sale">Are you sure you want to CLEAR this sale?</string><string name="lang_en">English</string><string name="date">Date</string><string name="next">></string><string name="action_settings">Settings</string><string name="app_name">Mobile POS</string><string name="total">Total</string><string name="cancel">Cancel</string><string name="need_money">Need</string><style name="ButtonText">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_margin">3dp</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:shadowColor">#000000</item>
+        <item name="android:shadowDx">1</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowRadius">2</item>
+    </style><string name="scan">Scan</string><string name="id">ID</string><string name="unit_price">Unit Price</string><string name="barcode">Barcode</string><string name="add_stock">Add A Product Lot</string><string name="hint_empty_sale">Sale is empty.</string><string name="cash">Cash</string><string name="clear">Clear</string></file><file path="/Users/mapfap/AndroidStudioProjects/pos/app/src/main/res/values/styles.xml" qualifiers=""><style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style><style name="AppBaseTheme" parent="android:Theme.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style></file><file path="/Users/mapfap/AndroidStudioProjects/pos/app/src/main/res/values-jp/strings.xml" qualifiers="jp"><string name="report">報告</string><string name="no">ザ</string><string name="fail">失敗する</string><string name="success">成功</string><string name="quantity">数量を</string><string name="product_detail">製品の詳細</string><style name="ButtonText">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_margin">3dp</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:shadowColor">#000000</item>
+        <item name="android:shadowDx">1</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowRadius">2</item>
+    </style><string name="add_new_product">新しい製品を追加する</string><string name="previous">&lt;</string><string name="add_stock">ストックに追加</string><string name="need_money">必要</string><string name="date_added">登録日</string><string name="date">日</string><string name="action_settings">設定</string><string name="stock">株式</string><string name="confirm">完了</string><string name="inventory">在荷</string><string name="hint_empty_sale">販売は空です。</string><string name="sale">売却</string><string name="id">番号</string><string-array name="period">
+        <item>日々</item>
+        <item>毎週</item>
+        <item>毎月</item>
+        <item>毎年</item>
+    </string-array><string name="please_input_all">すべてのデータを果たすください。</string><string name="total">合計</string><string name="quit">出口</string><string name="cancel">キャンセル</string><string name="name">名</string><string name="hint_cash">入力お金</string><string name="cash">現金</string><string name="clear">クリア</string><string name="remove">削除する</string><string name="hint_lang">この言語設定を適用するには、アプリケーションを再起動してください</string><string name="barcode">バーコード</string><string name="unit_price">単価</string><string name="next">></string><string name="change">変更</string><string name="dialog_quit">本当に終了してもよろしいですか？</string><string name="app_name">携帯電話 売却</string><string name="edit">編集</string><string name="hint_search">見つける</string><string name="dialog_clear_sale">あなたは、この売却をクリアしてもよろしいですか？</string><string name="scan">スキャン</string><string name="dialog_remove_product">あなたはこの製品を削除してもよろしいですか？</string></file><file path="/Users/mapfap/AndroidStudioProjects/pos/app/src/main/res/values-sw720dp-land/dimens.xml" qualifiers="sw720dp-land"><dimen name="activity_horizontal_margin">128dp</dimen></file><file path="/Users/mapfap/AndroidStudioProjects/pos/app/src/main/res/values-th/strings.xml" qualifiers="th"><string name="remove">ลบ</string><string name="add_new_product">สร้างสินค้าใหม่</string><style name="ButtonText">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_margin">3dp</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:shadowColor">#000000</item>
+        <item name="android:shadowDx">1</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowRadius">2</item>
+    </style><string name="hint_lang">กรุณา ปิดและเปิดแอพลิเคชันใหม่ เพื่อการเปลี่ยนภาษาที่สมบูรณ์</string><string name="dialog_quit">คุณต้องการออกหรือไม่?</string><string name="cancel">ยกเลิก</string><string name="date">วันที่</string><string name="success">สำเร็จ</string><string name="confirm">เสร็จสิ้น</string><string name="dialog_clear_sale">ต้องการล้างการขายนี้หรือไม่?</string><string name="date_added">วันที่นำเข้า</string><string name="scan">กราด</string><string name="cash">เงินสด</string><string name="next">></string><string name="stock">คลัง</string><string name="total">ยอด</string><string name="add_stock">สร้างรายการสินค้นนำเข้า</string><string name="name">ชื่อ</string><string name="change">เงินทอน</string><string name="inventory">คลังสินค้า</string><string name="action_settings">ตั้งค่า</string><string name="quit">ออก</string><string name="clear">ล้าง</string><string name="quantity">ปริมาณ</string><string name="unit_price">ราคาต่อหน่วย</string><string name="sale">การขาย</string><string name="please_input_all">กรุณากรอกข้อมูลให้ครบถ้วน</string><string name="id">รหัส</string><string name="edit">แก้ไข</string><string name="dialog_remove_product">คุณต้องการลบสินค้าชิ้นนี้หรือไม่?</string><string name="report">รายงานการขาย</string><string name="hint_cash">กรอกเงิน</string><string name="need_money">ขาดเงินอีก</string><string name="no">ไม่</string><string name="barcode">รหัสแท่ง</string><string name="hint_search">ค้นหาสินค้า</string><string name="hint_empty_sale">ไม่มีการขาย</string><string name="app_name">ณ จุดขาย เคลื่อนที่</string><string name="previous">&lt;</string><string name="fail">ล้มเหลว</string><string name="product_detail">รายละเอียดสินค้า</string><string-array name="period">
+        <item>รายวัน</item>
+        <item>รายอาทิตย์</item>
+        <item>รายเดือน</item>
+        <item>รายปี</item>
+    </string-array></file><file path="/Users/mapfap/AndroidStudioProjects/pos/app/src/main/res/values-v11/styles.xml" qualifiers="v11"><style name="AppBaseTheme" parent="android:Theme.Holo.Light">
+        <!-- API 11 theme customizations can go here. -->
+    </style></file><file path="/Users/mapfap/AndroidStudioProjects/pos/app/src/main/res/values-v14/styles.xml" qualifiers="v14"><style name="AppBaseTheme" parent="android:Theme.Holo.Light.DarkActionBar">
+        <!-- API 14 theme customizations can go here. -->
+    </style></file></source><source path="/Users/mapfap/AndroidStudioProjects/pos/app/build/generated/res/rs/debug"/><source path="/Users/mapfap/AndroidStudioProjects/pos/app/build/generated/res/generated/debug"/></dataSet><dataSet config="debug"><source path="/Users/mapfap/AndroidStudioProjects/pos/app/src/debug/res"/></dataSet><mergedItems><configuration qualifiers=""><declare-styleable name="GridLayout"><attr name="orientation"><enum name="horizontal" value="0"/><enum name="vertical" value="1"/></attr><attr format="integer" name="rowCount"/><attr format="integer" name="columnCount"/><attr format="boolean" name="useDefaultMargins"/><attr name="alignmentMode"><enum name="alignBounds" value="0"/><enum name="alignMargins" value="1"/></attr><attr format="boolean" name="rowOrderPreserved"/><attr format="boolean" name="columnOrderPreserved"/></declare-styleable><declare-styleable name="GridLayout_Layout"><attr name="android:layout_width"/><attr name="android:layout_height"/><attr name="android:layout_margin"/><attr name="android:layout_marginLeft"/><attr name="android:layout_marginTop"/><attr name="android:layout_marginRight"/><attr name="android:layout_marginBottom"/><attr format="integer" name="layout_row"/><attr format="integer" min="1" name="layout_rowSpan"/><attr format="integer" name="layout_column"/><attr format="integer" min="1" name="layout_columnSpan"/><attr name="layout_gravity"><flag name="top" value="0x30"/><flag name="bottom" value="0x50"/><flag name="left" value="0x03"/><flag name="right" value="0x05"/><flag name="center_vertical" value="0x10"/><flag name="fill_vertical" value="0x70"/><flag name="center_horizontal" value="0x01"/><flag name="fill_horizontal" value="0x07"/><flag name="center" value="0x11"/><flag name="fill" value="0x77"/><flag name="clip_vertical" value="0x80"/><flag name="clip_horizontal" value="0x08"/><flag name="start" value="0x00800003"/><flag name="end" value="0x00800005"/></attr></declare-styleable></configuration></mergedItems></merger>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">ณ จุดขาย เคลื่อนที่</string>
+    <string name="action_settings">ตั้งค่า</string>
+    <string name="total">ยอด</string>
+    <string name="barcode">รหัสแท่ง</string>
+    <string name="cancel">ยกเลิก</string>
+    <string name="clear">ล้าง</string>
+    <string name="edit">แก้ไข</string>
+    <string name="confirm">เสร็จสิ้น</string>
+    <string name="date">วันที่</string>
+    <string name="date_added">วันที่นำเข้า</string>
+    <string name="quantity">ปริมาณ</string>
+    <string name="remove">ลบ</string>
+    <string name="scan">กราด</string>
+    <string name="unit_price">ราคาต่อหน่วย</string>
+    <string name="name">ชื่อ</string>
+    <string name="id">รหัส</string>
+    <string name="cash">เงินสด</string>
+    <string name="change">เงินทอน</string>
+    <string name="hint_search">ค้นหาสินค้า</string>
+    <string name="hint_cash">กรอกเงิน</string>
+    <string name="add_new_product">สร้างสินค้าใหม่</string>
+    <string name="add_stock">สร้างรายการสินค้นนำเข้า</string>
+    <string name="previous">&lt;</string>
+    <string name="next">></string>
+    <string name="inventory">คลังสินค้า</string>
+    <string name="sale">การขาย</string>
+    <string name="report">รายงานการขาย</string>
+    
+    <string name="dialog_quit">คุณต้องการออกหรือไม่?</string>
+    <string name="dialog_remove_product">คุณต้องการลบสินค้าชิ้นนี้หรือไม่?</string>
+    <string name="dialog_clear_sale">ต้องการล้างการขายนี้หรือไม่?</string>
+    <string name="hint_empty_sale">ไม่มีการขาย</string>
+    <string name="quit">ออก</string>
+    <string name="no">ไม่</string>
+    <string name="product_detail">รายละเอียดสินค้า</string>
+    <string name="stock">คลัง</string>
+    <string name="success">สำเร็จ</string>
+    <string name="fail">ล้มเหลว</string>
+    <string name="please_input_all">กรุณากรอกข้อมูลให้ครบถ้วน</string>
+    <string name="need_money">ขาดเงินอีก</string>
+    
+    
+    <string name="hint_lang">กรุณา ปิดและเปิดแอพลิเคชันใหม่ เพื่อการเปลี่ยนภาษาที่สมบูรณ์</string>
+    
+    
+    <string-array name="period">
+        <item>รายวัน</item>
+        <item>รายอาทิตย์</item>
+        <item>รายเดือน</item>
+        <item>รายปี</item>
+    </string-array>
+
+    <style name="ButtonText">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_margin">3dp</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:shadowColor">#000000</item>
+        <item name="android:shadowDx">1</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowRadius">2</item>
+    </style>
+
+</resources>

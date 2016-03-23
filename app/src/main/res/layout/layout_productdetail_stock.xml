@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/stockTab"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="5dp"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:baselineAligned="false"
+        android:orientation="horizontal" >
+
+        <TableRow
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_weight="0.5"
+            android:background="#FFFFFF"
+            android:paddingBottom="1dip"
+            android:paddingLeft="1dip"
+            android:paddingTop="1dip" >
+
+            <TextView
+                android:id="@+id/dateAdded"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="2"
+                android:background="#33B5E5"
+                android:gravity="center"
+                android:paddingRight="3dp"
+                android:text="@string/date_added"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_weight="0.25"
+            android:background="#FFFFFF"
+            android:paddingBottom="1dip"
+            android:paddingLeft="1dip"
+            android:paddingTop="1dip" >
+
+            <TextView
+                android:id="@+id/cost"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1.5"
+                android:background="#33B5E5"
+                android:gravity="center"
+                android:paddingRight="3dp"
+                android:text="@string/unit_price"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="0.25"
+            android:background="#FFFFFF"
+            android:paddingBottom="1dip"
+            android:paddingLeft="1dip"
+            android:paddingRight="1dip"
+            android:paddingTop="1dip" >
+
+            <TextView
+                android:id="@+id/quantity"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="0.75"
+                android:background="#33B5E5"
+                android:gravity="center"
+                android:paddingRight="3dp"
+                android:text="@string/quantity"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </TableRow>
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/stockListView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+    </ListView>
+
+</LinearLayout>
