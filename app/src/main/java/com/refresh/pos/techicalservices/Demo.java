@@ -19,6 +19,8 @@ import com.refresh.pos.domain.inventory.ProductCatalog;
  */
 public class Demo {
 
+	private static final String TAG = "Demo";
+
 	/**
 	 * Adds the demo product to inventory.
 	 * @param context The current stage of the application.
@@ -35,7 +37,7 @@ public class Demo {
 				catalog.addProduct(contents[1], contents[0], Double.parseDouble(contents[2]));
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			Log.e(TAG, e.getMessage(), e);
 		}
 	}
 
