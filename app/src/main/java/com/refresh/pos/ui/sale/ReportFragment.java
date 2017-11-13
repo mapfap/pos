@@ -162,7 +162,7 @@ public class ReportFragment extends UpdatableFragment {
 	@Override
 	public void update() {
 		int period = spinner.getSelectedItemPosition();
-		List<Sale> list = null;
+		List<Sale> list;
 		Calendar cTime = (Calendar) currentTime.clone();
 		Calendar eTime = (Calendar) currentTime.clone();
 		

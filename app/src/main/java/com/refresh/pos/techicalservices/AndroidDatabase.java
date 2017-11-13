@@ -107,10 +107,11 @@ public class AndroidDatabase extends SQLiteOpenHelper implements Database {
 
 	@Override
 	public List<Object> select(String queryString) {
+		Cursor cursor = null;
 		try {
 			SQLiteDatabase database = this.getWritableDatabase();
 			List<Object> list = new ArrayList<Object>();
-			Cursor cursor = database.rawQuery(queryString, null);
+			cursor = database.rawQuery(queryString, null);
 
 			if (cursor != null) {
 				if (cursor.moveToFirst()) {
@@ -125,13 +126,16 @@ public class AndroidDatabase extends SQLiteOpenHelper implements Database {
 					} while (cursor.moveToNext());
 				}
 			}
-			cursor.close();
 			database.close();
 			return list;
 
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
+		} finally {
+			if(cursor != null) {
+				cursor.close();
+			}
 		}
 	}
 

@@ -19,6 +19,8 @@ import com.refresh.pos.domain.inventory.ProductCatalog;
  */
 public class Demo {
 
+	private Demo() {}
+
 	/**
 	 * Adds the demo product to inventory.
 	 * @param context The current stage of the application.

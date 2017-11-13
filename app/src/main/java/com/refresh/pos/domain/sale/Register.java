@@ -38,7 +38,8 @@ public class Register {
 	}
 	
 	public static Register getInstance() throws NoDaoSetException {
-		if (instance == null) instance = new Register();
+		if (instance == null)
+			instance = new Register();
 		return instance;
 	}
 
@@ -90,7 +91,8 @@ public class Register {
 	 * @return total price of Sale.
 	 */
 	public double getTotal() {
-		if (currentSale == null) return 0;
+		if (currentSale == null)
+			return 0;
 		return currentSale.getTotal();
 	}
 
@@ -133,7 +135,8 @@ public class Register {
 	 * @return true if there is a current Sale; otherwise false.
 	 */
 	public boolean hasSale(){
-		if(currentSale == null)return false;
+		if(currentSale == null)
+			return false;
 		return true;
 	}
 	

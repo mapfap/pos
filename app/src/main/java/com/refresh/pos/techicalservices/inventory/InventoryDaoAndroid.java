@@ -79,8 +79,7 @@ public class InventoryDaoAndroid implements InventoryDao {
 	 */
 	private List<Product> getAllProduct(String condition) {
 		String queryString = "SELECT * FROM " + DatabaseContents.TABLE_PRODUCT_CATALOG.toString() + condition + " ORDER BY name";
-        List<Product> list = toProductList(database.select(queryString));
-        return list;
+        return toProductList(database.select(queryString));
 	}
 	
 	/**
@@ -108,7 +107,8 @@ public class InventoryDaoAndroid implements InventoryDao {
 	@Override
 	public Product getProductByBarcode(String barcode) {
 		List<Product> list = getProductBy("barcode", barcode);
-        if (list.isEmpty()) return null;
+        if (list.isEmpty())
+			return null;
         return list.get(0);
 	}
 
@@ -167,8 +167,7 @@ public class InventoryDaoAndroid implements InventoryDao {
 	 */
 	private List<ProductLot> getAllProductLot(String condition) {
 		String queryString = "SELECT * FROM " + DatabaseContents.TABLE_STOCK.toString() + condition;
-        List<ProductLot> list = toProductLotList(database.select(queryString));
-        return list;
+		return toProductLotList(database.select(queryString));
 	}
 
 	/**
