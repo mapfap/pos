@@ -28,14 +28,22 @@ public class DateTimeStrategy {
 		locale = new Locale(lang, reg);
 		dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss", locale);
 	}
-	
+
+	/**
+	 * Sets current time format.
+	 * @return current time format.
+	 */
+	public static String format() {
+		return dateFormat.format(Calendar.getInstance(locale).getTime());
+	}
+
 	/**
 	 * Sets current time format.
 	 * @param date date of this format.
 	 * @return current time format.
 	 */
 	public static String format(String date) {
-		return dateFormat.format(Calendar.getInstance(locale).getTime());
+		return dateFormat.format(date);
 	}
 	
 	/**

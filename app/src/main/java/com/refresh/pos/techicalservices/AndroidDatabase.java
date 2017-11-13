@@ -19,6 +19,7 @@ import android.util.Log;
  */
 public class AndroidDatabase extends SQLiteOpenHelper implements Database {
 
+	private static final String TAG = "AndroidDatabase";
 	private static final int DATABASE_VERSION = 1;
 
 	/**
@@ -112,25 +113,23 @@ public class AndroidDatabase extends SQLiteOpenHelper implements Database {
 			List<Object> list = new ArrayList<Object>();
 			Cursor cursor = database.rawQuery(queryString, null);
 
-			if (cursor != null) {
-				if (cursor.moveToFirst()) {
-					do {
-						ContentValues content = new ContentValues();
-						String[] columnNames = cursor.getColumnNames();
-						for (String columnName : columnNames) {
-							content.put(columnName, cursor.getString(cursor
-									.getColumnIndex(columnName)));
-						}
-						list.add(content);
-					} while (cursor.moveToNext());
-				}
+			if (cursor != null && cursor.moveToFirst()) {
+				do {
+					ContentValues content = new ContentValues();
+					String[] columnNames = cursor.getColumnNames();
+					for (String columnName : columnNames) {
+						content.put(columnName, cursor.getString(cursor
+								.getColumnIndex(columnName)));
+					}
+					list.add(content);
+				} while (cursor.moveToNext());
 			}
 			cursor.close();
 			database.close();
 			return list;
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			Log.e(TAG, e.getMessage(), e);
 			return null;
 		}
 	}
@@ -144,7 +143,7 @@ public class AndroidDatabase extends SQLiteOpenHelper implements Database {
 			database.close();
 			return id;
 		} catch (Exception e) {
-			e.printStackTrace();
+			Log.e(TAG, e.getMessage(), e);
 			return -1;
 		}
 
@@ -161,7 +160,7 @@ public class AndroidDatabase extends SQLiteOpenHelper implements Database {
 			return true;
 			
 		} catch (Exception e) {
-			e.printStackTrace();
+			Log.e(TAG, e.getMessage(), e);
 			return false;
 		}
 	}
@@ -174,7 +173,7 @@ public class AndroidDatabase extends SQLiteOpenHelper implements Database {
                     return true;
                     
             } catch (Exception e) {
-                    e.printStackTrace();
+                    Log.e(TAG, e.getMessage(), e);
                     return false;
             }
     }
@@ -186,7 +185,7 @@ public class AndroidDatabase extends SQLiteOpenHelper implements Database {
 			database.execSQL(query);
 			return true;
 		}catch(Exception e){
-			e.printStackTrace();
+			Log.e(TAG, e.getMessage(), e);
 			return false;
 		}
 	}
