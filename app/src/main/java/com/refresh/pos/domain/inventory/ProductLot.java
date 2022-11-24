@@ -87,7 +87,7 @@ public class ProductLot {
 	public Map<String, String> toMap() {
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("id", id + "");
-		map.put("dateAdded", DateTimeStrategy.format(dateAdded));
+		map.put("dateAdded", DateTimeStrategy.format());
 		map.put("quantity", quantity + "");
 		map.put("productName", product.getName());
 		map.put("cost", unitCost + "");
