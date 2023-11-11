@@ -41,8 +41,7 @@ public class ProductCatalog {
 	 * @return true if product edits success ; otherwise false.
 	 */
 	public boolean editProduct(Product product) {
-		boolean respond = inventoryDao.editProduct(product);
-		return respond;
+		return inventoryDao.editProduct(product);
 	}
 		
 	/**

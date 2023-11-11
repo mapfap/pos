@@ -62,8 +62,7 @@ public class SaleDaoAndroid implements SaleDao {
         content.put("product_id", lineItem.getProduct().getId());
         content.put("quantity", lineItem.getQuantity());
         content.put("unit_price", lineItem.getPriceAtSale());
-        int id = database.insert(DatabaseContents.TABLE_SALE_LINEITEM.toString(), content);
-        return id;
+        return database.insert(DatabaseContents.TABLE_SALE_LINEITEM.toString(), content);
 	}
 
 	@Override
@@ -86,8 +85,7 @@ public class SaleDaoAndroid implements SaleDao {
 	public List<Sale> getAllSaleDuring(Calendar start, Calendar end) {
 		String startBound = DateTimeStrategy.getSQLDateFormat(start);
 		String endBound = DateTimeStrategy.getSQLDateFormat(end);
-		List<Sale> list = getAllSale(" WHERE end_time BETWEEN '" + startBound + " 00:00:00' AND '" + endBound + " 23:59:59' AND status = 'ENDED'"); 
-		return list;
+		return getAllSale(" WHERE end_time BETWEEN '" + startBound + " 00:00:00' AND '" + endBound + " 23:59:59' AND status = 'ENDED'");
 	}
 	
 	/**

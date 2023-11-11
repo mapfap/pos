@@ -112,7 +112,8 @@ public class SplashScreenActivity extends Activity {
 		new Handler().postDelayed(new Runnable() {
 			@Override
 			public void run() {
-				if (!gone) go();
+				if (!gone)
+					go();
 			}
 		}, SPLASH_TIMEOUT);
 	}

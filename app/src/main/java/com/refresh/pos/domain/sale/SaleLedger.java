@@ -32,7 +32,8 @@ public class SaleLedger {
 	}
 	
 	public static SaleLedger getInstance() throws NoDaoSetException {
-		if (instance == null) instance = new SaleLedger();
+		if (instance == null)
+			instance = new SaleLedger();
 		return instance;
 	}
 
